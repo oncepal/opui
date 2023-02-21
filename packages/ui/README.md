@@ -1,6 +1,6 @@
 <!-- markdownlint-disable-next-line -->
 <p align="center">
-  <img width='50%' src="../../images/logo.jpg" alt="Shit UI">
+  <img width='80%' src="../../images/logo.png" alt="Shit UI">
   <h1 align="center">Shit UI</h1>
 </p>
 </br>
@@ -19,8 +19,14 @@
 
 
 </div>
+<p align="center">
 
-English | [Português](./README-pt_BR.md) | [简体中文](./README-zh_CN.md) | [Українською](./README-uk_UA.md) | [Spanish](./README-sp_MX.md) | [日本語](./README-ja_JP.md)
+  English | [Português](./README-pt_BR.md) | [简体中文](./README-zh_CN.md) | [Українською](./README-uk_UA.md) | [Spanish](./README-sp_MX.md) | [日本語](./README-ja_JP.md)
+
+
+  <img width='100%' src="../../images/components.jpg" alt="Shit UI">
+  
+</p>
 
 ## ✨ Features
 
