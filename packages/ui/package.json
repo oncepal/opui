@@ -1,7 +1,7 @@
 {
   "name": "@sui/core",
   "version": "0.0.1",
-  "description": "A lightweight, customizable React UI tools for pc & mobile web apps.",
+  "description": "🚀 The React UI tools helps you create the best web app.",
   "main": "build/index.umd.js",
   "module": "build/index.js",
   "files": [
