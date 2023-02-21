@@ -1,6 +1,6 @@
 <!-- markdownlint-disable-next-line -->
 <p align="center">
-  <img width='80%' src="./images/logo.png" alt="Shit UI">
+  <img width='30%' src="./images/logo.png" alt="Shit UI">
   <h1 align="center">Shit UI</h1>
 </p>
 </br>
@@ -17,16 +17,12 @@
 [![Renovate status](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://github.com/mui-org/material-ui/issues/27062)
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/mui-org/material-ui.svg)](https://isitmaintained.com/project/mui-org/material-ui 'Average time to resolve an issue')
 
-
-</div>
-<p align="center">
-
   English | [Português](./README-pt_BR.md) | [简体中文](./README-zh_CN.md) | [Українською](./README-uk_UA.md) | [Spanish](./README-sp_MX.md) | [日本語](./README-ja_JP.md)
 
 
   <img width='100%' src="./images/components.jpg" alt="Shit UI">
-  
-</p>
+</div>
+
 
 ## ✨ Features
 
