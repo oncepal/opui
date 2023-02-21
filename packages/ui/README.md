@@ -1,6 +1,6 @@
 <!-- markdownlint-disable-next-line -->
 <p align="center">
-  <img width='30%' src="../../images/logo.png" alt="Shit UI">
+  <img width='13%' src="../../images/logo.png" alt="Shit UI">
   <h1 align="center">Shit UI</h1>
 </p>
 </br>
