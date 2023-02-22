@@ -14,12 +14,14 @@ function HomepageHeader() {
     <header className={clsx('hero', styles.heroBanner)}>
       <div className='container'>
         <h1 className='hero__title'>{siteConfig.title}</h1>
-        <p className='hero__subtitle'>{siteConfig.tagline}</p>
+        <p className='hero__subtitle'>
+          🚀 The React UI tools helps you create the <span className={styles.best}>best</span> web app
+        </p>
         <div className={styles.buttons}>
-          <Link className='button button--primary button--lg' to='/docs/intro'>
+          <Link className={clsx('button button--primary button--lg', styles.gradient)} to='/docs/intro'>
             Get Started
           </Link>
-          <Link>npm install @sui/core @emotion/react</Link>
+          <Link> {'>'} npm install @sui/core @emotion/react</Link>
         </div>
       </div>
     </header>
@@ -29,7 +31,7 @@ function HomepageHeader() {
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout title={`${siteConfig.title}`} description='Probably the best use of the React UI library'>
+    <Layout title={`${siteConfig.title}`} description='🚀 The React UI tools helps you create the best web app'>
       <HomepageHeader />
 
       <main>

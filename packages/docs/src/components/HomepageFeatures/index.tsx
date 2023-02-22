@@ -10,35 +10,40 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
+    title: 'Apply your own theming decisions.',
     // Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Shit UI was designed from the ground up to be easily installed and used to get your website up and running
-        quickly.
+        ShitUI provides a simple way to customize the default themes, you can change the colors, fonts, breakpoints and
+        everything you need.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Do more Write less',
     // Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Shit UI lets you focus on your docs, and we&apos;ll do the chores. Go ahead and move your docs into the{' '}
-        <code>docs</code> directory.
+        ShitUI components have been created with the Developer's experience in mind, avoiding having to import multiple
+        components to display just one.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Customization made easy',
     // Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
-    description: <>Extend or customize your website layout by reusing React.</>,
+    description: (
+      <>
+        Thanks to ShitUI is built on top of the amazing CSS-in-JS library Emotion, you can customize any components in
+        several ways eather using the css prop, styled function or native CSS selectors.
+      </>
+    ),
   },
 ];
 
 function Feature({ title, Svg, description }: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
+    <div className={clsx('col col--4')} style={{ marginTop: '3em' }}>
       <div className='text--center'>{/* <Svg className={styles.featureSvg} role='img' /> */}</div>
       <div className='text--center padding-horiz--md'>
         <h3>{title}</h3>

@@ -109,11 +109,14 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'intro',
-            position: 'left',
-            label: 'Tutorial',
+            docId: 'guide/get-started',
+            label: 'Docs',
           },
-          
+          {
+            type: 'doc',
+            docId: '/category/components',
+            label: 'Components',
+          },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
             type: 'localeDropdown',
@@ -139,8 +142,8 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Guide',
+                to: '/docs/guide',
               },
             ],
           },
