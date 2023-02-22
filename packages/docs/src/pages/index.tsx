@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { Container } from '@sui/core';
+import { App, Button } from '@sui/core';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
@@ -16,11 +16,10 @@ function HomepageHeader() {
         <h1 className='hero__title'>{siteConfig.title}</h1>
         <p className='hero__subtitle'>{siteConfig.tagline}</p>
         <div className={styles.buttons}>
-          <Container>1241241111142 </Container>
           <Link className='button button--primary button--lg' to='/docs/intro'>
             Get Started
           </Link>
-          <Link to='/docs/intro'>npm install shitui @emotion/react</Link>
+          <Link>npm install @sui/core @emotion/react</Link>
         </div>
       </div>
     </header>
@@ -32,6 +31,7 @@ export default function Home(): JSX.Element {
   return (
     <Layout title={`${siteConfig.title}`} description='Probably the best use of the React UI library'>
       <HomepageHeader />
+
       <main>
         <HomepageFeatures />
       </main>

@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Shit UI',
-  tagline: 'ShitUI offers a comprehensive suite of UI tools to help you ship new features faster. Start with Shit UI, our fully-loaded component library, or bring your own design system to our production-ready components.',
+  tagline: '🚀 The React UI tools helps you create the best web app',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -70,7 +70,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/logo.png',
       // algolia: {
       //   // The application ID provided by Algolia
       //   appId: 'YOUR_APP_ID',
@@ -104,7 +104,7 @@ const config = {
         title: 'Shit UI',
         logo: {
           alt: 'UI Logo',
-          src: 'img/logo.svg',
+          src: 'img/logo.png',
         },
         items: [
           {
@@ -126,7 +126,7 @@ const config = {
             ],
           },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/fogcity/shit-ui',
             label: 'GitHub',
             position: 'right',
           },
@@ -164,7 +164,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} UI, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Shit UI, Inc.`,
       },
       prism: {
         theme: lightCodeTheme,
