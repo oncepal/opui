@@ -3,7 +3,7 @@
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
-
+const path = require('path');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Shit UI',
@@ -101,6 +101,7 @@ const config = {
       //   //... other Algolia params
       // },
       navbar: {
+        hideOnScroll:true,
         title: 'Shit UI',
         logo: {
           alt: 'UI Logo',
@@ -174,6 +175,21 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
+    plugins:[
+      () => ({
+        name: 'resolve-react',
+        configureWebpack() {
+          return {
+            resolve: {
+              alias: {
+                // assuming root node_modules is up from "./packages/<your-docusaurus>
+                react: path.resolve('../../node_modules/react'), 
+              },
+            },
+          };
+        },
+      }),
+    ]
 };
 
 module.exports = config;

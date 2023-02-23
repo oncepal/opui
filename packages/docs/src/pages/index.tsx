@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { App, Button } from '@sui/core';
+import { App } from '@sui/core';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';

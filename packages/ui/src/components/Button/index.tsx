@@ -41,61 +41,62 @@ type ButtonProps = ComponentBaseProps &
  * @param textColor button text color
  * @param onClick click handler
  */
-const Button = forwardRef<HTMLButtonElement, ComponentPropsWithoutRef<'button'> & ButtonProps>(
-  (
-    {
-      block = false,
-      disabled = false,
-      text = false,
-      outlined = false,
-      rounded = false,
-      textColor,
-      radius,
-      css,
-      icon = false,
-      color,
-      padding = '.2em 1em',
-      children,
-      onClick,
-      ...props
-    },
-    ref,
-  ) => {
-    const theme = useTheme();
-    const computedBackgroundColor = useMemo(() => color || (theme ? theme.color.primary : vars.color.purple), [color]);
-    const computedRadius = useMemo(
-      () => radius || (rounded ? (theme ? theme.radius.rounded : vars.radius.rounded) : vars.radius.base),
-      [radius, rounded],
-    );
+const Button = ({
+  block = false,
+  disabled = false,
+  text = false,
+  outlined = false,
+  rounded = false,
+  textColor,
+  radius,
+  css,
+  icon = false,
+  color,
+  padding = '.2em 1em',
+  children,
+  onClick,
+  ...props
+}: ComponentPropsWithoutRef<'button'> & ButtonProps) => {
+  const theme = useTheme();
+  console.log('theme', Object.keys(theme));
 
-    const styles = useCSS({
-      verticalAlign: 'middle',
-      textAlign: 'center',
-      display: block ? 'block' : '',
-      minWidth: block ? '100%' : '',
-      width: icon ? '2.5em' : '',
-      height: icon ? '2.5em' : '',
-      padding: text || icon ? '' : padding,
-      border: outlined ? `1px solid ${computedBackgroundColor}` : 'none',
-      borderRadius: computedRadius,
-      color: text || outlined ? computedBackgroundColor : textColor || (theme ? theme.color.white : vars.color.white),
-      background: text || outlined ? 'transparent' : computedBackgroundColor,
-      cursor: disabled ? 'not-allowed' : 'pointer',
-      ...useMargin(props),
-      ...useThemedCSS(theme, css),
-    });
+  const computedBackgroundColor = useMemo(
+    () => color || (theme.color ? theme.color.primary : vars.color.purple),
+    [color],
+  );
+  const computedRadius = useMemo(
+    () => radius || (rounded ? (theme ? theme.radius.rounded : vars.radius.rounded) : vars.radius.base),
+    [radius, rounded],
+  );
 
-    const handleClickButton = (e: MouseEvent<HTMLButtonElement>) => {
-      e.stopPropagation();
-      onClick?.();
-    };
+  const styles = useCSS({
+    verticalAlign: 'middle',
+    textAlign: 'center',
+    display: block ? 'block' : '',
+    minWidth: block ? '100%' : '',
+    width: icon ? '2.5em' : '',
+    height: icon ? '2.5em' : '',
+    padding: text || icon ? '' : padding,
+    border: outlined ? `1px solid ${computedBackgroundColor}` : 'none',
+    borderRadius: computedRadius,
+    color:
+      text || outlined ? computedBackgroundColor : textColor || (theme.color ? theme.color.white : vars.color.white),
+    background: text || outlined ? 'transparent' : computedBackgroundColor,
+    cursor: disabled ? 'not-allowed' : 'pointer',
+    ...useMargin(props),
+    ...useThemedCSS(theme, css),
+  });
 
-    return (
-      <button ref={ref} onClick={handleClickButton} css={styles} disabled={disabled} {...props}>
-        {children}
-      </button>
-    );
-  },
-);
+  const handleClickButton = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    onClick?.();
+  };
+
+  return (
+    <button onClick={handleClickButton} css={styles} disabled={disabled} {...props}>
+      {children}
+    </button>
+  );
+};
 
 export default Button;

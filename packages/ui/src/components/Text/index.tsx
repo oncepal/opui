@@ -40,7 +40,8 @@ const Text = ({
   const theme = useTheme();
   const computedColor: any = useMemo(() => {
     return (
-      color || (dark ? (theme ? theme.color.white : vars.color.white) : theme ? theme.color.black : vars.color.black)
+      color ||
+      (dark ? (theme.color ? theme.color.white : vars.color.white) : theme.color ? theme.color.black : vars.color.black)
     );
   }, [color, theme, dark]);
 

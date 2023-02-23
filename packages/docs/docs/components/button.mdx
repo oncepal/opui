@@ -1,0 +1,52 @@
+---
+sidebar_position: 1
+---
+
+import { App, Button } from '@sui/core';
+import Example from '@site/src/components/Example';
+
+# Button
+
+Buttons allow users to take actions, and make choices, with a single tap.
+
+```bash
+import { Button } from '@sui/core'
+```
+
+## Basic button
+
+The `Button` comes with three variants: default, text, and outlined.
+
+<App>
+
+<Example>
+  <Button>Default</Button> <Button text>Text</Button> <Button outlined>Outlined</Button>
+</Example>
+
+</App>
+
+```tsx
+<Button>Default</Button>
+<Button text>Text</Button>
+<Button outlined>Outlined</Button>
+```
+
+### Default button
+
+Default buttons are high-emphasis, distinguished by their use of elevation and fill. They contain actions that are primary to your app.
+
+<Example>
+  <Button>Default</Button>
+  <Button disabled>Default</Button>
+</Example>
+
+```tsx
+<Button >Default</Button>
+<Button disabled>Default</Button>
+```
+
+## Button Props
+
+| Attribute | Type         | Description  | Default |
+| --------- | ------------ | ------------ | ------- |
+| block     | 是否全屏宽度 | 是否全屏宽度 | false   |

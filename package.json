@@ -6,7 +6,7 @@
   ],
   "scripts": {
     "build": "npx lerna run build",
-    "test": "npx lerna run test",
+    "test:ui": "npx lerna run test --scope=@sui/core",
     "dev:docs": "npx lerna run dev --scope=@sui/docs",
     "dev:ui": "npx lerna run dev --scope=@sui/core",
     "dev": "npx lerna run dev",

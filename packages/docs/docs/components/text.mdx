@@ -1,0 +1,42 @@
+---
+sidebar_position: 1
+---
+
+import { App, Text } from '@sui/core';
+import Example from '@site/src/components/Example';
+
+# Text
+
+Buttons allow users to take actions, and make choices, with a single tap.
+
+```bash
+import { Text } from '@sui/core'
+```
+
+## Basic text
+
+The `Text` comes with three variants: default, text, and outlined.
+
+<App>
+  <Example>
+    <Text>Default</Text>
+  </Example>
+</App>
+
+```tsx
+<Text>Default</Text>
+```
+
+### Default text
+
+<Text>Default</Text>
+
+```tsx
+<Text>Default</Text>
+```
+
+## Text Props
+
+| Attribute | Type         | Description  | Default |
+| --------- | ------------ | ------------ | ------- |
+| block     | 是否全屏宽度 | 是否全屏宽度 | false   |
