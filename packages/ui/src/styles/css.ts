@@ -5,10 +5,10 @@ import vars from './vars';
 
 export const useTheme = () => useEmotionTheme() as Theme;
 export const useCSS = css;
-type Color = keyof typeof vars.color;
+type Color = keyof typeof vars.colors;
 
 export function useColor(color: Color, theme: Theme, defaultColor?: string) {
-  return defaultColor || (theme ? theme.color[color] : vars.color[color]);
+  return defaultColor || (theme ? theme.colors[color] : vars.colors[color]);
 }
 export function useCenter(): CSSObject {
   return { display: 'flex', alignItems: 'center', justifyContent: 'center' };

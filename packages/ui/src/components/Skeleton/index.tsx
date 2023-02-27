@@ -40,7 +40,7 @@ const Skeleton = ({
     height: height,
     borderRadius: circle ? '50%' : '4px',
     background: `linear-gradient(90deg,rgba(255, 255, 255, 0) 40%,rgba(255, 255, 255, .5) 50%,rgba(255, 255, 255, 0) 60%) ${
-      theme.color.greyLight || '#F3F4F6'
+      theme.colors.greyLight || '#F3F4F6'
     }`,
     backgroundSize: '200% 100%',
     backgroundPositionX: '180%',

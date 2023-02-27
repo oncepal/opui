@@ -20,7 +20,7 @@ export const TimelineItem = ({
   ...props
 }: TimelineItemProps & React.ComponentPropsWithoutRef<'div'>) => {
   const theme = useTheme();
-  const color = theme.color.primary;
+  const color = theme.colors.primary;
   const styles = css({
     // position: 'absolute',
     // display: 'block',

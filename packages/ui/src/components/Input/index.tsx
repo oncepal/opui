@@ -97,8 +97,8 @@ const Input = ({
     position: 'relative',
     display: 'inline-flex',
     alignItems: 'center',
-    backgroundColor: contain ? (theme ? theme.color.greyLight : vars.color.greyLight) : 'transparent',
-    border: outlined ? `1px solid ${theme ? theme.color.black : vars.color.black}` : '',
+    backgroundColor: contain ? (theme ? theme.colors.greyLight : vars.colors.greyLight) : 'transparent',
+    border: outlined ? `1px solid ${theme ? theme.colors.black : vars.colors.black}` : '',
     ...useThemedValue(theme, contentStyle),
   });
   const labelStyles = useCSS({
@@ -124,7 +124,7 @@ const Input = ({
     ...useThemedValue(theme, suffixStyle),
   });
   const messageStyles = useCSS({
-    color: showMessage ? (theme ? theme.color.red : vars.color.red) : '',
+    color: showMessage ? (theme ? theme.colors.red : vars.colors.red) : '',
     ...useThemedValue(theme, messageStyle),
   });
 

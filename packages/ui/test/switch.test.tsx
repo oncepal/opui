@@ -23,7 +23,7 @@ describe('Switch testing...', () => {
 
     expect(swi).toBeInTheDocument();
     expect(swi).toHaveStyle({
-      background: vars.color.purple,
+      background: vars.colors.purple,
     });
   });
 

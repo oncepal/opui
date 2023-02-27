@@ -6,7 +6,7 @@ export const getStyles = (props: TagProps) => {
   const { show, radius, outlined, css, color } = props;
   const theme = useTheme();
   const getComputedColor = () =>
-    useThemedValue(theme, color) || (theme.mode == 'light' ? theme.color.black : theme.color.white);
+    useThemedValue(theme, color) || (theme.mode == 'light' ? theme.colors.black : theme.colors.white);
   return useCSS({
     position: 'relative',
     display: show ? 'inline-flex' : 'none',
@@ -16,7 +16,7 @@ export const getStyles = (props: TagProps) => {
     ...(!outlined
       ? {
           background: getComputedColor(),
-          color: theme.color.white,
+          color: theme.colors.white,
         }
       : {
           border: '1px solid ' + getComputedColor(),

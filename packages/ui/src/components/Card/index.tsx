@@ -35,7 +35,7 @@ const Card = ({ horizontal = false, css, children, color, ...props }: CardProps)
     display: 'flex',
     padding: '1em',
     flexDirection: 'column',
-    background: color ? useThemedValue(theme, color) : theme.color.white || vars.color.white,
+    background: color ? useThemedValue(theme, color) : theme.colors.white || vars.colors.white,
     ...useThemedCSS(theme, css),
   });
 

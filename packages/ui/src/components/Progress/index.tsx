@@ -73,7 +73,7 @@ const Progress = ({
   const styles = useCSS({
     position: 'relative',
     height: height,
-    backgroundColor: backgroundColor || theme.color.accent,
+    backgroundColor: backgroundColor || theme.colors.accent,
     '& > .progress-bar': {
       height: height,
       width: percent + '%',

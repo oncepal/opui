@@ -69,8 +69,8 @@ const Switch = memo(
 
     const getTrackColorOff = useCallback(() => {
       return theme
-        ? useThemedValue(theme, trackColorOff) || theme.color.greyLight
-        : useThemedValue(theme, trackColorOff) || vars.color.greyLight;
+        ? useThemedValue(theme, trackColorOff) || theme.colors.greyLight
+        : useThemedValue(theme, trackColorOff) || vars.colors.greyLight;
     }, [trackColorOff]);
 
     const loadingStyles = useMemo(
@@ -111,12 +111,12 @@ const Switch = memo(
       // render loading component
       ...(loading && {
         '&::after': {
-          border: `3px solid ${trackColorOn || (theme ? theme.color.primary : vars.color.purple)}`,
+          border: `3px solid ${trackColorOn || (theme ? theme.colors.primary : vars.colors.purple)}`,
           // ...loadingStyles,
           zIndex: 2,
         },
         '&::before': {
-          border: `3px dashed ${trackColorOn || (theme ? theme.color.primary : vars.color.purple)}`,
+          border: `3px dashed ${trackColorOn || (theme ? theme.colors.primary : vars.colors.purple)}`,
           // ...loadingStyles,
           zIndex: 1,
         },
@@ -150,7 +150,7 @@ const Switch = memo(
         position: 'relative',
 
         padding: '5px 5px 5px 25px',
-        color: on ? (theme ? theme.color.white : vars.color.white) : theme ? theme.color.black : vars.color.black,
+        color: on ? (theme ? theme.colors.white : vars.colors.white) : theme ? theme.colors.black : vars.colors.black,
         ...useCenter(),
         visibility: loading ? 'hidden' : 'visible',
       },
@@ -177,7 +177,7 @@ const Switch = memo(
         transition: 'all .25s ease',
         position: 'absolute',
         left: on ? `calc(calc(100% - ${thumbStartPosition}) - ${thumbWidth})` : thumbStartPosition,
-        background: theme ? theme.color.white : vars.color.white,
+        background: theme ? theme.colors.white : vars.colors.white,
         ...useCenter(),
         ...useThemedValue(theme, thumbStyles),
       },
@@ -186,7 +186,7 @@ const Switch = memo(
         width: '100%',
         height: 'auto',
         position: 'absolute',
-        background: trackColorOn || (theme ? theme.color.primary : vars.color.purple),
+        background: trackColorOn || (theme ? theme.colors.primary : vars.colors.purple),
         transform: 'scale(1)',
         left: on ? '0%' : '-100%',
         transition: `all .25s ease`,

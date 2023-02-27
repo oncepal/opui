@@ -107,7 +107,7 @@ const SwiperIndicator = ({
   const SwiperIndicatorStyles = useCSS({
     position: 'absolute',
     height: '1px',
-    background: vars.color.purple,
+    background: vars.colors.purple,
     left: 0,
     bottom: 0,
 

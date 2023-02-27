@@ -58,13 +58,13 @@ const Link = ({
       indicatorAction == 'always'
         ? {
             borderBottom: `${indicatorSize} solid 
-        ${indicatorColor || (theme ? theme.color.black : vars.color.black)}`,
+        ${indicatorColor || (theme ? theme.colors.black : vars.colors.black)}`,
           }
         : indicatorAction == 'hover'
         ? {
             ':hover': {
               borderBottom: `${indicatorSize} solid 
-        ${indicatorColor || (theme ? theme.color.black : vars.color.black)}`,
+        ${indicatorColor || (theme ? theme.colors.black : vars.colors.black)}`,
             },
           }
         : {},
@@ -73,7 +73,7 @@ const Link = ({
 
   const styles = useCSS({
     cursor: !disabled ? 'pointer' : 'initial',
-    color: textColor || (theme ? theme.color.black : vars.color.black),
+    color: textColor || (theme ? theme.colors.black : vars.colors.black),
     ...memoedIndicatorStyles,
     opacity: disabled ? 0.25 : 1,
     ...useThemedCSS(theme, css),

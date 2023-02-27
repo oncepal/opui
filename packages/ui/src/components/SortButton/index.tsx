@@ -20,7 +20,7 @@ const SortButton = ({
   ...props
 }: SortButtonProps & React.ComponentPropsWithoutRef<'button'>) => {
   const theme = useTheme();
-  const primary = color ? color : theme.color.primary;
+  const primary = color ? color : theme.colors.primary;
   const gray = '#979797';
   const [count, setCount] = useState<number>(state || 0);
   const [titleColor, setTitleColor] = useState<string | undefined>('black');

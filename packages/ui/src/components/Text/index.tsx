@@ -41,7 +41,13 @@ const Text = ({
   const computedColor: any = useMemo(() => {
     return (
       color ||
-      (dark ? (theme.color ? theme.color.white : vars.color.white) : theme.color ? theme.color.black : vars.color.black)
+      (dark
+        ? theme.colors
+          ? theme.colors.white
+          : vars.colors.white
+        : theme.colors
+        ? theme.colors.black
+        : vars.colors.black)
     );
   }, [color, theme, dark]);
 

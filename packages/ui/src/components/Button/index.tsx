@@ -58,15 +58,10 @@ const Button = ({
   ...props
 }: ComponentPropsWithoutRef<'button'> & ButtonProps) => {
   const theme = useTheme();
-  console.log('theme', Object.keys(theme));
 
   const computedBackgroundColor = useMemo(
-    () => color || (theme.color ? theme.color.primary : vars.color.purple),
+    () => color || (theme.colors ? theme.colors.primary : vars.colors.purple),
     [color],
-  );
-  const computedRadius = useMemo(
-    () => radius || (rounded ? (theme ? theme.radius.rounded : vars.radius.rounded) : vars.radius.base),
-    [radius, rounded],
   );
 
   const styles = useCSS({
@@ -74,13 +69,13 @@ const Button = ({
     textAlign: 'center',
     display: block ? 'block' : '',
     minWidth: block ? '100%' : '',
-    width: icon ? '2.5em' : '',
-    height: icon ? '2.5em' : '',
+    width: icon ? (theme.spacing ? theme.spacing.xl : vars.spacing.xl) : '',
+    height: icon ? (theme.spacing ? theme.spacing.xl : vars.spacing.xl) : '',
     padding: text || icon ? '' : padding,
     border: outlined ? `1px solid ${computedBackgroundColor}` : 'none',
-    borderRadius: computedRadius,
+    borderRadius: radius || (rounded ? (theme ? theme.radius.rounded : vars.radius.rounded) : vars.radius.base),
     color:
-      text || outlined ? computedBackgroundColor : textColor || (theme.color ? theme.color.white : vars.color.white),
+      text || outlined ? computedBackgroundColor : textColor || (theme.colors ? theme.colors.white : vars.colors.white),
     background: text || outlined ? 'transparent' : computedBackgroundColor,
     cursor: disabled ? 'not-allowed' : 'pointer',
     ...useMargin(props),

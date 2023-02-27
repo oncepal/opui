@@ -140,10 +140,14 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Learn ShitUI',
             items: [
               {
-                label: 'Guide',
+                label: 'Quick Start',
+                to: '/docs/guide',
+              },
+              {
+                label: 'Installation',
                 to: '/docs/guide',
               },
             ],
@@ -155,16 +159,31 @@ const config = {
                 label: 'Twitter',
                 href: 'https://twitter.com/docusaurus',
               },
+              {
+                label: 'Meet the team',
+                href: '/blog',
+              },
+              {
+                label: 'Blog',
+                href: '/blog',
+              },
             ],
           },
           {
             title: 'More',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
+                label: 'Shit 3D',
+                to: 'https://github.com/fogcity/shit-3d',
               },
-              
+              {
+                label: 'Shit Vis',
+                to: 'https://github.com/fogcity/shit-vis',
+              },
+              {
+                label: 'Shit Jax',
+                to: 'https://github.com/fogcity/shit-jax',
+              },
             ],
           },
         ],

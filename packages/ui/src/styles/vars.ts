@@ -6,7 +6,7 @@ const vars = {
     extrabold: '4px',
     black: '5px',
   },
-  zIndex: {
+  zIndices: {
     1: '100',
     2: '200',
     3: '300',
@@ -100,7 +100,7 @@ const vars = {
     '8xl': '6rem' /* 96px */,
     '9xl': '8rem' /* 128px */,
   },
-  color: {
+  colors: {
     purple: '#693ff7',
     black: '#03060B',
     grey: '#858aa1',

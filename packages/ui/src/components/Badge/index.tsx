@@ -128,7 +128,7 @@ const Badge = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & Badge
         textAlign: 'center',
         position: 'absolute',
         ...getInset(),
-        boxShadow: `0 0 0 1px ${theme.color.white}`,
+        boxShadow: `0 0 0 1px ${theme.colors.white}`,
         transition: 'visibility all .3s',
         ...useThemedCSS(theme, css),
       },

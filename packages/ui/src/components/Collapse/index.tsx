@@ -2,7 +2,7 @@
 
 import React from 'react';
 import arrowSVG from '../../icons/arrow-up.svg';
-import {  useCSS, useTheme } from '../../styles/css';
+import { useCSS, useTheme } from '../../styles/css';
 import Icon from '../Icon';
 import { ComponentBaseProps } from '../props';
 
@@ -48,7 +48,7 @@ const Collapse = ({ title, animated = true, expand = false, trigger, children, .
         <Icon
           width='1.2em'
           height='1.2em'
-          color={theme.color.black}
+          color={theme.colors.black}
           src={arrowSVG}
           css={{
             marginLeft: 'auto',

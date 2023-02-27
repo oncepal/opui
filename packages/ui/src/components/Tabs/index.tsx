@@ -94,9 +94,9 @@ const TabItem = ({ label, disabled, onClick, css, children, ...props }: TabItemP
     padding: '.8em 1em',
     color: disabled
       ? context.activeTab == label
-        ? theme.color.primary || vars.color.purple
-        : theme.color.black || vars.color.black
-      : theme.color.grey || vars.color.grey,
+        ? theme.colors.primary || vars.colors.purple
+        : theme.colors.black || vars.colors.black
+      : theme.colors.grey || vars.colors.grey,
     ...useThemedCSS(theme, css),
   });
 
@@ -119,7 +119,7 @@ const TabsIndicator = ({ css, className, ...props }: React.ComponentPropsWithout
     width: context.indicatorWidth + '%',
     position: 'absolute',
     height: '1px',
-    background: vars.color.purple,
+    background: vars.colors.purple,
     left: 0,
     bottom: 0,
     transform: `translateX(${context.indicatorTranslateX}%)`,

@@ -30,7 +30,13 @@ const Switch = ({ on = false, onChange, color, radius, css, width = 2.8, height 
       typeof color == 'function'
         ? color(theme)
         : color ||
-          (theme ? (on ? theme.color.primary : theme.color.greyLight) : on ? vars.color.purple : vars.color.greyLight),
+          (theme
+            ? on
+              ? theme.colors.primary
+              : theme.colors.greyLight
+            : on
+            ? vars.colors.purple
+            : vars.colors.greyLight),
     borderRadius: radius || (theme ? theme.radius.rounded : '999px'),
     position: 'relative',
     transition: `background .`,
@@ -50,8 +56,8 @@ const Switch = ({ on = false, onChange, color, radius, css, width = 2.8, height 
       height: `${width / 3}em`,
       transition: 'all .25s',
       borderRadius: theme.radius.rounded || '999px',
-      background: on ? '#fff' : theme.color.greyLight,
-      boxShadow: '0 0 2px 0 ' + theme.color.black,
+      background: on ? '#fff' : theme.colors.greyLight,
+      boxShadow: '0 0 2px 0 ' + theme.colors.black,
     },
 
     // switch thumb's click animation

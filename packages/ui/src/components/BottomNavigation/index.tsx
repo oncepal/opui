@@ -61,9 +61,9 @@ const BottomNavigationItem = ({ label, disabled, onClick, css, children, ...prop
     padding: '.8em 1em',
     color: disabled
       ? context.activeItem == label
-        ? theme.color.primary || vars.color.purple
-        : theme.color.black || vars.color.black
-      : theme.color.grey || vars.color.grey,
+        ? theme.colors.primary || vars.colors.purple
+        : theme.colors.black || vars.colors.black
+      : theme.colors.grey || vars.colors.grey,
     ...useThemedCSS(theme, css),
   });
 

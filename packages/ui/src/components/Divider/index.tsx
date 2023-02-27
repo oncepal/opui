@@ -5,19 +5,19 @@ import { ReactNode } from 'react';
 import { ComponentBaseProps, Flex, Margin, Padding } from '../props';
 import { useMemo } from 'react';
 import vars from '../../styles/vars';
-import { usePadding, useMargin, useFlex,useCSS, useTheme, useThemedCSS } from '../../styles/css';
+import { usePadding, useMargin, useFlex, useCSS, useTheme, useThemedCSS } from '../../styles/css';
 
 type DividerProps = ComponentBaseProps &
   Margin &
   Padding &
-  Flex & 
+  Flex &
   Partial<{
     size: number;
     vertical: boolean;
     color: string;
     dashed: boolean;
     text: ReactNode;
-  }> ;
+  }>;
 
 /**
  * A divider is a thin line that groups content in lists and layouts.
@@ -49,7 +49,7 @@ const Divider = ({
             display: 'inline-flex',
             justifyContent: 'center',
             borderLeft: `${size}px ${dashed ? 'dashed' : 'solid'}  ${
-              color || (theme ? theme.color.greyLight : vars.color.greyLight)
+              color || (theme ? theme.colors.greyLight : vars.colors.greyLight)
             }`,
           }
         : {
@@ -58,7 +58,7 @@ const Divider = ({
             justifyContent: 'center',
 
             borderTop: `${size}px ${dashed ? 'dashed' : 'solid'}  ${
-              color || (theme ? theme.color.greyLight : vars.color.greyLight)
+              color || (theme ? theme.colors.greyLight : vars.colors.greyLight)
             }`,
           },
     [size, dashed, color],
@@ -72,7 +72,7 @@ const Divider = ({
       '& > *': {
         height: 'fit-content',
         padding: vertical ? '.5em 0' : '0 .5em',
-        background: vars.color.white,
+        background: vars.colors.white,
         textAlign: 'center',
         transform: vertical ? 'translate3d(-50%,50%,0)' : 'translateY(-50%)',
       },
@@ -82,7 +82,7 @@ const Divider = ({
   const childrenStyles = useCSS({
     height: 'fit-content',
     padding: vertical ? '.5em 0' : '0 .5em',
-    background: vars.color.white,
+    background: vars.colors.white,
     textAlign: 'center',
     transform: vertical ? 'translate3d(-50%,50%,0)' : 'translateY(-50%)',
   });
