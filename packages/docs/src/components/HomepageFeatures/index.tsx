@@ -56,7 +56,7 @@ function Feature({ title, Svg, description }: FeatureItem) {
 export default function HomepageFeatures(): JSX.Element {
   return (
     <section className={styles.features}>
-      <div className={clsx('skewY', 'container')}>
+      <div className={'container'}>
         <div className='row'>
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />

@@ -1,14 +1,18 @@
 {
   "title": {
-    "message": "UI",
+    "message": "Shit UI",
     "description": "The title in the navbar"
   },
-  "item.label.Tutorial": {
-    "message": "Tutorial",
-    "description": "Navbar item with label Tutorial"
+  "item.label.Docs": {
+    "message": "指南",
+    "description": "Navbar item with label Docs"
+  },
+  "item.label.Components": {
+    "message": "组件",
+    "description": "Navbar item with label Components"
   },
   "item.label.Blog": {
-    "message": "Blog",
+    "message": "日志",
     "description": "Navbar item with label Blog"
   },
   "item.label.GitHub": {

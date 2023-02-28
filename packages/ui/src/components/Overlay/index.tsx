@@ -30,7 +30,7 @@ const Overlay = ({
     left: 0,
     bottom: 0,
     right: 0,
-    background: color || theme?.color?.greyLight || '#56538D',
+    background: color || theme?.colors?.greyLight || '#56538D',
     opacity,
     backdropFilter: blur ? 'blur(4px)' : '',
     transform: visible ? 'scale(1)' : '',

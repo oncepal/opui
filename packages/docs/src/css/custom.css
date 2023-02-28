@@ -25,7 +25,3 @@
   --ifm-color-primary-lighter: #ed97b0;
   --ifm-color-primary-lightest: #f4c2d1;
 }
-
-.skewY {
-  transform: skewY(2deg);
-}

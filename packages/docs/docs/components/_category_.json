@@ -1,8 +1,8 @@
 {
-  "label": "Components",
+  "label": "Components Overview",
   "position": 4,
   "link": {
     "type": "generated-index",
-    "description": "We will continue to add new component types according to business practice, so please pay attention to the component library update log."
+    "description": "我们将继续添加新组件，因此请注意组件库更新日志。"
   }
 }

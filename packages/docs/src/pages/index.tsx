@@ -18,7 +18,7 @@ function HomepageHeader() {
           🚀 The React UI tools helps you create the <span className={styles.best}>best</span> web app
         </p>
         <div className={styles.buttons}>
-          <Link className={clsx('button button--primary button--lg', styles.gradient)} to='/docs/intro'>
+          <Link className={clsx('button button--primary button--lg', styles.gradient)} to='/docs/guide/intro'>
             Get Started
           </Link>
           <Link> {'>'} npm install @sui/core @emotion/react</Link>

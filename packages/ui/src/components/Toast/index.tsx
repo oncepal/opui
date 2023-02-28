@@ -17,7 +17,7 @@ type ToastProps = ComponentBaseProps &
   }>;
 
 /**
- * Datetimes present a calendar interface and time wheel, 
+ * Datetimes present a calendar interface and time wheel,
  * making it easy for users to select dates and times.
  * @param ...
  */
@@ -32,7 +32,7 @@ const Toast = ({ title, content, color, children, css, ...props }: ToastProps) =
     textAlign: 'center',
     transform: 'translate(-50%, -50%)',
     borderRadius: '4px',
-    background: color || theme?.color?.black || 'rgba(0, 0, 0, 0.45)',
+    background: color || theme?.colors?.black || 'rgba(0, 0, 0, 0.45)',
     color: 'white',
     padding: '.4em 1em',
     ...useThemedCSS(theme, css),
