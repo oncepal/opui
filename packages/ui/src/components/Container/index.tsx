@@ -28,7 +28,6 @@ type ContainerProps = ComponentBaseProps &
  * @param w container width
  * @param h container height
  * @param onClick click handler
- * @returns
  */
 
 const Container = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & ContainerProps>(

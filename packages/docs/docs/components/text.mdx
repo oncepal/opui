@@ -5,38 +5,174 @@ sidebar_position: 1
 import { App, Text } from '@sui/core';
 import Example from '@site/src/components/Example';
 
-# Text
+# Text 文本
 
-Buttons allow users to take actions, and make choices, with a single tap.
+文本组件用于使用定义明确的排版样式在界面中呈现文本和段落
 
 ```bash
 import { Text } from '@sui/core'
 ```
 
-## Basic text
+## Headings
 
-The `Text` comes with three variants: default, text, and outlined.
+h1~h6 是您要在网页上显示的标题或副标题。
 
 <App>
   <Example>
-    <Text>Default</Text>
+    <Text h1>Default</Text>
+    <Text h2>Default</Text>
+    <Text h3>Default</Text>
+    <Text h4>Default</Text>
+    <Text h5>Default</Text>
+    <Text h6>Default</Text>
   </Example>
 </App>
 
 ```tsx
-<Text>Default</Text>
+<Text h1>Default</Text>
+    <Text h2>Default</Text>
+    <Text h3>Default</Text>
+    <Text h4>Default</Text>
+    <Text h5>Default</Text>
+    <Text h6>Default</Text>
 ```
 
-### Default text
+## 渐变
 
-<Text>Default</Text>
-
+您可以使用 css prop 或者 textGradient 来渲染渐变 Text
+   <Example><Text
+        h1
+        size={60}
+          textGradient="45deg, $blue600 -20%, $pink600 50%"
+        bold
+      >
+        让我们
+      </Text>
+      <Text
+        h1
+        size={60}
+        textGradient="45deg,$purple600 -20%, $pink600 100%"
+       bold
+      >
+        制作漂亮网页
+      </Text>
+      
+  </Example>
 ```tsx
-<Text>Default</Text>
+<Text
+        h1
+        size={60}
+          textGradient="45deg, $blue600 -20%, $pink600 50%"
+        bold
+      >
+        让我们
+      </Text>
+      <Text
+        h1
+        size={60}
+        textGradient="45deg,$purple600 -20%, $pink600 100%"
+       bold
+      >
+        制作漂亮网页
+      </Text>
 ```
+
+## 块引用
+
+使用 blockquotea 属性的Text来呈现块引用
+<Example>
+<Text blockquote>text</Text>
+</Example>
+```tsx
+<Text blockquote>text</Text>
+```
+## 颜色
+
+使用color 属性以不同的颜色呈现文字
+<Example>
+<Text color="#121541">
+      几乎在我们知道之前，我们已经离开了地面。
+      </Text>
+      <Text color="#444444">
+       几乎在我们知道之前，我们已经离开了地面。</Text>
+      <Text color="#edfeee">
+       几乎在我们知道之前，我们已经离开了地面。</Text>
+      <Text color="#e00">
+       几乎在我们知道之前，我们已经离开了地面。  </Text>
+</Example>
+```tsx
+<Text color="#121541">
+      几乎在我们知道之前，我们已经离开了地面。
+      </Text>
+      <Text color="#444444">
+       几乎在我们知道之前，我们已经离开了地面。</Text>
+      <Text color="#edfeee">
+       几乎在我们知道之前，我们已经离开了地面。</Text>
+      <Text color={{theme=>theme.colors.purple}}>
+       几乎在我们知道之前，我们已经离开了地面。  </Text>
+```
+## 大小
+
+用`size`属性改变文字组件的字体大小
+<Example>
+ <Text size="6px">Font Size: xs</Text>
+      <Text size="8em">Font Size: md (base)</Text>
+      <Text size="7vw">Font Size: xl</Text>
+      <Text size={{theme=>theme.spacing.xl}}">Font Size: 2xl</Text>
+</Example>
+```tsx
+<Text size="6px">Font Size: xs</Text>
+      <Text size="8em">Font Size: md (base)</Text>
+      <Text size="7vw">Font Size: xl</Text>
+      <Text size={{theme=>theme.spacing.xl}}">Font Size: 2xl</Text>
+```
+
+
+## 组合
+
+组合多个Text达到你想要的效果
+
+<Example>
+ <Text>
+        <Text small del>
+          smallText
+        </Text>
+        <Text small b>
+          largeText
+        </Text>
+      </Text>
+</Example>
+```tsx
+<Text>
+        <Text small del>
+          smallText
+        </Text>
+        <Text small b>
+          largeText
+        </Text>
+      </Text>
+```
+
+
+
+
+
+
+
+## APIs
 
 ## Text Props
 
-| Attribute | Type         | Description  | Default |
+| 属性 | 类型         | 描述  | 默认值 |
 | --------- | ------------ | ------------ | ------- |
-| block     | 是否全屏宽度 | 是否全屏宽度 | false   |
+| h1~h6     | `boolean` |  | false   |
+| span     | `boolean` |  | false   |
+| del     | `boolean` |  | false   |
+| i     | `boolean` |  | false   |
+| blod     | `boolean` |  | false   |
+| thin     | `boolean` |  | false   |
+| blockquote     | `boolean` |  | false   |
+| size     | `string` |  | 1rem   |
+| color     | `Themed<string>` |  |    |
+| css     | `Themed<CSSObject>` |  |    |
+| children     | `ReactNode` |  |    |

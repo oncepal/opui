@@ -8,7 +8,7 @@ import vars from '../../styles/vars';
 
 type DialogProps = ComponentBaseProps & {
   shy?: boolean;
-  visible: boolean;
+  open: boolean;
   mask?: boolean;
   loading?: boolean;
   close?: boolean;
@@ -23,7 +23,7 @@ type DialogProps = ComponentBaseProps & {
  * ```
  */
 const Dialog = ({
-  visible = false,
+  open = false,
   shy = true,
   loading,
   close,
@@ -97,14 +97,14 @@ const Dialog = ({
     paddingTop: '80px',
     paddingBottom: '80px',
     // backgroundColor: vars.dialog.maskColor,
-    visibility: visible ? 'visible' : 'hidden',
+    visibility: open ? 'open' : 'hidden',
   });
   // The CSS properties of drawer content container,
   const contentStyles = useCSS({
     touchAction: 'none',
     position: 'fixed',
     // zIndex: theme.zIndex.drawer,
-    animation: `${visible ? mountAnim : unmountAnim} .3s`,
+    animation: `${open ? mountAnim : unmountAnim} .3s`,
 
     transition: 'all .25s cubic-bezier(0.4, 0, 0.2, 1) 0ms',
   });
