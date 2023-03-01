@@ -3,11 +3,18 @@
 import { ComponentBaseProps, Margin, Position, Padding, Themed } from '../props';
 import { useCSS, useTheme, usePadding, usePosition, useMargin, useThemedCSS, useThemedProp } from '../../styles/css';
 import { forwardRef, MouseEvent, ComponentPropsWithoutRef } from 'react';
+import { jsx } from '@emotion/react';
 
 type ContainerProps = ComponentBaseProps &
   Margin &
   Position &
   Padding & {
+    main?:boolean
+    footer?:boolean
+    header?:boolean
+    section?:boolean
+    article?:boolean
+    nav?:boolean
     w?: string;
     h?: string;
     background?: Themed<string>;
@@ -35,11 +42,12 @@ const Container = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & C
     const theme = useTheme();
     const styles = useCSS({
       width: w,
-      height: h ? h : fullHeight ? '100%' : fullScreen ? '100vh' : 'auto',
+      height: h ? h : fullHeight ? '100%'  : 'auto'||'auto',
+      minHeight:fullScreen?'100vh':'',
+      background: useThemedProp(theme, background),
       ...useMargin(props),
       ...usePadding(props),
       ...usePosition(props),
-      background: useThemedProp(theme, background),
       ...useThemedCSS(theme, css),
     });
 
@@ -47,11 +55,29 @@ const Container = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & C
       e.stopPropagation();
       onClick?.();
     };
+    const getElement = () => {
+      const {     main,
+        footer,
+        header,
+        section,
+        article, } = props;
+      if (main) return 'main';
+      else if (footer) return 'footer';
+      else if (header) return 'header';
+      else if (section) return 'section';
+      else if (article) return 'article';
+      else return 'div';
+    };
 
-    return (
-      <div ref={ref} onClick={handleClickContainer} css={styles} {...props}>
-        {children}
-      </div>
+    return jsx(
+      getElement(),
+      {
+        css: styles,
+        ref:ref,
+        onClick:handleClickContainer,
+        ...props,
+      },
+       children,
     );
   },
 );

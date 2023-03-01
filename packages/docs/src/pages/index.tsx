@@ -15,11 +15,11 @@ function HomepageHeader() {
       <div className='container'>
         <h1 className='hero__title'>
           <Text h1 gradient='linear-gradient(to right, #fa709a 0%, #fee140 100%)'>
-            组件，工具
+            最了解开发者
           </Text>
         </h1>
         <h1 className='hero__title'>
-          <Text gradient=''>为了开发者</Text>
+          <Text gradient=''>的React UI工具库</Text>
         </h1>
         <p className='hero__subtitle'>丰富的组件功能和卓越的开发者工具彻底改变React应用的用户体验</p>
         <div className={styles.buttons}>

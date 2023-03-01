@@ -52,33 +52,32 @@ const Button = ({
   css,
   icon = false,
   color,
-  padding = '.2em 1em',
+  padding ,
   children,
   onClick,
   ...props
 }: ComponentPropsWithoutRef<'button'> & ButtonProps) => {
   const theme = useTheme();
 
-  const computedBackgroundColor = useMemo(
-    () => color || (theme.colors ? theme.colors.primary : vars.colors.purple),
-    [color],
-  );
-
   const styles = useCSS({
-    verticalAlign: 'middle',
     textAlign: 'center',
     display: block ? 'block' : '',
     minWidth: block ? '100%' : '',
-    width: icon ? (theme.spacing ? theme.spacing.xl : vars.spacing.xl) : '',
-    height: icon ? (theme.spacing ? theme.spacing.xl : vars.spacing.xl) : '',
-    padding: text || icon ? '' : padding,
-    border: outlined ? `1px solid ${computedBackgroundColor}` : 'none',
-    borderRadius: radius || (rounded ? (theme ? theme.radius.rounded : vars.radius.rounded) : vars.radius.base),
+    lineHeight:'1.5em',
+    fontWeight:theme.fontWeights.medium,
+    width: icon ?  theme.spacing.xl  : '',
+    height: icon ?  theme.spacing.xl  : '',
+    padding: text || icon ? '' : padding||`${theme.spacing[3]} ${theme.spacing.md}`,
+    border: outlined ? `1px solid ${color || theme.colors.primary}` : 'none',
+    borderRadius: radius || (rounded ?  theme.radius.rounded : theme.radius.base),
     color:
-      text || outlined ? computedBackgroundColor : textColor || (theme.colors ? theme.colors.white : vars.colors.white),
-    background: text || outlined ? 'transparent' : computedBackgroundColor,
-    cursor: disabled ? 'not-allowed' : 'pointer',
-    ...useMargin(props),
+      text || outlined ? (color || theme.colors.primary) : textColor ||  theme.colors.white ,
+    background: (text||icon || outlined) ? 'transparent' : (color || theme.colors.primary),
+    cursor: disabled ? 'not-allowed' : 'pointer',   ...useMargin(props),
+    ':hover':{
+      filter: 'brightness(1.1)'
+    },
+ 
     ...useThemedCSS(theme, css),
   });
 

@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
+import { jsx } from '@emotion/react';
 import { useMemo, createElement } from 'react';
 import { usePadding, useMargin, useCSS, useTheme, useThemedCSS, useThemedProp } from '../../styles/css';
 
@@ -25,7 +26,7 @@ type TextProps = ComponentBaseProps &
     maxLength: number;
     span: boolean;
     i: boolean;
-    dark: boolean;
+    white: boolean;
   }> &
   Margin &
   Padding;
@@ -36,9 +37,9 @@ type TextProps = ComponentBaseProps &
  */
 const Text = ({
   thin = false,
-  dark = false,
+  white = false,
   maxLength,
-  size = '1rem',
+  size,
   blod = false,
   gradient,
   ellipsis = '...',
@@ -51,7 +52,7 @@ const Text = ({
   const computedColor: any = useMemo(() => {
     return (
       color ||
-      (dark
+      (white
         ? theme.colors
           ? theme.colors.white
           : vars.colors.white
@@ -59,7 +60,7 @@ const Text = ({
         ? theme.colors.black
         : vars.colors.black)
     );
-  }, [color, theme, dark]);
+  }, [color, theme, white]);
 
   const styles = useCSS({
     fontSize: useThemedProp<string>(theme, size),
@@ -92,7 +93,7 @@ const Text = ({
     else return 'p';
   };
 
-  return createElement(
+  return jsx(
     getTextElement(),
     {
       css: styles,

@@ -21,11 +21,11 @@ export function useVerticalCenter() {
   return { display: 'flex', alignItems: 'center' };
 }
 
-export function useThemedProp<T>(theme: Partial<Theme>, target?: Themed<T>) {
+export function useThemedProp<T>(theme: Theme, target?: Themed<T>) {
   return target && (typeof target == 'function' ? (target as Function)(theme) : target);
 }
 
-export function useThemedCSS(theme: Partial<Theme>, target?: Themed<CSSObject>) {
+export function useThemedCSS(theme:Theme, target?: Themed<CSSObject>) {
   return target && (typeof target == 'function' ? target(theme) : target);
 }
 

@@ -4,7 +4,7 @@ import { Theme } from '../styles/themes';
 
 export type CSS = Parameters<typeof css>;
 export type ColorFormat = 'rgb' | 'rgba' | 'hsl' | 'hsla';
-export type Themed<T> = ((theme: Partial<Theme>) => T) | T;
+export type Themed<T> = ((theme: Theme) => T) | T;
 
 export type Padding = Partial<{
   pt: string;

@@ -1,20 +1,18 @@
 /** @jsxImportSource @emotion/react */
 
-import { useTheme } from '@emotion/react';
-import { Theme } from '../../styles/themes';
 import { ReactNode } from 'react';
 import { ComponentBaseProps } from '../props';
-import { useCSS, useThemedCSS } from '../../styles/css';
+import { useCSS, useThemedCSS,useTheme } from '../../styles/css';
 type NavBarItemProps = ComponentBaseProps & {
   content?: ReactNode;
 };
 
 type NavBarProps = ComponentBaseProps & {
-  bgColor?: string;
+  color?: string;
   gap?: string;
   fixed?: boolean;
   sticky?: boolean;
-  shouldHideOnScroll?: boolean;
+  hideOnScroll?: boolean;
 };
 
 /**
@@ -26,16 +24,16 @@ type NavBarProps = ComponentBaseProps & {
  * </NavBar>
  * ```
  * @param content bar's and page's content aligned on the center of the bar.
- * @param bgColor bar's background color.
+ * @param color bar's background color.
  * @param gap the gap of the content,extra,navIcon
  */
-const NavBar = ({ bgColor, css, gap, children, ...props }: NavBarProps) => {
+const NavBar = ({ color, css, gap, hideOnScroll,children, ...props }: NavBarProps) => {
   const theme = useTheme();
   const styles = useCSS({
     padding: '0 1em',
     alignItems: 'center',
     height: '3em',
-    backgroundColor: bgColor,
+    backgroundColor: color,
     display: 'flex',
     gap,
     ...useThemedCSS(theme, css),
@@ -51,7 +49,6 @@ const NavBarBrand = ({ content, css, children, ...props }: NavBarItemProps) => {
   const theme = useTheme();
   const styles = useCSS({
     flex: 'none',
-
     ...useThemedCSS(theme, css),
   });
   return (

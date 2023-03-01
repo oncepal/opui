@@ -1,5 +1,5 @@
 import { ThemeProvider, Global, CSSObject } from '@emotion/react';
-import { useMemo, useLayoutEffect } from 'react';
+import { useMemo, useLayoutEffect, useState } from 'react';
 import { globalStyles } from '../../styles/global';
 import { theme as defaultTheme, Theme } from '../../styles/themes';
 import { addCSSLink, deepMerge } from '../../utils';
@@ -18,9 +18,10 @@ type AppProps = {
  * apps should only be rendered once in your application.
  */
 export default function App({ children, theme }: AppProps) {
+  const [cssLink,setCssLink] = useState('https://unpkg.com/boxicons@latest/css/boxicons.min.css')
   useLayoutEffect(() => {
-    addCSSLink('https://unpkg.com/boxicons@latest/css/boxicons.min.css');
-  }, []);
+    addCSSLink(cssLink);
+  }, [cssLink]);
   return (
     <ThemeProvider theme={deepMerge(defaultTheme, theme || {})}>
       <Global styles={globalStyles as CSSObject} />

@@ -49,9 +49,10 @@ import ToolTip from './components/ToolTip';
 import Switch from './components/Switch';
 import Tabs from './components/Tabs';
 import Toast from './components/Toast';
-
+import Sidebar from './components/Sidebar'
 export {
   // Timeline,
+  Sidebar,
   Tabs,
   Toast,
   Picker,
