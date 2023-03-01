@@ -36,7 +36,7 @@ const Collapse = ({ title, animated = true, expand = false, trigger, children, .
   };
   const renderTrigger = () => {
     if (trigger)
-      return React.cloneElement(typeof trigger === 'function' ? trigger() : trigger, {
+      return React.cloneElement(typeof trigger === 'function' ? trigger() : (trigger as unknown as any), {
         css: useCSS({
           marginLeft: 'auto',
           transformOrigin: '50% 50%',

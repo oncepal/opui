@@ -6,13 +6,19 @@
   ],
   "scripts": {
     "build": "npx lerna run build",
+    "build:ui": "npx lerna run build --scope=@sui/core",
     "test:ui": "npx lerna run test --scope=@sui/core",
     "dev:docs": "npx lerna run dev --scope=@sui/docs",
+    "dev:site": "npx lerna run dev --scope=website",
     "dev:ui": "npx lerna run dev --scope=@sui/core",
     "dev": "npx lerna run dev",
     "release": "npx lerna publish --no-private"
   },
   "devDependencies": {
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "lerna": "^6.5.1"
   }
 }

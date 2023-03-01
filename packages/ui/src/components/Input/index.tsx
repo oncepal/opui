@@ -2,9 +2,9 @@
 
 import { Theme } from '../../styles/themes';
 import { useState, ReactNode, CSSProperties, useMemo, useEffect } from 'react';
-import { useThemedCSS, useThemedValue, useCSS, useTheme } from '../../styles/css';
+import { useThemedCSS, useThemedProp, useCSS, useTheme } from '../../styles/css';
 import vars from '../../styles/vars';
-import { ComponentBaseProps } from '../props';
+import { ComponentBaseProps, Themed } from '../props';
 
 type InputProps = Pick<ComponentBaseProps, 'css'> & {
   readOnly?: boolean;
@@ -30,14 +30,14 @@ type InputProps = Pick<ComponentBaseProps, 'css'> & {
   zeroStart?: boolean;
   placeholder?: ReactNode;
   className?: string;
-  placeholderStyle?: ((theme: Theme) => CSSProperties) | CSSProperties;
-  containerStyle?: ((theme: Theme) => CSSProperties) | CSSProperties;
-  contentStyle?: ((theme: Theme) => CSSProperties) | CSSProperties;
-  messageStyle?: ((theme: Theme) => CSSProperties) | CSSProperties;
-  labelStyle?: ((theme: Theme) => CSSProperties) | CSSProperties;
-  inputStyle?: ((theme: Theme) => CSSProperties) | CSSProperties;
-  prefixStyle?: ((theme: Theme) => CSSProperties) | CSSProperties;
-  suffixStyle?: ((theme: Theme) => CSSProperties) | CSSProperties;
+  placeholderStyle?: Themed<CSSProperties>;
+  containerStyle?: Themed<CSSProperties>;
+  contentStyle?: Themed<CSSProperties>;
+  messageStyle?: Themed<CSSProperties>;
+  labelStyle?: Themed<CSSProperties>;
+  inputStyle?: Themed<CSSProperties>;
+  prefixStyle?: Themed<CSSProperties>;
+  suffixStyle?: Themed<CSSProperties>;
 };
 
 /**
@@ -83,14 +83,14 @@ const Input = ({
     display: 'inline-flex',
     alignItems: 'center',
     padding,
-    ...useThemedValue(theme, inputStyle),
+    ...useThemedProp(theme, inputStyle),
   });
 
   const containerStyles = useCSS({
     display: 'inline-flex',
     flexDirection: 'column',
     alignItems: 'start',
-    ...useThemedValue(theme, containerStyle),
+    ...useThemedProp(theme, containerStyle),
   });
 
   const contentStyles = useCSS({
@@ -99,14 +99,14 @@ const Input = ({
     alignItems: 'center',
     backgroundColor: contain ? (theme ? theme.colors.greyLight : vars.colors.greyLight) : 'transparent',
     border: outlined ? `1px solid ${theme ? theme.colors.black : vars.colors.black}` : '',
-    ...useThemedValue(theme, contentStyle),
+    ...useThemedProp(theme, contentStyle),
   });
   const labelStyles = useCSS({
-    ...useThemedValue(theme, labelStyle),
+    ...useThemedProp(theme, labelStyle),
   });
   const prefixStyles = useCSS({
     padding,
-    ...useThemedValue(theme, prefixStyle),
+    ...useThemedProp(theme, prefixStyle),
   });
   const placeholderStyles = useCSS({
     position: 'absolute',
@@ -117,15 +117,15 @@ const Input = ({
     cursor: 'text',
     pointerEvents: 'none',
     opacity: focus ? 0 : 0.4,
-    ...useThemedValue(theme, placeholderStyle),
+    ...useThemedProp(theme, placeholderStyle),
   });
   const suffixStyles = useCSS({
     padding,
-    ...useThemedValue(theme, suffixStyle),
+    ...useThemedProp(theme, suffixStyle),
   });
   const messageStyles = useCSS({
     color: showMessage ? (theme ? theme.colors.red : vars.colors.red) : '',
-    ...useThemedValue(theme, messageStyle),
+    ...useThemedProp(theme, messageStyle),
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

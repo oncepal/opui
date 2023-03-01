@@ -1,4 +1,4 @@
-import { useCSS, useTheme, useThemedCSS, useThemedValue } from '../../styles/css';
+import { useCSS, useTheme, useThemedCSS, useThemedProp } from '../../styles/css';
 import vars from '../../styles/vars';
 import { TagProps } from './tag.props';
 
@@ -6,7 +6,7 @@ export const getStyles = (props: TagProps) => {
   const { show, radius, outlined, css, color } = props;
   const theme = useTheme();
   const getComputedColor = () =>
-    useThemedValue(theme, color) || (theme.mode == 'light' ? theme.colors.black : theme.colors.white);
+    useThemedProp(theme, color) || (theme.mode == 'light' ? theme.colors.black : theme.colors.white);
   return useCSS({
     position: 'relative',
     display: show ? 'inline-flex' : 'none',

@@ -1,31 +1,30 @@
 /** @jsxImportSource @emotion/react */
 
-import { useMemo } from 'react';
-import { usePadding, useMargin, useCSS, useTheme, useThemedCSS } from '../../styles/css';
+import { useMemo, createElement } from 'react';
+import { usePadding, useMargin, useCSS, useTheme, useThemedCSS, useThemedProp } from '../../styles/css';
 
-import { Theme } from '../../styles/themes';
 import vars from '../../styles/vars';
 import { ComponentBaseProps, Margin, Padding, Themed } from '../props';
 type TextProps = ComponentBaseProps &
   Partial<{
-    h1:boolean
-    h2:boolean
-    h3:boolean
-    h4:boolean
-    h5:boolean
-    h6:boolean
-    p:boolean
+    h1: boolean;
+    h2: boolean;
+    h3: boolean;
+    h4: boolean;
+    h5: boolean;
+    h6: boolean;
+    p: boolean;
     gradient: string;
-    del:boolean
+    del: boolean;
     ellipsis: string;
-    blockquote:boolean
+    blockquote: boolean;
     thin: boolean;
     blod: boolean;
     color: Themed<string>;
-    size: number;
+    size: Themed<string>;
     maxLength: number;
-    span:boolean
-    i:boolean
+    span: boolean;
+    i: boolean;
     dark: boolean;
   }> &
   Margin &
@@ -38,9 +37,8 @@ type TextProps = ComponentBaseProps &
 const Text = ({
   thin = false,
   dark = false,
-  
   maxLength,
-  size = 1,
+  size = '1rem',
   blod = false,
   gradient,
   ellipsis = '...',
@@ -64,7 +62,7 @@ const Text = ({
   }, [color, theme, dark]);
 
   const styles = useCSS({
-    fontSize: size + 'rem',
+    fontSize: useThemedProp<string>(theme, size),
     fontWeight: blod ? 700 : thin ? 200 : 500,
     ...useMargin(props),
     ...usePadding(props),
@@ -78,12 +76,29 @@ const Text = ({
     }),
     ...useThemedCSS(theme, css),
   });
-  const T = createElement()
+  const getTextElement = () => {
+    const { h1, h2, h3, h4, h5, h6, del, span, blockquote, i } = props;
 
-  return (
-    <p css={styles} {...props}>
-      {maxLength ? (children as string).substring(0, maxLength) + ellipsis : children}
-    </p>
+    if (h1) return 'h1';
+    else if (h2) return 'h2';
+    else if (h3) return 'h3';
+    else if (h4) return 'h4';
+    else if (h5) return 'h5';
+    else if (h6) return 'h6';
+    else if (del) return 'del';
+    else if (span) return 'span';
+    else if (blockquote) return 'blockquote';
+    else if (i) return 'i';
+    else return 'p';
+  };
+
+  return createElement(
+    getTextElement(),
+    {
+      css: styles,
+      ...props,
+    },
+    maxLength ? (children as string).substring(0, maxLength) + ellipsis : children,
   );
 };
 
