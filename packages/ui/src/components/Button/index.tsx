@@ -71,7 +71,8 @@ const Button = ({
     border: outlined ? `1px solid ${useThemedProp(theme, color) || theme.colors.primary}` : 'none',
     borderRadius: radius || (rounded ? theme.radius.rounded : theme.radius.base),
     color:
-      useThemedProp(theme, color) || text || icon || outlined
+      useThemedProp(theme, color) ||
+      (text || icon || outlined
         ? theme.colors.primary
         : gradient
         ? theme.darkMode
@@ -79,7 +80,7 @@ const Button = ({
           : theme.colors.black
         : theme.darkMode
         ? theme.colors.white
-        : theme.colors.primary,
+        : theme.colors.primary),
     background:
       text || icon || outlined ? 'transparent' : gradient || useThemedProp(theme, color) || theme.colors.primary,
     cursor: disabled ? 'not-allowed' : 'pointer',
