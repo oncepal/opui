@@ -1,7 +1,7 @@
 import vars from './vars';
 
 type Theme = {
-  mode: 'dark' | 'light';
+  darkMode: boolean;
   border: typeof vars.borderWeights;
   fontSizes: typeof vars.fontSizes;
   zIndices: typeof vars.zIndices;
@@ -23,7 +23,7 @@ type Theme = {
 };
 
 const theme: Theme = {
-  mode: 'light',
+  darkMode: false,
   colors: {
     appBackground: vars.colors.whiteGrey,
     title: vars.colors.blackBlue,

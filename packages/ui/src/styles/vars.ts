@@ -80,8 +80,7 @@ const vars = {
     '2xl': '24px',
     '3xl': '32px',
     squared: '33%',
-    rounded: '50%',
-    pill: '9999px',
+    rounded: '9999px',
   },
 
   fontSizes: {

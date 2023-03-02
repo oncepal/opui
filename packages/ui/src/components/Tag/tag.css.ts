@@ -6,7 +6,7 @@ export const getStyles = (props: TagProps) => {
   const { show, radius, outlined, css, color } = props;
   const theme = useTheme();
   const getComputedColor = () =>
-    useThemedProp(theme, color) || (theme.mode == 'light' ? theme.colors.black : theme.colors.white);
+    useThemedProp(theme, color) || (!theme.darkMode ? theme.colors.black : theme.colors.white);
   return useCSS({
     position: 'relative',
     display: show ? 'inline-flex' : 'none',

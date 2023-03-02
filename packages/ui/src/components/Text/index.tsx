@@ -49,19 +49,6 @@ const Text = ({
   ...props
 }: TextProps) => {
   const theme = useTheme();
-  const computedColor: any = useMemo(() => {
-    return (
-      color ||
-      (white
-        ? theme.colors
-          ? theme.colors.white
-          : vars.colors.white
-        : theme.colors
-        ? theme.colors.black
-        : vars.colors.black)
-    );
-  }, [color, theme, white]);
-
   const styles = useCSS({
     fontSize: useThemedProp<string>(theme, size),
     fontWeight: blod ? 700 : thin ? 200 : 500,
@@ -70,7 +57,10 @@ const Text = ({
     textOverflow: maxLength ? 'ellipsis' : undefined,
     whiteSpace: maxLength ? 'nowrap' : undefined,
     overflow: maxLength ? 'hidden' : undefined,
-    color: gradient ? 'transparent' : computedColor,
+    color: gradient
+      ? 'transparent'
+      : useThemedProp<string>(theme, color) ||
+        (white ? theme.colors.white : theme.darkMode ? theme.colors.white : theme.colors.black),
     ...(gradient && {
       backgroundImage: gradient,
       backgroundClip: 'text',

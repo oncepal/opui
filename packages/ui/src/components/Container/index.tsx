@@ -9,12 +9,12 @@ type ContainerProps = ComponentBaseProps &
   Margin &
   Position &
   Padding & {
-    main?:boolean
-    footer?:boolean
-    header?:boolean
-    section?:boolean
-    article?:boolean
-    nav?:boolean
+    main?: boolean;
+    footer?: boolean;
+    header?: boolean;
+    section?: boolean;
+    article?: boolean;
+    nav?: boolean;
     w?: string;
     h?: string;
     background?: Themed<string>;
@@ -40,11 +40,13 @@ type ContainerProps = ComponentBaseProps &
 const Container = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & ContainerProps>(
   ({ w, h, background, fullHeight = false, fullScreen = false, css, children, onClick, ...props }, ref) => {
     const theme = useTheme();
+
     const styles = useCSS({
       width: w,
-      height: h ? h : fullHeight ? '100%'  : 'auto'||'auto',
-      minHeight:fullScreen?'100vh':'',
-      background: useThemedProp(theme, background),
+      height: h ? h : fullHeight ? '100%' : 'auto' || 'auto',
+      minHeight: fullScreen ? '100vh' : '',
+      background: useThemedProp(theme, background) || (theme.darkMode ? theme.colors.black : theme.colors.white),
+      color: theme.darkMode ? theme.colors.white : theme.colors.black,
       ...useMargin(props),
       ...usePadding(props),
       ...usePosition(props),
@@ -56,11 +58,7 @@ const Container = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & C
       onClick?.();
     };
     const getElement = () => {
-      const {     main,
-        footer,
-        header,
-        section,
-        article, } = props;
+      const { main, footer, header, section, article } = props;
       if (main) return 'main';
       else if (footer) return 'footer';
       else if (header) return 'header';
@@ -73,11 +71,11 @@ const Container = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & C
       getElement(),
       {
         css: styles,
-        ref:ref,
-        onClick:handleClickContainer,
+        ref: ref,
+        onClick: handleClickContainer,
         ...props,
       },
-       children,
+      children,
     );
   },
 );

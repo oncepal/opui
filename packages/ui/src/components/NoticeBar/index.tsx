@@ -46,8 +46,8 @@ const NoticeBar = ({
   const styles = useCSS({
     display: 'flex',
     alignItems: 'center',
-    background: theme.mode == 'light' ? theme.colors.accent : theme.colors.greyLight,
-    color: theme.mode == 'light' ? theme.colors.primary : theme.colors.greyLight,
+    background: !theme.darkMode ? theme.colors.accent : theme.colors.greyLight,
+    color: !theme.darkMode ? theme.colors.primary : theme.colors.greyLight,
     padding: '.5em',
     ...useThemedCSS(theme, css),
   });

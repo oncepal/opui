@@ -2,7 +2,7 @@
 
 import { ReactNode } from 'react';
 import { ComponentBaseProps } from '../props';
-import { useCSS, useThemedCSS,useTheme } from '../../styles/css';
+import { useCSS, useThemedCSS, useTheme } from '../../styles/css';
 type NavBarItemProps = ComponentBaseProps & {
   content?: ReactNode;
 };
@@ -27,11 +27,12 @@ type NavBarProps = ComponentBaseProps & {
  * @param color bar's background color.
  * @param gap the gap of the content,extra,navIcon
  */
-const NavBar = ({ color, css, gap, hideOnScroll,children, ...props }: NavBarProps) => {
+const NavBar = ({ color, css, gap, hideOnScroll, children, ...props }: NavBarProps) => {
   const theme = useTheme();
   const styles = useCSS({
     padding: '0 1em',
     alignItems: 'center',
+    justifyContent: 'space-between',
     height: '3em',
     backgroundColor: color,
     display: 'flex',
@@ -61,8 +62,6 @@ const NavBarContent = ({ content, css, children, ...props }: NavBarItemProps) =>
   const theme = useTheme();
   const styles = useCSS({
     textAlign: 'center',
-    flex: 1,
-
     ...useThemedCSS(theme, css),
   });
   return (

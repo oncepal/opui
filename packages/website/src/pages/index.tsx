@@ -1,12 +1,66 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import { Inter } from 'next/font/google';
-import styles from '@/styles/Home.module.css';
-import { App, NavBar, Sidebar, Container, Text, Col, Row, Button } from '@sui/core';
-
+import DescPNG from '../../public/desc.png';
+import { App, NavBar, Sidebar, Container, Text, Col, Row, Button, Switch } from '@sui/core';
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
 const inter = Inter({ subsets: ['latin'] });
-
+const gradient =
+  'linear-gradient(to right, #3f51b1 0%, #5a55ae 13%, #7b5fac 25%, #8f6aae 38%, #a86aa4 50%, #cc6b8e 62%, #f18271 75%, #f3a469 87%, #f7c978 100%)';
+const features = [
+  [
+    '智能',
+    '提示',
+    '根据组件最多应用的场景',
+    '根据组件最多应用的场景根据组件最多应用的场景根据组件最多应用的场景',
+    DescPNG,
+    0,
+    '#fa709a',
+    '#f18271',
+  ],
+  [
+    '动态',
+    '主题',
+    '为了独一无二的样式',
+    '根据组件最多应用的场景根据组件最多应用的场景根据组件最多应用的场景',
+    DescPNG,
+    1,
+    '#3f51b1',
+    '#a86aa4',
+  ],
+  [
+    '更少的',
+    '代码',
+    '做更多的事',
+    '根据组件最多应用的场景根据组件最多应用的场景根据组件最多应用的场景',
+    DescPNG,
+    0,
+    '#cc6b8e',
+    '#f18271',
+  ],
+  [
+    '实用',
+    '属性',
+    '帮助快速完成结构布局',
+    '根据组件最多应用的场景根据组件最多应用的场景根据组件最多应用的场景',
+    DescPNG,
+    1,
+    '#5a55ae',
+    '#f7c978',
+  ],
+];
 export default function Home() {
+  const [darkMode, setDarkMode] = useState(true);
+  const [theme, setTheme] = useState({
+    darkMode,
+    colors: {
+      black: '#0e1012',
+      grey: '#566171',
+    },
+  });
+  useEffect(() => {
+    setTheme(v => ({ ...v, darkMode }));
+  }, [darkMode]);
   return (
     <>
       <Head>
@@ -16,65 +70,100 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <App theme={{}}>
-        <Container relative fullScreen background='#0e1012'>
+      <App theme={theme}>
+        <Container relative fullScreen>
           <Container header>
-            <NavBar></NavBar>
+            <NavBar>
+              <NavBar.Brand>Shit UI</NavBar.Brand>
+              <NavBar.Content>
+                <Row>
+                  {['Guide', 'Components', 'Blog'].map(v => (
+                    <Col pa='1em'>{v}</Col>
+                  ))}
+                </Row>
+              </NavBar.Content>
+              <NavBar.Extra>
+                <Switch textOn='暗' textOff='明' on={darkMode} onChange={() => setDarkMode(v => !v)} />
+              </NavBar.Extra>
+            </NavBar>
           </Container>
 
           <Sidebar absolute></Sidebar>
-          <Container main pa='10em'>
+          <Container main pa='5em' mb='5em'>
             <Container section>
               <Row vertical>
                 <Col>
-                  <Text
-                    size={theme => theme.spacing?.[18]}
-                    h1
-                    gradient='linear-gradient(to right, #fa709a 0%, #fee140 100%)'>
+                  <Text size={theme => theme.spacing?.[18]} h1 gradient={gradient}>
                     最了解开发者的
                   </Text>
                 </Col>
                 <Col>
-                  <Text white size={theme => theme.spacing?.[18]} h3>
+                  <Text
+                    gradient={
+                      'linear-gradient(to right,  #5a55ae 0%, #7b5fac 25%, #8f6aae 38%, #a86aa4 50%, #cc6b8e 62%, #f18271 75%, #f3a469 100%)'
+                    }
+                    size={theme => theme.spacing?.[18]}
+                    h3>
                     UI 工具库
                   </Text>
                 </Col>
-                <Col>
+                <Col css={{ maxWidth: '800px' }}>
                   <Text pa='1em' px='3em' color='#566171' size={theme => theme.spacing?.[10]} p>
                     基于世界上最流行的框架 React 和现代快速的 CSS 方案
                     Emotion，创造出最美观又实用的组件，并且，任何地方都可以由你自己改写！
                   </Text>
                 </Col>
                 <Col pa='1em'>
-                  <Button css={{color:'black'}} color='linear-gradient(to right, #fa709a 0%, #fee140 100%)'>Get Started</Button>
+                  <Button
+                    // color={theme => theme.colors.black}
+                    color={'#0e1012'}
+                    rounded
+                    gradient='linear-gradient(to right, #fa709a 0%, #fee140 100%)'>
+                    Get Started
+                  </Button>
                 </Col>
               </Row>
             </Container>
+            {features.map((v: any[]) => {
+              const gt = `linear-gradient(to right, ${v[6]} 0%, ${v[7]} 100%)`;
+              const desc = (
+                <Col alignSelf='start' leftText={!v[5]} rightText={!!v[5]}>
+                  <Text h2 size='5rem'>
+                    <Text span py='1em' gradient={gt}>
+                      {v[0]}
+                    </Text>
+                    {v[1]}
+                  </Text>
+                  <Text>{v[2]}</Text>
+                  <Text color='#566171'>{v[3]}</Text>
+                </Col>
+              );
+              return (
+                <Container section px='8em' my='15em'>
+                  <Row justify='center'>
+                    {!v[5] && desc}
+
+                    <Col
+                      css={{
+                        margin: `0px ${!!v[5] ? '2em' : '0px'} 0px ${!v[5] ? '2em' : '0px'}`,
+                      }}>
+                      <Image width={v[4].width / 2.5} height={v[4].height / 2.5} src={v[4]} alt={''} />
+                    </Col>
+                    {!!v[5] && desc}
+                  </Row>
+                </Container>
+              );
+            })}
+
             <Container section>
               <Row vertical>
-                <Col>1</Col>
-              </Row>
-            </Container>
-            <Container section>
-              {' '}
-              <Row vertical>
-                <Col>2</Col>
-              </Row>
-            </Container>
-            <Container section>
-              {' '}
-              <Row vertical>
-                <Col>3</Col>
-              </Row>
-            </Container>
-            <Container section>
-              {' '}
-              <Row vertical>
-                <Col>4</Col>
+                <Col></Col>
               </Row>
             </Container>
           </Container>
-          <Container footer></Container>
+          <Container footer w='100%' h='15em' background={'red'}>
+            footer
+          </Container>
         </Container>
       </App>
     </>

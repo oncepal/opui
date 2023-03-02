@@ -3,7 +3,7 @@
 import { ComponentBaseProps, Margin, Themed } from '../props';
 import vars from '../../styles/vars';
 import { forwardRef, useMemo, ComponentPropsWithoutRef, MouseEvent } from 'react';
-import { useThemedCSS, useCSS, useTheme, useMargin } from '../../styles/css';
+import { useThemedCSS, useCSS, useTheme, useMargin, useThemedProp } from '../../styles/css';
 
 type ButtonEvent = {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => any;
@@ -15,13 +15,13 @@ type ButtonProps = ComponentBaseProps &
     padding?: string;
     block?: boolean;
     disabled?: boolean;
-    textColor?: string;
     text?: boolean;
     outlined?: boolean;
     icon?: boolean;
     rounded?: boolean;
     radius?: string;
     color?: Themed<string>;
+    gradient?: string;
   };
 
 /**
@@ -38,7 +38,7 @@ type ButtonProps = ComponentBaseProps &
  * @param icon icon button style
  * @param color button color
  * @param padding button size
- * @param textColor button text color
+
  * @param onClick click handler
  */
 const Button = ({
@@ -47,12 +47,12 @@ const Button = ({
   text = false,
   outlined = false,
   rounded = false,
-  textColor,
+  gradient,
   radius,
   css,
   icon = false,
   color,
-  padding ,
+  padding,
   children,
   onClick,
   ...props
@@ -63,21 +63,31 @@ const Button = ({
     textAlign: 'center',
     display: block ? 'block' : '',
     minWidth: block ? '100%' : '',
-    lineHeight:'1.5em',
-    fontWeight:theme.fontWeights.medium,
-    width: icon ?  theme.spacing.xl  : '',
-    height: icon ?  theme.spacing.xl  : '',
-    padding: text || icon ? '' : padding||`${theme.spacing[3]} ${theme.spacing.md}`,
-    border: outlined ? `1px solid ${color || theme.colors.primary}` : 'none',
-    borderRadius: radius || (rounded ?  theme.radius.rounded : theme.radius.base),
+    lineHeight: '1.5em',
+    fontWeight: theme.fontWeights.medium,
+    width: icon ? theme.spacing.xl : '',
+    height: icon ? theme.spacing.xl : '',
+    padding: text || icon ? '' : padding || `${theme.spacing[3]} ${theme.spacing.md}`,
+    border: outlined ? `1px solid ${useThemedProp(theme, color) || theme.colors.primary}` : 'none',
+    borderRadius: radius || (rounded ? theme.radius.rounded : theme.radius.base),
     color:
-      text || outlined ? (color || theme.colors.primary) : textColor ||  theme.colors.white ,
-    background: (text||icon || outlined) ? 'transparent' : (color || theme.colors.primary),
-    cursor: disabled ? 'not-allowed' : 'pointer',   ...useMargin(props),
-    ':hover':{
-      filter: 'brightness(1.1)'
+      useThemedProp(theme, color) || text || icon || outlined
+        ? theme.colors.primary
+        : gradient
+        ? theme.darkMode
+          ? theme.colors.white
+          : theme.colors.black
+        : theme.darkMode
+        ? theme.colors.white
+        : theme.colors.primary,
+    background:
+      text || icon || outlined ? 'transparent' : gradient || useThemedProp(theme, color) || theme.colors.primary,
+    cursor: disabled ? 'not-allowed' : 'pointer',
+    ...useMargin(props),
+    ':hover': {
+      filter: 'brightness(1.1)',
     },
- 
+
     ...useThemedCSS(theme, css),
   });
 
