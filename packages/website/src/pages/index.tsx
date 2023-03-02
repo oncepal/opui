@@ -94,9 +94,22 @@ export default function Home() {
 
       <App theme={theme}>
         <Container relative fullScreen>
-          <Container header>
+          <Container
+            header
+            pa='1em'
+            sticky
+            top='0'
+            css={{
+              backdropFilter: 'blur(8px)',
+              background: 'transparent',
+              boxShadow: '0px 0px 10px -7px white',
+            }}>
             <NavBar>
-              <NavBar.Brand>Shit UI</NavBar.Brand>
+              <NavBar.Brand>
+                <Text h1 size={'2em'}>
+                  Shit UI
+                </Text>
+              </NavBar.Brand>
               <NavBar.Content>
                 <Row>
                   {['Guide', 'Components', 'Blog'].map(v => (
