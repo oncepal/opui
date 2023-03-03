@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useCSS, useTheme, useThemedCSS } from '../../styles/css';
 import { Theme } from '../../styles/themes';
 import { ComponentBaseProps } from '../props';
@@ -38,109 +38,126 @@ const Popover = ({ hover = false, css, children, ...props }: React.ComponentProp
     display: 'inline-flex',
     justifyContent: 'center',
     alignItems: 'center',
+
     ...useThemedCSS(theme, css),
   });
 
   const handleChildrenRender = () => {
     return React.Children.map(children, (child: any, i) => {
       const element = child as React.DetailedReactHTMLElement<any, HTMLElement>;
-      if (child.type.name == 'PopoverContent') {
+      if (child?.type?.name == 'PopoverContent') {
         return React.cloneElement(element, {
           show: isContentShow,
+          setIsContentShow,
         });
       }
-      return React.cloneElement(element, {
-        ...(hover && {
-          onMouseOver: () => {
-            setIsContentShow(true);
+      if (child?.type?.name == 'PopoverTrigger') {
+        return React.cloneElement(element, {
+          onFocus: () => {
+            if (!isContentShow) setIsContentShow(true);
           },
-          onMouseOut: () => {
-            setIsContentShow(false);
+          onBlur: () => {
+            if (isContentShow) setIsContentShow(false);
           },
-        }),
-        onFocus: () => {
-          setIsContentShow(true);
-        },
-        onBlur: () => {
-          setIsContentShow(false);
-        },
-      });
+        });
+      }
+      return;
     });
   };
   return (
-    <div css={styles} {...props}>
+    <div
+      css={styles}
+      onMouseOver={() => {
+        setIsContentShow(true);
+      }}
+      onMouseOut={() => {
+        setIsContentShow(false);
+      }}
+      {...props}>
       {handleChildrenRender()}
+    </div>
+  );
+};
+
+const PopoverTrigger = ({ css, children, ...props }: React.ComponentPropsWithoutRef<'div'> & PopoverContentProps) => {
+  const theme = useTheme();
+
+  const styles = useCSS({
+    ...useThemedCSS(theme, css),
+  });
+
+  return (
+    <div css={styles} {...props}>
+      {children}
     </div>
   );
 };
 
 const PopoverContent = ({
   show = false,
+
   position = 'bottom',
   css,
   children,
-  className,
   ...props
 }: React.ComponentPropsWithoutRef<'div'> & PopoverContentProps) => {
   const theme = useTheme();
-  const [cp, setCp] = React.useState({});
+
+  const cp = useMemo(() => {
+    switch (position) {
+      case 'top':
+        return {
+          top: 0,
+          transform: 'translate3d(0,-100%,0)',
+        };
+
+      case 'left':
+        return {
+          left: 0,
+          transform: 'translate3d(-100%,0,0)',
+        };
+
+      case 'bottom':
+        return {
+          bottom: 0,
+          transform: 'translate3d(0,100%,0)',
+        };
+
+      case 'right':
+        return {
+          right: 0,
+          transform: 'translate3d(100%,0,0)',
+        };
+
+      default:
+        return {
+          bottom: 0,
+          transform: 'translate3d(0,100%,0)',
+        };
+    }
+  }, [position]);
+
   const styles = useCSS({
     position: 'absolute',
     ...cp,
-    display: show ? 'block' : 'none',
-
+    // display: show ? 'block' : 'none',
+    borderRadius: theme.radius.sm,
+    visibility: show ? 'visible' : 'hidden',
+    transition: 'all .25s ease-out',
     ...useThemedCSS(theme, css),
   });
-  const [usePropsShow, setUsePropsShow] = React.useState(true);
-  const handleMouseOver = (e: any) => {
-    if (usePropsShow) setUsePropsShow(false);
-  };
+
   const handleMouseOut = (e: any) => {
-    setUsePropsShow(true);
+    (props as any).setIsContentShow(false);
   };
 
-  React.useEffect(() => {
-    switch (position) {
-      case 'top':
-        setCp({
-          top: 0,
-          transform: 'translate3d(0,-105%,0)',
-        });
-        break;
-      case 'left':
-        setCp({
-          left: 0,
-          transform: 'translate3d(-105%,0,0)',
-        });
-        break;
-      case 'bottom':
-        setCp({
-          bottom: 0,
-          transform: 'translate3d(0,105%,0)',
-        });
-        break;
-      case 'right':
-        setCp({
-          right: 0,
-          transform: 'translate3d(105%,0,0)',
-        });
-        break;
-      default:
-        break;
-    }
-  }, [position]);
   return (
-    <div
-      css={styles}
-      onMouseOver={handleMouseOver}
-      onMouseOut={handleMouseOut}
-      className={'popover-content ' + className}
-      {...props}>
+    <div css={styles} onMouseOut={handleMouseOut} {...props}>
       {children}
     </div>
   );
 };
 
 Popover.Content = PopoverContent;
-
+Popover.Trigger = PopoverTrigger;
 export default Popover;

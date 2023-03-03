@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import { ComponentBaseProps, Margin, Themed } from '../props';
-import vars from '../../styles/vars';
+import polished from 'polished';
 import { forwardRef, useMemo, ComponentPropsWithoutRef, MouseEvent } from 'react';
 import { useThemedCSS, useCSS, useTheme, useMargin, useThemedProp } from '../../styles/css';
 
@@ -71,16 +71,15 @@ const Button = ({
     border: outlined ? `1px solid ${useThemedProp(theme, color) || theme.colors.primary}` : 'none',
     borderRadius: radius || (rounded ? theme.radius.rounded : theme.radius.base),
     color:
-      useThemedProp(theme, color) ||
-      (text || icon || outlined
-        ? theme.colors.primary
+      text || icon || outlined
+        ? useThemedProp(theme, color) || theme.colors.primary
         : gradient
         ? theme.darkMode
           ? theme.colors.white
           : theme.colors.black
         : theme.darkMode
         ? theme.colors.white
-        : theme.colors.primary),
+        : theme.colors.white,
     background:
       text || icon || outlined ? 'transparent' : gradient || useThemedProp(theme, color) || theme.colors.primary,
     cursor: disabled ? 'not-allowed' : 'pointer',

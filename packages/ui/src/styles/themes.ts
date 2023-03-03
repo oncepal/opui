@@ -10,6 +10,8 @@ type Theme = {
   lineHeights: typeof vars.lineHeights;
   letterSpacings: typeof vars.letterSpacings;
   fontWeights: typeof vars.fontWeights;
+  shadows: typeof vars.shadows;
+  dropShadows: typeof vars.dropShadows;
   colors: Partial<
     {
       appBackground: string;
@@ -40,5 +42,7 @@ const theme: Theme = {
   lineHeights: vars.lineHeights,
   letterSpacings: vars.letterSpacings,
   fontWeights: vars.fontWeights,
+  shadows: vars.shadows,
+  dropShadows: vars.dropShadows,
 };
 export { theme, Theme };
