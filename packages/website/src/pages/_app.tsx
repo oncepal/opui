@@ -12,7 +12,6 @@ export default function App({ Component, pageProps }: AppProps) {
     darkMode,
     colors: {
       black: '#0e1012',
-      grey: '#566171',
     },
   };
 

@@ -140,7 +140,7 @@ export default function Home() {
 
                 <Col
                   css={{
-                    margin: `0px ${!!v[5] ? '2em' : '0px'} 0px ${!v[5] ? '2em' : '0px'}`,
+                    margin: `0px ${!!v[5] ? '8em' : '0px'} 0px ${!v[5] ? '8em' : '0px'}`,
                   }}>
                   <Image width={500} height={300} src={v[4]} alt={''} />
                 </Col>

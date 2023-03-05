@@ -1,6 +1,8 @@
 import Link from 'next/link';
-import { NavBar, Sidebar, Container, Text, Col, Row, Button, Switch, Popover } from '@sui/core';
-
+import { NavBar, Sidebar, Container, Text, Col, Row, Button, Switch, Popover, Tag, Icon } from '@sui/core';
+import github from '../../public/github.svg';
+import discord from '../../public/discord.svg';
+import heart from '../../public/heart.svg'
 const navigation = [
   { title: 'Guide', menus: [{ title: 'intro', link: 'docs/intro' }] },
   { title: 'Components', link: 'components', menus: [{ title: 'Button', link: 'docs/button' }] },
@@ -9,55 +11,45 @@ const navigation = [
 const Navbar = ({ darkMode, setDarkMode }) => {
   return (
     <NavBar
+      sticky
       hideOnScroll
       css={theme => ({
-        position: 'sticky',
-        top: 0,
-        padding: '1em',
+        padding: '1em 22vw',
         backdropFilter: 'saturate(180%) blur(10px)',
         background: 'transparent',
         boxShadow: theme.shadows.xs,
       })}>
       <NavBar.Brand>
         <Link href={'/'}>
-          <Text h1 size={'2em'}>
-            Shit UI
+          <Text span size={'2em'}>
+            ShitUI
           </Text>
         </Link>
+        <Tag rounded css={{ marginLeft: '.5em', marginTop: '.2em' }}>
+          <Text size={'.5em'} white blod>
+            BETA
+          </Text>
+        </Tag>
       </NavBar.Brand>
       <NavBar.Content>
-        <Row>
+        <Row justify='center'>
           {navigation.map(v => (
-            <Popover>
-              <Popover.Trigger>
-                <Col pa='1em'>
-                  <Button text>
-                    <Text>{v.title}</Text>
-                  </Button>
-                </Col>
-              </Popover.Trigger>
-
-              <Popover.Content>
-                <Container
-                  pa='1em'
-                  css={theme => ({
-                    boxShadow: theme.shadows.xm,
-                  })}>
-                  {v.menus.map(m => {
-                    return (
-                      <Button>
-                        <Link href={m.link}>{m.title}</Link>
-                      </Button>
-                    );
-                  })}
-                </Container>
-              </Popover.Content>
-            </Popover>
+            <Col pa='1em'>
+              <Button text>
+                <Text>{v.title}</Text>
+              </Button>
+            </Col>
           ))}
         </Row>
       </NavBar.Content>
       <NavBar.Extra>
+        <Row justify='end' align='center' gap='.5em'>
+ <Icon src={discord.src} />
+        <Icon src={github.src} />
         <Switch textOn='暗' textOff='明' on={darkMode} onChange={() => setDarkMode(v => !v)} />
+        <Button color={theme=>theme.darkMode?theme.colors.grey:theme.colors.greyLight}><Icon  color={theme=>theme.colors.red} src={heart.src} /> <Text span>财务捐助</Text></Button>
+        </Row>
+       
       </NavBar.Extra>
     </NavBar>
   );

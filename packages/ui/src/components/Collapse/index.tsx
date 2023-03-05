@@ -1,17 +1,24 @@
 /** @jsxImportSource @emotion/react */
 
-import React from 'react';
+import {Children, cloneElement, DetailedReactHTMLElement, ReactNode} from 'react';
 import arrowSVG from '../../icons/arrow-up.svg';
-import { useCSS, useTheme } from '../../styles/css';
+import { useCSS, useTheme, useThemedCSS } from '../../styles/css';
 import Icon from '../Icon';
 import { ComponentBaseProps } from '../props';
 
 type CollapseProps = ComponentBaseProps & {
-  title?: React.ReactNode | (() => React.ReactNode) | string;
+  title?: ReactNode ;
+  subTitle?: ReactNode ;
   expand: boolean;
   animated?: boolean;
-  trigger?: React.ReactNode | (() => React.ReactNode);
   onChange: () => void;
+};
+type CollapseContentProps = ComponentBaseProps & {
+
+};
+
+type CollapseTriggerProps = ComponentBaseProps & {
+
 };
 
 /**
@@ -28,15 +35,17 @@ type CollapseProps = ComponentBaseProps & {
  * @param expand manage the expand behaivor by prop
  * @param trigger trigger component overide
  */
-const Collapse = ({ title, animated = true, expand = false, trigger, children, ...props }: CollapseProps) => {
+const Collapse = ({ title, css,animated = true, expand = false, children, ...props }: CollapseProps) => {
   const theme = useTheme();
 
   const handleClickTrigger = () => {
     props?.onChange?.();
   };
+
   const renderTrigger = () => {
-    if (trigger)
-      return React.cloneElement(typeof trigger === 'function' ? trigger() : (trigger as unknown as any), {
+    const trigger = Children.toArray(children).filter((c:any)=>c?.type?.name == 'CollapseTrigger')
+    if (trigger.length >0)
+      return cloneElement(trigger[0] as DetailedReactHTMLElement<any, HTMLElement>, {
         css: useCSS({
           marginLeft: 'auto',
           transformOrigin: '50% 50%',
@@ -44,8 +53,8 @@ const Collapse = ({ title, animated = true, expand = false, trigger, children, .
         }),
       });
     else
-      return (
-        <Icon
+      return <CollapseTrigger>
+      <Icon
           width='1.2em'
           height='1.2em'
           color={theme.colors.black}
@@ -57,40 +66,63 @@ const Collapse = ({ title, animated = true, expand = false, trigger, children, .
           }}
           onClick={handleClickTrigger}
         />
-      );
+      </CollapseTrigger>
   };
 
-  const renderChildren = () => {
-    if (animated) return <div>{children}</div>;
+  const handleChildrenRender = () => {
+    return [...Children.map(children, (child: any, i) => {
+      const element = child as DetailedReactHTMLElement<any, HTMLElement>;
+      if (child?.type?.name == 'CollapseContent') {
+        return cloneElement(element, {
 
-    return children;
+        });
+      }
+      return;
+    }),renderTrigger()];
   };
 
-  const renderTitle = () => {
-    return typeof title == 'function' ? (
-      title()
-    ) : typeof title == 'string' ? (
-      <div className='title'>{title}</div>
-    ) : (
-      title
-    );
-  };
+  const styles = useCSS({
+    display: 'flex',
+    alignItems: 'center',
+    ...useThemedCSS(theme,css)
+  })
+
   return (
-    <div>
-      <div
-        css={useCSS({
-          display: 'flex',
-          alignItems: 'center',
-          '& > .title': {
-            flex: '1',
-          },
-        })}>
-        {renderTitle()}
-        {renderTrigger()}
+
+      <div css={styles} {...props}>
+
+        {handleChildrenRender()}
       </div>
-      {expand && renderChildren()}
-    </div>
   );
 };
 
+
+
+const CollapseTrigger = ({children,css,...props}:CollapseContentProps) => {
+  const theme = useTheme()
+  const styles = useCSS({
+    display: 'flex',
+    alignItems: 'center',
+    ...useThemedCSS(theme,css)
+  })
+
+  return <div css={styles} {...props}>
+    {children}
+  </div>
+}
+
+const CollapseContent = ({children,css,...props}:CollapseTriggerProps) => {
+  const theme = useTheme()
+  const styles = useCSS({
+    display: 'flex',
+    alignItems: 'center',
+    ...useThemedCSS(theme,css)
+  })
+
+  return <div css={styles} {...props}>
+    {children}
+  </div>
+}
+Collapse.Content = CollapseContent
+Collapse.Trigger = CollapseTrigger
 export default Collapse;

@@ -102,7 +102,7 @@ const vars = {
   colors: {
     purple: '#693ff7',
     black: '#03060B',
-    grey: '#858aa1',
+    grey: '#333',
     blue: '#0038c9',
     red: '#F31260',
     green: '#17C964',

@@ -28,20 +28,20 @@ let sy = 0;
  * @param color bar's background color.
  * @param gap the gap of the content,extra,navIcon
  */
-const NavBar = ({ color, css, gap, hideOnScroll, children, ...props }: NavBarProps) => {
+const NavBar = ({ color, sticky,css, gap, hideOnScroll, children, ...props }: NavBarProps) => {
   const [translateY, setTranslateY] = useState(0);
 
   const theme = useTheme();
   const styles = useCSS({
-    padding: '0 2em',
+    padding: '0 10em',
     alignItems: 'center',
     justifyContent: 'space-between',
     height: '4em',
     backgroundColor: color,
     display: 'flex',
-    position: 'sticky',
+    position: sticky?'sticky':'static',
     top: 0,
-    transition: 'all .25s ease-out',
+    transition: 'transform .25s ease-out',
     ...(hideOnScroll && { transform: `translateY(-${translateY}%)` }),
     gap,
     ...useThemedCSS(theme, css),
@@ -79,7 +79,9 @@ const NavBar = ({ color, css, gap, hideOnScroll, children, ...props }: NavBarPro
 const NavBarBrand = ({ content, css, children, ...props }: NavBarItemProps) => {
   const theme = useTheme();
   const styles = useCSS({
-    flex: 'none',
+    display:'flex',
+    alignItems:'center',
+    flex: 1,
     ...useThemedCSS(theme, css),
   });
   return (
@@ -91,7 +93,9 @@ const NavBarBrand = ({ content, css, children, ...props }: NavBarItemProps) => {
 const NavBarContent = ({ content, css, children, ...props }: NavBarItemProps) => {
   const theme = useTheme();
   const styles = useCSS({
-    textAlign: 'center',
+    display:'flex',
+    justifyContent:'center',
+    flex:1,
     ...useThemedCSS(theme, css),
   });
   return (
@@ -103,7 +107,8 @@ const NavBarContent = ({ content, css, children, ...props }: NavBarItemProps) =>
 const NavBarExtra = ({ content, css, children, ...props }: NavBarItemProps) => {
   const theme = useTheme();
   const styles = useCSS({
-    flex: 'none',
+    flex: 1,
+
     ...useThemedCSS(theme, css),
   });
   return (

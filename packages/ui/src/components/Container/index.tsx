@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import { ComponentBaseProps, Margin, Position, Padding, Themed } from '../props';
-import { useCSS, useTheme, usePadding, usePosition, useMargin, useThemedCSS, useThemedProp } from '../../styles/css';
+import { useCSS, useTheme, usePadding, usePosition, useMargin, useThemedCSS, useThemedProps } from '../../styles/css';
 import { forwardRef, MouseEvent, ComponentPropsWithoutRef } from 'react';
 import { jsx } from '@emotion/react';
 
@@ -45,7 +45,7 @@ const Container = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & C
       width: w,
       height: h ? h : fullHeight ? '100%' : 'auto' || 'auto',
       minHeight: fullScreen ? '100vh' : '',
-      background: useThemedProp(theme, background) || (theme.darkMode ? theme.colors.black : theme.colors.white),
+      background: useThemedProps(theme, background) || (theme.darkMode ? theme.colors.black : theme.colors.white),
       color: theme.darkMode ? theme.colors.white : theme.colors.black,
       ...useMargin(props),
       ...usePadding(props),

@@ -19,10 +19,10 @@ type PopoverContentProps = ComponentBaseProps & {
  * ```
  * <Popover>
       <Popover.Trigger>
-        <Button auto flat>Open Popover</Button>
+        <Button>Open Popover</Button>
       </Popover.Trigger>
       <Popover.Content>
-        <Text css={{ p: "$10" }}>
+        <Text>
           This is the content of the popover.
         </Text>
       </Popover.Content>

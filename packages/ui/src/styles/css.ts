@@ -21,7 +21,7 @@ export function useVerticalCenter() {
   return { display: 'flex', alignItems: 'center' };
 }
 
-export function useThemedProp<T>(theme: Theme, target?: Themed<T>) {
+export function useThemedProps<T>(theme: Theme, target?: Themed<T>) {
   return target && (typeof target == 'function' ? (target as Function)(theme) : target);
 }
 

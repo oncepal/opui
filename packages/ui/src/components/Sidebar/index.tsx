@@ -1,15 +1,27 @@
 /** @jsxImportSource @emotion/react */
 
-import { useMargin, usePadding, useCSS, useTheme, useThemedCSS } from '../../styles/css';
-import { ComponentBaseProps, Margin, Padding } from '../props';
+import { useMargin, usePadding, useCSS, useTheme, useThemedCSS, useThemedProps } from '../../styles/css';
+import { ComponentBaseProps, Margin, Padding, Themed } from '../props';
 
-type RowProps = Margin &
-  Padding &
+type SidebarProps = 
   ComponentBaseProps & {
     absolute?: boolean;
-   
-  };
+   open?:boolean
+   color?:Themed<string>
+   hoverExpand?:boolean
+   reduce?:boolean
 
+  };
+  type SidebarGroupProps = 
+  ComponentBaseProps & {
+   expand?:boolean
+   arrow?:boolean
+  };
+  type SidebarItemProps = 
+  ComponentBaseProps & {
+   expand?:boolean
+   arrow?:boolean
+  };
 /**
  * Component provides a way to represent a row in the grid system. It is used when we want to display data in the form of rows..
  * ```js
@@ -25,21 +37,46 @@ type RowProps = Margin &
  * @param justify flex justify content
  * @param gap children's gap
  */
-const Sidebar = ({ children, absolute,css, ...props }: RowProps) => {
+const Sidebar = ({ hoverExpand,reduce,open,color,children, absolute,css, ...props }: SidebarProps) => {
   const theme = useTheme();
   const styles = useCSS({
     position:absolute?'absolute':'static',
     display: 'flex',
     width: '100%',
-    ...useMargin(props),
-    ...usePadding(props),
+    color:useThemedProps(theme,color),
     ...useThemedCSS(theme, css),
   });
-  return (
-    <div css={styles} {...props}>
+  return <div css={styles} {...props}>
       {children}
     </div>
-  );
+  
 };
+const SidebarGroup = ({ children,css, ...props }: SidebarGroupProps) => {
+  const theme = useTheme();
+  const styles = useCSS({
 
+    display: 'flex',
+    width: '100%',
+    ...useThemedCSS(theme, css),
+  });
+  return <div css={styles} {...props}>
+      {children}
+    </div>
+  
+};
+const SidebarItem = ({ children,css, ...props }: SidebarItemProps) => {
+  const theme = useTheme();
+  const styles = useCSS({
+
+    display: 'flex',
+    width: '100%',
+    ...useThemedCSS(theme, css),
+  });
+  return <div css={styles} {...props}>
+      {children}
+    </div>
+  
+};
+Sidebar.Item = SidebarItem
+Sidebar.Group = SidebarGroup
 export default Sidebar;

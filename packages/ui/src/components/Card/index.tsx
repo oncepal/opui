@@ -2,7 +2,7 @@
 
 import { ComponentBaseProps, Themed } from '../props';
 import vars from '../../styles/vars';
-import { useThemedCSS, useCSS, useTheme, useThemedProp } from '../../styles/css';
+import { useThemedCSS, useCSS, useTheme, useThemedProps } from '../../styles/css';
 import { Children, DetailedReactHTMLElement, cloneElement } from 'react';
 type CardProps = ComponentBaseProps & {
   color?: Themed<string>;
@@ -35,7 +35,7 @@ const Card = ({ horizontal = false, css, children, color, ...props }: CardProps)
     display: 'flex',
     padding: '1em',
     flexDirection: 'column',
-    background: color ? useThemedProp(theme, color) : theme.colors.white || vars.colors.white,
+    background: color ? useThemedProps(theme, color) : theme.colors.white || vars.colors.white,
     ...useThemedCSS(theme, css),
   });
 

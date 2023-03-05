@@ -5,7 +5,8 @@ export type TagProps = ComponentBaseProps &
   ComponentPropsWithoutRef<'span'> & {
     outlined?: boolean;
     color?: Themed<string>;
-    radius?: number;
+    radius?: Themed<string>;
     hollow?: boolean;
     show?: boolean;
+    rounded?:boolean
   };

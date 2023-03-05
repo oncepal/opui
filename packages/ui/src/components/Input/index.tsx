@@ -2,7 +2,7 @@
 
 import { Theme } from '../../styles/themes';
 import { useState, ReactNode, CSSProperties, useMemo, useEffect } from 'react';
-import { useThemedCSS, useThemedProp, useCSS, useTheme } from '../../styles/css';
+import { useThemedCSS, useThemedProps, useCSS, useTheme } from '../../styles/css';
 import vars from '../../styles/vars';
 import { ComponentBaseProps, Themed } from '../props';
 
@@ -83,14 +83,14 @@ const Input = ({
     display: 'inline-flex',
     alignItems: 'center',
     padding,
-    ...useThemedProp(theme, inputStyle),
+    ...useThemedProps(theme, inputStyle),
   });
 
   const containerStyles = useCSS({
     display: 'inline-flex',
     flexDirection: 'column',
     alignItems: 'start',
-    ...useThemedProp(theme, containerStyle),
+    ...useThemedProps(theme, containerStyle),
   });
 
   const contentStyles = useCSS({
@@ -99,14 +99,14 @@ const Input = ({
     alignItems: 'center',
     backgroundColor: contain ? (theme ? theme.colors.greyLight : vars.colors.greyLight) : 'transparent',
     border: outlined ? `1px solid ${theme ? theme.colors.black : vars.colors.black}` : '',
-    ...useThemedProp(theme, contentStyle),
+    ...useThemedProps(theme, contentStyle),
   });
   const labelStyles = useCSS({
-    ...useThemedProp(theme, labelStyle),
+    ...useThemedProps(theme, labelStyle),
   });
   const prefixStyles = useCSS({
     padding,
-    ...useThemedProp(theme, prefixStyle),
+    ...useThemedProps(theme, prefixStyle),
   });
   const placeholderStyles = useCSS({
     position: 'absolute',
@@ -117,15 +117,15 @@ const Input = ({
     cursor: 'text',
     pointerEvents: 'none',
     opacity: focus ? 0 : 0.4,
-    ...useThemedProp(theme, placeholderStyle),
+    ...useThemedProps(theme, placeholderStyle),
   });
   const suffixStyles = useCSS({
     padding,
-    ...useThemedProp(theme, suffixStyle),
+    ...useThemedProps(theme, suffixStyle),
   });
   const messageStyles = useCSS({
     color: showMessage ? (theme ? theme.colors.red : vars.colors.red) : '',
-    ...useThemedProp(theme, messageStyle),
+    ...useThemedProps(theme, messageStyle),
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
