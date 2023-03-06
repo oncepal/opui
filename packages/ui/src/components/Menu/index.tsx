@@ -4,11 +4,11 @@ import { ReactNode, useEffect, useState } from 'react';
 import { ComponentBaseProps } from '../props';
 import { useCSS, useThemedCSS, useTheme } from '../../styles/css';
 import { throttle } from '../../utils';
-type NavBarItemProps = ComponentBaseProps & {
+type MenuItemProps = ComponentBaseProps & {
   content?: ReactNode;
 };
 
-type NavBarProps = ComponentBaseProps & {
+type MenuProps = ComponentBaseProps & {
   color?: string;
   gap?: string;
   fixed?: boolean;
@@ -19,16 +19,16 @@ let sy = 0;
 /**
  * A responsive navigation header positioned on top side of your page that includes support for branding, links, navigation, collapse and more.
  * ```
- * <NavBar
+ * <Menu
  *    content='content'
  *    extra={</>}>
- * </NavBar>
+ * </Menu>
  * ```
  * @param content bar's and page's content aligned on the center of the bar.
  * @param color bar's background color.
  * @param gap the gap of the content,extra,navIcon
  */
-const NavBar = ({ color, sticky, css, gap, hideOnScroll, children, ...props }: NavBarProps) => {
+const Menu = ({ color, sticky, css, gap, hideOnScroll, children, ...props }: MenuProps) => {
   const [translateY, setTranslateY] = useState(0);
 
   const theme = useTheme();
@@ -76,7 +76,7 @@ const NavBar = ({ color, sticky, css, gap, hideOnScroll, children, ...props }: N
     </nav>
   );
 };
-const NavBarBrand = ({ content, css, children, ...props }: NavBarItemProps) => {
+const MenuGroup = ({ content, css, children, ...props }: MenuItemProps) => {
   const theme = useTheme();
   const styles = useCSS({
     display: 'flex',
@@ -90,21 +90,7 @@ const NavBarBrand = ({ content, css, children, ...props }: NavBarItemProps) => {
     </div>
   );
 };
-const NavBarContent = ({ content, css, children, ...props }: NavBarItemProps) => {
-  const theme = useTheme();
-  const styles = useCSS({
-    display: 'flex',
-    justifyContent: 'center',
-    flex: 1,
-    ...useThemedCSS(theme, css),
-  });
-  return (
-    <div css={styles} {...props}>
-      {children}
-    </div>
-  );
-};
-const NavBarExtra = ({ content, css, children, ...props }: NavBarItemProps) => {
+const MenuItem = ({ content, css, children, ...props }: MenuItemProps) => {
   const theme = useTheme();
   const styles = useCSS({
     flex: 1.5,
@@ -118,7 +104,6 @@ const NavBarExtra = ({ content, css, children, ...props }: NavBarItemProps) => {
   );
 };
 
-NavBar.Brand = NavBarBrand;
-NavBar.Content = NavBarContent;
-NavBar.Extra = NavBarExtra;
-export default NavBar;
+Menu.Group = MenuGroup;
+Menu.Item = MenuItem;
+export default Menu;

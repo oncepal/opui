@@ -1,4 +1,4 @@
-import { Container } from '@sui/core';
+import { Container, Text, Row, Col, Divider } from '@sui/core';
 
 const Footer = () => {
   return (
@@ -9,9 +9,29 @@ const Footer = () => {
       background={theme => {
         console.log('darkMode', theme.darkMode);
 
-        return theme.colors.black;
+        return theme.darkMode ? theme.colors.white : theme.colors.black;
       }}>
-      footer
+      <Row justify='center' pa='3em'>
+        <Col>
+          {' '}
+          <Text
+            size={'2em'}
+            color={theme => {
+              console.log('darkMode', theme.darkMode);
+
+              return theme.darkMode ? theme.colors.black : theme.colors.white;
+            }}>
+            Supported By WebCypher
+          </Text>
+          <Divider my='2em' />
+          <Text
+            color={theme => {
+              return theme.darkMode ? theme.colors.grey : theme.colors.white;
+            }}>
+            Copyright 2023 WebCypher | Privacy Policy
+          </Text>
+        </Col>
+      </Row>
     </Container>
   );
 };

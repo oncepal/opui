@@ -78,10 +78,15 @@ export default function Home() {
     <>
       <Container main pa='5em'>
         <Container section>
-          <Row vertical>
+          <Row vertical justify='start'>
             <Col>
               <Text size={theme => theme.spacing?.[18]} h1 gradient={gradient}>
-                最了解开发者的
+                React开发者的
+              </Text>
+            </Col>
+            <Col>
+              <Text size={theme => theme.spacing?.[18]} h1 gradient={gradient}>
+                最后一个
               </Text>
             </Col>
             <Col>
@@ -91,23 +96,18 @@ export default function Home() {
                 }
                 size={theme => theme.spacing?.[18]}
                 h3>
-                UI 工具库
+                UI组件库
               </Text>
             </Col>
             <Col css={{ maxWidth: '800px' }}>
               <Text pa='1em' px='3em' color='#566171' size={theme => theme.spacing?.[10]} p>
-                基于世界上最流行的框架 React 和现代快速的 CSS 方案
-                Emotion，创造出最美观又实用的组件，并且，组件库的任何地方都可以由你自己改写！
+                基于世界上最流行的前端框架 React 和现代快速的 CSS 方案
+                Emotion，创造出一系列令人惊叹又实用的组件，任何细节都可以完全由你自己控制，轻而易举实现一流设计的 Web
+                页面！
               </Text>
             </Col>
             <Col pa='1em'>
-              <Button
-                // color={theme => theme.colors.black}
-                color={'#0e1012'}
-                rounded
-                gradient='linear-gradient(to right, #fa709a 0%, #fee140 100%)'>
-                Get Started
-              </Button>
+              <Button rounded>Get Started</Button>
             </Col>
           </Row>
         </Container>

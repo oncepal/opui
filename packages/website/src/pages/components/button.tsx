@@ -1,4 +1,4 @@
-import Docs from '@/components/Docs';
+import Docs from '@/components/Document';
 const ButtonDocs = () => {
   return <Docs></Docs>;
 };

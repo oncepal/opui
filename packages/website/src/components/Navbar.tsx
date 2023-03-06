@@ -2,11 +2,11 @@ import Link from 'next/link';
 import { NavBar, Sidebar, Container, Text, Col, Row, Button, Switch, Popover, Tag, Icon } from '@sui/core';
 import github from '../../public/github.svg';
 import discord from '../../public/discord.svg';
-import heart from '../../public/heart.svg'
+import heart from '../../public/heart.svg';
 const navigation = [
-  { title: 'Guide', menus: [{ title: 'intro', link: 'docs/intro' }] },
-  { title: 'Components', link: 'components', menus: [{ title: 'Button', link: 'docs/button' }] },
-  { title: 'Blog', link: 'blog', menus: [] },
+  { title: '指南', link: '/guide/intro', menus: [{ title: 'intro', link: 'docs/intro' }] },
+  { title: '组件', link: '/components/button', menus: [{ title: 'Button', link: 'docs/button' }] },
+  { title: '博客', link: '/blog', menus: [] },
 ];
 const Navbar = ({ darkMode, setDarkMode }) => {
   return (
@@ -36,7 +36,10 @@ const Navbar = ({ darkMode, setDarkMode }) => {
           {navigation.map(v => (
             <Col pa='1em'>
               <Button text>
-                <Text>{v.title}</Text>
+                <Link href={v.link}>
+                  {' '}
+                  <Text>{v.title}</Text>
+                </Link>
               </Button>
             </Col>
           ))}
@@ -44,12 +47,13 @@ const Navbar = ({ darkMode, setDarkMode }) => {
       </NavBar.Content>
       <NavBar.Extra>
         <Row justify='end' align='center' gap='.5em'>
- <Icon src={discord.src} />
-        <Icon src={github.src} />
-        <Switch textOn='暗' textOff='明' on={darkMode} onChange={() => setDarkMode(v => !v)} />
-        <Button color={theme=>theme.darkMode?theme.colors.grey:theme.colors.greyLight}><Icon  color={theme=>theme.colors.red} src={heart.src} /> <Text span>财务捐助</Text></Button>
+          <Icon src={discord.src} />
+          <Icon src={github.src} />
+          <Switch textOn='暗' textOff='明' on={darkMode} onChange={() => setDarkMode(v => !v)} />
+          <Button color={theme => (theme.darkMode ? theme.colors.grey : theme.colors.greyLight)}>
+            <Icon color={theme => theme.colors.red} src={heart.src} /> <Text span>财务捐助</Text>
+          </Button>
         </Row>
-       
       </NavBar.Extra>
     </NavBar>
   );

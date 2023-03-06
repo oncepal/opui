@@ -10,6 +10,7 @@ import Breadcrumbs from './components/Breadcrumbs';
 import Text from './components/Text';
 import Slider from './components/Slider';
 import Cell from './components/Cell';
+import Menu from './components/Menu';
 // import CheckBox from './components/CheckBox';
 // import Radio from './components/Radio';
 // import SortButton from './components/SortButton';
@@ -102,6 +103,7 @@ export {
   Upload,
   Textarea,
   Divider,
+  Menu,
   // Steps,
   Switch,
 };
