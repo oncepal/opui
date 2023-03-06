@@ -111,6 +111,7 @@ const vars = {
     whiteGrey: '#f8f9fe',
     white: '#fff',
     blackBlue: '#38446d',
+    transparent:'rgba(255, 255, 255, 0.05)'
   },
   fontWeights: {
     hairline: 100,

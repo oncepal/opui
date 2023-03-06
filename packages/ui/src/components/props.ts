@@ -5,7 +5,25 @@ import { Theme } from '../styles/themes';
 export type CSS = Parameters<typeof css>;
 export type ColorFormat = 'rgb' | 'rgba' | 'hsl' | 'hsla';
 export type Themed<T> = ((theme: Theme) => T) | T;
-
+export type Colors =  Partial<{
+  title: boolean;
+  desc: boolean;
+  primary: boolean;
+  secondary: boolean;
+  accent: boolean;
+  purple: boolean
+    black: boolean
+    grey: boolean
+    blue: boolean
+    red: boolean
+    green: boolean
+    greyBlue: boolean
+    greyLight: boolean
+    whiteGrey:boolean
+    white: boolean
+    blackBlue: boolean
+    transparent:boolean
+}>
 export type Padding = Partial<{
   pt: string;
   pb: string;

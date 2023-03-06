@@ -43,7 +43,7 @@ const Container = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & C
 
     const styles = useCSS({
       width: w,
-      height: h ? h : fullHeight ? '100%' : 'auto' || 'auto',
+      height: h ? h : fullHeight ? '100%' : ('auto' || 'auto'),
       minHeight: fullScreen ? '100vh' : '',
       background: useThemedProps(theme, background) || (theme.darkMode ? theme.colors.black : theme.colors.white),
       color: theme.darkMode ? theme.colors.white : theme.colors.black,

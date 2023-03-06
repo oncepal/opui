@@ -2,11 +2,15 @@
 
 import { ComponentBaseProps, Themed } from '../props';
 import vars from '../../styles/vars';
-import { useThemedCSS, useCSS, useTheme, useThemedProps } from '../../styles/css';
+import { useThemedCSS, useCSS, useTheme, useThemedProps,useCloudyBackground } from '../../styles/css';
 import { Children, DetailedReactHTMLElement, cloneElement } from 'react';
 type CardProps = ComponentBaseProps & {
   color?: Themed<string>;
+  cloudy?:boolean
   horizontal?: boolean;
+  w?:string
+  h?:string
+  radius?:Themed<string>
 };
 
 type CardImgProps = ComponentBaseProps & {
@@ -28,34 +32,37 @@ type CardActionsProps = ComponentBaseProps & {};
     </Card>
  * ```
  */
-const Card = ({ horizontal = false, css, children, color, ...props }: CardProps) => {
+const Card = ({cloudy,w,h, radius,horizontal = false, css, children, color, ...props }: CardProps) => {
   const theme = useTheme();
 
   const styles = useCSS({
     display: 'flex',
     padding: '1em',
     flexDirection: 'column',
-    background: color ? useThemedProps(theme, color) : theme.colors.white || vars.colors.white,
+    width:w,
+    height:h,
+    borderRadius:useThemedProps(theme,radius),
+    ...cloudy && useCloudyBackground(theme),
     ...useThemedCSS(theme, css),
   });
 
   return (
-    // <article css={styles} {...props}>
-    //   {() => {
-    //     const childElements: DetailedReactHTMLElement<any, HTMLDivElement>[] = [];
-    //     Children.map(children, (child: any, i) => {
-    //       if (['CardImg', 'CardDescription', 'CardTitle', 'CardActions'].includes(child.type.name)) {
-    //         childElements.push(child);
-    //       }
-    //     });
-    //     return childElements.map(element =>
-    //       cloneElement(element, {
-    //         ...{ ...element.props },
-    //       }),
-    //     );
-    //   }  as any}
-    // </article>
-    <></>
+    <article css={styles} {...props}>
+      {(() => {
+        const childElements: DetailedReactHTMLElement<any, HTMLDivElement>[] = [];
+         Children.map(children, (child: any) => {
+          if (['CardImg', 'CardDescription', 'CardTitle', 'CardActions'].includes(child.type.name)) {
+            childElements.push(child);
+          }
+        });
+        return childElements.map(element =>
+          cloneElement(element, {
+            ...{ ...element.props },
+          }),
+        );
+      })() }
+    </article>
+
   );
 };
 
@@ -75,6 +82,7 @@ const CardImg = ({ title, extra, css, children, ...props }: CardImgProps) => {
     </div>
   );
 };
+
 const CardTitle = ({ css, children, ...props }: CardTitleProps) => {
   const theme = useTheme();
   const styles = useCSS({

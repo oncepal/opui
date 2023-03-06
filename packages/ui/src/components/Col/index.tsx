@@ -10,6 +10,8 @@ type ColProps = ComponentBaseProps & {
   rightFloat?: boolean;
   leftText?: boolean;
   rightText?: boolean;
+  w?:string
+  h?:string
 } & Margin &
   Padding;
 
@@ -29,6 +31,7 @@ type ColProps = ComponentBaseProps & {
  * @param rightFloat auto float to right
  */
 const Col = ({
+  w,h,
   children,
   noFlex,
   flex = 'none',
@@ -41,7 +44,9 @@ const Col = ({
 }: ColProps) => {
   const theme = useTheme();
   const styles = useCSS({
-    alignSelf: alignSelf,
+    width:w,
+    height:h,
+    alignSelf,
     textAlign: (leftText && 'left') || (rightText && 'right') || 'center',
     ...useMargin(props),
     ...usePadding(props),

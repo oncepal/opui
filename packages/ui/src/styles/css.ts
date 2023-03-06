@@ -1,15 +1,11 @@
 import { Theme } from './themes';
-import { Flex, Margin, Padding, Position, Themed } from '../components/props';
+import {  Flex, Margin, Padding, Position, Themed,Colors } from '../components/props';
 import { css, CSSObject, useTheme as useEmotionTheme } from '@emotion/react';
-import vars from './vars';
+
 
 export const useTheme = () => useEmotionTheme() as Theme;
 export const useCSS = css;
-type Color = keyof typeof vars.colors;
 
-export function useColor(color: Color, theme: Theme, defaultColor?: string) {
-  return defaultColor || (theme ? theme.colors[color] : vars.colors[color]);
-}
 export function useCenter(): CSSObject {
   return { display: 'flex', alignItems: 'center', justifyContent: 'center' };
 }
@@ -32,6 +28,12 @@ export function useThemedCSS(theme:Theme, target?: Themed<CSSObject>) {
 export function useFlex(props: Flex): CSSObject {
   const { flexItem, flex } = props;
   return { ...(flexItem && { flex: 'none' }), ...(flex && { display: 'flex' }) };
+}
+
+export function useCloudyBackground(theme:Theme){
+  return { backdropFilter: 'saturate(180%) blur(10px)',
+  background: theme.colors.transparent,
+  boxShadow: theme.darkMode ?theme.shadows.md:theme.shadows.lg,}
 }
 
 export function useMargin(props: Margin): CSSObject {

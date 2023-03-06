@@ -10,18 +10,20 @@ const navigation = [
 ];
 const Navbar = ({ darkMode, setDarkMode }) => {
   return (
-    <NavBar
+    <Container sticky header css={theme=>({backdropFilter: 'saturate(180%) blur(10px)',
+    background: 'transparent',
+    boxShadow: theme.shadows.xs})}>
+      
+  <NavBar
       sticky
       hideOnScroll
       css={theme => ({
-        padding: '1em 22vw',
-        backdropFilter: 'saturate(180%) blur(10px)',
-        background: 'transparent',
-        boxShadow: theme.shadows.xs,
+        maxWidth:'1200px',margin:'0 auto',
+        
       })}>
       <NavBar.Brand>
         <Link href={'/'}>
-          <Text span size={'2em'}>
+          <Text blod span size={'2em'}>
             ShitUI
           </Text>
         </Link>
@@ -38,7 +40,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
               <Button text>
                 <Link href={v.link}>
                   {' '}
-                  <Text>{v.title}</Text>
+                  <Text size='1.2rem' blod>{v.title}</Text>
                 </Link>
               </Button>
             </Col>
@@ -56,6 +58,8 @@ const Navbar = ({ darkMode, setDarkMode }) => {
         </Row>
       </NavBar.Extra>
     </NavBar>
+    </Container>
+  
   );
 };
 

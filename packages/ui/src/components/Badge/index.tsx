@@ -3,7 +3,7 @@
 import { Theme } from '../../styles/themes';
 import { ComponentBaseProps, Themed } from '../props';
 
-import { useThemedCSS, useCSS, useTheme, useColor } from '../../styles/css';
+import { useThemedCSS, useCSS, useTheme, useThemedProps } from '../../styles/css';
 import vars from '../../styles/vars';
 import { css } from '@emotion/react';
 import { size, position } from 'polished';
@@ -12,7 +12,7 @@ import { forwardRef, ComponentPropsWithoutRef } from 'react';
 type BadgeProps = ComponentBaseProps & {
   size?: number;
   show?: boolean;
-  color?: string;
+  color?: Themed<string>;
   offsetX?: string | number;
   offsetY?: string | number;
   position?: 'top' | 'left' | 'bottom' | 'right' | 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
@@ -119,8 +119,8 @@ const Badge = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & Badge
       '& > *:first-of-child': {
         borderRadius: vars.radius.rounded,
         visibility: show ? 'visible' : 'hidden',
-        background: useColor('red', theme, color),
-        color: useColor('white', theme),
+        background: useThemedProps(theme,color),
+        color: theme.colors.white,
         lineHeight: `${size}px`,
         minWidth: `${size}px`,
         fontSize: '12px',

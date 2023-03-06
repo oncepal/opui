@@ -7,6 +7,8 @@ import { ComponentBaseProps, Margin, Padding } from '../props';
 type RowProps = Margin &
   Padding &
   ComponentBaseProps & {
+    w?:string
+    h?:string
     vertical?: boolean;
     align?: 'start' | 'center' | 'end' | 'baseline' | 'stretch';
     justify?: 'start' | 'center' | 'end' | 'space-around' | 'space-between';
@@ -30,16 +32,16 @@ type RowProps = Margin &
  * @param justify flex justify content
  * @param gap children's gap
  */
-const Row = ({ children, vertical, wrapped, fullHeight, align, justify, gap, css, ...props }: RowProps) => {
+const Row = ({ children,w,h, vertical, wrapped, fullHeight, align, justify, gap, css, ...props }: RowProps) => {
   const theme = useTheme();
   const styles = useCSS({
     display: 'flex',
-    width: '100%',
+    width: w||'100%',
     ...useMargin(props),
     ...usePadding(props),
     justifyContent: justify || '',
     flexDirection: vertical ? 'column' : 'row',
-    height: fullHeight ? '100%' : 'initial',
+    height: fullHeight ? '100%' : h,
     gap: gap,
     alignItems: align || '',
     ...(vertical ? {} : { flexWrap: wrapped ? 'wrap' : 'nowrap' }),

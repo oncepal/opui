@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 import { ComponentBaseProps } from '../props';
-import { useCSS, useTheme, useThemedCSS } from '../../styles/css';
+import { useCSS, useTheme, useThemedCSS, useThemedProps } from '../../styles/css';
 import { Theme } from '../../styles/themes';
 import vars from '../../styles/vars';
 
@@ -38,7 +38,7 @@ const ToolTip = ({
   className,
   backgroundColor = '#000',
   color = '#fff',
-  width = '60px',
+  width = '70px',
   position = 'right',
   show,
   content,
@@ -56,11 +56,11 @@ const ToolTip = ({
       fontSize: '12px',
       width: width,
       backgroundColor:
-        typeof backgroundColor == 'function' ? (backgroundColor as (theme: Theme) => string)(theme) : backgroundColor,
-      color: typeof color == 'function' ? (color as (theme: Theme) => string)(theme) : color,
+      useThemedProps(theme,backgroundColor)||theme.colors.black,
+      color: useThemedProps(theme,color)||theme.colors.white,
       textAlign: 'center',
       borderRadius: '6px',
-      padding: '5px 0',
+      padding: '5px',
       position: 'absolute',
       ...computedPosition,
       zIndex: 1,
@@ -118,7 +118,7 @@ const ToolTip = ({
       case 'right':
         setComputedPosition({
           top: '-5px',
-          left: '110%',
+          left: '180%',
         });
         setAfterPosition({
           top: '50%',
