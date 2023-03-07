@@ -29,46 +29,10 @@ let sy = 0;
  * @param gap the gap of the content,extra,navIcon
  */
 const Menu = ({ color, sticky, css, gap, hideOnScroll, children, ...props }: MenuProps) => {
-  const [translateY, setTranslateY] = useState(0);
-
   const theme = useTheme();
   const styles = useCSS({
-    padding: '0 10em',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    height: '4em',
-    backgroundColor: color,
-    display: 'flex',
-    position: sticky ? 'sticky' : 'static',
-    top: 0,
-    transition: 'transform .25s ease-out',
-    ...(hideOnScroll && { transform: `translateY(-${translateY}%)` }),
-    gap,
     ...useThemedCSS(theme, css),
   });
-
-  const handleScroll = throttle(() => {
-    if (window.scrollY != sy) {
-      if (window.scrollY > sy) {
-        setTranslateY(100);
-      } else {
-        setTranslateY(0);
-      }
-      sy = window.scrollY;
-    }
-  }, 300);
-
-  useEffect(
-    hideOnScroll
-      ? () => {
-          window.addEventListener('scroll', handleScroll);
-          return () => {
-            window.removeEventListener('scroll', handleScroll);
-          };
-        }
-      : () => {},
-    [],
-  );
 
   return (
     <nav css={styles} {...props}>
@@ -93,14 +57,15 @@ const MenuGroup = ({ content, css, children, ...props }: MenuItemProps) => {
 const MenuItem = ({ content, css, children, ...props }: MenuItemProps) => {
   const theme = useTheme();
   const styles = useCSS({
-    flex: 1.5,
-
+    ':hover': {
+      background: theme.colors.grey,
+    },
     ...useThemedCSS(theme, css),
   });
   return (
-    <div css={styles} {...props}>
+    <li css={styles} {...props}>
       {children}
-    </div>
+    </li>
   );
 };
 

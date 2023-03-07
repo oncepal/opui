@@ -2,7 +2,7 @@
 
 import { jsx } from '@emotion/react';
 import { useMemo, createElement } from 'react';
-import { usePadding, useMargin,useCSS, useTheme, useThemedCSS, useThemedProps } from '../../styles/css';
+import { usePadding, useMargin, useCSS, useTheme, useThemedCSS, useThemedProps } from '../../styles/css';
 
 import vars from '../../styles/vars';
 import { ComponentBaseProps, Margin, Padding, Themed } from '../props';
@@ -51,8 +51,8 @@ const Text = ({
   const theme = useTheme();
   const styles = useCSS({
     fontSize: useThemedProps<string>(theme, size),
-    lineHeight:theme.lineHeights.base,
-    fontWeight: blod ? 700 : thin ? 200 : 500,
+    lineHeight: theme.lineHeights.base,
+    fontWeight: blod ? theme.fontWeights.bold : thin ? theme.fontWeights.thin : theme.fontWeights.normal,
     ...useMargin(props),
     ...usePadding(props),
     textOverflow: maxLength ? 'ellipsis' : undefined,

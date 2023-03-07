@@ -26,7 +26,7 @@ const SegmentItem = ({
     textAlign: 'center',
     color: itemkey == currentKey ? theme.colors.primary : theme.colors.black,
     transition: '.3s all',
-    fontWeight: itemkey == currentKey ? 700 : 500,
+    fontWeight: itemkey == currentKey ? theme.fontWeights.bold : theme.fontWeights.normal,
     ...useThemedCSS(theme, css),
   });
 
