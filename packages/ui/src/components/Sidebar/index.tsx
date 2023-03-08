@@ -23,7 +23,7 @@ type SidebarProps =
    arrow?:boolean
   };
 /**
- * Component provides a way to represent a row in the grid system. It is used when we want to display data in the form of rows..
+ * A sidebar enables app navigation and provides quick access to top-level collections of content in your app or game.
  * ```js
  * <Sidebar>
  *  <Col>left</Col>
