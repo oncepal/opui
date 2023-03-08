@@ -1,21 +1,24 @@
 /** @jsxImportSource @emotion/react */
 
-import { ReactNode, useEffect, useState } from 'react';
+import { ComponentPropsWithoutRef, createContext, ReactNode, useContext, useEffect, useRef, useState } from 'react';
 import { ComponentBaseProps } from '../props';
 import { useCSS, useThemedCSS, useTheme } from '../../styles/css';
 import { throttle } from '../../utils';
 type MenuItemProps = ComponentBaseProps & {
   content?: ReactNode;
 };
-
+type MenuGroupProps = ComponentBaseProps & {
+  color?: string;
+  gap?: string;
+};
 type MenuProps = ComponentBaseProps & {
   color?: string;
   gap?: string;
-  fixed?: boolean;
-  sticky?: boolean;
-  hideOnScroll?: boolean;
 };
-let sy = 0;
+const defaultContext = {
+  currentMenuId: '',
+};
+const MenuContext = createContext(defaultContext);
 /**
  * A responsive navigation header positioned on top side of your page that includes support for branding, links, navigation, collapse and more.
  * ```
@@ -28,20 +31,21 @@ let sy = 0;
  * @param color bar's background color.
  * @param gap the gap of the content,extra,navIcon
  */
-const Menu = ({ color, sticky, css, gap, hideOnScroll, children, ...props }: MenuProps) => {
+const Menu = ({ color, css, gap, children, ...props }: ComponentPropsWithoutRef<'ul'> & MenuProps) => {
   const theme = useTheme();
   const styles = useCSS({
     ...useThemedCSS(theme, css),
   });
-
+  const tabListElement = useRef(defaultContext);
   return (
     <nav css={styles} {...props}>
-      {children}
+      <MenuContext.Provider value={tabListElement.current}>{children}</MenuContext.Provider>
     </nav>
   );
 };
-const MenuGroup = ({ content, css, children, ...props }: MenuItemProps) => {
+const MenuGroup = ({ css, children, ...props }: ComponentPropsWithoutRef<'nav'> & MenuGroupProps) => {
   const theme = useTheme();
+  const menuContext = useContext(MenuContext);
   const styles = useCSS({
     display: 'flex',
     alignItems: 'center',
@@ -56,6 +60,8 @@ const MenuGroup = ({ content, css, children, ...props }: MenuItemProps) => {
 };
 const MenuItem = ({ content, css, children, ...props }: MenuItemProps) => {
   const theme = useTheme();
+
+  const menuContext = useContext(MenuContext);
   const styles = useCSS({
     ':hover': {
       background: theme.colors.grey,

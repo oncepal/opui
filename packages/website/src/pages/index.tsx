@@ -95,6 +95,7 @@ const advantage = [
     desc: '完全Typescript的，最大限度地减少学习曲线，并提供最佳的开发人员体验。',
   },
 ];
+
 export default function Home() {
   return (
     <>
