@@ -25,6 +25,9 @@ export const globalStyles = {
   'ol, ul': {
     listStyle: 'none',
   },
+  'li':{
+    cursor:'pointer'
+  },
   hr: {
     overflow: 'visible',
     height: '0',
