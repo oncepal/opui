@@ -1,4 +1,8 @@
 const vars = {
+  app: {
+    maxWidth: '1600px',
+    minWidtgh: '50vw',
+  },
   borderWeights: {
     light: '1px',
     normal: '2px',
@@ -99,20 +103,20 @@ const vars = {
     '8xl': '6rem' /* 96px */,
     '9xl': '8rem' /* 128px */,
   },
-  opacity:{
-    transparent:0,
-    half:.5,
-    dilute:.7,
-    opaque:1
+  opacity: {
+    transparent: 0,
+    half: 0.5,
+    dilute: 0.7,
+    opaque: 1,
   },
   colors: {
     purple: '#693ff7',
-    purpleDeep:'#311b92',
+    purpleDeep: '#311b92',
     black: '#03060B',
     grey: '#333',
     blue: '#0038c9',
-    purpleLight:'#ede7f6',
-    yellow:'#ffba00',
+    purpleLight: '#ede7f6',
+    yellow: '#ffba00',
     red: '#F31260',
     green: '#46c93a',
     greyDeep: '#212121',
@@ -121,7 +125,7 @@ const vars = {
     whiteGrey: '#f8f9fe',
     white: '#fff',
     blackBlue: '#38446d',
-    transparent:'rgba(255, 255, 255, 0.05)'
+    transparent: 'rgba(255, 255, 255, 0.05)',
   },
   fontWeights: {
     hairline: 100,
@@ -164,6 +168,16 @@ const vars = {
     md: '0 12px 20px 6px rgb(104 112 118 / 0.08);',
     lg: '0 12px 34px 6px rgb(104 112 118 / 0.18);',
     xl: '0 25px 65px 0px rgb(104 112 118 / 0.35);',
+  },
+
+  media: {
+    mobile: '412px',
+    pc: '',
+    motion: '(prefers-reduced-motion)',
+    safari: 'not all and (min-resolution:.001dpcm)',
+    hover: '(any-hover: hover)',
+    dark: '(prefers-color-scheme: dark)',
+    light: '(prefers-color-scheme: light)',
   },
   dropShadows: {
     xs: 'drop-shadow(0 2px 4px rgb(104 112 118 / 0.07)) drop-shadow(0 1px 1px rgb(104 112 118 / 0.04));',

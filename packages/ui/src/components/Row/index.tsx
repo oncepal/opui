@@ -1,14 +1,14 @@
 /** @jsxImportSource @emotion/react */
 
-import { useMargin, usePadding, useCSS, useTheme, useThemedCSS } from '../../styles/css';
+import { useMargin, usePadding, useCSS, useTheme, useThemedCSS, useMobileStyles } from '../../styles/css';
 import { Theme } from '../../styles/themes';
 import { ComponentBaseProps, Margin, Padding } from '../props';
 
 type RowProps = Margin &
   Padding &
   ComponentBaseProps & {
-    w?:string
-    h?:string
+    w?: string;
+    h?: string;
     vertical?: boolean;
     align?: 'start' | 'center' | 'end' | 'baseline' | 'stretch';
     justify?: 'start' | 'center' | 'end' | 'space-around' | 'space-between';
@@ -32,11 +32,11 @@ type RowProps = Margin &
  * @param justify flex justify content
  * @param gap children's gap
  */
-const Row = ({ children,w,h, vertical, wrapped, fullHeight, align, justify, gap, css, ...props }: RowProps) => {
+const Row = ({ children, w, h, vertical, wrapped, fullHeight, align, justify, gap, css, ...props }: RowProps) => {
   const theme = useTheme();
   const styles = useCSS({
     display: 'flex',
-    width: w||'100%',
+    width: w || '100%',
     ...useMargin(props),
     ...usePadding(props),
     justifyContent: justify || '',
@@ -45,6 +45,9 @@ const Row = ({ children,w,h, vertical, wrapped, fullHeight, align, justify, gap,
     gap: gap,
     alignItems: align || '',
     ...(vertical ? {} : { flexWrap: wrapped ? 'wrap' : 'nowrap' }),
+    ...useMobileStyles(theme, {
+      flexDirection: 'column',
+    }),
     ...useThemedCSS(theme, css),
   });
   return (

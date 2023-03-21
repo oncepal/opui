@@ -2,7 +2,7 @@
 
 import { ReactNode, useEffect, useState } from 'react';
 import { ComponentBaseProps } from '../props';
-import { useCSS, useThemedCSS, useTheme } from '../../styles/css';
+import { useCSS, useThemedCSS, useTheme, useMobileStyles } from '../../styles/css';
 import { throttle } from '../../utils';
 type NavBarItemProps = ComponentBaseProps & {
   content?: ReactNode;
@@ -32,19 +32,29 @@ const NavBar = ({ color, sticky, css, gap, hideOnScroll, children, ...props }: N
   const [translateY, setTranslateY] = useState(0);
 
   const theme = useTheme();
-  const styles = useCSS({
+  const containerStyles = useCSS({
     padding: '0 10em',
     alignItems: 'center',
-    justifyContent: 'space-between',
     height: '4em',
     backgroundColor: color,
     display: 'flex',
+    justifyContent: 'center',
     position: sticky ? 'sticky' : 'static',
     top: 0,
     transition: 'transform .25s ease-out',
     ...(hideOnScroll && { transform: `translateY(-${translateY}%)` }),
     gap,
+    ...useMobileStyles(theme, {}),
     ...useThemedCSS(theme, css),
+  });
+  const styles = useCSS({
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: color,
+    display: 'flex',
+    maxWidth: theme.app.maxWidth,
+    minWidth: theme.app.minWidtgh,
+    gap,
   });
 
   const handleScroll = throttle(() => {
@@ -71,11 +81,14 @@ const NavBar = ({ color, sticky, css, gap, hideOnScroll, children, ...props }: N
   );
 
   return (
-    <nav css={styles} {...props}>
-      {children}
-    </nav>
+    <header css={containerStyles}>
+      <nav css={styles} {...props}>
+        {children}
+      </nav>
+    </header>
   );
 };
+
 const NavBarBrand = ({ content, css, children, ...props }: NavBarItemProps) => {
   const theme = useTheme();
   const styles = useCSS({
