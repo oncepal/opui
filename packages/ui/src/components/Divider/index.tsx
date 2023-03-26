@@ -58,7 +58,7 @@ const Divider = ({
             justifyContent: 'center',
 
             borderTop: `${size}px ${dashed ? 'dashed' : 'solid'}  ${
-              color || (theme ? theme.colors.greyLight : vars.colors.greyLight)
+              color || (theme.darkMode ? theme.colors.greyLight : vars.colors.greyLight)
             }`,
           },
     [size, dashed, color],
@@ -68,21 +68,12 @@ const Divider = ({
     ...useMargin(props),
     ...usePadding(props),
     ...useFlex(props),
-    ...(children && {
-      '& > *': {
-        height: 'fit-content',
-        padding: vertical ? '.5em 0' : '0 .5em',
-        background: vars.colors.white,
-        textAlign: 'center',
-        transform: vertical ? 'translate3d(-50%,50%,0)' : 'translateY(-50%)',
-      },
-    }),
     ...useThemedCSS(theme, css),
   });
   const childrenStyles = useCSS({
     height: 'fit-content',
     padding: vertical ? '.5em 0' : '0 .5em',
-    background: vars.colors.white,
+    background:theme.darkMode?theme.colors.black: theme.colors.white,
     textAlign: 'center',
     transform: vertical ? 'translate3d(-50%,50%,0)' : 'translateY(-50%)',
   });

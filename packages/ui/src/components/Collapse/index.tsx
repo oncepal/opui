@@ -10,7 +10,8 @@ type CollapseProps = ComponentBaseProps & {
   expand: boolean;
   animated?: boolean;
   expandIcon?: ReactNode;
-  content?: ReactNode;
+  title?: ReactNode;
+  subTitle?:ReactNode
   onChange: () => void;
 };
 /**
@@ -22,12 +23,13 @@ type CollapseProps = ComponentBaseProps & {
         </Text>
     </Collapse>
  * ```
- * @param content collapse content
+ * @param title collapse title
+ * @param subTitle collapse subTitle
  * @param animated enable or disable the collapse animation
  * @param expand manage the expand behaivor by prop
  * @param trigger trigger component overide
  */
-const Collapse = ({ content, css, animated = true, expandIcon, expand = false, children,onChange, ...props }:ComponentPropsWithoutRef<'div'>& CollapseProps) => {
+const Collapse = ({ title,subTitle, css, animated = true, expandIcon, expand = false, children,onChange, ...props }:Omit<ComponentPropsWithoutRef<'div'>,'title'> & CollapseProps) => {
   const theme = useTheme();
 
   const handleCollapseClick = ()=>{
@@ -44,17 +46,32 @@ const Collapse = ({ content, css, animated = true, expandIcon, expand = false, c
     });
   };
 
-  const styles = useCSS({
+  const collapseContainerStyles = useCSS({
     display: 'flex',
     alignItems: 'center',
     padding:`${theme.spacing[3]} ${theme.spacing.md}`,
     ...useThemedCSS(theme, css),
   });
+  const collapseStyles = useCSS({
+    display: 'flex',
+    alignItems: 'center',
+    padding:`${theme.spacing[3]} ${theme.spacing.md}`,
+  });
+  const collapseContentStyles = useCSS({
+    display: 'grid',
+    gridTemplateRows:expand?'1fr':'',
 
+    padding:`${theme.spacing[3]} ${theme.spacing.md}`,
+  });
   return (
-    <div css={styles} {...props}>
-      <div onClick={handleCollapseClick}>
-        {content}
+    <div css={collapseContainerStyles} {...props}>
+      <div css={collapseStyles} onClick={handleCollapseClick}>
+        {title&&<div>
+          {title}
+        </div>}
+        {subTitle&&<div>
+          {subTitle}
+        </div>}
         {expandIcon || (
           <Icon
             width='1.2em'
@@ -69,7 +86,7 @@ const Collapse = ({ content, css, animated = true, expandIcon, expand = false, c
           />
         )}
       </div>
-      <div>{children}</div>
+      <div css={collapseContentStyles}>{children}</div>
     </div>
   );
 };

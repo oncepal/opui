@@ -37,7 +37,7 @@ const Col = ({
   flex = 'none',
   rightFloat,
   css,
-  alignSelf = 'center',
+  alignSelf,
   leftText = false,
   rightText = false,
   ...props
