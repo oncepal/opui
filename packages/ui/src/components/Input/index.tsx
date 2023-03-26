@@ -4,9 +4,9 @@ import { Theme } from '../../styles/themes';
 import { useState, ReactNode, CSSProperties, useMemo, useEffect } from 'react';
 import { useThemedCSS, useThemedProps, useCSS, useTheme } from '../../styles/css';
 import vars from '../../styles/vars';
-import { ComponentBaseProps, Themed } from '../props';
+import { ComponentBaseProps, Themed, ThemedCSS } from '../props';
 
-type InputProps = Pick<ComponentBaseProps, 'css'> & {
+type InputProps = ComponentBaseProps & {
   readOnly?: boolean;
   type?: 'number' | 'text' | 'password' | 'tel' | 'email' | 'url';
   clearable?: boolean;
@@ -16,28 +16,30 @@ type InputProps = Pick<ComponentBaseProps, 'css'> & {
   message?: ReactNode;
   closable?: boolean;
   loading?: boolean;
-  borderRadius?: string;
+
   maxLength?: number;
   verify?: (value: string, e: React.ChangeEvent<HTMLInputElement>) => boolean;
   format?: (value: string, e: React.ChangeEvent<HTMLInputElement>) => string;
-  onChange?: (value: string, e: React.ChangeEvent<HTMLInputElement>) => any;
+  onChange: (value: string, e: React.ChangeEvent<HTMLInputElement>) => any;
   prefix?: ReactNode;
   suffix?: ReactNode;
-  value?: any;
+  value: any;
   outlined?: boolean;
   contain?: boolean;
   disabled?: boolean;
   zeroStart?: boolean;
+  rounded?: boolean;
+  radius?:string
   placeholder?: ReactNode;
-  className?: string;
-  placeholderStyle?: Themed<CSSProperties>;
-  containerStyle?: Themed<CSSProperties>;
-  contentStyle?: Themed<CSSProperties>;
-  messageStyle?: Themed<CSSProperties>;
-  labelStyle?: Themed<CSSProperties>;
-  inputStyle?: Themed<CSSProperties>;
-  prefixStyle?: Themed<CSSProperties>;
-  suffixStyle?: Themed<CSSProperties>;
+
+  placeholderStyle?: ThemedCSS;
+  containerStyle?: ThemedCSS;
+  contentStyle?: ThemedCSS;
+  messageStyle?: ThemedCSS;
+  labelStyle?: ThemedCSS;
+  inputStyle?: ThemedCSS;
+  prefixStyle?: ThemedCSS;
+  suffixStyle?: ThemedCSS;
 };
 
 /**
@@ -51,7 +53,9 @@ const Input = ({
   label,
   message,
   closable,
+  rounded,
   loading,
+  radius,
   value,
   placeholder,
   contain,
@@ -77,55 +81,61 @@ const Input = ({
   const [showMessage, setShowMessage] = useState(false);
   const [focus, setFocus] = useState(false);
   const [innerValue, setInnerValue] = useState('');
-  const padding = useMemo(() => (theme ? theme.spacing[2] : vars.spacing[2]), []);
+  const padding = '.5rem 1rem .5rem 1rem'
   const inputStyles = useCSS({
-    position: 'relative',
-    display: 'inline-flex',
-    alignItems: 'center',
     padding,
-    ...useThemedProps(theme, inputStyle),
+    display: 'flex',
+    alignItems: 'center',
+    width:'100%',
+    color:'inherit',
+    ...useThemedCSS(theme, inputStyle)
   });
 
   const containerStyles = useCSS({
-    display: 'inline-flex',
+    display: 'flex',
     flexDirection: 'column',
     alignItems: 'start',
-    ...useThemedProps(theme, containerStyle),
+    ...useThemedCSS(theme, containerStyle),
   });
 
   const contentStyles = useCSS({
     position: 'relative',
     display: 'inline-flex',
+    width:'100%',
     alignItems: 'center',
-    backgroundColor: contain ? (theme ? theme.colors.greyLight : vars.colors.greyLight) : 'transparent',
-    border: outlined ? `1px solid ${theme ? theme.colors.black : vars.colors.black}` : '',
-    ...useThemedProps(theme, contentStyle),
+    backgroundColor: contain ? (theme.darkMode ? theme.colors.darkBackground : theme.colors.background) : 'transparent',
+    border: outlined ? `1px solid ${theme.colors.black}` : '',
+    borderRadius: useThemedProps(theme, radius) || (rounded ? theme.radius.rounded : theme.radius.base),
+    color:theme.darkMode ? theme.colors.white : theme.colors.black,
+    ...useThemedCSS(theme, contentStyle),
   });
   const labelStyles = useCSS({
-    ...useThemedProps(theme, labelStyle),
+    ...useThemedCSS(theme, labelStyle),
   });
   const prefixStyles = useCSS({
-    padding,
-    ...useThemedProps(theme, prefixStyle),
+
+    ...useThemedCSS(theme, prefixStyle),
   });
   const placeholderStyles = useCSS({
     position: 'absolute',
     left: 0,
     padding,
+    
     transition: 'all .25s ease-out',
+    textAlign:'left',
     userSelect: 'none',
     cursor: 'text',
     pointerEvents: 'none',
     opacity: focus ? 0 : 0.4,
-    ...useThemedProps(theme, placeholderStyle),
+    ...useThemedCSS(theme, placeholderStyle),
   });
   const suffixStyles = useCSS({
     padding,
-    ...useThemedProps(theme, suffixStyle),
+    ...useThemedCSS(theme, suffixStyle),
   });
   const messageStyles = useCSS({
     color: showMessage ? (theme ? theme.colors.red : vars.colors.red) : '',
-    ...useThemedProps(theme, messageStyle),
+    ...useThemedCSS(theme, messageStyle),
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -168,8 +178,9 @@ const Input = ({
       {label && <div css={labelStyles}>{label}</div>}
       <div css={contentStyles}>
         {prefix && <div css={prefixStyles}>{prefix}</div>}
-        <div css={inputStyles}>
+          <div css={inputStyles}>
           <input
+          style={{width:'100%'}}
             onBlur={() => {
               innerValue.length == 0 && setFocus(false);
             }}
@@ -180,8 +191,10 @@ const Input = ({
             disabled={disabled}
             readOnly={readOnly}
           />
-          {placeholder && <div css={placeholderStyles}>{placeholder}</div>}
-        </div>
+          {placeholder && !value && <span css={placeholderStyles}>{placeholder}</span>}
+          </div>
+         
+
 
         {(suffix || showClose) && (
           <div

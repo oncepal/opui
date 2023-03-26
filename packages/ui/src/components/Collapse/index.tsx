@@ -1,26 +1,18 @@
 /** @jsxImportSource @emotion/react */
 
-import {Children, cloneElement, DetailedReactHTMLElement, ReactNode} from 'react';
+import { Children, cloneElement, ComponentPropsWithoutRef, DetailedReactHTMLElement, ReactNode } from 'react';
 import arrowSVG from '../../icons/arrow-up.svg';
 import { useCSS, useTheme, useThemedCSS } from '../../styles/css';
 import Icon from '../Icon';
 import { ComponentBaseProps } from '../props';
 
 type CollapseProps = ComponentBaseProps & {
-  title?: ReactNode ;
-  subTitle?: ReactNode ;
   expand: boolean;
   animated?: boolean;
+  expandIcon?: ReactNode;
+  content?: ReactNode;
   onChange: () => void;
 };
-type CollapseContentProps = ComponentBaseProps & {
-
-};
-
-type CollapseTriggerProps = ComponentBaseProps & {
-
-};
-
 /**
  * Collapse display a list of high-level options that can expand/collapse to reveal more information.
  * ```js
@@ -30,99 +22,56 @@ type CollapseTriggerProps = ComponentBaseProps & {
         </Text>
     </Collapse>
  * ```
- * @param title collapse title content
+ * @param content collapse content
  * @param animated enable or disable the collapse animation
  * @param expand manage the expand behaivor by prop
  * @param trigger trigger component overide
  */
-const Collapse = ({ title, css,animated = true, expand = false, children, ...props }: CollapseProps) => {
+const Collapse = ({ content, css, animated = true, expandIcon, expand = false, children,onChange, ...props }:ComponentPropsWithoutRef<'div'>& CollapseProps) => {
   const theme = useTheme();
 
-  const handleClickTrigger = () => {
-    props?.onChange?.();
-  };
-
-  const renderTrigger = () => {
-    const trigger = Children.toArray(children).filter((c:any)=>c?.type?.name == 'CollapseTrigger')
-    if (trigger.length >0)
-      return cloneElement(trigger[0] as DetailedReactHTMLElement<any, HTMLElement>, {
-        css: useCSS({
-          marginLeft: 'auto',
-          transformOrigin: '50% 50%',
-          transform: `rotate(${expand ? '0deg' : '180deg'})`,
-        }),
-      });
-    else
-      return <CollapseTrigger>
-      <Icon
-          width='1.2em'
-          height='1.2em'
-          color={theme.colors.black}
-          src={arrowSVG}
-          css={{
-            marginLeft: 'auto',
-            transition: 'transform .1s',
-            transform: `rotate(${expand ? '0deg' : '180deg'})`,
-          }}
-          onClick={handleClickTrigger}
-        />
-      </CollapseTrigger>
-  };
+  const handleCollapseClick = ()=>{
+    onChange?.()
+  }
 
   const handleChildrenRender = () => {
-    return [...Children.map(children, (child: any, i) => {
+    return Children.map(children, (child: any, i) => {
       const element = child as DetailedReactHTMLElement<any, HTMLElement>;
       if (child?.type?.name == 'CollapseContent') {
-        return cloneElement(element, {
-
-        });
+        return cloneElement(element, {});
       }
       return;
-    }),renderTrigger()];
+    });
   };
 
   const styles = useCSS({
     display: 'flex',
     alignItems: 'center',
-    ...useThemedCSS(theme,css)
-  })
+    padding:`${theme.spacing[3]} ${theme.spacing.md}`,
+    ...useThemedCSS(theme, css),
+  });
 
   return (
-
-      <div css={styles} {...props}>
-
-        {handleChildrenRender()}
+    <div css={styles} {...props}>
+      <div onClick={handleCollapseClick}>
+        {content}
+        {expandIcon || (
+          <Icon
+            width='1.2em'
+            height='1.2em'
+            color={theme.colors.black}
+            src={arrowSVG}
+            css={{
+              marginLeft: 'auto',
+              transition: 'transform .1s',
+              transform: `rotate(${expand ? '0deg' : '180deg'})`,
+            }}
+          />
+        )}
       </div>
+      <div>{children}</div>
+    </div>
   );
 };
 
-
-
-const CollapseTrigger = ({children,css,...props}:CollapseContentProps) => {
-  const theme = useTheme()
-  const styles = useCSS({
-    display: 'flex',
-    alignItems: 'center',
-    ...useThemedCSS(theme,css)
-  })
-
-  return <div css={styles} {...props}>
-    {children}
-  </div>
-}
-
-const CollapseContent = ({children,css,...props}:CollapseTriggerProps) => {
-  const theme = useTheme()
-  const styles = useCSS({
-    display: 'flex',
-    alignItems: 'center',
-    ...useThemedCSS(theme,css)
-  })
-
-  return <div css={styles} {...props}>
-    {children}
-  </div>
-}
-Collapse.Content = CollapseContent
-Collapse.Trigger = CollapseTrigger
 export default Collapse;

@@ -24,7 +24,7 @@ type FabProps = ComponentBaseProps &
  *
  * ```
  * <Fab>
-    <Icon src='****' />
+
    </Fab>
  * ```
  * @param position initial position.

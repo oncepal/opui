@@ -17,6 +17,8 @@ type NoticeBarProps = ComponentBaseProps &
     scroll: boolean;
     duration: number;
     delay: number;
+    start?:number
+    end?:number
   }>;
 /**
  * The NoticeBar component, some component libraries are also called Banner, are generally embedded in the area between the Appbar and the main content, and display a fixed notification content or a special prompt, divided into icons, actions and scrollable themes. Information area
@@ -33,9 +35,9 @@ const NoticeBar = ({
   css,
   title,
   content,
-  duration = 10,
+  duration ,
   scroll,
-
+  start,end,
   children,
   ...props
 }: NoticeBarProps) => {
@@ -60,21 +62,21 @@ const NoticeBar = ({
   const renderContent = () => {
     if (children) {
       return scroll ? (
-        <article style={{ overflow: 'hidden', margin: `0em ${action ? '0.5em' : '0'} 0 ${icon ? '0.5em' : '0'}` }}>
+        <div style={{ width:'100%', overflow: 'hidden', margin: `0em ${action ? '0.5em' : '0'} 0 ${icon ? '0.5em' : '0'}` }}>
           <div
             css={useCSS({
               animation: `${keyframes({
                 '0%': {
-                  transform: 'translateX(200%)',
+                  transform: `translateX(${start ||100}%)`,
                 },
                 '100%': {
-                  transform: 'translateX(-250%)',
+                  transform:  `translateX(${end ||-100}%)`,
                 },
-              })} ${duration}s linear infinite`,
+              })} ${duration || 10}s linear infinite`,
             })}>
             {children}
           </div>
-        </article>
+        </div>
       ) : (
         children
       );

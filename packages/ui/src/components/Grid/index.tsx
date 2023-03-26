@@ -10,7 +10,7 @@ type GridProps = ComponentBaseProps & {
 };
 
 type GridItemProps = ComponentBaseProps & {
-  span: string;
+  span?: string;
 };
 
 /**
@@ -26,8 +26,8 @@ type GridItemProps = ComponentBaseProps & {
  * @param columns a row can contain how much item
  * @param gap grid gap with row & col
  */
-const Grid = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & GridProps>(
-  ({ columns, rowGap, colGap, css, children, ...props }, ref) => {
+const Grid = 
+  ({ columns, rowGap, colGap, css, children, ...props }:ComponentPropsWithoutRef<'div'> & GridProps) => {
     const theme = useTheme();
     const styles = useCSS({
       display: 'grid',
@@ -39,7 +39,7 @@ const Grid = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & GridPr
     });
 
     return (
-      <div ref={ref} css={styles} {...props}>
+      <div css={styles} {...props}>
         {Children.map(children, (child: any, i) => {
           const element = child as DetailedReactHTMLElement<any, HTMLDivElement>;
           if (child.type.name == 'GridItem') {
@@ -55,24 +55,24 @@ const Grid = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & GridPr
         })}
       </div>
     );
-  },
-);
+  }
 
-const GridItem = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & GridItemProps>(
-  ({ span, css, children, ...props }, ref) => {
+
+const GridItem = 
+  ({ span, css, children, ...props }:ComponentPropsWithoutRef<'div'> & GridItemProps) => {
     const theme = useTheme();
     const styles = useCSS({
-      gridColumnEnd: 'span ' + span,
+      gridColumnEnd: 'span ' + (span||1),
       ...useThemedCSS(theme, css),
     });
 
     return (
-      <div ref={ref} css={styles} {...props}>
+      <div  css={styles} {...props}>
         {children}
       </div>
     );
-  },
-);
+  }
 
-(Grid as any).Item = GridItem;
+
+Grid.Item = GridItem;
 export default Grid;

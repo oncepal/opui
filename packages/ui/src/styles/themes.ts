@@ -26,6 +26,8 @@ type Theme = {
       primary: string;
       secondary: string;
       accent: string;
+      darkBackground:string
+      background:string
       primaryDeep: string;
     } & typeof vars.colors
   >;
@@ -36,6 +38,8 @@ const theme: Theme = {
   app: vars.app,
   colors: {
     appBackground: vars.colors.whiteGrey,
+    darkBackground:vars.colors.greyDeep,
+    background:vars.colors.greyLight,
     title: vars.colors.blackBlue,
     desc: vars.colors.greyLight,
     error: vars.colors.red,
