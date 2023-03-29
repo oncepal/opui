@@ -55,6 +55,7 @@ const Collapse = ({ title,subTitle, css, animated = true, expandIcon, expand = f
   const collapseStyles = useCSS({
     display: 'flex',
     alignItems: 'center',
+    cursor:'pointer',
     padding:`${theme.spacing[3]} ${theme.spacing.md}`,
   });
   const collapseContentStyles = useCSS({
