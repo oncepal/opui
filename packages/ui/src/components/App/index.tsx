@@ -5,6 +5,7 @@ import { theme as defaultTheme, Theme } from '../../styles/themes';
 import { addCSSLink, deepMerge } from '../../utils';
 
 type AppProps = {
+  noUseIcon?: boolean;
   children?: React.ReactNode;
   theme?: Partial<Theme>;
 };
@@ -17,11 +18,13 @@ type AppProps = {
  * but the components themselves are also designed to be able to be used independently of the app.
  * apps should only be rendered once in your application.
  */
-export default function App({ children, theme }: AppProps) {
-  const [cssLink, setCssLink] = useState('https://unpkg.com/boxicons@latest/css/boxicons.min.css');
-  useLayoutEffect(() => {
-    addCSSLink(cssLink);
-  }, [cssLink]);
+export default function App({ children, theme, noUseIcon = false }: AppProps) {
+  if (!noUseIcon) {
+    const [cssLink, setCssLink] = useState('https://unpkg.com/boxicons@latest/css/boxicons.min.css');
+    useLayoutEffect(() => {
+      addCSSLink(cssLink);
+    }, [cssLink]);
+  }
   return (
     <ThemeProvider
       theme={old => {

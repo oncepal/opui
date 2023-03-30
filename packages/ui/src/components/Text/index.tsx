@@ -96,10 +96,8 @@ const Text = ({
       ...props,
     },
     maxLength
-      ? typeof children == 'string'
-        ? children.length > maxLength
-          ? children.substring(0, maxLength) + ellipsis
-          : children
+      ? (children + '').length > maxLength
+        ? (children + '').substring(0, maxLength) + ellipsis
         : children
       : children,
   );

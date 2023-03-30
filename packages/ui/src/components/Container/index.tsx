@@ -16,6 +16,7 @@ type ContainerProps = ComponentBaseProps &
     gradient?: string;
     article?: boolean;
     nav?: boolean;
+    inline?: boolean;
     w?: string;
     h?: string;
     radius?: Themed<string>;
@@ -41,12 +42,26 @@ type ContainerProps = ComponentBaseProps &
 
 const Container = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & ContainerProps>(
   (
-    { w, h, radius, gradient, background, fullHeight = false, fullScreen = false, css, children, onClick, ...props },
+    {
+      w,
+      h,
+      inline,
+      radius,
+      gradient,
+      background,
+      fullHeight = false,
+      fullScreen = false,
+      css,
+      children,
+      onClick,
+      ...props
+    },
     ref,
   ) => {
     const theme = useTheme();
 
     const styles = useCSS({
+      display: inline ? 'inlen-flex' : 'block',
       borderRadius: useThemedProps(theme, radius),
       width: w,
       height: h ? h : fullHeight ? '100%' : 'auto' || 'auto',

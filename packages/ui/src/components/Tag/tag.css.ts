@@ -9,7 +9,6 @@ export const getStyles = (props: TagProps) => {
   return useCSS({
     position: 'relative',
     display: show ? 'inline-flex' : 'none',
-    lineHeight: theme.lineHeights.base,
     alignItems: 'center',
     justifyContent: 'center',
     width: 'fit-content',

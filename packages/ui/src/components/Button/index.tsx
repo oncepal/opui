@@ -64,7 +64,7 @@ const Button = ({
     display: block ? 'flex' : 'inline-flex',
     gap: theme.spacing[3],
     minWidth: block ? '100%' : '',
-    lineHeight: theme.lineHeights.base,
+    lineHeight: theme.lineHeights.sm,
     fontWeight: theme.fontWeights.medium,
     alignItems: 'center',
     width: icon ? theme.spacing.xl : '',

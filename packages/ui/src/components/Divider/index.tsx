@@ -1,20 +1,19 @@
 /** @jsxImportSource @emotion/react */
 
-import { Theme } from '../../styles/themes';
 import { ReactNode } from 'react';
-import { ComponentBaseProps, Flex, Margin, Padding } from '../props';
+import { ComponentBaseProps, Flex, Margin, Padding, Themed } from '../props';
 import { useMemo } from 'react';
 import vars from '../../styles/vars';
-import { usePadding, useMargin, useFlex, useCSS, useTheme, useThemedCSS } from '../../styles/css';
+import { usePadding, useMargin, useFlex, useCSS, useTheme, useThemedCSS, useThemedProps } from '../../styles/css';
 
 type DividerProps = ComponentBaseProps &
   Margin &
   Padding &
   Flex &
   Partial<{
-    size: number;
+    size: Themed<string>;
     vertical: boolean;
-    color: string;
+    color: Themed<string>;
     dashed: boolean;
     text: ReactNode;
   }>;
@@ -32,7 +31,7 @@ type DividerProps = ComponentBaseProps &
  */
 const Divider = ({
   text,
-  size = 1,
+  size = '1px',
   vertical = false,
   dashed = false,
   color,
@@ -42,27 +41,25 @@ const Divider = ({
 }: DividerProps) => {
   const theme = useTheme();
   // Use border properties in different positions to easily and concisely simulate dividing lines
-  const borderStyles = useMemo(
-    () =>
-      vertical
-        ? {
-            display: 'inline-flex',
-            justifyContent: 'center',
-            borderLeft: `${size}px ${dashed ? 'dashed' : 'solid'}  ${
-              color || (theme ? theme.colors.greyLight : vars.colors.greyLight)
-            }`,
-          }
-        : {
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'center',
+  const borderStyles = vertical
+    ? {
+        display: 'inline-flex',
+        justifyContent: 'center',
+        borderLeft: `${useThemedProps(theme, size)} ${dashed ? 'dashed' : 'solid'} ${
+          useThemedProps(theme, color) || theme.colors.greyLight
+        }
+        `,
+        height: useThemedProps(theme, size),
+      }
+    : {
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        borderTop: `${useThemedProps(theme, size)} ${dashed ? 'dashed' : 'solid'} ${
+          useThemedProps(theme, color) || theme.colors.greyLight
+        }`,
+      };
 
-            borderTop: `${size}px ${dashed ? 'dashed' : 'solid'}  ${
-              color || (theme.darkMode ? theme.colors.greyLight : vars.colors.greyLight)
-            }`,
-          },
-    [size, dashed, color],
-  );
   const dividerStyles = useCSS({
     ...borderStyles,
     ...useMargin(props),
@@ -73,7 +70,7 @@ const Divider = ({
   const childrenStyles = useCSS({
     height: 'fit-content',
     padding: vertical ? '.5em 0' : '0 .5em',
-    background:theme.darkMode?theme.colors.black: theme.colors.white,
+    background: theme.darkMode ? theme.colors.black : theme.colors.white,
     textAlign: 'center',
     transform: vertical ? 'translate3d(-50%,50%,0)' : 'translateY(-50%)',
   });
