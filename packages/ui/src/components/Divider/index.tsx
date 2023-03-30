@@ -40,13 +40,12 @@ const Divider = ({
   ...props
 }: DividerProps) => {
   const theme = useTheme();
-  // Use border properties in different positions to easily and concisely simulate dividing lines
   const borderStyles = vertical
     ? {
         display: 'inline-flex',
         justifyContent: 'center',
         borderLeft: `${useThemedProps(theme, size)} ${dashed ? 'dashed' : 'solid'} ${
-          useThemedProps(theme, color) || theme.colors.greyLight
+          useThemedProps(theme, color) || (theme.darkMode ? theme.colors.greyDeep : theme.colors.greyLight)
         }
         `,
         height: useThemedProps(theme, size),
@@ -56,7 +55,7 @@ const Divider = ({
         display: 'flex',
         justifyContent: 'center',
         borderTop: `${useThemedProps(theme, size)} ${dashed ? 'dashed' : 'solid'} ${
-          useThemedProps(theme, color) || theme.colors.greyLight
+          useThemedProps(theme, color) || (theme.darkMode ? theme.colors.greyDeep : theme.colors.greyLight)
         }`,
       };
 

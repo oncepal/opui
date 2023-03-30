@@ -3,14 +3,16 @@
 import { Theme } from '../../styles/themes';
 import vars from '../../styles/vars';
 import { useMemo } from 'react';
-import { ComponentBaseProps } from '../props';
-import { useThemedCSS, useTheme, useCSS } from '../../styles/css';
+import { ComponentBaseProps, Themed } from '../props';
+import { useThemedCSS, useTheme, useCSS, useThemedProps } from '../../styles/css';
 
 type LinkProps = ComponentBaseProps & {
-  indicatorColor?: string;
+  indicatorColor?: Themed<string>;
+  primary?: boolean;
   indicatorSize?: string;
   indicatorAction?: 'always' | 'none' | 'hover';
-  textColor?: string;
+  noIndicator?: boolean;
+  textColor?: Themed<string>;
   external?: boolean;
   disabled?: boolean;
   backTop?: boolean;
@@ -42,8 +44,10 @@ type LinkProps = ComponentBaseProps & {
 const Link = ({
   disabled,
   indicatorColor,
+  noIndicator,
   indicatorAction = 'always',
   textColor,
+  primary,
   external = false,
   to,
   indicatorSize = '1px',
@@ -53,28 +57,34 @@ const Link = ({
   ...props
 }: LinkProps) => {
   const theme = useTheme();
-  const memoedIndicatorStyles = useMemo(
-    () =>
-      indicatorAction == 'always'
-        ? {
-            borderBottom: `${indicatorSize} solid 
-        ${indicatorColor || (theme ? theme.colors.black : vars.colors.black)}`,
-          }
-        : indicatorAction == 'hover'
-        ? {
-            ':hover': {
-              borderBottom: `${indicatorSize} solid 
-        ${indicatorColor || (theme ? theme.colors.black : vars.colors.black)}`,
-            },
-          }
-        : {},
-    [indicatorSize, indicatorColor, indicatorAction],
-  );
+  const indicatorStyles = noIndicator
+    ? {}
+    : indicatorAction == 'always'
+    ? {
+        borderBottom: `${indicatorSize} solid 
+  ${
+    useThemedProps(theme, indicatorColor) ||
+    (primary ? theme.colors.primary : theme.darkMode ? theme.colors.white : vars.colors.black)
+  }`,
+      }
+    : indicatorAction == 'hover'
+    ? {
+        ':hover': {
+          borderBottom: `${indicatorSize} solid 
+  ${
+    useThemedProps(theme, indicatorColor) ||
+    (primary ? theme.colors.primary : theme.darkMode ? theme.colors.white : vars.colors.black)
+  }`,
+        },
+      }
+    : {};
 
   const styles = useCSS({
     cursor: !disabled ? 'pointer' : 'initial',
-    color: textColor || (theme ? theme.colors.black : vars.colors.black),
-    ...memoedIndicatorStyles,
+    color:
+      useThemedProps(theme, textColor) ||
+      (primary ? theme.colors.primary : theme.darkMode ? theme.colors.white : vars.colors.black),
+    ...indicatorStyles,
     opacity: disabled ? 0.25 : 1,
     ...useThemedCSS(theme, css),
   });

@@ -11,7 +11,7 @@ type CollapseProps = ComponentBaseProps & {
   animated?: boolean;
   expandIcon?: ReactNode;
   title?: ReactNode;
-  subTitle?:ReactNode
+  subTitle?: ReactNode;
   onChange: () => void;
 };
 /**
@@ -29,12 +29,22 @@ type CollapseProps = ComponentBaseProps & {
  * @param expand manage the expand behaivor by prop
  * @param trigger trigger component overide
  */
-const Collapse = ({ title,subTitle, css, animated = true, expandIcon, expand = false, children,onChange, ...props }:Omit<ComponentPropsWithoutRef<'div'>,'title'> & CollapseProps) => {
+const Collapse = ({
+  title,
+  subTitle,
+  css,
+  animated = true,
+  expandIcon,
+  expand = false,
+  children,
+  onChange,
+  ...props
+}: Omit<ComponentPropsWithoutRef<'div'>, 'title'> & CollapseProps) => {
   const theme = useTheme();
 
-  const handleCollapseClick = ()=>{
-    onChange?.()
-  }
+  const handleCollapseClick = () => {
+    onChange?.();
+  };
 
   const handleChildrenRender = () => {
     return Children.map(children, (child: any, i) => {
@@ -47,32 +57,26 @@ const Collapse = ({ title,subTitle, css, animated = true, expandIcon, expand = f
   };
 
   const collapseContainerStyles = useCSS({
-    display: 'flex',
-    alignItems: 'center',
-    padding:`${theme.spacing[3]} ${theme.spacing.md}`,
+    padding: `${theme.spacing[3]} ${theme.spacing.md}`,
+
     ...useThemedCSS(theme, css),
   });
   const collapseStyles = useCSS({
     display: 'flex',
     alignItems: 'center',
-    cursor:'pointer',
-    padding:`${theme.spacing[3]} ${theme.spacing.md}`,
+    cursor: 'pointer',
+    padding: `${theme.spacing[3]} ${theme.spacing.md}`,
   });
   const collapseContentStyles = useCSS({
-    display: 'grid',
-    gridTemplateRows:expand?'1fr':'',
-
-    padding:`${theme.spacing[3]} ${theme.spacing.md}`,
+    height: expand ? '100%' : '0',
+    transition: 'all .25s ease-out 0s',
+    padding: `${theme.spacing[3]} ${theme.spacing.md}`,
   });
   return (
     <div css={collapseContainerStyles} {...props}>
       <div css={collapseStyles} onClick={handleCollapseClick}>
-        {title&&<div>
-          {title}
-        </div>}
-        {subTitle&&<div>
-          {subTitle}
-        </div>}
+        {title && <div>{title}</div>}
+        {subTitle && <div>{subTitle}</div>}
         {expandIcon || (
           <Icon
             width='1.2em'
@@ -81,7 +85,7 @@ const Collapse = ({ title,subTitle, css, animated = true, expandIcon, expand = f
             src={arrowSVG}
             css={{
               marginLeft: 'auto',
-              transition: 'transform .1s',
+              transition: 'transform .25s ease-out',
               transform: `rotate(${expand ? '0deg' : '180deg'})`,
             }}
           />

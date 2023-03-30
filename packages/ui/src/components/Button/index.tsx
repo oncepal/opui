@@ -69,20 +69,19 @@ const Button = ({
     alignItems: 'center',
     width: icon ? theme.spacing.xl : '',
     height: icon ? theme.spacing.xl : '',
-    padding: text || icon ? '' : padding || `${theme.spacing[3]} ${theme.spacing.md}`,
+    padding: text || icon ? padding || '' : padding || `${theme.spacing[3]} ${theme.spacing.md}`,
     border: outlined ? `1px solid ${useThemedProps(theme, color) || theme.colors.primary}` : 'none',
     borderRadius: useThemedProps(theme, radius) || (rounded ? theme.radius.rounded : theme.radius.base),
     color:
-      useThemedProps(theme, color) ||
-      (text || icon || outlined
-        ? theme.colors.primary
+      text || icon || outlined
+        ? useThemedProps(theme, color) || theme.colors.primary
         : gradient
         ? theme.darkMode
           ? theme.colors.white
           : theme.colors.black
         : theme.darkMode
         ? theme.colors.white
-        : theme.colors.white),
+        : theme.colors.white,
     background:
       text || icon || outlined ? 'transparent' : gradient || useThemedProps(theme, color) || theme.colors.primary,
     cursor: disabled ? 'not-allowed' : 'pointer',

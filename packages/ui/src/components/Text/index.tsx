@@ -28,6 +28,9 @@ type TextProps = ComponentBaseProps &
     i: boolean;
     white: boolean;
     grey: boolean;
+    left: boolean;
+    center: boolean;
+    right: boolean;
   }> &
   Margin &
   Padding;
@@ -44,6 +47,9 @@ const Text = ({
   blod = false,
   gradient,
   ellipsis = '...',
+  left,
+  center,
+  right,
   color,
   children,
   css,
@@ -54,7 +60,7 @@ const Text = ({
     fontSize: useThemedProps<string>(theme, size),
     lineHeight: theme.lineHeights.base,
     fontWeight: blod ? theme.fontWeights.bold : thin ? theme.fontWeights.thin : theme.fontWeights.normal,
-
+    textAlign: left ? 'left' : center ? 'center' : right ? 'right' : 'left',
     textOverflow: maxLength ? 'ellipsis' : undefined,
     whiteSpace: maxLength ? 'nowrap' : undefined,
     overflow: maxLength ? 'hidden' : undefined,

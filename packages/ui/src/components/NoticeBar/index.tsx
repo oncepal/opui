@@ -37,7 +37,7 @@ const NoticeBar = ({
   content,
   duration,
   scroll,
-  start,
+  start = 100,
   end,
   children,
   ...props
@@ -71,9 +71,10 @@ const NoticeBar = ({
           }}>
           <div
             css={useCSS({
+              width: 'max-content',
               animation: `${keyframes({
                 '0%': {
-                  transform: `translateX(${start || 100}%)`,
+                  transform: `translateX(${start}%)`,
                 },
                 '100%': {
                   transform: `translateX(${end || -100}%)`,
