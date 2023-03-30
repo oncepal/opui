@@ -29,7 +29,7 @@ type InputProps = ComponentBaseProps & {
   disabled?: boolean;
   zeroStart?: boolean;
   rounded?: boolean;
-  radius?:string
+  radius?: string;
   placeholder?: ReactNode;
 
   placeholderStyle?: ThemedCSS;
@@ -81,14 +81,14 @@ const Input = ({
   const [showMessage, setShowMessage] = useState(false);
   const [focus, setFocus] = useState(false);
   const [innerValue, setInnerValue] = useState('');
-  const padding = '.5rem 1rem .5rem 1rem'
+  const padding = '.5rem 1rem .5rem 1rem';
   const inputStyles = useCSS({
     padding,
     display: 'flex',
     alignItems: 'center',
-    width:'100%',
-    color:'inherit',
-    ...useThemedCSS(theme, inputStyle)
+    width: '100%',
+    // color: theme.darkMode ? theme.colors.white : theme.colors.black,
+    ...useThemedCSS(theme, inputStyle),
   });
 
   const containerStyles = useCSS({
@@ -101,28 +101,29 @@ const Input = ({
   const contentStyles = useCSS({
     position: 'relative',
     display: 'inline-flex',
-    width:'100%',
+    width: '100%',
     alignItems: 'center',
     backgroundColor: contain ? (theme.darkMode ? theme.colors.darkBackground : theme.colors.background) : 'transparent',
     border: outlined ? `1px solid ${theme.colors.black}` : '',
     borderRadius: useThemedProps(theme, radius) || (rounded ? theme.radius.rounded : theme.radius.base),
-    color:theme.darkMode ? theme.colors.white : theme.colors.black,
+    color: theme.darkMode ? theme.colors.white : theme.colors.black,
     ...useThemedCSS(theme, contentStyle),
   });
   const labelStyles = useCSS({
     ...useThemedCSS(theme, labelStyle),
   });
   const prefixStyles = useCSS({
-
+    padding,
+    paddingRight: 0,
     ...useThemedCSS(theme, prefixStyle),
   });
   const placeholderStyles = useCSS({
     position: 'absolute',
     left: 0,
     padding,
-    
+
     transition: 'all .25s ease-out',
-    textAlign:'left',
+    textAlign: 'left',
     userSelect: 'none',
     cursor: 'text',
     pointerEvents: 'none',
@@ -131,6 +132,7 @@ const Input = ({
   });
   const suffixStyles = useCSS({
     padding,
+    paddingLeft: 0,
     ...useThemedCSS(theme, suffixStyle),
   });
   const messageStyles = useCSS({
@@ -178,9 +180,9 @@ const Input = ({
       {label && <div css={labelStyles}>{label}</div>}
       <div css={contentStyles}>
         {prefix && <div css={prefixStyles}>{prefix}</div>}
-          <div css={inputStyles}>
+        <div css={inputStyles}>
           <input
-          style={{width:'100%'}}
+            style={{ width: '100%', color: 'inherit' }}
             onBlur={() => {
               innerValue.length == 0 && setFocus(false);
             }}
@@ -192,9 +194,7 @@ const Input = ({
             readOnly={readOnly}
           />
           {placeholder && !value && <span css={placeholderStyles}>{placeholder}</span>}
-          </div>
-         
-
+        </div>
 
         {(suffix || showClose) && (
           <div

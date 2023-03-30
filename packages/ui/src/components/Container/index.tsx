@@ -13,10 +13,12 @@ type ContainerProps = ComponentBaseProps &
     footer?: boolean;
     header?: boolean;
     section?: boolean;
+    gradient?: string;
     article?: boolean;
     nav?: boolean;
     w?: string;
     h?: string;
+    radius?: Themed<string>;
     background?: Themed<string>;
     fullHeight?: boolean;
     fullScreen?: boolean;
@@ -38,14 +40,19 @@ type ContainerProps = ComponentBaseProps &
  */
 
 const Container = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & ContainerProps>(
-  ({ w, h, background, fullHeight = false, fullScreen = false, css, children, onClick, ...props }, ref) => {
+  (
+    { w, h, radius, gradient, background, fullHeight = false, fullScreen = false, css, children, onClick, ...props },
+    ref,
+  ) => {
     const theme = useTheme();
 
     const styles = useCSS({
+      borderRadius: useThemedProps(theme, radius),
       width: w,
-      height: h ? h : fullHeight ? '100%' : ('auto' || 'auto'),
+      height: h ? h : fullHeight ? '100%' : 'auto' || 'auto',
       minHeight: fullScreen ? '100vh' : '',
-      background: useThemedProps(theme, background) || (theme.darkMode ? theme.colors.black : theme.colors.white),
+      background:
+        gradient || useThemedProps(theme, background) || (theme.darkMode ? theme.colors.black : theme.colors.white),
       color: theme.darkMode ? theme.colors.white : theme.colors.black,
       ...useMargin(props),
       ...usePadding(props),

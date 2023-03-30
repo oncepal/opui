@@ -17,8 +17,8 @@ type NoticeBarProps = ComponentBaseProps &
     scroll: boolean;
     duration: number;
     delay: number;
-    start?:number
-    end?:number
+    start?: number;
+    end?: number;
   }>;
 /**
  * The NoticeBar component, some component libraries are also called Banner, are generally embedded in the area between the Appbar and the main content, and display a fixed notification content or a special prompt, divided into icons, actions and scrollable themes. Information area
@@ -35,9 +35,10 @@ const NoticeBar = ({
   css,
   title,
   content,
-  duration ,
+  duration,
   scroll,
-  start,end,
+  start,
+  end,
   children,
   ...props
 }: NoticeBarProps) => {
@@ -47,6 +48,7 @@ const NoticeBar = ({
   const theme = useTheme();
   const styles = useCSS({
     display: 'flex',
+    cursor: 'pointer',
     alignItems: 'center',
     background: !theme.darkMode ? theme.colors.accent : theme.colors.greyLight,
     color: !theme.darkMode ? theme.colors.primary : theme.colors.greyLight,
@@ -62,17 +64,25 @@ const NoticeBar = ({
   const renderContent = () => {
     if (children) {
       return scroll ? (
-        <div style={{ width:'100%', overflow: 'hidden', margin: `0em ${action ? '0.5em' : '0'} 0 ${icon ? '0.5em' : '0'}` }}>
+        <div
+          style={{
+            width: '100%',
+            overflow: 'hidden',
+            margin: `0em ${action ? '0.5em' : '0'} 0 ${icon ? '0.5em' : '0'}`,
+          }}>
           <div
             css={useCSS({
               animation: `${keyframes({
                 '0%': {
-                  transform: `translateX(${start ||100}%)`,
+                  transform: `translateX(${start || 100}%)`,
                 },
                 '100%': {
-                  transform:  `translateX(${end ||-100}%)`,
+                  transform: `translateX(${end || -100}%)`,
                 },
               })} ${duration || 10}s linear infinite`,
+              ':hover': {
+                animationPlayState: 'paused',
+              },
             })}>
             {children}
           </div>

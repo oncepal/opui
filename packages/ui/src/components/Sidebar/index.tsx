@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
-import { Children, cloneElement, createContext, ReactNode, useContext, useRef } from 'react';
+import { Children, cloneElement, ComponentPropsWithoutRef, createContext, ReactNode, useContext, useRef } from 'react';
 import { useMargin, usePadding, useCSS, useTheme, useThemedCSS, useThemedProps, usePosition } from '../../styles/css';
 import { ComponentBaseProps, Margin, Padding, Position, Themed } from '../props';
 
@@ -47,7 +47,7 @@ const Sidebar = ({
   children,
   css,
   ...props
-}: SidebarProps) => {
+}: Omit<ComponentPropsWithoutRef<'ul'>, 'color'> & SidebarProps) => {
   const context = useRef({ onSelect });
   const theme = useTheme();
   const styles = useCSS({

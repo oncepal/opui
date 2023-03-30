@@ -1,17 +1,21 @@
 /** @jsxImportSource @emotion/react */
 
-import { ComponentBaseProps, Themed } from '../props';
-import { useThemedCSS, useCSS, useTheme } from '../../styles/css';
+import { ComponentBaseProps, Margin, Padding, Themed } from '../props';
+import { useThemedCSS, useCSS, useTheme, useMargin, usePadding } from '../../styles/css';
 import { forwardRef, ComponentPropsWithoutRef, Children, cloneElement, DetailedReactHTMLElement } from 'react';
-type GridProps = ComponentBaseProps & {
-  columns?: number;
-  rowGap?: string;
-  colGap?: string;
-};
+type GridProps = ComponentBaseProps &
+  Padding &
+  Margin & {
+    columns?: number;
+    rowGap?: string;
+    colGap?: string;
+  };
 
-type GridItemProps = ComponentBaseProps & {
-  span?: string;
-};
+type GridItemProps = ComponentBaseProps &
+  Padding &
+  Margin & {
+    span?: string;
+  };
 
 /**
  * The responsive layout grid adapts to screen size and orientation, ensuring consistency across layouts.
@@ -26,53 +30,53 @@ type GridItemProps = ComponentBaseProps & {
  * @param columns a row can contain how much item
  * @param gap grid gap with row & col
  */
-const Grid = 
-  ({ columns, rowGap, colGap, css, children, ...props }:ComponentPropsWithoutRef<'div'> & GridProps) => {
-    const theme = useTheme();
-    const styles = useCSS({
-      display: 'grid',
-      gridTemplateColumns: `repeat(${columns}, 1fr)`,
-      gridAutoRows: '1fr',
-      gridColumnGap: colGap,
-      gridRowGap: rowGap,
-      ...useThemedCSS(theme, css),
-    });
+const Grid = ({ columns, rowGap, colGap, css, children, ...props }: ComponentPropsWithoutRef<'div'> & GridProps) => {
+  const theme = useTheme();
+  const styles = useCSS({
+    display: 'grid',
+    gridTemplateColumns: `repeat(${columns}, 1fr)`,
+    gridAutoRows: '1fr',
+    gridColumnGap: colGap,
+    gridRowGap: rowGap,
+    ...useMargin(props),
+    ...usePadding(props),
+    ...useThemedCSS(theme, css),
+  });
 
-    return (
-      <div css={styles} {...props}>
-        {Children.map(children, (child: any, i) => {
-          const element = child as DetailedReactHTMLElement<any, HTMLDivElement>;
-          if (child.type.name == 'GridItem') {
-            return (
-              <>
-                {cloneElement(element, {
-                  ...{ ...element.props },
-                })}
-              </>
-            );
-          }
-          return undefined;
-        })}
-      </div>
-    );
-  }
+  return (
+    <div css={styles} {...props}>
+      {Children.map(children, (child: any, i) => {
+        const element = child as DetailedReactHTMLElement<any, HTMLDivElement>;
+        if (child.type.name == 'GridItem') {
+          return (
+            <>
+              {cloneElement(element, {
+                ...{ ...element.props },
+              })}
+            </>
+          );
+        }
+        return undefined;
+      })}
+    </div>
+  );
+};
 
+const GridItem = ({ span, css, children, ...props }: ComponentPropsWithoutRef<'div'> & GridItemProps) => {
+  const theme = useTheme();
+  const styles = useCSS({
+    gridColumnEnd: 'span ' + (span || 1),
+    ...useMargin(props),
+    ...usePadding(props),
+    ...useThemedCSS(theme, css),
+  });
 
-const GridItem = 
-  ({ span, css, children, ...props }:ComponentPropsWithoutRef<'div'> & GridItemProps) => {
-    const theme = useTheme();
-    const styles = useCSS({
-      gridColumnEnd: 'span ' + (span||1),
-      ...useThemedCSS(theme, css),
-    });
-
-    return (
-      <div  css={styles} {...props}>
-        {children}
-      </div>
-    );
-  }
-
+  return (
+    <div css={styles} {...props}>
+      {children}
+    </div>
+  );
+};
 
 Grid.Item = GridItem;
 export default Grid;

@@ -27,6 +27,7 @@ type TextProps = ComponentBaseProps &
     span: boolean;
     i: boolean;
     white: boolean;
+    grey: boolean;
   }> &
   Margin &
   Padding;
@@ -53,19 +54,22 @@ const Text = ({
     fontSize: useThemedProps<string>(theme, size),
     lineHeight: theme.lineHeights.base,
     fontWeight: blod ? theme.fontWeights.bold : thin ? theme.fontWeights.thin : theme.fontWeights.normal,
-    ...useMargin(props),
-    ...usePadding(props),
+
     textOverflow: maxLength ? 'ellipsis' : undefined,
     whiteSpace: maxLength ? 'nowrap' : undefined,
     overflow: maxLength ? 'hidden' : undefined,
+    display: 'inline-flex',
     color: gradient
       ? 'transparent'
       : useThemedProps<string>(theme, color) ||
         (white ? theme.colors.white : theme.darkMode ? theme.colors.white : theme.colors.black),
+
     ...(gradient && {
       backgroundImage: gradient,
       backgroundClip: 'text',
     }),
+    ...useMargin(props),
+    ...usePadding(props),
     ...useThemedCSS(theme, css),
   });
   const getTextElement = () => {
@@ -83,6 +87,7 @@ const Text = ({
     else if (i) return 'i';
     else return 'p';
   };
+  console.log('children', children);
 
   return jsx(
     getTextElement(),
@@ -90,7 +95,13 @@ const Text = ({
       css: styles,
       ...props,
     },
-    maxLength ? (children as string).substring(0, maxLength) + ellipsis : children,
+    maxLength
+      ? typeof children == 'string'
+        ? children.length > maxLength
+          ? children.substring(0, maxLength) + ellipsis
+          : children
+        : children
+      : children,
   );
 };
 

@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
-import { MouseEvent } from 'react';
+import { ComponentPropsWithoutRef, MouseEvent } from 'react';
 import { TagProps } from './tag.props';
 import { getStyles } from './tag.css';
 
@@ -15,8 +15,18 @@ import { getStyles } from './tag.css';
  * @param hollow weather the background hollow out
  * @param radius tag border radius size
  */
-const Tag = ({ outlined = false, show = true,rounded, radius, color, css, children, onClick, ...props }: TagProps) => {
-  const styles = getStyles({ outlined, show, radius, color, css,rounded});
+const Tag = ({
+  outlined = false,
+  show = true,
+  rounded,
+  radius,
+  color,
+  css,
+  children,
+  onClick,
+  ...props
+}: Omit<ComponentPropsWithoutRef<'span'>, 'color'> & TagProps) => {
+  const styles = getStyles({ outlined, show, radius, color, css, rounded });
   const handleClickTag = (e: MouseEvent<HTMLSpanElement>) => {
     e.stopPropagation();
     onClick?.();

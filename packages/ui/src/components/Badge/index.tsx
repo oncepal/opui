@@ -36,7 +36,7 @@ type BadgeProps = ComponentBaseProps & {
  * @param position badge position relative to its children.
  * @param offsetY badge background color
  */
-const Badge = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & BadgeProps>(
+const Badge = forwardRef<HTMLDivElement, Omit<ComponentPropsWithoutRef<'div'>, 'color'> & BadgeProps>(
   (
     {
       size = 14,
@@ -119,7 +119,7 @@ const Badge = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & Badge
       '& > *:first-of-child': {
         borderRadius: vars.radius.rounded,
         visibility: show ? 'visible' : 'hidden',
-        background: useThemedProps(theme,color),
+        background: useThemedProps(theme, color),
         color: theme.colors.white,
         lineHeight: `${size}px`,
         minWidth: `${size}px`,

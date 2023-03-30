@@ -3,17 +3,18 @@ import vars from '../../styles/vars';
 import { TagProps } from './tag.props';
 
 export const getStyles = (props: TagProps) => {
-  const { show, radius, outlined, css, color,rounded } = props;
+  const { show, radius, outlined, css, color, rounded } = props;
   const theme = useTheme();
-  const getComputedColor = () =>
-    useThemedProps(theme, color) || theme.colors.primary;
+  const getComputedColor = () => useThemedProps(theme, color) || theme.colors.primary;
   return useCSS({
     position: 'relative',
     display: show ? 'inline-flex' : 'none',
-    lineHeight:theme.lineHeights.base,
+    lineHeight: theme.lineHeights.base,
     alignItems: 'center',
+    justifyContent: 'center',
+    width: 'fit-content',
     padding: '0.2rem 0.6rem',
-    borderRadius: useThemedProps(theme,radius) || (rounded ? theme.radius.rounded : theme.radius.base),
+    borderRadius: useThemedProps(theme, radius) || (rounded ? theme.radius.rounded : theme.radius.base),
     ...(!outlined
       ? {
           background: getComputedColor(),

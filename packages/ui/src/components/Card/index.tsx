@@ -2,15 +2,15 @@
 
 import { ComponentBaseProps, Themed } from '../props';
 import vars from '../../styles/vars';
-import { useThemedCSS, useCSS, useTheme, useThemedProps,useCloudyBackground } from '../../styles/css';
-import { Children, DetailedReactHTMLElement, cloneElement } from 'react';
+import { useThemedCSS, useCSS, useTheme, useThemedProps, useCloudyBackground } from '../../styles/css';
+import { Children, DetailedReactHTMLElement, cloneElement, ComponentPropsWithoutRef } from 'react';
 type CardProps = ComponentBaseProps & {
   color?: Themed<string>;
-  cloudy?:boolean
+  cloudy?: boolean;
   horizontal?: boolean;
-  w?:string
-  h?:string
-  radius?:Themed<string>
+  w?: string;
+  h?: string;
+  radius?: Themed<string>;
 };
 
 type CardImgProps = ComponentBaseProps & {
@@ -32,17 +32,27 @@ type CardActionsProps = ComponentBaseProps & {};
     </Card>
  * ```
  */
-const Card = ({cloudy,w,h, radius,horizontal = false, css, children, color, ...props }: CardProps) => {
+const Card = ({
+  cloudy,
+  w,
+  h,
+  radius,
+  horizontal = false,
+  css,
+  children,
+  color,
+  ...props
+}: Omit<ComponentPropsWithoutRef<'div'>, 'color'> & CardProps) => {
   const theme = useTheme();
 
   const styles = useCSS({
     display: 'flex',
     padding: '1em',
     flexDirection: 'column',
-    width:w,
-    height:h,
-    borderRadius:useThemedProps(theme,radius),
-    ...cloudy && useCloudyBackground(theme),
+    width: w,
+    height: h,
+    borderRadius: useThemedProps(theme, radius),
+    ...(cloudy && useCloudyBackground(theme)),
     ...useThemedCSS(theme, css),
   });
 
@@ -50,7 +60,7 @@ const Card = ({cloudy,w,h, radius,horizontal = false, css, children, color, ...p
     <article css={styles} {...props}>
       {(() => {
         const childElements: DetailedReactHTMLElement<any, HTMLDivElement>[] = [];
-         Children.map(children, (child: any) => {
+        Children.map(children, (child: any) => {
           if (['CardImg', 'CardDescription', 'CardTitle', 'CardActions'].includes(child.type.name)) {
             childElements.push(child);
           }
@@ -60,9 +70,8 @@ const Card = ({cloudy,w,h, radius,horizontal = false, css, children, color, ...p
             ...{ ...element.props },
           }),
         );
-      })() }
+      })()}
     </article>
-
   );
 };
 
