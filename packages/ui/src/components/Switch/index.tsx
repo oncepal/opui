@@ -148,7 +148,7 @@ const Switch = memo(
 
       '& > .switch-text': {
         position: 'relative',
-
+        lineHeight:theme.lineHeights.xs,
         padding: '5px 5px 5px 25px',
         color: on ? theme.colors.white : theme.colors.black,
         ...useCenter(),

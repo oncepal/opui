@@ -58,7 +58,7 @@ const Text = ({
   const theme = useTheme();
   const styles = useCSS({
     fontSize: useThemedProps<string>(theme, size),
-    lineHeight: theme.lineHeights.base,
+    lineHeight: theme.lineHeights.xs,
     fontWeight: blod ? theme.fontWeights.bold : thin ? theme.fontWeights.thin : theme.fontWeights.normal,
     textAlign: left ? 'left' : center ? 'center' : right ? 'right' : 'left',
     textOverflow: maxLength ? 'ellipsis' : undefined,

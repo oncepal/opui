@@ -99,7 +99,7 @@ const CheckBox = ({
     fontFamily: 'system-ui sans-serif',
     fontSize: '16px',
     fontWeight: 'bold',
-    lineHeight: 1.2,
+    lineHeight: theme.lineHeights.xs,
     display: 'grid',
     gridTemplateColumns: '1em auto',
     gap: '0.5em',

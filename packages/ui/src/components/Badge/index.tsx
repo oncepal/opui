@@ -121,7 +121,7 @@ const Badge = forwardRef<HTMLDivElement, Omit<ComponentPropsWithoutRef<'div'>, '
         visibility: show ? 'visible' : 'hidden',
         background: useThemedProps(theme, color),
         color: theme.colors.white,
-        lineHeight: `${size}px`,
+        lineHeight: `${size || theme.lineHeights.xs}px`,
         minWidth: `${size}px`,
         fontSize: '12px',
         height: `${size}px`,
