@@ -43,7 +43,7 @@ const RadioGroup = ({ disabled = false, onChange, children, value, co, ...props 
           setValue(v);
         },
         uncheck: v => {
-          console.log('uncheck');
+        
         },
         disabled: disabled,
       }}

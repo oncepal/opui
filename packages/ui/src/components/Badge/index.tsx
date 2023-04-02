@@ -129,7 +129,7 @@ const Badge = forwardRef<HTMLDivElement, Omit<ComponentPropsWithoutRef<'div'>, '
         position: 'absolute',
         ...getInset(),
         boxShadow: `0 0 0 1px ${theme.colors.white}`,
-        transition: 'visibility all .3s',
+        transition: 'visibility all .25s',
         ...useThemedCSS(theme, css),
       },
     });

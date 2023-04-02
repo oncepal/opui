@@ -33,7 +33,6 @@ const CheckBoxGroup = ({ disabled = false, onChange, children, value = [], co }:
   if (isValue.length > 0) {
     onChange?.(isValue);
   }
-  console.log('isValue:', isValue);
   return (
     <CheckboxGroupContext.Provider
       value={{

@@ -10,6 +10,7 @@ type ColProps = ComponentBaseProps & {
   rightFloat?: boolean;
   leftText?: boolean;
   rightText?: boolean;
+  
   w?:string
   h?:string
 } & Margin &

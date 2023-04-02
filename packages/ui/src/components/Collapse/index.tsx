@@ -56,15 +56,15 @@ const Collapse = ({
   };
 
   const collapseContainerStyles = useCSS({
-    padding: `${theme.spacing[3]} ${theme.spacing.md}`,
 
-    ...useThemedCSS(theme, css),
+
   });
   const collapseStyles = useCSS({
     display: 'flex',
     alignItems: 'center',
     cursor: 'pointer',
     padding: `${theme.spacing[3]} ${theme.spacing.md}`,
+    ...useThemedCSS(theme, css)
   });
   const collapseContentStyles = useCSS({
     transition: 'grid-template-rows .25s ease-out 0s',

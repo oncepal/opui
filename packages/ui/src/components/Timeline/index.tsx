@@ -39,7 +39,7 @@ const Timeline = ({ children, co, ...props }: TimelineProps & React.ComponentPro
     if (!React.isValidElement(child)) {
       return child;
     }
-    console.log('index:', child);
+
     const props = child.props as TimelineItemProps;
     const icon = props.icon ?? (
       <label className={`la`}>

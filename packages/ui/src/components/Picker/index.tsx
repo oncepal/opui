@@ -152,7 +152,7 @@ const Picker = ({ data = [], onChange, value, children, css, ...props }: PickerP
     );
     onChange?.(
       data.map((v, i) => {
-        console.log('onChange', v);
+  
 
         if (i == index) return v[(max[index] - translateY) / 2];
         return v.filter(v => v.key == value[i])[0];

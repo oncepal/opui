@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import React, { useMemo } from 'react';
-import { useCSS, useTheme, useThemedCSS } from '../../styles/css';
+import { useCSS, useTheme, useThemedCSS,useTransition } from '../../styles/css';
 import { Theme } from '../../styles/themes';
 import { ComponentBaseProps } from '../props';
 
@@ -10,6 +10,7 @@ type PopoverProps = ComponentBaseProps & {
 };
 type PopoverContentProps = ComponentBaseProps & {
   position?: 'top' | 'left' | 'right' | 'bottom';
+  offset?:string
   show?: boolean;
 };
 
@@ -95,7 +96,7 @@ const PopoverTrigger = ({ css, children, ...props }: React.ComponentPropsWithout
 
 const PopoverContent = ({
   show = false,
-
+  offset,
   position = 'bottom',
   css,
   children,
@@ -107,31 +108,31 @@ const PopoverContent = ({
     switch (position) {
       case 'top':
         return {
-          top: 0,
+          top: offset||0,
           transform: 'translate3d(0,-100%,0)',
         };
 
       case 'left':
         return {
-          left: 0,
+          left: offset||0,
           transform: 'translate3d(-100%,0,0)',
         };
 
       case 'bottom':
         return {
-          bottom: 0,
+          bottom: offset || 0,
           transform: 'translate3d(0,100%,0)',
         };
 
       case 'right':
         return {
-          right: 0,
+          right:offset|| 0,
           transform: 'translate3d(100%,0,0)',
         };
 
       default:
         return {
-          bottom: 0,
+          bottom: offset||0,
           transform: 'translate3d(0,100%,0)',
         };
     }
@@ -141,9 +142,15 @@ const PopoverContent = ({
     position: 'absolute',
     ...cp,
     // display: show ? 'block' : 'none',
-    borderRadius: theme.radius.sm,
+    borderRadius: theme.radius.xs,
+    padding:`${theme.spacing.xs} ${theme.spacing.md}`,
+    lineHeight:theme.lineHeights.base,
+    width:'max-content',
+    background:theme.darkMode?theme.colors.darkBackground:theme.colors.black,
+    color:theme.colors.white,
     visibility: show ? 'visible' : 'hidden',
-    transition: 'all .25s ease-out',
+    ...useTransition(),
+
     ...useThemedCSS(theme, css),
   });
 

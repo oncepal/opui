@@ -48,7 +48,7 @@ const Text = ({
   gradient,
   ellipsis = '...',
   left,
-  center,
+  center,grey,
   right,
   color,
   children,
@@ -68,7 +68,7 @@ const Text = ({
     color: gradient
       ? 'transparent'
       : useThemedProps<string>(theme, color) ||
-        (white ? theme.colors.white : theme.darkMode ? theme.colors.white : theme.colors.black),
+        (white ? theme.colors.white :  grey?theme.colors.grey:   theme.darkMode ? theme.colors.white : theme.colors.black),
 
     ...(gradient && {
       backgroundImage: gradient,
@@ -93,7 +93,7 @@ const Text = ({
     else if (i) return 'i';
     else return 'p';
   };
-  console.log('children', children);
+
 
   return jsx(
     getTextElement(),

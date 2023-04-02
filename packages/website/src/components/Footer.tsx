@@ -7,7 +7,7 @@ const Footer = () => {
       w='100%'
       h='15em'
       background={theme => {
-        console.log('darkMode', theme.darkMode);
+    
 
         return theme.darkMode ? theme.colors.white : theme.colors.black;
       }}>
@@ -17,7 +17,7 @@ const Footer = () => {
           <Text
             size={'2em'}
             color={theme => {
-              console.log('darkMode', theme.darkMode);
+         
 
               return theme.darkMode ? theme.colors.black : theme.colors.white;
             }}>

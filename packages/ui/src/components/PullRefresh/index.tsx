@@ -93,7 +93,7 @@ const PullRefresh = ({
       onRefresh?.(() => {
         setTimeout(() => {
           setIsRefresh(v => !v);
-          console.log('Refresh', isRefresh);
+         
         }, refreshDelay);
       });
     } else {

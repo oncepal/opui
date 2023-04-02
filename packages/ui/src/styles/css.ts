@@ -34,6 +34,10 @@ export function useThemedCSS(theme: Theme, target?: Themed<CSSObject>) {
   return target && (typeof target == 'function' ? target(theme) : target);
 }
 
+export function useTransition(target?:string){
+  return { transition: 'all .25s'}
+}
+
 export function useFlex(props: Flex): CSSObject {
   const { flexItem, flex } = props;
   return { ...(flexItem && { flex: 'none' }), ...(flex && { display: 'flex' }) };
