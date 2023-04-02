@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
 import { Children, cloneElement, ComponentPropsWithoutRef, DetailedReactHTMLElement, ReactNode } from 'react';
-import arrowSVG from '../../icons/arrow-up.svg';
 import { useCSS, useTheme, useThemedCSS } from '../../styles/css';
 import Icon from '../Icon';
 import { ComponentBaseProps } from '../props';
@@ -68,9 +67,12 @@ const Collapse = ({
     padding: `${theme.spacing[3]} ${theme.spacing.md}`,
   });
   const collapseContentStyles = useCSS({
-    height: expand ? '100%' : '0',
-    transition: 'all .25s ease-out 0s',
-    padding: `${theme.spacing[3]} ${theme.spacing.md}`,
+    transition: 'grid-template-rows .25s ease-out 0s',
+    display:'grid',
+    gridTemplateRows: expand ?'1fr' :'0fr',
+    "& > div":{
+      overflow:'hidden',
+    }
   });
   return (
     <div css={collapseContainerStyles} {...props}>
@@ -78,20 +80,15 @@ const Collapse = ({
         {title && <div>{title}</div>}
         {subTitle && <div>{subTitle}</div>}
         {expandIcon || (
-          <Icon
-            width='1.2em'
-            height='1.2em'
-            color={theme.colors.black}
-            src={arrowSVG}
-            css={{
-              marginLeft: 'auto',
-              transition: 'transform .25s ease-out',
-              transform: `rotate(${expand ? '0deg' : '180deg'})`,
-            }}
-          />
+          <i className='bx bxs-chevron-right' style={{
+            marginLeft: 'auto',
+            transition: 'transform .25s ease-out',
+            transform: `rotate(${expand ? '90deg' : '0deg'})`
+          }}/>
+         
         )}
       </div>
-      <div css={collapseContentStyles}>{children}</div>
+      <div css={collapseContentStyles}><div>{children}</div></div>
     </div>
   );
 };

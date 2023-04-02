@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { NavBar, Sidebar, Container, Text, Col, Row, Button, Switch, Popover, Tag, Icon } from '@sui/core';
+import { NavBar, Sidebar, Container, Text, Col, Row, Button, Switch, Popover, Tag, Svg } from '@sui/core';
 import github from '../../public/github.svg';
 import discord from '../../public/discord.svg';
 import heart from '../../public/heart.svg';
@@ -48,11 +48,11 @@ const Navbar = ({ darkMode, setDarkMode }) => {
       </NavBar.Content>
       <NavBar.Extra>
         <Row justify='end' align='center' gap='.5em'>
-          <Icon src={discord.src} />
-          <Icon src={github.src} />
+          <Svg src={discord.src} />
+          <Svg src={github.src} />
           <Switch textOn='暗' textOff='明' on={darkMode} onChange={() => setDarkMode(v => !v)} />
           <Button color={theme => (theme.darkMode ? theme.colors.grey : theme.colors.greyLight)}>
-            <Icon color={theme => theme.colors.red} src={heart.src} /> <Text span>财务捐助</Text>
+            <Svg color={theme => theme.colors.red} src={heart.src} /> <Text span>财务捐助</Text>
           </Button>
         </Row>
       </NavBar.Extra>

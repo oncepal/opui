@@ -10,23 +10,23 @@ const gradient =
 const advantage = [
   {
     icon: <i style={{ marginTop: '0.2rem', fontSize: '1.5rem' }} className='bx bx-palette'></i>,
-    title: '轻松定制化',
-    desc: '提供了一种自定义默认主题和组件细节的简单方法，您可以更改颜色、字体、断点和您需要的一切。',
+    title: '轻松定制',
+    desc: '提供了一种自定义默认主题和组件细节的简单方法，内置明暗模式，您可以轻松更改组件颜色、字体、布局和您需要的一切。',
   },
   {
     icon: <i style={{ marginTop: '0.2rem', fontSize: '1.5rem' }} className='bx bx-paper-plane'></i>,
-    title: '又快又轻',
-    desc: '基于高性能的Emotion，在运行时避免不必要的样式道具，使其比其他 UI 库具有更高的性能。',
+    title: '现代快速',
+    desc: '基于高性能的Emotion，在运行时避免不必要的样式道具，组件使用现代的样式方案，避免复杂布局和难以调试的问题。',
   },
   {
     icon: <i style={{ marginTop: '0.2rem', fontSize: '1.5rem' }} className='bx bx-sun'></i>,
-    title: '明暗模式',
-    desc: '组件全适配明暗模式，在检测到主题属性变化时自动更改主题。',
+    title: '实用工具',
+    desc: '除了UI，还实现了一些常用的开发工具函数，无须引入额外的类库即可完成大部分前端任务的开发。',
   },
   {
     icon: <i style={{ marginTop: '0.2rem', fontSize: '1.5rem' }} className='bx bx-devices'></i>,
     title: '开发体验拉满',
-    desc: '完全Typescript的，最大限度地减少学习曲线，并提供最佳的开发人员体验。',
+    desc: '完全Typescript开发，提供组件使用时注释，以及多种常用属性缩写，最大限度地减少学习曲线，并提供最佳的开发体验。',
   },
 ];
 
@@ -35,10 +35,10 @@ export default function Home() {
     <>
       <Container main pa='5em'>
         <Container section>
-          <Row vertical justify='start'>
+          <Row vertical justify='center' align='center'>
             <Col>
               <Text blod size={theme => theme.spacing?.[18]} h1 gradient={gradient}>
-                一系列令人惊叹、丰富
+                令人惊叹、丰富
               </Text>
             </Col>
 
@@ -54,12 +54,10 @@ export default function Home() {
               </Text>
             </Col>
             <Col pa='1em' css={{ maxWidth: '800px' }}>
-              <Text px='3em' color={theme => theme.colors.grey} size={theme => theme.spacing?.[10]} p>
-                无论是混合APP，文档页，后台管理系统，还是Web3开发
+              <Text px='3em' center color={theme => theme.colors.grey} size={theme => theme.spacing?.[10]} p>
+                无论是混合APP，官网，文档，还是后台管理系统，各种应用场景，复杂的样式或交互设计，功能都可以轻而易举的实现，基于世界上最流行的前端框架 React 和现代快速的 CSS 方案 Emotion
               </Text>
-              <Text px='3em' color={theme => theme.colors.grey} size={theme => theme.spacing?.[10]} p>
-                各种需求和设计都可以轻而易举的实现，基于世界上最流行的前端框架 React 和现代快速的 CSS 方案 Emotion
-              </Text>
+             
             </Col>
             <Col pa='1em'>
               <Button rounded>Get Started</Button>
@@ -84,7 +82,7 @@ export default function Home() {
             <Row gap='1em' css={{ maxWidth: '1100px', margin: '0 auto' }}>
               {advantage.map(({ icon, title, desc }) => (
                 <Col leftText flex={1}>
-                  <Card h='10rem' cloudy radius={theme => theme.radius.base}>
+                  <Card h='11rem'  cloudy radius={ theme => theme.radius.base} >
                     <Card.Title css={{ margin: '.5rem 0' }}>
                       <Row align='center'>
                         {icon}

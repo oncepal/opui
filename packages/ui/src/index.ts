@@ -19,6 +19,7 @@ import Menu from './components/Menu';
 import Table from './components/Table';
 // import DatePicker from './components/DatePicker';
 import Overlay from './components/Overlay';
+import Svg from './components/Svg';
 import Icon from './components/Icon';
 import Popover from './components/Popover';
 import Button from './components/Button';
@@ -62,10 +63,10 @@ export {
   ToolTip,
   List,
   NavBar,
-  Icon,
+  Svg,
   Cell,
   Link,
-  Drawer,
+  Drawer,Icon,
   // SortButton,
   Input,
   Collapse,

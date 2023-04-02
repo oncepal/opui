@@ -3,42 +3,42 @@
 import { ComponentBaseProps, Margin, Padding, Themed } from '../props';
 import { useThemedCSS, useCSS, useTheme, useMargin, usePadding, useThemedProps } from '../../styles/css';
 import { ComponentPropsWithoutRef } from 'react';
-type IconProps = Omit<ComponentBaseProps,'className'> &
+
+type SvgProps = ComponentBaseProps &
   Margin &
   Padding & {
     width?: string;
     height?: string;
-    size?:Themed<string>
     color?: Themed<string>;
-    type?: string;
-    src?:string
+    src?: string;
     onClick?: () => any;
   };
-const Icon = ({
+const Svg = ({
   width,
   height,
-  color,size,
-  css,src,
-  type,
+  color,
+  css,
+  src,
   onClick,
   ...props
-}: Omit<ComponentPropsWithoutRef<'i'>, 'color'> & IconProps) => {
+}: Omit<ComponentPropsWithoutRef<'div'>, 'color'> & SvgProps) => {
   const theme = useTheme();
   const styles = useCSS({
-    width,
-    height,
-    fontSize:useThemedProps(theme,size),
-    color:useThemedProps(theme,color),
+    display: 'inline-block',
+    width: width || height || theme.spacing[10],
+    height: height || width || theme.spacing[10],
+    backgroundColor: useThemedProps(theme, color) || theme.colors.grey,
+    mask: `url(${src}) no-repeat`,
+    maskSize: '100% 100%',
     ...usePadding(props),
     ...useMargin(props),
     ...useThemedCSS(theme, css),
   });
 
-  const handleClickIcon = () => {
+  const handleClickSvg = () => {
     onClick?.();
-  }; 
-  
-  return <i css={styles}  className={type} onClick={handleClickIcon} {...props} />
+  };
+  return <div css={styles} onClick={handleClickSvg} {...props} />;
 };
 
-export default Icon;
+export default Svg;
