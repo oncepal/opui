@@ -59,9 +59,6 @@ const Row = ({
     gap: gap,
     alignItems: align || '',
     ...(vertical ? {} : { flexWrap: wrapped ? 'wrap' : 'nowrap' }),
-    ...useMobileStyles(theme, {
-      flexDirection: 'column',
-    }),
     ...useThemedCSS(theme, css),
   });
   return (

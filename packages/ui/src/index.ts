@@ -11,6 +11,7 @@ import Text from './components/Text';
 import Slider from './components/Slider';
 import Cell from './components/Cell';
 import Menu from './components/Menu';
+
 // import CheckBox from './components/CheckBox';
 // import Radio from './components/Radio';
 // import SortButton from './components/SortButton';
@@ -53,6 +54,7 @@ import Switch from './components/Switch';
 import Tabs from './components/Tabs';
 import Toast from './components/Toast';
 import Sidebar from './components/Sidebar';
+export { useMobileStyles, useMediaQuery } from './styles/css';
 export {
   // Timeline,
   Sidebar,
@@ -66,7 +68,8 @@ export {
   Svg,
   Cell,
   Link,
-  Drawer,Icon,
+  Drawer,
+  Icon,
   // SortButton,
   Input,
   Collapse,
