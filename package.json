@@ -8,7 +8,6 @@
     "build": "npx lerna run build",
     "build:ui": "npx lerna run build --scope=@sui/core",
     "test:ui": "npx lerna run test --scope=@sui/core",
-    "dev:docs": "npx lerna run dev --scope=@sui/docs",
     "dev:site": "npx lerna run dev --scope=website",
     "dev:ui": "npx lerna run dev --scope=@sui/core",
     "dev": "npx lerna run dev",
