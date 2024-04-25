@@ -1,12 +1,11 @@
-
 <!-- markdownlint-disable-next-line -->
 <p align="center">
   <img width='13%' src="./images/logo.png" alt="Shit UI">
-  <h1 align="center">Shit UI(改名中...)</h1>
+  <h1 align="center">Shit UI</h1>
 </p>
 </br>
 <p align="center">
-  React UI组件库，帮助您创建最精美的 Web 应用程序。
+  The React UI tools helps you create the best web app.
 </p>
 <div align="center">
 
@@ -18,42 +17,44 @@
 [![Renovate status](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://github.com/mui-org/material-ui/issues/27062)
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/mui-org/material-ui.svg)](https://isitmaintained.com/project/mui-org/material-ui 'Average time to resolve an issue')
 
-English | [Português](./README-pt_BR.md) | [简体中文](./README.md)
+English | [Português](./README-pt_BR.md) | [简体中文](./README-zh_CN.md) | [Українською](./README-uk_UA.md) | [Spanish](./README-sp_MX.md) | [日本語](./README-ja_JP.md)
 
   <img width='100%' src="./images/components.jpg" alt="Shit UI">
 </div>
 
-## ✨ 特点
+## ✨ Features
 
-- 🌈 前沿时尚的UI设计。
-- 📦 一组开箱即用的高质量 React 组件。
-- ⚙️ 使用 TypeScript 编写，具有可预测的静态类型。
-- 📖 运行时文档，藏在每个组件的提示中。
-- 🎨 每个组件细节都有强大的主题定制功能。
+- 🌈 Cutting-edge and fashionable ui design.
+- 📦 A set of high-quality React components out of the box.
+- 🛡 Written in TypeScript with predictable static types.
+- ⚙️ Whole package of design resources and development tools.
+- 📖 Extensive documentation and demos
+- 🌍 Support i18n, built-in N+ languages
+- 🎨 Powerful theme customization in every detail.
 
-## 🖥 环境支持
+## 🖥 Environment Support
 
-- 现代浏览器
-- 服务器端渲染
+- Modern browsers
+- Server-side Rendering
 - [Electron](https://www.electronjs.org/)
 
 | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/electron/electron_48x48.png" alt="Electron" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Electron |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Edge                                                                                                                                                                                                 | last 2 versions                                                                                                                                                                                                  | last 2 versions                                                                                                                                                                                              | last 2 versions                                                                                                                                                                                              | last 2 versions                                                                                                                                                                                                      |
 
-## ⭐ 支持项目
+## ⭐ Support the project
 
-如果您感觉很棒并且想以一点点的方式支持我们，请考虑加星标并分享该存储库！这有助于我们了解并发展社区。 🙏
+If you feel awesome and want to support us in a small way, please consider starring and sharing the repo! This helps us getting known and grow the community. 🙏
 
 <img src="https://raw.githubusercontent.com/lusaxweb/vuesax/master/public/github-vuesax-star.gif" alt="star" />
 
-## 🔨 文档
+## 🔨 Documentation
 
-编写中...
+Visit [https://sui.org/docs](https://sui.org/docs) to view the full documentation.
 
-## 📦 快速开始
+## 📦 Quick Start
 
-1. 安装：在 React 项目目录中，通过运行以下任一命令来安装 ShitUI：
+1. Installation: Inside your React project directory, install ShitUI by running either of the following:
 
 ```bash
 yarn add @sui/core @emotion/react
@@ -61,9 +62,9 @@ yarn add @sui/core @emotion/react
 npm i @sui/core @emotion/react
 ```
 
-2. 设置：为了让 ShitUI 正常工作，您需要在应用程序的根目录下设置“App”:
+2. Setup: For ShitUI to work correctly, you need to set up the `App` at the root of your application.
 
-转到应用程序的根目录并执行此操作:
+Go to the root of your application and do this:
 
 ```jsx
 import { App } from '@sui/core';
@@ -75,9 +76,9 @@ const Main = () => (
 );
 ```
 
-3. 使用 ShitUI 组件：安装 ShitUI 后，您可以使用任何组件，如下所示。
-   ShitUI 使用树摇动，因此在构建过程中未使用的模块不会包含在捆绑包中，并且
-   每个组件都是单独导出的。
+3. Using ShitUI components: Once ShitUI is installed you can use any of the components as follows.
+   ShitUI uses tree-shaking so the unused modules will not be included in the bundle during the build process and
+   each component is exported separately.
 
 ```jsx
 import { Button } from '@sui/core';
@@ -85,7 +86,7 @@ import { Button } from '@sui/core';
 const Component = () => <Button>Click me</Button>;
 ```
 
-4. ShitUI 允许根据需要手动导入组件。例如:
+4. ShitUI allows to manually import components if you need. E.g.
 
 ```jsx
 import Button from '@sui/core/button';
@@ -93,14 +94,16 @@ import Button from '@sui/core/button';
 const Component = () => <Button>Click me</Button>;
 ```
 
-## 🤝 参与贡献
+## 🤝 Contribution
 
-确保你阅读了这个贡献文档 [Contributing Guide](https://github.com/fogcity/ui/blob/main/contributing.md) 以及再提交代码之前阅读这个提交风格文档 [Commit Guide](https://github.com/fogcity/ui/blob/main/commit-convention.md).
+Please make sure to read the [Contributing Guide](https://github.com/fogcity/ui/blob/main/contributing.md) before making a pull request and commit with [Commit Guide](https://github.com/fogcity/ui/blob/main/commit-convention.md).
 
-## ❤️ 赞助商
+## ❤️ Sponsors
 
-暂无！！
+Thank you to all the people who already contributed to us!
 
 ## 🔗 License
 
 [MIT](https://opensource.org/licenses/MIT)
+
+
