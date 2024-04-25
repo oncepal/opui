@@ -18,7 +18,7 @@
 [![Renovate status](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://github.com/mui-org/material-ui/issues/27062)
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/mui-org/material-ui.svg)](https://isitmaintained.com/project/mui-org/material-ui 'Average time to resolve an issue')
 
-English | [Português](./README-pt_BR.md) | [简体中文](./README.md)
+[English](./README-en.md) | [简体中文](./README.md)
 
   <img width='100%' src="./images/components.jpg" alt="Shit UI">
 </div>
@@ -31,11 +31,13 @@ English | [Português](./README-pt_BR.md) | [简体中文](./README.md)
 - 📖 运行时文档，藏在每个组件的提示中。
 - 🎨 每个组件细节都有强大的主题定制功能。
 
-## 🖥 环境支持
+## 🚀 未来规划
 
-- 现代浏览器
-- 服务器端渲染
-- [Electron](https://www.electronjs.org/)
+- 组件的重新审核复盘设计
+- 名称和文档升级
+- 整合framer-motion动画库完成视觉升级
+
+## 🖥 环境支持
 
 | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/electron/electron_48x48.png" alt="Electron" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Electron |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -46,10 +48,6 @@ English | [Português](./README-pt_BR.md) | [简体中文](./README.md)
 如果您感觉很棒并且想以一点点的方式支持我们，请考虑加星标并分享该存储库！这有助于我们了解并发展社区。 🙏
 
 <img src="https://raw.githubusercontent.com/lusaxweb/vuesax/master/public/github-vuesax-star.gif" alt="star" />
-
-## 🔨 文档
-
-编写中...
 
 ## 📦 快速开始
 
