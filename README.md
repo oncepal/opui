@@ -6,7 +6,7 @@
 </p>
 </br>
 <p align="center">
-  React UI组件库，帮助您创建最精美的 Web 应用程序。
+  
 </p>
 <div align="center">
 
@@ -64,12 +64,12 @@ npm i @opui/react @emotion/react
 转到应用程序的根目录并执行此操作:
 
 ```jsx
-import { App } from '@opui/react';
+import { OPUIProvider } from '@opui/react';
 
 const Main = () => (
-  <App>
+  <OPUIProvider>
     <AppComponent /> // ---> Your App Component
-  </App>
+  </OPUIProvider>
 );
 ```
 
@@ -95,9 +95,6 @@ const Component = () => <Button>Click me</Button>;
 
 确保你阅读了这个[贡献文档](https://github.com/oncepal/opui/blob/main/contributing.md) 以及再提交代码之前阅读这个[提交文档](https://github.com/oncepal/opui/blob/main/commit-convention.md).
 
-## ❤️ 赞助商
-
-暂无！！
 
 ## 🔗 License
 

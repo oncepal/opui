@@ -1,11 +1,12 @@
+
 <!-- markdownlint-disable-next-line -->
 <p align="center">
-  <img width='13%' src="../../images/logo.png" alt="OP UI">
+  <img width='13%' src="./images/logo.png" alt="OP UI">
   <h1 align="center">OP UI</h1>
 </p>
 </br>
 <p align="center">
-  The React UI tools helps you create the best web app.
+  
 </p>
 <div align="center">
 
@@ -17,49 +18,40 @@
 [![Renovate status](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://github.com/mui-org/material-ui/issues/27062)
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/mui-org/material-ui.svg)](https://isitmaintained.com/project/mui-org/material-ui 'Average time to resolve an issue')
 
+[English](./README-en.md) | [简体中文](./README.md)
 
 
-  English | [Português](./README-pt_BR.md) | [简体中文](./README-zh_CN.md) | [Українською](./README-uk_UA.md) | [Spanish](./README-sp_MX.md) | [日本語](./README-ja_JP.md)
-
-
-  
 </div>
 
+## ✨ 特点
 
+- 🌈 前沿时尚的UI设计。
+- 📦 一组开箱即用的高质量 React 组件。
+- ⚙️ 使用 TypeScript 编写，具有可预测的静态类型。
+- 📖 运行时文档，藏在每个组件的提示中。
+- 🎨 每个组件细节都有强大的主题定制功能。
 
-## ✨ Features
+## 🚀 未来规划
 
-- 🌈 Cutting-edge and fashionable ui design.
-- 📦 A set of high-quality React components out of the box.
-- 🛡 Written in TypeScript with predictable static types.
-- ⚙️ Whole package of design resources and development tools.
-- 📖 Extensive documentation and demos
-- 🌍 Support i18n, built-in N+ languages
-- 🎨 Powerful theme customization in every detail.
+- 组件的重新审核复盘设计
+- 名称和文档升级
+- 整合framer-motion动画库完成视觉升级
 
-## 🖥 Environment Support
-
-- Modern browsers
-- Server-side Rendering
-- [Electron](https://www.electronjs.org/)
+## 🖥 环境支持
 
 | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/electron/electron_48x48.png" alt="Electron" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Electron |
-| --- | --- | --- | --- | --- |
-| Edge | last 2 versions | last 2 versions | last 2 versions | last 2 versions |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Edge                                                                                                                                                                                                 | last 2 versions                                                                                                                                                                                                  | last 2 versions                                                                                                                                                                                              | last 2 versions                                                                                                                                                                                              | last 2 versions                                                                                                                                                                                                      |
 
-## ⭐ Support the project
+## ⭐ 支持项目
 
-If you feel awesome and want to support us in a small way, please consider starring and sharing the repo! This helps us getting known and grow the community. 🙏
+如果您感觉很棒并且想以一点点的方式支持我们，请考虑加星标并分享该存储库！这有助于我们了解并发展社区。 🙏
 
 <img src="https://raw.githubusercontent.com/lusaxweb/vuesax/master/public/github-vuesax-star.gif" alt="star" />
 
-## 🔨 Documentation
+## 📦 快速开始
 
-Visit [https://sui.org/docs](https://sui.org/docs) to view the full documentation.
-
-## 📦 Quick Start
-
-1. Installation: Inside your React project directory, install OPUI by running either of the following:
+1. 安装：在 React 项目目录中，通过运行以下任一命令来安装 OPUI：
 
 ```bash
 yarn add @opui/react @emotion/react
@@ -67,23 +59,23 @@ yarn add @opui/react @emotion/react
 npm i @opui/react @emotion/react
 ```
 
-2. Setup: For OPUI to work correctly, you need to set up the `App` at the root of your application.
+2. 设置：为了让 OPUI 正常工作，您需要在应用程序的根目录下设置“App”:
 
-Go to the root of your application and do this:
+转到应用程序的根目录并执行此操作:
 
 ```jsx
-import { App } from '@opui/react';
+import { OPUIProvider } from '@opui/react';
 
 const Main = () => (
-  <App>
+  <OPUIProvider>
     <AppComponent /> // ---> Your App Component
-  </App>
+  </OPUIProvider>
 );
 ```
 
-3. Using OPUI components: Once OPUI is installed you can use any of the components as follows.
-   OPUI uses tree-shaking so the unused modules will not be included in the bundle during the build process and
-   each component is exported separately.
+3. 使用 OPUI 组件：安装 OPUI 后，您可以使用任何组件，如下所示。
+   OPUI 使用树摇动，因此在构建过程中未使用的模块不会包含在捆绑包中，并且
+   每个组件都是单独导出的。
 
 ```jsx
 import { Button } from '@opui/react';
@@ -91,7 +83,7 @@ import { Button } from '@opui/react';
 const Component = () => <Button>Click me</Button>;
 ```
 
-4. OPUI allows to manually import components if you need. E.g.
+4. OPUI 允许根据需要手动导入组件。例如:
 
 ```jsx
 import Button from '@opui/react/button';
@@ -99,13 +91,10 @@ import Button from '@opui/react/button';
 const Component = () => <Button>Click me</Button>;
 ```
 
-## 🤝 Contribution
+## 🤝 参与贡献
 
-Please make sure to read the [Contributing Guide](https://github.com/oncepal/opui/blob/main/contributing.md) before making a pull request and commit with [Commit Guide](https://github.com/oncepal/opui/blob/main/commit-convention.md).
+确保你阅读了这个[贡献文档](https://github.com/oncepal/opui/blob/main/contributing.md) 以及再提交代码之前阅读这个[提交文档](https://github.com/oncepal/opui/blob/main/commit-convention.md).
 
-## ❤️ Sponsors
-
-Thank you to all the people who already contributed to us!
 
 ## 🔗 License
 
