@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fogcity/shit-ui.git"
+    "url": "git+https://github.com/oncepal/opui.git"
   },
   "keywords": [
     "frontend",
@@ -41,7 +41,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fogcity/shit-ui/issues"
+    "url": "https://github.com/oncepal/opui/issues"
   },
   "size-limit": [
     {
@@ -49,7 +49,7 @@
       "limit": "15 KB"
     }
   ],
-  "homepage": "https://github.com/fogcity/shit-ui#readme",
+  "homepage": "https://github.com/oncepal/opui#readme",
   "devDependencies": {
     "@babel/core": "^7.18.5",
     "@emotion/eslint-plugin": "^11.7.0",

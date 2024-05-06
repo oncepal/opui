@@ -93,7 +93,7 @@ const Component = () => <Button>Click me</Button>;
 
 ## 🤝 参与贡献
 
-确保你阅读了这个贡献文档 [Contributing Guide](https://github.com/fogcity/ui/blob/main/contributing.md) 以及再提交代码之前阅读这个提交风格文档 [Commit Guide](https://github.com/fogcity/ui/blob/main/commit-convention.md).
+确保你阅读了这个[贡献文档](https://github.com/oncepal/opui/blob/main/contributing.md) 以及再提交代码之前阅读这个[提交文档](https://github.com/oncepal/opui/blob/main/commit-convention.md).
 
 ## ❤️ 赞助商
 

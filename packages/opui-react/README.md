@@ -101,7 +101,7 @@ const Component = () => <Button>Click me</Button>;
 
 ## 🤝 Contribution
 
-Please make sure to read the [Contributing Guide](https://github.com/fogcity/ui/blob/main/contributing.md) before making a pull request and commit with [Commit Guide](https://github.com/fogcity/ui/blob/main/commit-convention.md).
+Please make sure to read the [Contributing Guide](https://github.com/oncepal/opui/blob/main/contributing.md) before making a pull request and commit with [Commit Guide](https://github.com/oncepal/opui/blob/main/commit-convention.md).
 
 ## ❤️ Sponsors
 
