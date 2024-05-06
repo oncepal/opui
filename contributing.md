@@ -37,6 +37,20 @@ $ npm run dev # 成功运行项目并见监听端口：5137
 
 - `src/utils`: 常用 web 功能函数的实现。
 
+举个例，任何组件的实现都可以参考`Button`组件，去到`opui-react`目录下的`src/components`里面找到`Button`文件夹查看源码可以发现一个组件的代码有以下几个关键因素：
+
+- 文件头声明：`/** @jsxImportSource @emotion/react */` 这一段是使用emotion必须要的一个声明。
+
+- 类型定义：`ButtonProps`由`components/.props.ts`提供的类型组合在一起声明，这里面维护了大量通用声明代码，即大多数组件都需要的一些`props`定义。
+
+- 使用注释：包含`@param`在内的jsdoc标准化注释，以帮助用户在使用的时候可以快速知道核心哲学，字段含义和直接复制粘贴用例！
+
+- 函数式组件主体：`Omit<ComponentPropsWithoutRef<'button'>, 'color'>`这样的类型声明用于消除默认标签类型定义中的冲突属性，这里意思是color用我们`ButtonProps`里面定义的类型而不采用html标准定义，包含样式生成，主题获取和事件监听等内容，并在最后返回一个带有css attribute的html标签作为最终渲染组件挂载点，这个`css`属性由`useCSS`生成。
+
+- CSS样式：`src/styles`下的函数帮助组件主题获得动态样式监听，例如 `useCSS`、`useTheme`，以及最终用于提供外部最终复写能力的`...useThemedCSS(theme, css)`，这将允许使用者传入一个`css`属性覆盖我们所有计算好的属性最终控制组件样式
+
+所以在做新组件时，复制整个Button文件夹保持大框架不动的情况下缝缝补补！并别忘了在根目录下的index.ts里引入并导出不然没办法使用测试。
+
 在对组件的设计有建议和或者是组件的问题做反馈时，请花一点时间先参考 👇🏻 的两个文档中对应的组件定义，了解组件的背景，应用场景和大致功能:
 
 **移动端 ui 设计参考:**
@@ -64,9 +78,9 @@ $ npm run dev # 成功运行项目并见监听端口：5137
 - [Rollup](https://rollupjs.org) 打包工具
 - [Jest](https://jestjs.io/) 组件测试
 
-ui 库的开发就是这样了，但只是修改组件和测试，其他开发者和用户其实并不知道发生了什么更改，所以修改一个组件的同时还得更新使用文档，这部分尝试过dumi、docusaurus、storybook、vitepress之后还是觉得自己起一个网站来写比较好。
+修改一个组件的同时还得更新使用文档，这部分尝试过dumi、docusaurus、storybook、vitepress之后还是觉得自己起一个网站来写比较好。尝试在`opui-doc`里面引入你新增的组件做实际使用测试吧~~
 
-看完这些字真的很不容易是吧！所以最后的最后，非常期待收到你的 PR！
+最后的最后，非常期待收到你的 PR！
 
 ## 测试
 

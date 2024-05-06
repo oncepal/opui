@@ -38,7 +38,6 @@ type ButtonProps = ComponentBaseProps &
  * @param icon icon button style
  * @param color button color
  * @param padding button size
-
  * @param onClick click handler
  */
 const Button = ({
