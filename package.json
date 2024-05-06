@@ -1,23 +1,20 @@
 {
-  "name": "@sui/monorepo",
+  "name": "@opui/monorepo",
   "private": true,
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
     "build": "npx lerna run build",
-    "build:ui": "npx lerna run build --scope=@sui/core",
-    "test:ui": "npx lerna run test --scope=@sui/core",
-    "dev:site": "npx lerna run dev --scope=site",
-    "dev:ui": "npx lerna run dev --scope=@sui/core",
+    "build:doc": "npx lerna run build --scope=@opui/doc",
+    "build:ui": "npx lerna run build --scope=@opui/react",
+    "test:ui": "npx lerna run test --scope=@opui/react",
+    "dev:doc": "npx lerna run dev --scope=@opui/doc",
+    "dev:ui": "npx lerna run dev --scope=@opui/react",
     "dev": "npx lerna run dev",
     "release": "npx lerna publish --no-private"
   },
   "devDependencies": {
-    "@types/react": "18.0.28",
-    "@types/react-dom": "18.0.11",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
     "lerna": "^6.5.1"
   }
 }
