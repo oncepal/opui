@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
-import { ComponentBaseProps, Margin, Position, Padding, Themed } from '../props';
+import { Semantic, ComponentBaseProps, Margin, Position, Padding, Themed } from '../props';
 import { useCSS, useTheme, usePadding, usePosition, useMargin, useThemedCSS, useThemedProps } from '../../styles/css';
 import { forwardRef, MouseEvent, ComponentPropsWithoutRef } from 'react';
 import { jsx } from '@emotion/react';
@@ -8,17 +8,12 @@ import { jsx } from '@emotion/react';
 type ContainerProps = ComponentBaseProps &
   Margin &
   Position &
-  Padding & {
-    main?: boolean;
-    footer?: boolean;
-    header?: boolean;
-    section?: boolean;
+  Padding &
+  Semantic & {
     gradient?: string;
-    article?: boolean;
-    nav?: boolean;
     inline?: boolean;
-    w?: string;
-    h?: string;
+    width?: string;
+    height?: string;
     radius?: Themed<string>;
     background?: Themed<string>;
     fullHeight?: boolean;
@@ -26,25 +21,26 @@ type ContainerProps = ComponentBaseProps &
   };
 
 /**
- * The universal component packer
+ * 通用元件包装机，一个加强版的万能标签，拥有各种可自定义的功能尺寸以及标签本身。
+ * 用法：
  * ```js
- *  <Container pa='1em'>
+ *  <Container header pa='1em'>
         <Button>ok</Button>
     </Container>
  * ```
- * @param background background color
- * @param fullHeight full height or not
- * @param fullScreen full screen or not
- * @param w container width
- * @param h container height
+ * @param background 背景
+ * @param fullHeight 是否100%高度
+ * @param fullScreen 是否全屏高度
+ * @param width 宽度
+ * @param height 高度
  * @param onClick click handler
  */
 
 const Container = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & ContainerProps>(
   (
     {
-      w,
-      h,
+      width,
+      height,
       inline,
       radius,
       gradient,
@@ -63,8 +59,8 @@ const Container = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & C
     const styles = useCSS({
       display: inline ? 'inlen-flex' : 'block',
       borderRadius: useThemedProps(theme, radius),
-      width: w,
-      height: h ? h : fullHeight ? '100%' : 'auto' || 'auto',
+      width,
+      height: height ? height : fullHeight ? '100%' : 'auto' || 'auto',
       minHeight: fullScreen ? '100vh' : '',
       background:
         gradient || useThemedProps(theme, background) || (theme.darkMode ? theme.colors.black : theme.colors.white),
@@ -79,8 +75,9 @@ const Container = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & C
       e.stopPropagation();
       onClick?.();
     };
+
     const getElement = () => {
-      const { main, footer, header, section, article } = props;
+      const { main=false, footer=false, header=false, section=false, article=false } = props;
       if (main) return 'main';
       else if (footer) return 'footer';
       else if (header) return 'header';

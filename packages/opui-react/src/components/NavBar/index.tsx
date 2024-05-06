@@ -17,43 +17,44 @@ type NavBarProps = ComponentBaseProps & {
 };
 let sy = 0;
 /**
- * A responsive navigation header positioned on top side of your page that includes support for branding, links, navigation, collapse and more.
+ * 位于页面顶部的响应式导航标题，包括对品牌、链接、导航、折叠等的支持。
  * ```
- * <NavBar
- *    content='content'
- *    extra={</>}>
+ * <NavBar fixed>
+ *  <NavBar.b
  * </NavBar>
  * ```
- * @param content bar's and page's content aligned on the center of the bar.
+ * @param content 栏和页面的内容在栏的中心对齐。
  * @param color bar's background color.
  * @param gap the gap of the content,extra,navIcon
  */
-const NavBar = ({ color, sticky, css, gap, hideOnScroll, children, ...props }: NavBarProps) => {
+const NavBar = ({ color, fixed,sticky, css, gap, hideOnScroll, children, ...props }: NavBarProps) => {
   const [translateY, setTranslateY] = useState(0);
 
   const theme = useTheme();
-  const containerStyles = useCSS({
-    padding: '0 10em',
+  const navStyles = useCSS({
+    padding: theme.app.navBar.padding,
+    maxHeight: theme.app.navBar.height,
+    minHeight: theme.app.navBar.height,
     alignItems: 'center',
-    height: '4em',
     backgroundColor: color,
     display: 'flex',
     justifyContent: 'center',
-    position: sticky ? 'sticky' : 'static',
+    position: sticky ? 'sticky' : fixed?'fixed':'static',
     top: 0,
+    left:0,
+    right:0,
     transition: 'transform .25s ease-out',
     ...(hideOnScroll && { transform: `translateY(-${translateY}%)` }),
     gap,
     ...useMobileStyles(theme, {}),
     ...useThemedCSS(theme, css),
   });
-  const styles = useCSS({
+  const headerStyles = useCSS({
+    height:'100%',
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: color,
     display: 'flex',
-    maxWidth: theme.app.maxWidth,
-    minWidth: theme.app.minWidtgh,
     gap,
   });
 
@@ -81,11 +82,11 @@ const NavBar = ({ color, sticky, css, gap, hideOnScroll, children, ...props }: N
   );
 
   return (
-    <header css={containerStyles}>
-      <nav css={styles} {...props}>
+    <nav css={navStyles}>
+      <header css={headerStyles} {...props}>
         {children}
-      </nav>
-    </header>
+      </header>
+    </nav>
   );
 };
 

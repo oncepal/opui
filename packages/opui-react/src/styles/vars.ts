@@ -2,6 +2,10 @@ const vars = {
   app: {
     maxWidth: '1600px',
     minWidtgh: '50vw',
+    navBar:{
+      height:'4em',
+      padding:'1em 1.5em'
+    }
   },
   borderWeights: {
     light: '1px',

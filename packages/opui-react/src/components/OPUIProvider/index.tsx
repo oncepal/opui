@@ -4,21 +4,21 @@ import { globalStyles } from '../../styles/global';
 import { theme as defaultTheme, Theme } from '../../styles/themes';
 import { addCSSLink, deepMerge } from '../../utils';
 
-type AppProps = {
+type OPUIProviderProps = {
   noUseIcon?: boolean;
   children?: React.ReactNode;
   theme?: Partial<Theme>;
 };
 
 /**
- * The app component works with components such as navigation, drawer, appbar, footer, etc.
- * Helps your app to resize properly around <main>.
- * This allows you to create truly unique interfaces without the hassle of managing layout dimensions.
- * All apps should be in the app component which is the mount point for many components and features.
- * but the components themselves are also designed to be able to be used independently of the app.
- * apps should only be rendered once in your application.
+ * OPUIProvider 提供一个默认的基准全局样式，并使您可以创建真正独特的界面，而无需管理布局尺寸的麻烦，与各种组件联动
+ * 所有本组件库的组件都应该位于 OPUIProvider 组件中，该组件是许多组件和功能的挂载点。
+ * 但组件本身也被设计为能够独立于 OPUIProvider 使用。
+ * 注意：OPUIProviders只能在 OPUIProviderlication 中渲染一次。
+ * @param noUseIcon 是否需要加载icon
+ * @param theme 自定义主题，使用useCustomTheme的返回值
  */
-export default function App({ children, theme, noUseIcon = false }: AppProps) {
+export default function OPUIProvider({ children, theme, noUseIcon = false }: OPUIProviderProps) {
   if (!noUseIcon) {
     const [cssLink, setCssLink] = useState('https://unpkg.com/boxicons@latest/css/boxicons.min.css');
     useLayoutEffect(() => {
@@ -29,7 +29,6 @@ export default function App({ children, theme, noUseIcon = false }: AppProps) {
     <ThemeProvider
       theme={old => {
         const t = deepMerge(defaultTheme, theme || {});
-
         return t;
       }}>
       <Global styles={globalStyles as CSSObject} />

@@ -6,7 +6,7 @@ import { forwardRef, ComponentPropsWithoutRef, Children, cloneElement, DetailedR
 type GridProps = ComponentBaseProps &
   Padding &
   Margin & {
-    columns?: number;
+    col?: number;
     rowGap?: string;
     colGap?: string;
   };
@@ -20,21 +20,21 @@ type GridItemProps = ComponentBaseProps &
 /**
  * The responsive layout grid adapts to screen size and orientation, ensuring consistency across layouts.
  * ```js
- * <Grid columns={4} colGap={2}>
+ * <Grid col={4} colGap={2}>
       <Grid.Item>Home</Grid.Item>
       <Grid.Item span={2}>Electronics</Grid.Item>
       <Grid.Item>Cameras</Grid.Item>
       <Grid.Item>Film</Grid.Item>
     </Grid>
  * ```
- * @param columns a row can contain how much item
+ * @param col a row can contain how much item
  * @param gap grid gap with row & col
  */
-const Grid = ({ columns, rowGap, colGap, css, children, ...props }: ComponentPropsWithoutRef<'div'> & GridProps) => {
+const Grid = ({ col, rowGap, colGap, css, children, ...props }: ComponentPropsWithoutRef<'div'> & GridProps) => {
   const theme = useTheme();
   const styles = useCSS({
     display: 'grid',
-    gridTemplateColumns: `repeat(${columns}, 1fr)`,
+    gridTemplateColumns: `repeat(${col}, 1fr)`,
     gridAutoRows: '1fr',
     gridColumnGap: colGap,
     gridRowGap: rowGap,

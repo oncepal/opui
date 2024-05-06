@@ -34,7 +34,14 @@ export type Padding = Partial<{
   py: string;
   pa: string;
 }>;
-
+export type Semantic = Partial<{
+  main?: boolean;
+    footer?: boolean;
+    header?: boolean;
+    section?: boolean;
+    article?: boolean;
+    nav?: boolean;
+}>
 export type Margin = Partial<{
   mt: string;
   mb: string;

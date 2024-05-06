@@ -1,4 +1,4 @@
-import App from './components/App';
+import OPUIProvider from './components/OPUIProvider';
 import Badge from './components/Badge';
 import Row from './components/Row';
 import Col from './components/Col';
@@ -99,7 +99,7 @@ export {
   // DatePicker,
   // TimePicker,
   Badge,
-  App,
+  OPUIProvider,
   Breadcrumbs,
   Row,
   Col,
