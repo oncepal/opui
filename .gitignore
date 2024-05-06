@@ -6,11 +6,10 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 package-lock.json
-packages/docs/package-lock.json
-packages/docs/build
-packages/docs/.docusaurus
-packages/ui/package-lock.json
-packages/ui/build
+packages/opui-doc/package-lock.json
+packages/opui-doc/build
+packages/opui-react/package-lock.json
+packages/opui-react/build
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
