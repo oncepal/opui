@@ -37,7 +37,9 @@ $ npm run dev # 成功运行项目并见监听端口：5137
 
 - `src/utils`: 常用 web 功能函数的实现。
 
-举个例，任何组件的实现都可以参考`Button`组件，去到`opui-react`目录下的`src/components`里面找到`Button`文件夹查看源码可以发现一个组件的代码有以下几个关键因素：
+## 开发指南
+
+任何组件的实现都可以参考`Button`组件，去到`opui-react`目录下的`src/components`里面找到`Button`文件夹查看源码可以发现一个组件的代码有以下几个关键因素：
 
 - 文件头声明：`/** @jsxImportSource @emotion/react */` 这一段是使用emotion必须要的一个声明。
 
@@ -78,9 +80,7 @@ $ npm run dev # 成功运行项目并见监听端口：5137
 - [Rollup](https://rollupjs.org) 打包工具
 - [Jest](https://jestjs.io/) 组件测试
 
-修改一个组件的同时还得更新使用文档，这部分尝试过dumi、docusaurus、storybook、vitepress之后还是觉得自己起一个网站来写比较好。尝试在`opui-doc`里面引入你新增的组件做实际使用测试吧~~
-
-最后的最后，非常期待收到你的 PR！
+修改一个组件的同时还得更新使用文档，这部分尝试过dumi、docusaurus、storybook、vitepress之后还是觉得自己起一个网站来写比较好。尝试在`opui-doc`里面引入你新增的组件做实际使用测试吧
 
 ## 测试
 
@@ -197,6 +197,6 @@ $ npm run lint
 
   - 如果该分支是仅用于开发的，性能就不那么令人担忧了。
 
-## 财务捐款
+## 最后
 
-感谢所有已经为 OP UI 做出贡献的人！虽然目前暂时只有曾经的一些同事！
+感谢所有已经为 OP UI 做出贡献的人！虽然目前暂时只有曾经的一些同事！非常期待收到你的 PR！
