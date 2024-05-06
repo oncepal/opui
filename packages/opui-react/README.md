@@ -59,7 +59,7 @@ Visit [https://sui.org/docs](https://sui.org/docs) to view the full documentatio
 
 ## 📦 Quick Start
 
-1. Installation: Inside your React project directory, install ShitUI by running either of the following:
+1. Installation: Inside your React project directory, install OPUI by running either of the following:
 
 ```bash
 yarn add @opui/react @emotion/react
@@ -67,7 +67,7 @@ yarn add @opui/react @emotion/react
 npm i @opui/react @emotion/react
 ```
 
-2. Setup: For ShitUI to work correctly, you need to set up the `App` at the root of your application.
+2. Setup: For OPUI to work correctly, you need to set up the `App` at the root of your application.
 
 Go to the root of your application and do this:
 
@@ -81,8 +81,8 @@ const Main = () => (
 );
 ```
 
-3. Using ShitUI components: Once ShitUI is installed you can use any of the components as follows.
-   ShitUI uses tree-shaking so the unused modules will not be included in the bundle during the build process and
+3. Using OPUI components: Once OPUI is installed you can use any of the components as follows.
+   OPUI uses tree-shaking so the unused modules will not be included in the bundle during the build process and
    each component is exported separately.
 
 ```jsx
@@ -91,7 +91,7 @@ import { Button } from '@opui/react';
 const Component = () => <Button>Click me</Button>;
 ```
 
-4. ShitUI allows to manually import components if you need. E.g.
+4. OPUI allows to manually import components if you need. E.g.
 
 ```jsx
 import Button from '@opui/react/button';

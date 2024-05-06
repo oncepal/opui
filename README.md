@@ -51,7 +51,7 @@
 
 ## 📦 快速开始
 
-1. 安装：在 React 项目目录中，通过运行以下任一命令来安装 ShitUI：
+1. 安装：在 React 项目目录中，通过运行以下任一命令来安装 OPUI：
 
 ```bash
 yarn add @opui/react @emotion/react
@@ -59,7 +59,7 @@ yarn add @opui/react @emotion/react
 npm i @opui/react @emotion/react
 ```
 
-2. 设置：为了让 ShitUI 正常工作，您需要在应用程序的根目录下设置“App”:
+2. 设置：为了让 OPUI 正常工作，您需要在应用程序的根目录下设置“App”:
 
 转到应用程序的根目录并执行此操作:
 
@@ -73,8 +73,8 @@ const Main = () => (
 );
 ```
 
-3. 使用 ShitUI 组件：安装 ShitUI 后，您可以使用任何组件，如下所示。
-   ShitUI 使用树摇动，因此在构建过程中未使用的模块不会包含在捆绑包中，并且
+3. 使用 OPUI 组件：安装 OPUI 后，您可以使用任何组件，如下所示。
+   OPUI 使用树摇动，因此在构建过程中未使用的模块不会包含在捆绑包中，并且
    每个组件都是单独导出的。
 
 ```jsx
@@ -83,7 +83,7 @@ import { Button } from '@opui/react';
 const Component = () => <Button>Click me</Button>;
 ```
 
-4. ShitUI 允许根据需要手动导入组件。例如:
+4. OPUI 允许根据需要手动导入组件。例如:
 
 ```jsx
 import Button from '@opui/react/button';
