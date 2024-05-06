@@ -54,9 +54,9 @@
 1. 安装：在 React 项目目录中，通过运行以下任一命令来安装 ShitUI：
 
 ```bash
-yarn add @opui/web @emotion/react
+yarn add @opui/react @emotion/react
 # or
-npm i @opui/web @emotion/react
+npm i @opui/react @emotion/react
 ```
 
 2. 设置：为了让 ShitUI 正常工作，您需要在应用程序的根目录下设置“App”:
@@ -64,7 +64,7 @@ npm i @opui/web @emotion/react
 转到应用程序的根目录并执行此操作:
 
 ```jsx
-import { App } from '@opui/web';
+import { App } from '@opui/react';
 
 const Main = () => (
   <App>
@@ -78,7 +78,7 @@ const Main = () => (
    每个组件都是单独导出的。
 
 ```jsx
-import { Button } from '@opui/web';
+import { Button } from '@opui/react';
 
 const Component = () => <Button>Click me</Button>;
 ```
@@ -86,7 +86,7 @@ const Component = () => <Button>Click me</Button>;
 4. ShitUI 允许根据需要手动导入组件。例如:
 
 ```jsx
-import Button from '@opui/web/button';
+import Button from '@opui/react/button';
 
 const Component = () => <Button>Click me</Button>;
 ```

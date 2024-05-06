@@ -57,9 +57,9 @@ Visit [https://sui.org/docs](https://sui.org/docs) to view the full documentatio
 1. Installation: Inside your React project directory, install ShitUI by running either of the following:
 
 ```bash
-yarn add @opui/web @emotion/react
+yarn add @opui/react @emotion/react
 # or
-npm i @opui/web @emotion/react
+npm i @opui/react @emotion/react
 ```
 
 2. Setup: For ShitUI to work correctly, you need to set up the `App` at the root of your application.
@@ -67,7 +67,7 @@ npm i @opui/web @emotion/react
 Go to the root of your application and do this:
 
 ```jsx
-import { App } from '@opui/web';
+import { App } from '@opui/react';
 
 const Main = () => (
   <App>
@@ -81,7 +81,7 @@ const Main = () => (
    each component is exported separately.
 
 ```jsx
-import { Button } from '@opui/web';
+import { Button } from '@opui/react';
 
 const Component = () => <Button>Click me</Button>;
 ```
@@ -89,7 +89,7 @@ const Component = () => <Button>Click me</Button>;
 4. ShitUI allows to manually import components if you need. E.g.
 
 ```jsx
-import Button from '@opui/web/button';
+import Button from '@opui/react/button';
 
 const Component = () => <Button>Click me</Button>;
 ```

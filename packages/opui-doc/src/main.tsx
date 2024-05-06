@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
-import { App,Button } from '@opui/web'
+import { App,Button } from '@opui/react'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <App >
