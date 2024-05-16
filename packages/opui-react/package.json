@@ -29,11 +29,11 @@
     "url": "git+https://github.com/oncepal/opui.git"
   },
   "keywords": [
-    "frontend",
+    "opui",
     "emotion",
     "mobile",
     "components",
-    "ui",
+    "ui components",
     "react"
   ],
   "author": {

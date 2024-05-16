@@ -36,7 +36,7 @@ type TextProps = ComponentBaseProps &
   Padding;
 
 /**
- * Text component is the used to render text and paragraphs within an interface using well-defined typographic styles. It renders a <p> tag by default.
+ * 文本组件用于使用定义明确的排版样式在界面中呈现文本和段落。它默认呈现一个 <p> 标签。
  * @param ...
  */
 const Text = ({
@@ -48,7 +48,8 @@ const Text = ({
   gradient,
   ellipsis = '...',
   left,
-  center,grey,
+  center,
+  grey,
   right,
   color,
   children,
@@ -64,7 +65,6 @@ const Text = ({
     textOverflow: maxLength ? 'ellipsis' : undefined,
     whiteSpace: maxLength ? 'nowrap' : undefined,
     overflow: maxLength ? 'hidden' : undefined,
-    display: 'inline-flex',
     color: gradient
       ? 'transparent'
       : useThemedProps<string>(theme, color) ||
@@ -79,7 +79,7 @@ const Text = ({
     ...useThemedCSS(theme, css),
   });
   const getTextElement = () => {
-    const { h1, h2, h3, h4, h5, h6, del, span, blockquote, i } = props;
+    const { h1, h2, h3, h4, h5, h6, del, p, blockquote, i } = props;
 
     if (h1) return 'h1';
     else if (h2) return 'h2';
@@ -88,10 +88,10 @@ const Text = ({
     else if (h5) return 'h5';
     else if (h6) return 'h6';
     else if (del) return 'del';
-    else if (span) return 'span';
+    else if (p) return 'p';
     else if (blockquote) return 'blockquote';
     else if (i) return 'i';
-    else return 'p';
+    else return 'span';
   };
 
 

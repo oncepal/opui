@@ -1,3 +1,6 @@
+/**
+ * 全局样式重置
+ */
 export const globalStyles = {
   html: {
     boxSizing: 'border-box',

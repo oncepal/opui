@@ -9,7 +9,7 @@ type NavBarItemProps = ComponentBaseProps & {
 };
 
 type NavBarProps = ComponentBaseProps & {
-  color?: string;
+  barBackgroundColor?: string;
   gap?: string;
   fixed?: boolean;
   sticky?: boolean;
@@ -20,14 +20,16 @@ let sy = 0;
  * 位于页面顶部的响应式导航标题，包括对品牌、链接、导航、折叠等的支持。
  * ```
  * <NavBar fixed>
- *  <NavBar.b
- * </NavBar>
+     <NavBar.Brand />
+     <NavBar.Content>title</NavBar.Content>
+     <NavBar.Extra />
+   </NavBar>
  * ```
  * @param content 栏和页面的内容在栏的中心对齐。
- * @param color bar's background color.
- * @param gap the gap of the content,extra,navIcon
+ * @param barBackgroundColor 导航栏背景色
+ * @param gap  content,extra,navIcon的间距
  */
-const NavBar = ({ color, fixed,sticky, css, gap, hideOnScroll, children, ...props }: NavBarProps) => {
+const NavBar = ({ barBackgroundColor, fixed,sticky, css, gap, hideOnScroll, children, ...props }: NavBarProps) => {
   const [translateY, setTranslateY] = useState(0);
 
   const theme = useTheme();
@@ -36,7 +38,7 @@ const NavBar = ({ color, fixed,sticky, css, gap, hideOnScroll, children, ...prop
     maxHeight: theme.app.navBar.height,
     minHeight: theme.app.navBar.height,
     alignItems: 'center',
-    backgroundColor: color,
+    backgroundColor: barBackgroundColor,
     display: 'flex',
     justifyContent: 'center',
     position: sticky ? 'sticky' : fixed?'fixed':'static',
@@ -53,8 +55,9 @@ const NavBar = ({ color, fixed,sticky, css, gap, hideOnScroll, children, ...prop
     height:'100%',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: color,
+    backgroundColor: barBackgroundColor,
     display: 'flex',
+    minWidth:'100%',
     gap,
   });
 

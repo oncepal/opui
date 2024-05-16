@@ -8,7 +8,7 @@ const copy = (text: string) => {
   }
   document.body.removeChild(transfer);
 };
-function addCSSLink(url: string) {
+function useCSSLink(url: string) {
   const link = document.createElement('link');
   link.rel = 'stylesheet';
   link.type = 'text/css';
@@ -161,7 +161,7 @@ export {
   isBrowerDarkMode,
   isObject,
   debounce,
-  addCSSLink,
+  useCSSLink,
   randomString,
   utf8ToB64,
   b64ToUtf8,

@@ -51,7 +51,7 @@
 
 ## 📦 快速开始
 
-1. 安装：在 React 项目目录中，通过运行以下任一命令来安装 OPUI：
+1. 安装：在 React 项目目录中，通过运行以下任一命令来安装 OPUI(目前未处理私有包发布，要收费哈哈，等开发完成再发布)：
 
 ```bash
 yarn add @opui/react @emotion/react

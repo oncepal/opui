@@ -2,7 +2,7 @@
 
 import { ComponentBaseProps, Margin, Padding, Themed } from '../props';
 import { useThemedCSS, useCSS, useTheme, useMargin, usePadding } from '../../styles/css';
-import { forwardRef, ComponentPropsWithoutRef, Children, cloneElement, DetailedReactHTMLElement } from 'react';
+import { forwardRef, ComponentPropsWithoutRef, Children, cloneElement, DetailedReactHTMLElement, CSSProperties } from 'react';
 type GridProps = ComponentBaseProps &
   Padding &
   Margin & {
@@ -14,6 +14,8 @@ type GridProps = ComponentBaseProps &
 type GridItemProps = ComponentBaseProps &
   Padding &
   Margin & {
+    alignSelf?:string
+    justifySelf?:string
     span?: string;
   };
 
@@ -62,9 +64,11 @@ const Grid = ({ col, rowGap, colGap, css, children, ...props }: ComponentPropsWi
   );
 };
 
-const GridItem = ({ span, css, children, ...props }: ComponentPropsWithoutRef<'div'> & GridItemProps) => {
+const GridItem = ({ justifySelf,alignSelf,span, css, children, ...props }: ComponentPropsWithoutRef<'div'> & GridItemProps) => {
   const theme = useTheme();
   const styles = useCSS({
+    alignSelf,
+    justifySelf,
     gridColumnEnd: 'span ' + (span || 1),
     ...useMargin(props),
     ...usePadding(props),

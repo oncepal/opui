@@ -25,20 +25,20 @@ type ButtonProps = ComponentBaseProps &
   };
 
 /**
- * Buttons allow users to perform actions and choose with a single tap.
+ * 
+按钮允许用户执行操作并通过单击进行选择。
  * ```js
  * <Button>submit</Button>
  * ```
- * @param block full width
- * @param disabled button disabled
- * @param text text button style
- * @param outlined outlined button style
- * @param rounded rounded button style
- * @param radius button border radius
- * @param icon icon button style
- * @param color button color
- * @param padding button size
- * @param onClick click handler
+ * @param block 占满宽度
+ * @param disabled 不可点击
+ * @param text text 类型按钮
+ * @param outlined outlined 类型按钮
+ * @param rounded rounded 类型按钮
+ * @param radius 按钮的 border radius
+ * @param icon icon 类型按钮
+ * @param color 背景色
+ * @param padding button 内边距尺寸
  */
 const Button = ({
   block = false,
