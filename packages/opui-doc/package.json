@@ -20,6 +20,6 @@
     "typescript": "^4.5.2",
     "vite": "^5.2.0",
     "@emotion/react": "11.5.0",
-    "@opui/react":"0.0.1"
+    "@opui/react":"*"
   }
 }

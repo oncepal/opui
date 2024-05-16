@@ -7,7 +7,8 @@
   "scripts": {
     "build": "npx lerna run build",
     "build:doc": "npx lerna run build --scope=@opui/doc",
-    "build:ui": "npx lerna run build --scope=@opui/react",
+    "build:dev": "npx lerna run build:dev --scope=@opui/react",
+    "build:prod": "npx lerna run build:prod --scope=@opui/react",
     "test:ui": "npx lerna run test --scope=@opui/react",
     "dev:doc": "npx lerna run dev --scope=@opui/doc",
     "dev:ui": "npx lerna run dev --scope=@opui/react",
