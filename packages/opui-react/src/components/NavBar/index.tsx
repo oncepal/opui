@@ -13,6 +13,7 @@ type NavBarProps = ComponentBaseProps & {
   gap?: string;
   fixed?: boolean;
   sticky?: boolean;
+  hasBorderBottom?:boolean
   hideOnScroll?: boolean;
 };
 let sy = 0;
@@ -28,8 +29,9 @@ let sy = 0;
  * @param content 栏和页面的内容在栏的中心对齐。
  * @param barBackgroundColor 导航栏背景色
  * @param gap  content,extra,navIcon的间距
+ * @param hasBorderBottom 是否有下分割线
  */
-const NavBar = ({ barBackgroundColor, fixed,sticky, css, gap, hideOnScroll, children, ...props }: NavBarProps) => {
+const NavBar = ({ hasBorderBottom,barBackgroundColor, fixed,sticky, css, gap, hideOnScroll, children, ...props }: NavBarProps) => {
   const [translateY, setTranslateY] = useState(0);
 
   const theme = useTheme();
@@ -48,6 +50,7 @@ const NavBar = ({ barBackgroundColor, fixed,sticky, css, gap, hideOnScroll, chil
     transition: 'transform .25s ease-out',
     ...(hideOnScroll && { transform: `translateY(-${translateY}%)` }),
     gap,
+    ...(hasBorderBottom && {borderBottom:'1px white solid'}),
     ...useMobileStyles(theme, {}),
     ...useThemedCSS(theme, css),
   });

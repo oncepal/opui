@@ -18,6 +18,7 @@ type ContainerProps = ComponentBaseProps &
     background?: Themed<string>;
     fullHeight?: boolean;
     fullScreen?: boolean;
+    center?:boolean
   };
 
 /**
@@ -33,6 +34,7 @@ type ContainerProps = ComponentBaseProps &
  * @param fullScreen 是否全屏高度
  * @param width 宽度
  * @param height 高度
+ * @param center 子元素是否剧中
  * @param onClick click handler
  */
 
@@ -47,6 +49,7 @@ const Container = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & C
       background,
       fullHeight = false,
       fullScreen = false,
+      center,
       css,
       children,
       onClick,
@@ -65,6 +68,7 @@ const Container = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & C
       background:
         gradient || useThemedProps(theme, background) || (theme.darkMode ? theme.colors.black : theme.colors.white),
       color: theme.darkMode ? theme.colors.white : theme.colors.black,
+      ...(center && {display:'flex',justifyContent:'center',alignItems:'center'}),
       ...useMargin(props),
       ...usePadding(props),
       ...usePosition(props),
