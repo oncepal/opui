@@ -35,7 +35,6 @@ $ npm run dev # 成功运行项目并见监听端口：5137
 
 - `src/styles`: 所有 css utils 和样式系统的实现，包括组件常用的 css, 全局的 css reset 和主题系统。
 
-- `src/utils`: 常用 web 功能函数的实现。
 
 ## 开发指南
 

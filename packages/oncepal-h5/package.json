@@ -1,5 +1,5 @@
 {
-  "name": "@opui/doc",
+  "name": "@oncepal/h5",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -13,14 +13,15 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "framer-motion": "^11.2.11",
-    "@emotion/react": "11.5.0"
+    "@emotion/react": "11.5.0",
+    "@oncepal/utils":"*",
+    "@opui/react":"*"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react": "^4.2.1",
     "typescript": "^4.5.2",
-    "vite": "^5.2.0",
-    "@opui/react":"*"
+    "vite": "^5.2.0"
   }
 }

@@ -3,7 +3,7 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { ComponentBaseProps } from '../props';
 import { useCSS, useThemedCSS, useTheme, useMobileStyles } from '../../styles/css';
-import { throttle } from '../../utils';
+import { throttle } from '@oncepal/utils';
 type NavBarItemProps = ComponentBaseProps & {
   content?: ReactNode;
 };

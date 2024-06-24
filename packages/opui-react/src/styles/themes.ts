@@ -1,20 +1,20 @@
-import vars from './vars';
+import tokens from './tokens';
 
 type Theme = {
   darkMode: boolean;
-  border: typeof vars.borderWeights;
-  fontSizes: typeof vars.fontSizes;
-  zIndices: typeof vars.zIndices;
-  radius: typeof vars.radius;
-  spacing: typeof vars.spacing;
-  lineHeights: typeof vars.lineHeights;
-  letterSpacings: typeof vars.letterSpacings;
-  fontWeights: typeof vars.fontWeights;
-  shadows: typeof vars.shadows;
-  dropShadows: typeof vars.dropShadows;
-  app: typeof vars.app;
-  media: typeof vars.media;
-  opacity: typeof vars.opacity;
+  border: typeof tokens.borderWeights;
+  fontSizes: typeof tokens.fontSizes;
+  zIndices: typeof tokens.zIndices;
+  radius: typeof tokens.radius;
+  spacing: typeof tokens.spacing;
+  lineHeights: typeof tokens.lineHeights;
+  letterSpacings: typeof tokens.letterSpacings;
+  fontWeights: typeof tokens.fontWeights;
+  shadows: typeof tokens.shadows;
+  dropShadows: typeof tokens.dropShadows;
+  app: typeof tokens.app;
+  media: typeof tokens.media;
+  opacity: typeof tokens.opacity;
   colors: Partial<
     {
       appBackground: string;
@@ -29,38 +29,38 @@ type Theme = {
       darkBackground:string
       background:string
       primaryDeep: string;
-    } & typeof vars.colors
+    } & typeof tokens.colors
   >;
 };
 
 const theme: Theme = {
   darkMode: false,
-  app: vars.app,
+  app: tokens.app,
   colors: {
-    appBackground: vars.colors.whiteGrey,
-    darkBackground:vars.colors.greyDeep,
-    background:vars.colors.greyLight,
-    title: vars.colors.blackBlue,
-    desc: vars.colors.greyLight,
-    error: vars.colors.red,
-    success: vars.colors.green,
-    warning: vars.colors.yellow,
-    primary: vars.colors.purple,
-    accent: vars.colors.purpleLight,
-    primaryDeep: vars.colors.purpleDeep,
-    ...vars.colors,
+    appBackground: tokens.colors.whiteGrey,
+    darkBackground:tokens.colors.greyDeep,
+    background:tokens.colors.greyLight,
+    title: tokens.colors.blackBlue,
+    desc: tokens.colors.greyLight,
+    error: tokens.colors.red,
+    success: tokens.colors.green,
+    warning: tokens.colors.yellow,
+    primary: tokens.colors.purple,
+    accent: tokens.colors.purpleLight,
+    primaryDeep: tokens.colors.purpleDeep,
+    ...tokens.colors,
   },
-  media: vars.media,
-  opacity: vars.opacity,
-  border: vars.borderWeights,
-  fontSizes: vars.fontSizes,
-  radius: vars.radius,
-  spacing: vars.spacing,
-  zIndices: vars.zIndices,
-  lineHeights: vars.lineHeights,
-  letterSpacings: vars.letterSpacings,
-  fontWeights: vars.fontWeights,
-  shadows: vars.shadows,
-  dropShadows: vars.dropShadows,
+  media: tokens.media,
+  opacity: tokens.opacity,
+  border: tokens.borderWeights,
+  fontSizes: tokens.fontSizes,
+  radius: tokens.radius,
+  spacing: tokens.spacing,
+  zIndices: tokens.zIndices,
+  lineHeights: tokens.lineHeights,
+  letterSpacings: tokens.letterSpacings,
+  fontWeights: tokens.fontWeights,
+  shadows: tokens.shadows,
+  dropShadows: tokens.dropShadows,
 };
 export { theme, Theme };

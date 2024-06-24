@@ -54,6 +54,7 @@
     "@babel/core": "^7.18.5",
     "@emotion/eslint-plugin": "^11.7.0",
     "@emotion/react": "^11.9.3",
+    "framer-motion": "^11.2.11",
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-image": "^2.1.1",
     "@rollup/plugin-node-resolve": "^8.4.0",
@@ -86,9 +87,11 @@
   "peerDependencies": {
     "@emotion/react": ">=11.5.0",
     "react": "^17.0.0 || ^18.0.0",
-    "react-dom": "^17.0.0 || ^18.0.0"
+    "react-dom": "^17.0.0 || ^18.0.0",
+    "framer-motion": "^11.2.11"
   },
   "dependencies": {
+    "@oncepal/utils":"*",
     "polished": "^4.1.4"
   }
 }

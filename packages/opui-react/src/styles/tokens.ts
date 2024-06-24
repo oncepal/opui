@@ -1,8 +1,12 @@
-const vars = {
+const tokens = {
   app: {
     maxWidth: '1600px',
     minWidtgh: '50vw',
     navBar:{
+      height:'4em',
+      padding:'1em 1.5em'
+    },
+    bottomNavigation:{
       height:'4em',
       padding:'1em 1.5em'
     }
@@ -192,4 +196,4 @@ const vars = {
   },
 };
 
-export default vars;
+export default tokens;

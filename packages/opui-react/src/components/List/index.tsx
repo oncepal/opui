@@ -3,7 +3,7 @@
 import { ComponentPropsWithoutRef, createContext, ReactNode, useContext, useEffect, useRef, useState } from 'react';
 import { ComponentBaseProps } from '../props';
 import { useCSS, useThemedCSS, useTheme } from '../../styles/css';
-import { throttle } from '../../utils';
+import { throttle } from '@oncepal/utils';
 type ListItemProps = ComponentBaseProps & {
   content?: ReactNode;
 };

@@ -3,7 +3,7 @@
 import { Theme } from '../../styles/themes';
 import { ComponentBaseProps } from '../props';
 import { memo, ReactNode } from 'react';
-import vars from '../../styles/vars';
+import tokens from '../../styles/tokens';
 import { useCSS, useThemedCSS, useTheme } from '../../styles/css';
 
 type SwitchProps = ComponentBaseProps & {
@@ -35,8 +35,8 @@ const Switch = ({ on = false, onChange, color, radius, css, width = 2.8, height 
               ? theme.colors.primary
               : theme.colors.greyLight
             : on
-            ? vars.colors.purple
-            : vars.colors.greyLight),
+            ? tokens.colors.purple
+            : tokens.colors.greyLight),
     borderRadius: radius || (theme ? theme.radius.rounded : '999px'),
     position: 'relative',
     transition: `background .`,

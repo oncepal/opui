@@ -3,7 +3,7 @@
 import { ComponentBaseProps } from '../props';
 import { useCSS, useTheme, useThemedCSS } from '../../styles/css';
 import { Theme } from '../../styles/themes';
-import vars from '../../styles/vars';
+import tokens from '../../styles/tokens';
 type TableProps = ComponentBaseProps & {
   headers: string[];
   data: any[];

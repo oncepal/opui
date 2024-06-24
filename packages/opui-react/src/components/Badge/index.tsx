@@ -4,7 +4,7 @@ import { Theme } from '../../styles/themes';
 import { ComponentBaseProps, Themed } from '../props';
 
 import { useThemedCSS, useCSS, useTheme, useThemedProps } from '../../styles/css';
-import vars from '../../styles/vars';
+import tokens from '../../styles/tokens';
 import { css } from '@emotion/react';
 import { size, position } from 'polished';
 import { forwardRef, ComponentPropsWithoutRef } from 'react';
@@ -117,7 +117,7 @@ const Badge = forwardRef<HTMLDivElement, Omit<ComponentPropsWithoutRef<'div'>, '
       display: 'inline-flex',
       position: 'relative',
       '& > *:first-of-child': {
-        borderRadius: vars.radius.rounded,
+        borderRadius: tokens.radius.rounded,
         visibility: show ? 'visible' : 'hidden',
         background: useThemedProps(theme, color),
         color: theme.colors.white,

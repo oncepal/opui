@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import { ComponentBaseProps, Themed } from '../props';
-import vars from '../../styles/vars';
+import tokens from '../../styles/tokens';
 import { useThemedCSS, useCSS, useTheme, useThemedProps, useCloudyBackground } from '../../styles/css';
 import { Children, DetailedReactHTMLElement, cloneElement, ComponentPropsWithoutRef } from 'react';
 type CardProps = ComponentBaseProps & {

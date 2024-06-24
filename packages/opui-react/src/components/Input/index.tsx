@@ -3,7 +3,7 @@
 import { Theme } from '../../styles/themes';
 import { useState, ReactNode, CSSProperties, useMemo, useEffect } from 'react';
 import { useThemedCSS, useThemedProps, useCSS, useTheme } from '../../styles/css';
-import vars from '../../styles/vars';
+import tokens from '../../styles/tokens';
 import { ComponentBaseProps, Themed, ThemedCSS } from '../props';
 
 type InputProps = ComponentBaseProps & {
@@ -136,7 +136,7 @@ const Input = ({
     ...useThemedCSS(theme, suffixStyle),
   });
   const messageStyles = useCSS({
-    color: showMessage ? (theme ? theme.colors.red : vars.colors.red) : '',
+    color: showMessage ? (theme ? theme.colors.red : tokens.colors.red) : '',
     ...useThemedCSS(theme, messageStyle),
   });
 

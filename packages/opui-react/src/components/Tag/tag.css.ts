@@ -1,5 +1,5 @@
 import { useCSS, useTheme, useThemedCSS, useThemedProps } from '../../styles/css';
-import vars from '../../styles/vars';
+import tokens from '../../styles/tokens';
 import { TagProps } from './tag.props';
 
 export const getStyles = (props: TagProps) => {

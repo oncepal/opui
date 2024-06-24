@@ -13,7 +13,7 @@ import {
 import { ComponentBaseProps } from '../props';
 import { useCSS, useTheme, useThemedCSS } from '../../styles/css';
 import { Theme } from '../../styles/themes';
-import vars from '../../styles/vars';
+import tokens from '../../styles/tokens';
 
 type SwiperProps = ComponentBaseProps & {
   onChange?: () => void;
@@ -107,7 +107,7 @@ const SwiperIndicator = ({
   const SwiperIndicatorStyles = useCSS({
     position: 'absolute',
     height: '1px',
-    background: vars.colors.purple,
+    background: tokens.colors.purple,
     left: 0,
     bottom: 0,
 

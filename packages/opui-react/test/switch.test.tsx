@@ -1,7 +1,7 @@
 import { render, cleanup, fireEvent, screen } from '@testing-library/react';
 import React from 'react';
 import { App, Switch } from '../src';
-import vars from '../src/styles/vars';
+import tokens from '../src/styles/tokens';
 describe('Switch testing...', () => {
   beforeEach(() => {});
   afterEach(cleanup);
@@ -23,7 +23,7 @@ describe('Switch testing...', () => {
 
     expect(swi).toBeInTheDocument();
     expect(swi).toHaveStyle({
-      background: vars.colors.purple,
+      background: tokens.colors.purple,
     });
   });
 

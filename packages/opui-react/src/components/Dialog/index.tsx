@@ -4,7 +4,7 @@ import { Theme } from '../../styles/themes';
 import { ComponentBaseProps } from '../props';
 
 import { useThemedCSS, useCSS, useTheme } from '../../styles/css';
-import vars from '../../styles/vars';
+import tokens from '../../styles/tokens';
 
 type DialogProps = ComponentBaseProps & {
   shy?: boolean;
@@ -96,7 +96,7 @@ const Dialog = ({
     // overflowX: 'hidden',
     // paddingTop: '80px',
     // paddingBottom: '80px',
-    // // backgroundColor: vars.dialog.maskColor,
+    // // backgroundColor: tokens.dialog.maskColor,
     // visibility: open ? 'open' : 'hidden',
   });
   // The CSS properties of drawer content container,

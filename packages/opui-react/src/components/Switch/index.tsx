@@ -3,7 +3,7 @@
 import { Theme } from '../../styles/themes';
 import { ComponentBaseProps, Themed } from '../props';
 import { CSSProperties, memo, ReactNode, useCallback, useMemo } from 'react';
-import vars from '../../styles/vars';
+import tokens from '../../styles/tokens';
 import { useCenter, useThemedCSS, useTheme, useCSS, useThemedProps } from '../../styles/css';
 import { darken } from 'polished';
 import { rotate } from '../../styles/keyframes';
@@ -70,7 +70,7 @@ const Switch = memo(
     const getTrackColorOff = useCallback(() => {
       return theme
         ? useThemedProps<string>(theme, trackColorOff) || theme.colors.greyLight
-        : useThemedProps<string>(theme, trackColorOff) || vars.colors.greyLight;
+        : useThemedProps<string>(theme, trackColorOff) || tokens.colors.greyLight;
     }, [trackColorOff]);
 
     const loadingStyles = useMemo(

@@ -13,7 +13,7 @@ import {
 import { ComponentBaseProps } from '../props';
 import { useCSS, useTheme, useThemedCSS } from '../../styles/css';
 import { Theme } from '../../styles/themes';
-import vars from '../../styles/vars';
+import tokens from '../../styles/tokens';
 
 type TabsProps = ComponentBaseProps & {
   onTabsChange: (label: string) => void;
@@ -94,9 +94,9 @@ const TabItem = ({ label, disabled, onClick, css, children, ...props }: TabItemP
     padding: '.8em 1em',
     color: disabled
       ? context.activeTab == label
-        ? theme.colors.primary || vars.colors.purple
-        : theme.colors.black || vars.colors.black
-      : theme.colors.grey || vars.colors.grey,
+        ? theme.colors.primary || tokens.colors.purple
+        : theme.colors.black || tokens.colors.black
+      : theme.colors.grey || tokens.colors.grey,
     ...useThemedCSS(theme, css),
   });
 
@@ -119,7 +119,7 @@ const TabsIndicator = ({ css, className, ...props }: React.ComponentPropsWithout
     width: context.indicatorWidth + '%',
     position: 'absolute',
     height: '1px',
-    background: vars.colors.purple,
+    background: tokens.colors.purple,
     left: 0,
     bottom: 0,
     transform: `translateX(${context.indicatorTranslateX}%)`,

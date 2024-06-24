@@ -5,7 +5,7 @@ import { ComponentBaseProps, Themed } from '../props';
 
 import { useThemedCSS, useCSS, useTheme } from '../../styles/css';
 
-import { debounce } from '../../utils';
+import { debounce } from '@oncepal/utils';
 import { useState } from 'react';
 
 type FabProps = ComponentBaseProps &
@@ -13,8 +13,8 @@ type FabProps = ComponentBaseProps &
     adsorption?: boolean;
     draggable?: boolean;
     position?: {
-      left: number | string;
-      top: number | string;
+      left: number ;
+      top: number;
     };
   }>;
 
