@@ -12,12 +12,25 @@ type Theme = {
   fontWeights: typeof tokens.fontWeights;
   shadows: typeof tokens.shadows;
   dropShadows: typeof tokens.dropShadows;
-  app: typeof tokens.app;
+  app: {
+    maxWidth: string,
+    minWidtgh: string,
+  
+    navBar:{
+      height:string,
+      padding:string
+    },
+    bottomNavigation:{
+      height:string,
+      padding:string
+    }
+  }
   media: typeof tokens.media;
   opacity: typeof tokens.opacity;
   colors: Partial<
-    {
-      appBackground: string;
+  typeof tokens.colors &{
+      lightBackground: string;
+      darkBackground: string;
       title: string;
       error: string;
       success: string;
@@ -26,18 +39,29 @@ type Theme = {
       primary: string;
       secondary: string;
       accent: string;
-      darkBackground:string
       background:string
       primaryDeep: string;
-    } & typeof tokens.colors
+    }
   >;
 };
 
-const theme: Theme = {
+const defaultTheme: Theme = {
   darkMode: false,
-  app: tokens.app,
+  app:  {
+    maxWidth: '1600px',
+    minWidtgh: '50vw',
+  
+    navBar:{
+      height:'4em',
+      padding:'1em 1.5em'
+    },
+    bottomNavigation:{
+      height:'4em',
+      padding:'1em 1.5em'
+    }
+  },
   colors: {
-    appBackground: tokens.colors.whiteGrey,
+    lightBackground: tokens.colors.whiteDeep,
     darkBackground:tokens.colors.greyDeep,
     background:tokens.colors.greyLight,
     title: tokens.colors.blackBlue,
@@ -63,4 +87,4 @@ const theme: Theme = {
   shadows: tokens.shadows,
   dropShadows: tokens.dropShadows,
 };
-export { theme, Theme };
+export { defaultTheme, Theme };

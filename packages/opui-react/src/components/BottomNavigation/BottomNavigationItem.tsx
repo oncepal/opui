@@ -11,12 +11,15 @@ import { motion } from 'framer-motion';
 type BottomNavigationItemProps = ComponentBaseProps & {
     label: string;
     disabled?: boolean;
+    activeColor?:(theme: Theme) => string;
+    unActiveColor?:(theme: Theme) => string;
+    disabledColor?:(theme: Theme) => string;
     onClick?: (label: string) => void;
     css?: (theme: Theme, isCurrentItem: boolean) => CSSProperties;
   };
   
 
-const BottomNavigationItem = ({ label, disabled, onClick, css, children, ...props }: BottomNavigationItemProps) => {
+const BottomNavigationItem = ({ activeColor,unActiveColor,disabledColor,label, disabled, onClick, css, children, ...props }: BottomNavigationItemProps) => {
     const theme = useTheme();
     const context = useContext(tabsContext);
 
@@ -26,9 +29,9 @@ const BottomNavigationItem = ({ label, disabled, onClick, css, children, ...prop
       padding: '.8em 1em',
       color: !disabled
         ? context.activeItem == label
-          ? theme.colors.primary 
-          : theme.colors.black 
-        : theme.colors.grey ,
+          ? (activeColor?activeColor(theme): theme.colors.primary) 
+          : (unActiveColor?unActiveColor(theme):theme.colors.black)
+        : (disabledColor?disabledColor(theme):theme.colors.grey) ,
       ...useThemedCSS(theme, css),
     });
   
@@ -38,8 +41,8 @@ const BottomNavigationItem = ({ label, disabled, onClick, css, children, ...prop
     };
   
     return (
-      <motion.div whileTap={{ scale: 0.9 }} css={styles} onClick={handleClickItem} {...props}>
-        {label}
+      <motion.div whileTap={{ scale: 0.95 }} css={styles} onClick={handleClickItem} {...props}>
+        {children || label}
       </motion.div>
     );
   };

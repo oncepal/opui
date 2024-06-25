@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
 import { ComponentBaseProps, Margin, Themed } from '../props';
-import polished from 'polished';
 import { forwardRef, useMemo, ComponentPropsWithoutRef, MouseEvent } from 'react';
 import { useThemedCSS, useCSS, useTheme, useMargin, useThemedProps } from '../../styles/css';
 

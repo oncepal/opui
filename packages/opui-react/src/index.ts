@@ -55,6 +55,7 @@ import Tabs from './components/Tabs';
 import Toast from './components/Toast';
 import Sidebar from './components/Sidebar';
 export { useMobileStyles, useMediaQuery } from './styles/css';
+export type {Theme} from './styles/themes'
 export {
   // Timeline,
   Sidebar,

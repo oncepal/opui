@@ -12,7 +12,7 @@
     "test:ui": "npx lerna run test --scope=@opui/react",
     "dev:doc": "npx lerna run dev --scope=@opui/doc",
     "dev:ui": "npx lerna run dev --scope=@opui/react",
-    "dev:h5": "npx lerna run dev --scope=@oncepal/h5",
+    "dev:h5": "npx lerna run dev --scope=@oncepal/h5 --scope=@opui/react",
     "dev": "npx lerna run dev",
     "release": "npx lerna publish --no-private"
   },

@@ -1,16 +1,5 @@
 const tokens = {
-  app: {
-    maxWidth: '1600px',
-    minWidtgh: '50vw',
-    navBar:{
-      height:'4em',
-      padding:'1em 1.5em'
-    },
-    bottomNavigation:{
-      height:'4em',
-      padding:'1em 1.5em'
-    }
-  },
+  
   borderWeights: {
     light: '1px',
     normal: '2px',
@@ -121,7 +110,7 @@ const tokens = {
     purple: '#693ff7',
     purpleDeep: '#311b92',
     black: '#1a1a1a',
-    grey: '#999',
+    grey: '#666666',
     blue: '#0038c9',
     purpleLight: '#ede7f6',
     yellow: '#ffba00',
@@ -130,7 +119,7 @@ const tokens = {
     greyDeep: '#222',
     greyBlue: '#e9ebf7',
     greyLight: '#eaecf5',
-    whiteGrey: '#f8f9fe',
+    whiteDeep: 'rgb(250, 250, 250)',
     white: '#fff',
     blackBlue: '#38446d',
     transparent: 'rgba(255, 255, 255, 0.05)',

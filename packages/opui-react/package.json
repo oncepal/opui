@@ -91,7 +91,6 @@
     "framer-motion": "^11.2.11"
   },
   "dependencies": {
-    "@oncepal/utils":"*",
-    "polished": "^4.1.4"
+    "@oncepal/utils":"*"
   }
 }

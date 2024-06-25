@@ -2,8 +2,6 @@
 
 import { ReactNode } from 'react';
 import { ComponentBaseProps, Flex, Margin, Padding, Themed } from '../props';
-import { useMemo } from 'react';
-import tokens from '../../styles/tokens';
 import { usePadding, useMargin, useFlex, useCSS, useTheme, useThemedCSS, useThemedProps } from '../../styles/css';
 
 type DividerProps = ComponentBaseProps &
