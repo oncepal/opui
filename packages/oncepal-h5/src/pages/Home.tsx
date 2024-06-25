@@ -32,8 +32,10 @@ const Home = () => {
   };
   const handleGetPalNeedList = async () => {
     const nextPalNeedList = await fetchGet<PalNeed[]>('/pal/needList',getPalNeedListQuery);
-    if (nextPalNeedList.length > 0) setPalNeedList(palNeedList=>palNeedList.concat(nextPalNeedList));
+    console.log(nextPalNeedList?.length > 0);
     
+    if (nextPalNeedList?.length > 0) setPalNeedList(palNeedList=>palNeedList.concat(nextPalNeedList));
+    else setPalNeedList(palNeedList=>palNeedList.concat([generatePalNeed(), generatePalNeed(), generatePalNeed()]));
 };
 
   const handleLoadMorePalNeed = ()=>{
@@ -66,6 +68,8 @@ const Home = () => {
         <InfiniteScroll onScrollToBottom={handleLoadMorePalNeed}>
           <InfiniteScroll.Content>
             {palNeedList.map(palNeed => {
+                console.log(palNeedList.length);
+                
               return (
                 <Container px='1em' py='1.5em'>
                   <Row>

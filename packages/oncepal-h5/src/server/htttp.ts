@@ -1,7 +1,21 @@
 const proxyPrefix = process.env.NODE_ENV == "production" ? "" : "/api";
 
 import { transformFetchParamsInGet } from "@oncepal/utils";
+const generateResponse = async (response:Response)=>{
 
+  if (response.ok) {
+    
+    const res = await response.json();
+    const { msg, code } = res;
+    if (code == 99999) {
+      localStorage.clear();
+    }
+    return res;
+  } else {
+
+     return {}
+  }
+}
 export async function fetchPost<T>(url: string, params?: any): Promise<T> {
   const response = await fetch(proxyPrefix + url, {
     method: "POST",
@@ -15,18 +29,7 @@ export async function fetchPost<T>(url: string, params?: any): Promise<T> {
     },
     body: JSON.stringify(params),
   } as RequestInit & { secure: boolean });
-  // 下面的取值每个项目有自己的返回值
-  const res = await response.json();
-  const { msg, code } = res;
-  if (response.ok) {
-    if (code == 99999) {
-      localStorage.clear();
-    }
-    return res;
-  } else {
-    const error = new Error(msg);
-    return Promise.reject(error);
-  }
+  return generateResponse(response)
 }
 
 export async function fetchGet<T>(url: string, query?: any): Promise<T> {
@@ -40,18 +43,9 @@ export async function fetchGet<T>(url: string, query?: any): Promise<T> {
     },
   });
 
-  // 下面的取值每个项目有自己的返回值
-  const res = await response.json();
-  const { msg, code } = res;
-  if (response.ok) {
-    if (code == 99999) {
-      localStorage.clear();
-    }
-    return res;
-  } else {
-    const error = new Error(msg);
-    return Promise.reject(error);
-  }
+  return generateResponse(response)
+  
+ 
 }
 export async function fetchDelete<T>(url: string, query?: any): Promise<T> {
   const computedParams = query ? transformFetchParamsInGet(query) : "";
@@ -64,19 +58,7 @@ export async function fetchDelete<T>(url: string, query?: any): Promise<T> {
       "X-Requested-With": "XMLHttpRequest",
     },
   } as RequestInit & { secure: boolean });
-
-  // 下面的取值每个项目有自己的返回值
-  const res = await response.json();
-  const { msg, code } = res;
-  if (response.ok) {
-    if (code == 99999) {
-      localStorage.clear();
-    }
-    return res;
-  } else {
-    const error = new Error(msg);
-    return Promise.reject(error);
-  }
+  return generateResponse(response)
 }
 export async function fetchPatch<T>(url: string, params?: any): Promise<T> {
   const computedParams = params ? transformFetchParamsInGet(params) : "";
@@ -90,16 +72,5 @@ export async function fetchPatch<T>(url: string, params?: any): Promise<T> {
     },
   } as RequestInit & { secure: boolean });
 
-  // 下面的取值每个项目有自己的返回值
-  const res = await response.json();
-  const { msg, code } = res;
-  if (response.ok) {
-    if (code == 99999) {
-      localStorage.clear();
-    }
-    return res;
-  } else {
-    const error = new Error(msg);
-    return Promise.reject(error);
-  }
+  return generateResponse(response)
 }

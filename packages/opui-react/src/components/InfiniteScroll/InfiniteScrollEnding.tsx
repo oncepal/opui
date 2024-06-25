@@ -7,7 +7,7 @@ export type InfiniteScrollEndingProps = ComponentBaseProps & Partial<{}>;
 export const InfiniteScrollEnding = ({ children, css, ...props }: ComponentPropsWithoutRef<'div'> & InfiniteScrollEndingProps) => {
     const theme = useTheme();
     const styles = useCSS({
-      display: 'inline-flex',      
+     
       ...useThemedCSS(theme, css),
     });
   

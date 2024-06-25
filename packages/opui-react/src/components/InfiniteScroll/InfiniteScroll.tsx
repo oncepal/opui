@@ -68,10 +68,19 @@ const InfiniteScroll = ({
   };
   return (
     <div css={styles} onTouchMove={e => handleTouchMove(e)} onScroll={handleScroll} {...props}>
-      {bottomed &&
+      {
         Children.map(children, (child: any, i) => {
           const element = child as DetailedReactHTMLElement<any, HTMLDivElement>;
           if (['InfiniteScrollLoading', 'InfiniteScrollContent', 'InfiniteScrollEnding'].includes(child.type.name)) {
+            return (
+              <>
+                {cloneElement(element, {
+                  ...{ ...element.props },
+                })}
+              </>
+            );
+          }
+          if (bottomed && ['InfiniteScrollEnding'].includes(child.type.name)) {
             return (
               <>
                 {cloneElement(element, {
