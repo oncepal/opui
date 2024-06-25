@@ -124,7 +124,7 @@ const NavBarContent = ({ content, css, children, ...props }: NavBarItemProps) =>
     </div>
   );
 };
-const NavBarExtra = ({ content, css, children, ...props }: NavBarItemProps) => {
+const NavBarActions = ({ content, css, children, ...props }: NavBarItemProps) => {
   const theme = useTheme();
   const styles = useCSS({
     flex: 1.5,
@@ -140,5 +140,5 @@ const NavBarExtra = ({ content, css, children, ...props }: NavBarItemProps) => {
 
 NavBar.Brand = NavBarBrand;
 NavBar.Content = NavBarContent;
-NavBar.Extra = NavBarExtra;
+NavBar.Actions = NavBarActions;
 export default NavBar;

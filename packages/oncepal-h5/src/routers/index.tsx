@@ -21,7 +21,7 @@ import NewPalNeed from '../pages/NewPalNeed'
     },
     
     {
-      path: "/newNeed",
+      path: "/newPalNeed",
       element: <NewPalNeed/>,
     }
   ]);

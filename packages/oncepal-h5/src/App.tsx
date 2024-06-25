@@ -11,7 +11,6 @@ export default function App() {
   const [customTheme, setCustomTheme] = useState<Partial<Theme>>({
     colors: {
       primary: '#C80036',
-      accent:'#C80036'
     },
     darkMode: false,
   });

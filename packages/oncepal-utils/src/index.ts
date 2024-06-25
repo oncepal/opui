@@ -78,7 +78,9 @@ const copy = (text: string) => {
   const callPhoneNumber = (phoneNumber: string) => {
     window.location.href = 'tel:' + phoneNumber;
   };
-  
+  const linkToRoute =(path:string)=>{
+    window.location.href = window.location.origin+path
+  }
   const transformFetchParamsInGet = (params: { [key: string]: any }) => {
     let result = '?';
     for (const key in params) {
@@ -179,6 +181,7 @@ const copy = (text: string) => {
     copy,
     clamp,
     getUUID,
+    linkToRoute,
     deepMerge,
   };
   

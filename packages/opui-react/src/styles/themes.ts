@@ -30,6 +30,7 @@ type Theme = {
   colors: Partial<
   typeof tokens.colors &{
       lightBackground: string;
+      lightGreyText:string
       darkBackground: string;
       title: string;
       error: string;
@@ -62,6 +63,7 @@ const defaultTheme: Theme = {
   },
   colors: {
     lightBackground: tokens.colors.whiteDeep,
+    lightGreyText:tokens.colors.grey,
     darkBackground:tokens.colors.greyDeep,
     background:tokens.colors.greyLight,
     title: tokens.colors.blackBlue,

@@ -8,6 +8,7 @@ declare const isWX: () => boolean;
 declare const isAndroid: () => boolean;
 declare const isIos: () => boolean;
 declare const callPhoneNumber: (phoneNumber: string) => void;
+declare const linkToRoute: (path: string) => void;
 declare const transformFetchParamsInGet: (params: {
     [key: string]: any;
 }) => string;
@@ -23,4 +24,4 @@ declare function isObject(item: any): any;
 declare function deepMerge(target: any, source: any): any;
 declare function randomString(len?: number): string;
 declare function sendMessage(phone: string | number, content?: string): void;
-export { sendMessage, isBrowerDarkMode, isObject, debounce, useCSSLink, randomString, utf8ToB64, b64ToUtf8, underlineToHump, humpToUnderline, useUrlParams, transformFetchParamsInGet, callPhoneNumber, isPC, isWX, isAndroid, isIos, isBrowerTabInView, throttle, copy, clamp, getUUID, deepMerge, };
+export { sendMessage, isBrowerDarkMode, isObject, debounce, useCSSLink, randomString, utf8ToB64, b64ToUtf8, underlineToHump, humpToUnderline, useUrlParams, transformFetchParamsInGet, callPhoneNumber, isPC, isWX, isAndroid, isIos, isBrowerTabInView, throttle, copy, clamp, getUUID, linkToRoute, deepMerge, };

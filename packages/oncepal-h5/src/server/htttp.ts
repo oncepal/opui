@@ -1,6 +1,7 @@
 const proxyPrefix = process.env.NODE_ENV == "production" ? "" : "/api";
 
 import { transformFetchParamsInGet } from "@oncepal/utils";
+
 export async function fetchPost<T>(url: string, params?: any): Promise<T> {
   const response = await fetch(proxyPrefix + url, {
     method: "POST",
@@ -28,19 +29,16 @@ export async function fetchPost<T>(url: string, params?: any): Promise<T> {
   }
 }
 
-export async function fetchGet<T>(url: string, params?: any): Promise<T> {
-  const computedParams = params ? transformFetchParamsInGet(params) : "";
+export async function fetchGet<T>(url: string, query?: any): Promise<T> {
+  const computedParams = query ? transformFetchParamsInGet(query) : "";
   const response = await fetch(proxyPrefix + url + computedParams, {
     method: "GET",
     mode: "cors",
     credentials: "include",
-    secure: false,
     headers: {
       "X-Requested-With": "XMLHttpRequest",
-      "Content-Type": "application/json",
-      "Current-Language": "en-US",
     },
-  } as RequestInit & { secure: boolean });
+  });
 
   // 下面的取值每个项目有自己的返回值
   const res = await response.json();
@@ -55,8 +53,8 @@ export async function fetchGet<T>(url: string, params?: any): Promise<T> {
     return Promise.reject(error);
   }
 }
-export async function fetchDelete<T>(url: string, params?: any): Promise<T> {
-  const computedParams = params ? transformFetchParamsInGet(params) : "";
+export async function fetchDelete<T>(url: string, query?: any): Promise<T> {
+  const computedParams = query ? transformFetchParamsInGet(query) : "";
   const response = await fetch(proxyPrefix + url + computedParams, {
     method: "Delete",
     mode: "cors",

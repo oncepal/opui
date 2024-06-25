@@ -15,18 +15,19 @@ type BottomNavigationContext = {
   activeItem?: string;
 };
 
-export const tabsContext = createContext<BottomNavigationContext>({});
+export const bottomNavigationContext = createContext<BottomNavigationContext>({});
 
 const BottomNavigation = ({ onItemChange, activeItem, css, children, ...props }: BottomNavigationProps) => {
   const theme = useTheme();
   const styles = useCSS({
     display: 'flex',
+    alignItems:'center',
     position:'fixed',
     bottom:0,
     left:0,
     right:0,
     textAlign: 'center',
-    padding: theme.app.bottomNavigation.padding,
+    background:theme.colors.white,
     minHeight:theme.app.bottomNavigation.height,
     ...useThemedCSS(theme, css),
   });
@@ -42,11 +43,11 @@ const BottomNavigation = ({ onItemChange, activeItem, css, children, ...props }:
   }, [children]);
 
   return (
-    <tabsContext.Provider value={context}>
+    <bottomNavigationContext.Provider value={context}>
       <div css={styles} {...props}>
         {children}
       </div>
-    </tabsContext.Provider>
+    </bottomNavigationContext.Provider>
   );
 };
 

@@ -8,7 +8,7 @@ export default defineConfig({
     // 设置代理
     proxy: {
       '/api': {
-        target: 'http://192.168.1.12:8081/api',
+        target: 'http://localhost:1996/api',
         changeOrigin: true,
         rewrite: path => path.replace(/^\/api/, '')
       },

@@ -5,7 +5,7 @@ import { ComponentBaseProps } from '../props';
 import { useCSS, useTheme, useThemedCSS } from '../../styles/css';
 import { Theme } from '../../styles/themes';
 
-import { tabsContext } from '.';
+import { bottomNavigationContext } from '.';
 import { motion } from 'framer-motion';
 
 type BottomNavigationItemProps = ComponentBaseProps & {
@@ -21,17 +21,17 @@ type BottomNavigationItemProps = ComponentBaseProps & {
 
 const BottomNavigationItem = ({ activeColor,unActiveColor,disabledColor,label, disabled, onClick, css, children, ...props }: BottomNavigationItemProps) => {
     const theme = useTheme();
-    const context = useContext(tabsContext);
+    const context = useContext(bottomNavigationContext);
 
     const styles = useCSS({
       flex: 1,
       textAlign: 'center',
-      padding: '.8em 1em',
+  
       color: !disabled
         ? context.activeItem == label
           ? (activeColor?activeColor(theme): theme.colors.primary) 
-          : (unActiveColor?unActiveColor(theme):theme.colors.black)
-        : (disabledColor?disabledColor(theme):theme.colors.grey) ,
+          : (unActiveColor?unActiveColor(theme):theme.colors.lightGreyText)
+        : (disabledColor?disabledColor(theme):theme.colors.greyLight) ,
       ...useThemedCSS(theme, css),
     });
   

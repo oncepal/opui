@@ -78,6 +78,9 @@ const isIos = () => {
 const callPhoneNumber = (phoneNumber) => {
     window.location.href = 'tel:' + phoneNumber;
 };
+const linkToRoute = (path) => {
+    window.location.href = window.location.origin + path;
+};
 const transformFetchParamsInGet = (params) => {
     let result = '?';
     for (const key in params) {
@@ -149,5 +152,5 @@ function sendMessage(phone, content = '') {
     window.location.href = 'tel:' + phone;
 }
 
-export { b64ToUtf8, callPhoneNumber, clamp, copy, debounce, deepMerge, getUUID, humpToUnderline, isAndroid, isBrowerDarkMode, isBrowerTabInView, isIos, isObject, isPC, isWX, randomString, sendMessage, throttle, transformFetchParamsInGet, underlineToHump, useCSSLink, useUrlParams, utf8ToB64 };
+export { b64ToUtf8, callPhoneNumber, clamp, copy, debounce, deepMerge, getUUID, humpToUnderline, isAndroid, isBrowerDarkMode, isBrowerTabInView, isIos, isObject, isPC, isWX, linkToRoute, randomString, sendMessage, throttle, transformFetchParamsInGet, underlineToHump, useCSSLink, useUrlParams, utf8ToB64 };
 //# sourceMappingURL=index.js.map

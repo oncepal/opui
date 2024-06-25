@@ -84,6 +84,9 @@
   const callPhoneNumber = (phoneNumber) => {
       window.location.href = 'tel:' + phoneNumber;
   };
+  const linkToRoute = (path) => {
+      window.location.href = window.location.origin + path;
+  };
   const transformFetchParamsInGet = (params) => {
       let result = '?';
       for (const key in params) {
@@ -170,6 +173,7 @@
   exports.isObject = isObject;
   exports.isPC = isPC;
   exports.isWX = isWX;
+  exports.linkToRoute = linkToRoute;
   exports.randomString = randomString;
   exports.sendMessage = sendMessage;
   exports.throttle = throttle;

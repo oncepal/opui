@@ -10,7 +10,7 @@ type IconProps = Omit<ComponentBaseProps,'className'> &
     height?: string;
     size?:Themed<string>
     color?: Themed<string>;
-    type?: string;
+    type: string;
     src?:string
     onClick?: () => any;
   };
