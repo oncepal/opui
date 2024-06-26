@@ -7,6 +7,7 @@ import { ComponentBaseProps } from '../props';
 import { InfiniteScrollContent } from './InfiniteScrollContent';
 import { InfiniteScrollEnding } from './InfiniteScrollEnding';
 import { InfiniteScrollLoading } from './InfiniteScrollLoading';
+import { motion } from 'framer-motion';
 type InfiniteScrollProps = ComponentBaseProps & {
   threshold?: number;
   bottomed?: boolean;
@@ -67,7 +68,8 @@ const InfiniteScroll = ({
     if (scrollTop > 0) e.stopPropagation();
   };
   return (
-    <div css={styles} onTouchMove={e => handleTouchMove(e)} onScroll={handleScroll} {...props}>
+    <motion.div initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }} css={styles} onTouchMove={e => handleTouchMove(e)} onScroll={handleScroll} {...props}>
       {
         Children.map(children, (child: any, i) => {
           const element = child as DetailedReactHTMLElement<any, HTMLDivElement>;
@@ -91,7 +93,7 @@ const InfiniteScroll = ({
           }
           return undefined;
         })}
-    </div>
+    </motion.div>
   );
 };
 InfiniteScroll.Content = InfiniteScrollContent;

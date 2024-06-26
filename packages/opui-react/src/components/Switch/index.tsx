@@ -5,7 +5,6 @@ import { ComponentBaseProps, Themed } from '../props';
 import { CSSProperties, memo, ReactNode, useCallback, useMemo } from 'react';
 import tokens from '../../styles/tokens';
 import { useCenter, useThemedCSS, useTheme, useCSS, useThemedProps } from '../../styles/css';
-import { darken } from 'polished';
 import { rotate } from '../../styles/keyframes';
 
 type SwitchProps = ComponentBaseProps & {
@@ -123,7 +122,7 @@ const Switch = memo(
       }),
       ...(!disabled && {
         '&:hover': {
-          background: darken(0.05, getTrackColorOff()),
+          background: getTrackColorOff(),
           transition: 'all .25s ease',
         },
       }),

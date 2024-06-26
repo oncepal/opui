@@ -6,7 +6,7 @@ export default function App() {
     
     <OPUIProvider theme={theme}>
       <Container main fullScreen background={'#fafafa'}>
-        <NavBar fixed hasBorderBottom>
+        <NavBar fixed isBordered>
           <NavBar.Brand />
           <NavBar.Content><Text blod size={'2em'}>OP UI</Text></NavBar.Content>
           <NavBar.Extra />

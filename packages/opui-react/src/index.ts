@@ -54,10 +54,13 @@ import Switch from './components/Switch';
 import Tabs from './components/Tabs';
 import Toast from './components/Toast';
 import Sidebar from './components/Sidebar';
+import { Avatar, AvatarGroup } from './components/Avatar';
 export { useMobileStyles, useMediaQuery } from './styles/css';
-export type {Theme} from './styles/themes'
+export type { Theme } from './styles/themes';
 export {
   // Timeline,
+  Avatar,
+  AvatarGroup,
   Sidebar,
   Tabs,
   Toast,

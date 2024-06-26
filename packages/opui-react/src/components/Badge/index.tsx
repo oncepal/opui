@@ -6,7 +6,7 @@ import { ComponentBaseProps, Themed } from '../props';
 import { useThemedCSS, useCSS, useTheme, useThemedProps } from '../../styles/css';
 import tokens from '../../styles/tokens';
 import { css } from '@emotion/react';
-import { size, position } from 'polished';
+
 import { forwardRef, ComponentPropsWithoutRef } from 'react';
 
 type BadgeProps = ComponentBaseProps & {

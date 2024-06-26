@@ -8,6 +8,8 @@ import {
   Col,
   Grid,
   List,
+  Avatar,
+  AvatarGroup,
   Icon,
   InfiniteScroll,
 } from '@opui/react';
@@ -20,10 +22,32 @@ import { fetchGet } from '../server/htttp';
 import { PalNeed, generatePalNeed } from '../server/pal';
 
 const Home = () => {
- const [getPalNeedListQuery,setGetPalNeedListQuery] = useState({page:1,
-    pageSize:20})
+  const [getPalNeedListQuery, setGetPalNeedListQuery] = useState({ page: 1, pageSize: 20 });
   const [activeItem, setActiveItem] = useState('首页');
-  const [palNeedList, setPalNeedList] = useState<PalNeed[]>([generatePalNeed(), generatePalNeed(), generatePalNeed()]);
+  const [palNeedList, setPalNeedList] = useState<PalNeed[]>([
+    generatePalNeed(),
+    generatePalNeed(),
+    generatePalNeed(),
+    generatePalNeed(),
+    generatePalNeed(),
+    generatePalNeed(),
+    generatePalNeed(),
+    generatePalNeed(),
+    generatePalNeed(),
+    generatePalNeed(),
+    generatePalNeed(),
+    generatePalNeed(),
+    generatePalNeed(),
+    generatePalNeed(),
+    generatePalNeed(),
+    generatePalNeed(),
+    generatePalNeed(),
+    generatePalNeed(),
+    generatePalNeed(),
+    generatePalNeed(),
+    generatePalNeed(),
+    generatePalNeed(),
+  ]);
   const handleNavigationItemChange = (l: SetStateAction<string>) => {
     if (l) setActiveItem(l);
   };
@@ -31,25 +55,25 @@ const Home = () => {
     linkToRoute('/NewPalNeed');
   };
   const handleGetPalNeedList = async () => {
-    const nextPalNeedList = await fetchGet<PalNeed[]>('/pal/needList',getPalNeedListQuery);
+    const nextPalNeedList = await fetchGet<PalNeed[]>('/pal/needList', getPalNeedListQuery);
     console.log(nextPalNeedList?.length > 0);
-    
-    if (nextPalNeedList?.length > 0) setPalNeedList(palNeedList=>palNeedList.concat(nextPalNeedList));
-    else setPalNeedList(palNeedList=>palNeedList.concat([generatePalNeed(), generatePalNeed(), generatePalNeed()]));
-};
 
-  const handleLoadMorePalNeed = ()=>{
+    if (nextPalNeedList?.length > 0) setPalNeedList(palNeedList => palNeedList.concat(nextPalNeedList));
+    else setPalNeedList(palNeedList => palNeedList.concat([generatePalNeed(), generatePalNeed(), generatePalNeed()]));
+  };
+
+  const handleLoadMorePalNeed = () => {
     setGetPalNeedListQuery(q => ({
-        ...q,
-        page:++q.page
-    }))
-  }
+      ...q,
+      page: ++q.page,
+    }));
+  };
   useEffect(() => {
     handleGetPalNeedList();
   }, [getPalNeedListQuery]);
   return (
     <Container main fullScreen>
-      <NavBar fixed hasBorderBottom>
+      <NavBar fixed isBordered>
         <NavBar.Brand />
         <NavBar.Content>
           <Text blod>ONCE PAL</Text>
@@ -68,15 +92,35 @@ const Home = () => {
         <InfiniteScroll onScrollToBottom={handleLoadMorePalNeed}>
           <InfiniteScroll.Content>
             {palNeedList.map(palNeed => {
-                console.log(palNeedList.length);
-                
+          
+
               return (
                 <Container px='1em' py='1.5em'>
-                  <Row>
-                    <Col>{palNeed.keywords}</Col>
+                  <Row align='center'>
+                    <Col>
+                      <Avatar name='我' css={{background:'red'}}/>
+                    </Col>
+                    <Col>想找一个{palNeed.keywords}搭子</Col>
                   </Row>
-                  <Row>
+                  <Row align='center'>
                     <Col>{palNeed.description}</Col>
+                  </Row>
+                  <Row align='center'>
+                    <Col>
+                      {palNeed.palNumber}个{palNeed.palAge[0]}-{palNeed.palAge[1]}岁的
+                      {palNeed.palSex == 0 ? '女' : palNeed.palSex == 1 ? '男' : '不限'}
+                      {palNeed.paymentMethod ? 'AA制' : '无需出钱'}
+                    </Col>
+                  </Row>
+                  <Row align='center'>
+                    <Col>
+                      <AvatarGroup max={5} total={10}>
+                        {palNeed.pals?.map(pal => (
+                          <Avatar name={pal.id+'我'} />
+                        ))}
+                      </AvatarGroup>
+                    </Col>
+                    <Col>搭一个</Col>
                   </Row>
                 </Container>
               );
