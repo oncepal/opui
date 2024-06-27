@@ -18,6 +18,7 @@ type AvatarProps = ComponentBaseProps & {
   name?: string;
   bordered?: boolean;
   disabled?: boolean;
+  dense?:boolean
 };
 
 /**
@@ -33,12 +34,14 @@ type AvatarProps = ComponentBaseProps & {
  * @param name badge y-offset
  * @param bordered badge position relative to its children.
  * @param disabled badge background color
+ * @param dense 边框是否紧贴
  */
 const Avatar = ({
   size = '2em',
   radius = '9999px',
   css,
   color,
+  dense = true,
   src,
   disabled,
   bordered,
@@ -53,7 +56,7 @@ const Avatar = ({
     display: 'inline-flex',
     alignItems:'center',
     justifyContent:'center',
-    ...(bordered && { border: '2px solid ' + (useThemedProps(theme, color)|| theme.colors.grey),padding:'2px' }),
+    ...(bordered && { border: '2px solid ' + (useThemedProps(theme, color)|| theme.colors.white),padding:!dense?'2px':"" }),
     ...useThemedCSS(theme, css),
   });
 

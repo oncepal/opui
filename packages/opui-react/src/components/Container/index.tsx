@@ -87,7 +87,7 @@ const Container = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & C
       else if (header) return 'header';
       else if (section) return 'section';
       else if (article) return 'article';
-      else return 'div';
+      else return 'motion.div';
     };
 
     return jsx(

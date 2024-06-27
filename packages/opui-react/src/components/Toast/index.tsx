@@ -50,7 +50,7 @@ const Toast = ({ title, content, color, children, css, ...props }: ToastProps) =
   );
 };
 
-Toast.show = ({ title, color, icon, duration = 2000, ...rest }: ToastProps) => {
+Toast.show = ({ title, color, icon, duration = 2500, ...rest }: ToastProps) => {
   const aside = document.createElement('aside');
   document.body.appendChild(aside);
   const root = createRoot(aside);

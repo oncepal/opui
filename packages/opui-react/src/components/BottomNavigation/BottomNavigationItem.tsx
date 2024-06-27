@@ -9,7 +9,7 @@ import { bottomNavigationContext } from '.';
 import { motion } from 'framer-motion';
 
 type BottomNavigationItemProps = ComponentBaseProps & {
-    label: string;
+    label:string
     disabled?: boolean;
     activeColor?:(theme: Theme) => string;
     unActiveColor?:(theme: Theme) => string;
@@ -22,7 +22,8 @@ type BottomNavigationItemProps = ComponentBaseProps & {
 const BottomNavigationItem = ({ activeColor,unActiveColor,disabledColor,label, disabled, onClick, css, children, ...props }: BottomNavigationItemProps) => {
     const theme = useTheme();
     const context = useContext(bottomNavigationContext);
-
+  console.log(label);
+  
     const styles = useCSS({
       flex: 1,
       textAlign: 'center',

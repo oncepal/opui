@@ -6,6 +6,8 @@ import Login from '../pages/Login'
 import Search from '../pages/Search'
 import Home from '../pages/Home'
 import NewPalNeed from '../pages/NewPalNeed'
+import PalNeed from "../pages/PalNeed";
+
   const router = createBrowserRouter([
     {
       path: "/login",
@@ -18,11 +20,16 @@ import NewPalNeed from '../pages/NewPalNeed'
     {
       path: "/",
       element: <Home/>,
+     
     },
     
     {
       path: "/newPalNeed",
       element: <NewPalNeed/>,
+    },
+    {
+      path: "/need/:needId",
+      element: <PalNeed/>,
     }
   ]);
 

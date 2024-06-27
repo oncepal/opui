@@ -12,6 +12,7 @@ type AvatarGroupProps = ComponentBaseProps & {
   bordered?: boolean;
   max?: number;
   total?: number;
+  dense?:boolean
 };
 /**
  * 头像群组
@@ -19,6 +20,7 @@ type AvatarGroupProps = ComponentBaseProps & {
  * @param bordered avatar统一设置是否有边框
  * @param max 最多展示多少人
  * @param total 一共有多少人
+ * @param dense 边框是否紧贴
  * @example
  * 
  * ```js
@@ -28,7 +30,7 @@ type AvatarGroupProps = ComponentBaseProps & {
     </AvatarGroup>
  * ```
  */
-const AvatarGroup = ({ max, total, bordered, gap = 50, css, className, children, ...props }: AvatarGroupProps) => {
+const AvatarGroup = ({ dense,max, total, bordered=true, gap = 50, css, className, children, ...props }: AvatarGroupProps) => {
   const theme = useTheme();
   const styles = useCSS({
     display: 'flex',
@@ -51,6 +53,7 @@ const AvatarGroup = ({ max, total, bordered, gap = 50, css, className, children,
                   ...{
                     ...element.props,
                     bordered,
+                    dense,
                     css: {
                       transform: `translateX(-${i * gap}%)`,
                     },
