@@ -15,12 +15,21 @@ type Theme = {
   app: {
     maxWidth: string,
     minWidtgh: string,
-  
+    toast:{
+      zIndex:string
+     
+    },
+    dialog:{
+      zIndex:string
+     
+    },
     navBar:{
+      zIndex:string
       height:string,
       padding:string
     },
     bottomNavigation:{
+      zIndex:string
       height:string,
       padding:string
     }
@@ -51,12 +60,21 @@ const defaultTheme: Theme = {
   app:  {
     maxWidth: '1600px',
     minWidtgh: '50vw',
-  
+    toast:{
+      zIndex:tokens.zIndices[3],
+     
+    },
+    dialog:{
+      zIndex:tokens.zIndices[2],
+     
+    },
     navBar:{
+      zIndex:tokens.zIndices[1],
       height:'4em',
       padding:'1em 1.5em'
     },
     bottomNavigation:{
+      zIndex:tokens.zIndices[1],
       height:'4em',
       padding:'1em 1.5em'
     }

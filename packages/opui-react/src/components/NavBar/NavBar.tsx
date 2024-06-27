@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
 
-
 import NavBarActions from './NavBarActions';
 import NavBarBrand from './NavBarBrand';
 import NavBarContent from './NavBarContent';
@@ -9,15 +8,15 @@ import { ComponentBaseProps } from '../props';
 import { useCSS, useThemedCSS, useTheme, useMobileStyles } from '../../styles/css';
 import { throttle } from '@oncepal/utils';
 type NavBarProps = ComponentBaseProps & {
-    backgroundColor?: string;
-    gap?: string;
-    fixed?: boolean;
-    sticky?: boolean;
-    isBordered?:boolean
-    hideOnScroll?: boolean;
-  };
-  let sy = 0;
-  /**
+  backgroundColor?: string;
+  gap?: string;
+  fixed?: boolean;
+  sticky?: boolean;
+  isBordered?: boolean;
+  hideOnScroll?: boolean;
+};
+let sy = 0;
+/**
    * 位于页面顶部的响应式导航标题，包括对品牌、链接、导航、折叠等的支持。
    * ```
    * <NavBar fixed>
@@ -31,79 +30,84 @@ type NavBarProps = ComponentBaseProps & {
    * @param gap  content,extra,navIcon的间距
    * @param isBordered 是否有下分割线
    */
-  const NavBar = ({ isBordered,backgroundColor, fixed,sticky, css, gap, hideOnScroll, children, ...props }: NavBarProps) => {
-    const [translateY, setTranslateY] = useState(0);
-  
-    const theme = useTheme();
-    const navStyles = useCSS({
-      padding: theme.app.navBar.padding,
-      maxHeight: theme.app.navBar.height,
-      minHeight: theme.app.navBar.height,
-      alignItems: 'center',
-      backgroundColor: backgroundColor,
-      display: 'flex',
-      justifyContent: 'center',
-      position: sticky ? 'sticky' : fixed?'fixed':'static',
-      top: 0,
-      left:0,
-      right:0,
-      transition: 'transform .25s ease-out',
-      ...(hideOnScroll && { transform: `translateY(-${translateY}%)` }),
-      gap,
-      ...(isBordered && {borderBottom:'1px white solid'}),
-      ...useMobileStyles(theme, {}),
-      ...useThemedCSS(theme, css),
-    });
-    const headerStyles = useCSS({
-      height:'100%',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      backgroundColor: backgroundColor,
-      display: 'flex',
-      minWidth:'100%',
-      gap,
-    });
-  
-    const handleScroll = throttle(() => {
-      if (window.scrollY != sy) {
-        if (window.scrollY > sy) {
-          setTranslateY(100);
-        } else {
-          setTranslateY(0);
-        }
-        sy = window.scrollY;
+const NavBar = ({
+  isBordered,
+  backgroundColor,
+  fixed,
+  sticky,
+  css,
+  gap,
+  hideOnScroll,
+  children,
+  ...props
+}: NavBarProps) => {
+  const [translateY, setTranslateY] = useState(0);
+
+  const theme = useTheme();
+  const navStyles = useCSS({
+    padding: theme.app.navBar.padding,
+    maxHeight: theme.app.navBar.height,
+    minHeight: theme.app.navBar.height,
+    alignItems: 'center',
+    backgroundColor: backgroundColor || (theme.darkMode ? theme.colors.darkBackground : theme.colors.white),
+    display: 'flex',
+    justifyContent: 'center',
+    position: sticky ? 'sticky' : fixed ? 'fixed' : 'static',
+    zIndex:theme.app.navBar.zIndex,
+    top: 0,
+    left: 0,
+    right: 0,
+    transition: 'transform .25s ease-out',
+    ...(hideOnScroll && { transform: `translateY(-${translateY}%)` }),
+    gap,
+    ...(isBordered && {
+      borderBottom: '2px ' + (theme.darkMode ? theme.colors.white : theme.colors.greyLight) + ' solid',
+    }),
+    ...useThemedCSS(theme, css),
+  });
+  const headerStyles = useCSS({
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: backgroundColor,
+    display: 'flex',
+    minWidth: '100%',
+    gap,
+  });
+
+  const handleScroll = throttle(() => {
+    if (window.scrollY != sy) {
+      if (window.scrollY > sy) {
+        setTranslateY(100);
+      } else {
+        setTranslateY(0);
       }
-    }, 300);
-  
-    useEffect(
-      hideOnScroll
-        ? () => {
-            window.addEventListener('scroll', handleScroll);
-            return () => {
-              window.removeEventListener('scroll', handleScroll);
-            };
-          }
-        : () => {},
-      [],
-    );
-  
-    return (
-      <nav css={navStyles}>
-        <header css={headerStyles} {...props}>
-          {children}
-        </header>
-      </nav>
-    );
-  };
+      sy = window.scrollY;
+    }
+  }, 300);
 
+  useEffect(
+    hideOnScroll
+      ? () => {
+          window.addEventListener('scroll', handleScroll);
+          return () => {
+            window.removeEventListener('scroll', handleScroll);
+          };
+        }
+      : () => {},
+    [],
+  );
 
-
-
-
-
-
+  return (
+    <nav css={navStyles}>
+      <header css={headerStyles} {...props}>
+        {children}
+      </header>
+    </nav>
+  );
+};
 
 NavBar.Brand = NavBarBrand;
 NavBar.Content = NavBarContent;
 NavBar.Actions = NavBarActions;
-  export default NavBar
+export default NavBar;

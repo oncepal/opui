@@ -83,6 +83,7 @@ const Dialog = ({
   );
 
   const containerStyles = useCSS({
+    zIndex:theme.app.dialog.zIndex,
     // position: 'fixed',
     // inset: 0,
     // display: 'flex',

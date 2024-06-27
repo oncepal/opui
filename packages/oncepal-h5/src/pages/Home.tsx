@@ -102,18 +102,23 @@ const Home = () => {
             <BottomNavigation.Item label={l.label}>
               <Container center>
                 <Container
-                  center
+                 center
                   css={theme => ({
-                    height: '2.5em',
-                    width: '2.5em',
+                    height: '3.5em',
+                    width: '3.5em',
                     borderRadius: '999px',
                     background: theme.colors.primary,
                   })}
                   onClick={handleClickNewPalNeedButton}
                   >
+                  <div>
+                      <Text p white size='.8rem' pb='.4em'>找 个</Text>
+                 <Text p white size='.8rem'>搭 子</Text>
+                    </div>
+                    
                  
-                    <Icon size='2em' type='bx bx-plus' color='white' />
-               
+                    {/* <Icon size='2em' type='bx bx-plus' color='white' />
+                */}
                 </Container>
               </Container>
             </BottomNavigation.Item>

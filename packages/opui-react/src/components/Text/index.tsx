@@ -26,6 +26,7 @@ type TextProps = ComponentBaseProps &
     maxLength: number;
     span: boolean;
     i: boolean;
+    nowrap:boolean
     white: boolean;
     grey: boolean;
     left: boolean;
@@ -46,6 +47,7 @@ const Text = ({
   size,
   blod = false,
   gradient,
+  nowrap,
   ellipsis = '...',
   left,
   center,
@@ -63,7 +65,7 @@ const Text = ({
     fontWeight: blod ? theme.fontWeights.bold : thin ? theme.fontWeights.thin : theme.fontWeights.normal,
     textAlign: left ? 'left' : center ? 'center' : right ? 'right' : 'left',
     textOverflow: maxLength ? 'ellipsis' : undefined,
-    whiteSpace: maxLength ? 'nowrap' : undefined,
+    whiteSpace: nowrap ? 'nowrap' : undefined,
     overflow: maxLength ? 'hidden' : undefined,
     color: gradient
       ? 'transparent'

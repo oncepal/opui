@@ -26,6 +26,7 @@ const BottomNavigation = ({ onItemChange, activeItem, css, children, ...props }:
     bottom:0,
     left:0,
     right:0,
+    zIndex:theme.app.bottomNavigation.zIndex,
     textAlign: 'center',
     background:theme.colors.white,
     minHeight:theme.app.bottomNavigation.height,

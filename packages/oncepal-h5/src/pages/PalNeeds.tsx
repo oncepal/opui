@@ -22,8 +22,7 @@ import { useNavigate } from 'react-router-dom';
 export default function PalNeeds() {
   const navigate = useNavigate();
   const [getPalNeedListQuery, setGetPalNeedListQuery] = useState({ page: 1, pageSize: 20 });
-  const [activeItem, setActiveItem] = useState('首页');
-  const [palNeedList, setPalNeedList] = useState<PalNeed[]>([generatePalNeed()]);
+  const [palNeedList, setPalNeedList] = useState<PalNeed[]>([generatePalNeed(),generatePalNeed()]);
   const handleGetPalNeedList = async () => {
     const nextPalNeedList = await fetchGet<PalNeed[]>('/pal/needs', getPalNeedListQuery);
     console.log(nextPalNeedList?.length > 0);
@@ -56,19 +55,19 @@ export default function PalNeeds() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}>
-              <Container px='1em' py='1.5em' onClick={() => {
+              <Container px='2em' py='1.5em' onClick={() => {
                 handleClickPalNeed(palNeed.id);
               }}>
-                <Row align='center'>
+                <Row align='center' gap='1em'>
                   <Col>
                     <Avatar name='我' css={{ background: 'red' }} />
                   </Col>
-                  <Col>想找一个{palNeed.keywords}搭子</Col>
+                  <Col><Text blod size='1.2em'>想找一个{palNeed.keywords}</Text></Col>
                 </Row>
-                <Row align='center'>
-                  <Col>{palNeed.description}</Col>
+                <Row align='center' py='1em'>
+                  <Col leftText flex={1}><Text maxLength={30}>{palNeed.description}</Text></Col>
                 </Row>
-                <Row align='center'>
+                <Row align='center' pb='.5em'>
                   <Col>
                     {palNeed.palNumber}个{palNeed.palAge[0]}-{palNeed.palAge[1]}岁的
                     {palNeed.palSex == 0 ? '女' : palNeed.palSex == 1 ? '男' : '不限'}
@@ -77,13 +76,13 @@ export default function PalNeeds() {
                 </Row>
                 <Row align='center'>
                   <Col flex={1}>
-                    <AvatarGroup max={5} total={10}>
+                    <AvatarGroup max={5} total={palNeed.palNumber}>
                       {palNeed.pals?.map(pal => (
-                        <Avatar name={pal.id + '我'} />
+                        <Avatar name={pal.name[0]} />
                       ))}
                     </AvatarGroup>
                   </Col>
-                  <Col flex={1} rightText>
+                  <Col flex={1} rightText pr='1em'>
                     <Button text> 搭一个</Button>
                   </Col>
                 </Row>

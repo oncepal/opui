@@ -31,6 +31,7 @@ const Toast = ({ title, content, color, children, css, ...props }: ToastProps) =
     height: 'auto',
     textAlign: 'center',
     transform: 'translate(-50%, -50%)',
+    zIndex:theme.app.toast.zIndex,
     borderRadius: '4px',
     background: color || theme?.colors?.black || 'rgba(0, 0, 0, 0.45)',
     color: 'white',
