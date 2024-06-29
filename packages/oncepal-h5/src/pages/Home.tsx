@@ -12,6 +12,7 @@ import {
   Dialog,
   Avatar,
   AvatarGroup,
+  BottomSheet,
   Icon,
   InfiniteScroll,
 } from '@opui/react';
@@ -35,6 +36,7 @@ const Home = () => {
     { label: '消息', url: '/' },
     { label: '我的', url: '/mine' },
   ]);
+  const [loginSheetOpened,setLoginSheetOpened] = useState(false)
   const [getPalNeedListQuery, setGetPalNeedListQuery] = useState({ page: 1, pageSize: 20 });
   const [activeItem, setActiveItem] = useState('首页');
   const [palNeedList, setPalNeedList] = useState<PalNeed[]>([generatePalNeed()]);
@@ -53,9 +55,15 @@ const Home = () => {
       });
   };
   const handleClickNewPalNeedButton = () => {
+    if(true)
+    setLoginSheetOpened(v=>!v)
+    else
     navigate('/newPalNeed');
   };
 
+  const handleCloseLoginSheet=()=>{
+    setLoginSheetOpened(false)
+  }
   const renderActivePage = () => {
     switch (activeItem) {
       case '首页':
@@ -104,17 +112,22 @@ const Home = () => {
                 <Container
                  center
                   css={theme => ({
-                    height: '3.5em',
-                    width: '3.5em',
+                    height: '3.2em',
+                    width: '3.2em',
                     borderRadius: '999px',
                     background: theme.colors.primary,
                   })}
                   onClick={handleClickNewPalNeedButton}
                   >
-                  <div>
-                      <Text p white size='.8rem' pb='.4em'>找 个</Text>
-                 <Text p white size='.8rem'>搭 子</Text>
-                    </div>
+                  <Grid col={2} colGap='.1rem' rowGap='.1rem'>
+                    
+                    {
+                      [
+                        '找', '个', '搭', '子',
+                      ].map(t=> <Grid.Item><Text blod p white size='.9rem'>{t}</Text></Grid.Item>)
+                    }
+              
+                    </Grid>
                     
                  
                     {/* <Icon size='2em' type='bx bx-plus' color='white' />
@@ -127,6 +140,9 @@ const Home = () => {
       </BottomNavigation>
 
       <Dialog open={false}></Dialog>
+       <BottomSheet open={loginSheetOpened} onClose={handleCloseLoginSheet}>
+                {''+loginSheetOpened}
+      </BottomSheet>
     </Container>
   );
 };

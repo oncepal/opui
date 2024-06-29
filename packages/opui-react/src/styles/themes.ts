@@ -21,6 +21,14 @@ type Theme = {
     },
     dialog:{
       zIndex:string
+      radius:string,
+    },
+    sheet:{
+      zIndex:string
+      radius:string,
+    },
+    drawer:{
+      zIndex:string
      
     },
     navBar:{
@@ -37,10 +45,11 @@ type Theme = {
   media: typeof tokens.media;
   opacity: typeof tokens.opacity;
   colors: Partial<
-  typeof tokens.colors &{
+  typeof tokens.colors & {
       lightBackground: string;
       lightGreyText:string
       darkBackground: string;
+      scrim:string;
       title: string;
       error: string;
       success: string;
@@ -61,12 +70,20 @@ const defaultTheme: Theme = {
     maxWidth: '1600px',
     minWidtgh: '50vw',
     toast:{
-      zIndex:tokens.zIndices[3],
+      zIndex:tokens.zIndices[4],
      
     },
     dialog:{
+      zIndex:tokens.zIndices[3],
+      radius:tokens.radius.base,
+    },
+    drawer:{
       zIndex:tokens.zIndices[2],
      
+    },
+    sheet:{
+      zIndex:tokens.zIndices[2],
+      radius:tokens.radius.base,
     },
     navBar:{
       zIndex:tokens.zIndices[1],
@@ -88,6 +105,7 @@ const defaultTheme: Theme = {
     desc: tokens.colors.greyLight,
     error: tokens.colors.red,
     success: tokens.colors.green,
+    scrim:'rgba(0,0,0,.2)',
     warning: tokens.colors.yellow,
     primary: tokens.colors.purple,
     accent: tokens.colors.purpleLight,

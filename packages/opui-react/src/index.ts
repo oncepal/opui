@@ -11,7 +11,7 @@ import Text from './components/Text';
 import Slider from './components/Slider';
 import Cell from './components/Cell';
 import Menu from './components/Menu';
-
+import BottomSheet from './components/BottomSheet';
 // import CheckBox from './components/CheckBox';
 // import Radio from './components/Radio';
 // import SortButton from './components/SortButton';
@@ -67,7 +67,7 @@ export {
   Picker,
   BottomNavigation,
   ToolTip,
-  List,
+  List,BottomSheet,
   NavBar,
   Svg,
   Cell,

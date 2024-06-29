@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 type DrawerProps = ComponentBaseProps & {
   width?: string;
   height?: string;
-  position?: 'left' | 'right' | 'top' | 'bottom';
+  position?: 'left' | 'right';
   open?: boolean;
   mask?: boolean;
 
@@ -103,27 +103,7 @@ const Drawer = ({
         });
         setOpenStyle({ right: 0 });
         break;
-      case 'top':
-        setContentStyle({
-          width: '100%',
-          height: height,
-          left: 0,
-          right: 0,
-          top: '-100%',
-        });
-        setOpenStyle({ top: 0 });
-        break;
-      case 'bottom':
-        setContentStyle({
-          width: '100%',
-          height: height,
-          left: 0,
-          right: 0,
-          bottom: '-100%',
-        });
-        setOpenStyle({ bottom: 0 });
-        break;
-      case 'left':
+        case 'left':
         setContentStyle({
           width: width,
           height: '100%',
