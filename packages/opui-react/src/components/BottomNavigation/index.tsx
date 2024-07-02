@@ -22,6 +22,7 @@ const BottomNavigation = ({ onItemChange, activeItem, css, children, ...props }:
   const styles = useCSS({
     display: 'flex',
     alignItems:'center',
+    justifyContent:'space-around',
     position:'fixed',
     bottom:0,
     left:0,

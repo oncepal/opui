@@ -16,7 +16,6 @@ type InputProps = ComponentBaseProps & {
   message?: ReactNode;
   closable?: boolean;
   loading?: boolean;
-
   maxLength?: number;
   verify?: (value: string, e: React.ChangeEvent<HTMLInputElement>) => boolean;
   format?: (value: string, e: React.ChangeEvent<HTMLInputElement>) => string;
@@ -31,7 +30,6 @@ type InputProps = ComponentBaseProps & {
   rounded?: boolean;
   radius?: string;
   placeholder?: ReactNode;
-
   placeholderStyle?: ThemedCSS;
   containerStyle?: ThemedCSS;
   contentStyle?: ThemedCSS;

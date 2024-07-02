@@ -22,12 +22,14 @@ type BottomNavigationItemProps = ComponentBaseProps & {
 const BottomNavigationItem = ({ activeColor,unActiveColor,disabledColor,label, disabled, onClick, css, children, ...props }: BottomNavigationItemProps) => {
     const theme = useTheme();
     const context = useContext(bottomNavigationContext);
-  console.log(label);
   
     const styles = useCSS({
       flex: 1,
       textAlign: 'center',
-  
+      display:'flex',
+      flexDirection:'column',
+      justifyContent:'center',
+      alignItems:'center',
       color: !disabled
         ? context.activeItem == label
           ? (activeColor?activeColor(theme): theme.colors.primary) 

@@ -109,7 +109,7 @@ const tokens = {
   colors: {
     purple: '#693ff7',
     purpleDeep: '#311b92',
-    black: '#1a1a1a',
+    black: '#2c3e50',
     grey: '#666666',
     blue: '#0038c9',
     purpleLight: '#ede7f6',

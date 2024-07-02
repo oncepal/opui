@@ -7,11 +7,15 @@ import { useThemedCSS, useCSS, useTheme } from '../../styles/css';
 import { createContext, useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import BottomSheetScrim from './BottomSheetScrim';
+import BottomSheetDragHandler from './BottomSheetDragHandler';
 
 export type BottomSheetProps = ComponentBaseProps & {
   height?: string;
   open: boolean;
-  scrim?: boolean;
+  
+  notDragHandler?:boolean
+  
+  notScrim?: boolean;
   blur?: boolean;
   closeOnClickScrim?: boolean;
   onClose?: () => any;
@@ -23,7 +27,8 @@ export const BottomSheet = ({
   open = false,
   blur = false,
   closeOnClickScrim = true,
-  scrim = true,
+  notScrim,
+  notDragHandler,
   onClose,
   children,
   onClick,
@@ -32,8 +37,7 @@ export const BottomSheet = ({
 }: BottomSheetProps) => {
   const theme = useTheme();
 
-  // The CSS properties of drawer content container,
-  const contentStyles = useCSS({
+  const styles = useCSS({
     touchAction: 'none',
     background: theme.colors.white,
     position: 'fixed',
@@ -55,17 +59,18 @@ export const BottomSheet = ({
     <AnimatePresence>
       {open && (
         <>
-          {scrim && <BottomSheetScrim blur={blur} closeOnClickScrim={closeOnClickScrim} onClose={onClose} />}
-          <motion.div
+          {!notScrim && <BottomSheetScrim blur={blur} closeOnClickScrim={closeOnClickScrim} onClose={onClose} />}
+          <motion.aside
             onClick={handleClickContent}
             transition={transition}
             initial={{ y: '100%' }}
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
-            css={contentStyles}
+            css={styles}
             {...props}>
+            {!notDragHandler && <BottomSheetDragHandler/> }
             {children}
-          </motion.div>
+          </motion.aside>
         </>
       )}
     </AnimatePresence>

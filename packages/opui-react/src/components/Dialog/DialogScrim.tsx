@@ -6,11 +6,11 @@ import { ComponentBaseProps } from '../props';
 import { useThemedCSS, useCSS, useTheme } from '../../styles/css';
 import { createContext, useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { BottomSheetProps, transition } from './BottomSheet';
+import {DialogProps, transition } from './Dialog';
 
-type BottomSheetScrimProps = Pick<BottomSheetProps, 'closeOnClickScrim' | 'blur' | 'onClose'>;
+type DialogScrimProps = Pick<DialogProps, 'closeOnClickScrim' | 'blur' | 'onClose'>;
 
-const BottomSheetScrim = ({ closeOnClickScrim, blur, onClose, ...props }: BottomSheetScrimProps) => {
+const DialogScrim = ({ closeOnClickScrim, blur, onClose, ...props }: DialogScrimProps) => {
   const theme = useTheme();
 
   const styles = useCSS({
@@ -38,4 +38,4 @@ const BottomSheetScrim = ({ closeOnClickScrim, blur, onClose, ...props }: Bottom
   );
 };
 
-export default BottomSheetScrim;
+export default DialogScrim;

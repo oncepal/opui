@@ -48,13 +48,10 @@ export default function PalNeeds() {
   return (
     <InfiniteScroll onScrollToBottom={handleLoadMorePalNeed}>
       <InfiniteScroll.Content>
-        {palNeedList.map(palNeed => {
+        <List>
+          {palNeedList.map(palNeed => {
           return (
-            <motion.div
-              
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}>
+            <List.Item>
               <Container px='2em' py='1.5em' onClick={() => {
                 handleClickPalNeed(palNeed.id);
               }}>
@@ -87,9 +84,11 @@ export default function PalNeeds() {
                   </Col>
                 </Row>
               </Container>
-            </motion.div>
+            </List.Item>
           );
         })}
+        </List>
+        
       </InfiniteScroll.Content>
       <InfiniteScroll.Ending>
         <Container>ending...</Container>

@@ -3,18 +3,18 @@
 import { ComponentBaseProps, Margin, Padding } from '../props';
 import { usePadding, useMargin, useCSS, useTheme, useThemedCSS } from '../../styles/css';
 
-type ColProps = ComponentBaseProps & {
-  alignSelf?: 'start' | 'center' | 'end' | 'baseline' | 'stretch' | 'normal';
-  flex?: number | string;
-  noFlex?: boolean;
-  rightFloat?: boolean;
-  leftText?: boolean;
-  rightText?: boolean;
-  
-  w?:string
-  h?:string
-} & Margin &
-  Padding;
+type ColProps = ComponentBaseProps &
+  Margin &
+  Padding & {
+    alignSelf?: 'start' | 'center' | 'end' | 'baseline' | 'stretch' | 'normal';
+    flex?: number | string;
+    noFlex?: boolean;
+    rightFloat?: boolean;
+    leftText?: boolean;
+    rightText?: boolean;
+    w?: string;
+    h?: string;
+  };
 
 /**
  * Component provides a way to represent a column in the grid system. It is used when we want to display data in the form of columns.
@@ -32,7 +32,8 @@ type ColProps = ComponentBaseProps & {
  * @param rightFloat auto float to right
  */
 const Col = ({
-  w,h,
+  w,
+  h,
   children,
   noFlex,
   flex = 'none',
@@ -45,8 +46,8 @@ const Col = ({
 }: ColProps) => {
   const theme = useTheme();
   const styles = useCSS({
-    width:w,
-    height:h,
+    width: w,
+    height: h,
     alignSelf,
     textAlign: (leftText && 'left') || (rightText && 'right') || 'center',
     ...useMargin(props),

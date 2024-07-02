@@ -16,7 +16,6 @@ import {
   Icon,
   InfiniteScroll,
 } from '@opui/react';
-import AppBar from '../components/AppBar';
 import { SetStateAction, useEffect, useRef, useState } from 'react';
 import type { Theme } from '@opui/react';
 import { linkToRoute } from '@oncepal/utils';
@@ -88,7 +87,13 @@ const Home = () => {
 
   return (
     <Container main fullScreen>
-      <AppBar title={appTitle} />
+      <NavBar fixed isBordered>
+    <NavBar.Brand />
+    <NavBar.Content>
+      <Text blod>{appTitle}</Text>
+    </NavBar.Content>
+    <NavBar.Actions />
+  </NavBar>
       <Container
         section
         fullScreen
@@ -130,7 +135,7 @@ const Home = () => {
                     </Grid>
                     
                  
-                    {/* <Icon size='2em' type='bx bx-plus' color='white' />
+                    {/* <Icon size='2em' src='bx bx-plus' color='white' />
                 */}
                 </Container>
               </Container>

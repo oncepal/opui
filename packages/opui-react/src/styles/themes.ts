@@ -49,7 +49,10 @@ type Theme = {
       lightBackground: string;
       lightGreyText:string
       darkBackground: string;
-      scrim:string;
+      lightLayout:string
+      darkLayout:string
+      darkScrim:string;
+      lightScrim:string;
       title: string;
       error: string;
       success: string;
@@ -96,22 +99,26 @@ const defaultTheme: Theme = {
       padding:'1em 1.5em'
     }
   },
-  colors: {
+  colors: {...{  darkScrim:'rgba(0,0,0,.6)',darkBackground:'#18191c',darkLayout:'#1e2023',},...{
+    lightLayout:'',
+  
+   
     lightBackground: tokens.colors.whiteDeep,
     lightGreyText:tokens.colors.grey,
-    darkBackground:tokens.colors.greyDeep,
+   
     background:tokens.colors.greyLight,
     title: tokens.colors.blackBlue,
     desc: tokens.colors.greyLight,
     error: tokens.colors.red,
     success: tokens.colors.green,
-    scrim:'rgba(0,0,0,.2)',
+    
+    lightScrim:'rgba(0,0,0,.25)',
     warning: tokens.colors.yellow,
     primary: tokens.colors.purple,
     accent: tokens.colors.purpleLight,
     primaryDeep: tokens.colors.purpleDeep,
     ...tokens.colors,
-  },
+  }},
   media: tokens.media,
   opacity: tokens.opacity,
   border: tokens.borderWeights,
