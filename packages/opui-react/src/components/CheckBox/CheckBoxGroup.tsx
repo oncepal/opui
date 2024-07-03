@@ -2,7 +2,7 @@
 
 import { useState, createContext } from 'react';
 import { Theme } from '../../styles/themes';
-import { useTheme, css } from '@emotion/react';
+import { useThemedCSS, useTheme, useCSS } from '../../styles/css';
 import { ComponentBaseProps } from '../props';
 type CheckboxValue = string | number;
 
@@ -21,14 +21,15 @@ type CheckBoxGroupProps = ComponentBaseProps & {
   onChange?: ((val: CheckboxValue[]) => void) | undefined;
 };
 
-const CheckBoxGroup = ({ disabled = false, onChange, children, value = [], co }: CheckBoxGroupProps) => {
+const CheckBoxGroup = ({ disabled = false, onChange, children, value = [], css }: CheckBoxGroupProps) => {
   const theme = useTheme();
   const [isValue, setValue] = useState<CheckboxValue[]>(value);
-  const style = css({
+  const style = useCSS({
     display: 'flex',
     alignItems: 'center',
     flexWrap: 'wrap',
-    ...(co && (typeof co == 'function' ? co(theme) : co)),
+    ...useThemedCSS(theme, css),
+
   });
   if (isValue.length > 0) {
     onChange?.(isValue);

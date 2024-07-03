@@ -68,7 +68,7 @@ const Button = ({
     justifyContent:'center',
     width: icon ? theme.spacing.xl : '',
     height: icon ? theme.spacing.xl : '',
-    padding: text || icon ? padding || '' : padding || `${theme.spacing.xs} ${theme.spacing.md}`,
+    padding: text || icon ? padding || '' : padding || `${theme.spacing.xs} ${theme.spacing.sm}`,
     border: outlined ? `1px solid ${useThemedProps(theme, color) || theme.colors.primary}` : 'none',
     borderRadius: useThemedProps(theme, radius) || (rounded ? theme.radius.rounded : theme.radius.base),
     color:

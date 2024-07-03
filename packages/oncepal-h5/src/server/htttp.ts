@@ -1,10 +1,19 @@
-const proxyPrefix = process.env.NODE_ENV == "production" ? "" : "/api";
+const proxyPrefix = process.env.NODE_ENV == 'production' ? '' : '/api';
 
-import { transformFetchParamsInGet } from "@oncepal/utils";
-const generateResponse = async (response:Response)=>{
+import { useLocalStorage, useQuery } from '@oncepal/utils';
 
+export type Params = { [key: string]: any };
+export type Res<T> = Promise<{
+  msg:string
+  code:number
+  data?:T | any
+}>
+const useErrorRes =(code:number)=> ({
+  msg:'',
+  code
+})
+const useResponse = async <T>(response: Response):Res<T> => {
   if (response.ok) {
-    
     const res = await response.json();
     const { msg, code } = res;
     if (code == 99999) {
@@ -12,65 +21,79 @@ const generateResponse = async (response:Response)=>{
     }
     return res;
   } else {
-
-     return {}
+    return useErrorRes(response.status);
   }
-}
-export async function fetchPost<T>(url: string, params?: any): Promise<T> {
-  const response = await fetch(proxyPrefix + url, {
-    method: "POST",
-    mode: "cors",
-    credentials: "include",
-    secure: false,
-    headers: {
-      "X-Requested-With": "XMLHttpRequest",
-      "Content-Type": "application/json",
-      "Current-Language": "en-US",
-    },
-    body: JSON.stringify(params),
-  } as RequestInit & { secure: boolean });
-  return generateResponse(response)
-}
+};
 
-export async function fetchGet<T>(url: string, query?: any): Promise<T> {
-  const computedParams = query ? transformFetchParamsInGet(query) : "";
-  const response = await fetch(proxyPrefix + url + computedParams, {
-    method: "GET",
-    mode: "cors",
-    credentials: "include",
-    headers: {
-      "X-Requested-With": "XMLHttpRequest",
-    },
+export const useHeaders = (headers?: HeadersInit): HeadersInit => {
+  return {
+    Authorization: useLocalStorage('accessToken'),
+    // 'X-Requested-With': 'XMLHttpRequest',
+    // 'Content-Type': 'application/json',
+    'Current-Language': 'en-US',
+    ...headers,
+  };
+};
+export const useFetchInit = (init?: RequestInit): RequestInit => {
+  return {
+    mode: 'cors',
+    credentials: 'include',
+    ...init,
+  };
+};
+
+export async function useFetch<T>(
+  url: string,
+  options?: { params?: Params; method: string; isQuery: boolean },
+): Res<T> {
+  const { params, method, isQuery } = options!;
+  const query = isQuery ? useQuery(params!) : '';
+  const fetchInit = {
+    method,
+    ...(!isQuery && { body: JSON.stringify(params) }),
+  };
+  const response = await fetch(proxyPrefix + url + query, {
+    ...useFetchInit(fetchInit),
+    headers: useHeaders(),
   });
-
-  return generateResponse(response)
-  
- 
+  return useResponse<T>(response);
 }
-export async function fetchDelete<T>(url: string, query?: any): Promise<T> {
-  const computedParams = query ? transformFetchParamsInGet(query) : "";
-  const response = await fetch(proxyPrefix + url + computedParams, {
-    method: "Delete",
-    mode: "cors",
-    credentials: "include",
-    secure: false,
-    headers: {
-      "X-Requested-With": "XMLHttpRequest",
-    },
-  } as RequestInit & { secure: boolean });
-  return generateResponse(response)
-}
-export async function fetchPatch<T>(url: string, params?: any): Promise<T> {
-  const computedParams = params ? transformFetchParamsInGet(params) : "";
-  const response = await fetch(proxyPrefix + url + computedParams, {
-    method: "Patch",
-    mode: "cors",
-    credentials: "include",
-    secure: false,
-    headers: {
-      "X-Requested-With": "XMLHttpRequest",
-    },
-  } as RequestInit & { secure: boolean });
 
-  return generateResponse(response)
+export async function usePost<T>(url: string, params: Params): Res<T> {
+  return useFetch<T>(url, {
+    method: 'Post',
+    params: params,
+    isQuery: false,
+  });
+}
+
+export async function useGet<T>(url: string, params?: Params): Res<T> {
+  return useFetch(url, {
+    method: 'Get',
+    params: params,
+    isQuery: params ? true : false,
+  });
+}
+
+export async function useDelete<T>(url: string, params?: Params): Res<T> {
+  return useFetch(url, {
+    method: 'Delete',
+    params: params,
+    isQuery: params ? true : false,
+  });
+}
+export async function usePatch<T>(url: string, params: Params): Res<T> {
+  return useFetch(url, {
+    method: 'Patch',
+    params: params,
+    isQuery: false,
+  });
+}
+
+export async function usePut<T>(url: string, params: Params): Res<T> {
+  return useFetch(url, {
+    method: 'Put',
+    params: params,
+    isQuery: false,
+  });
 }

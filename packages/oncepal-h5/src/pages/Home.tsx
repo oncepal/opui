@@ -21,7 +21,7 @@ import type { Theme } from '@opui/react';
 import { linkToRoute } from '@oncepal/utils';
 
 import { Link, Outlet, NavLink,useNavigate } from 'react-router-dom';
-import { fetchGet } from '../server/htttp';
+import { useGet } from '../server/htttp';
 import { PalNeed, generatePalNeed } from '../server/pal';
 import { motion } from 'framer-motion';
 import Mine from './Mine';

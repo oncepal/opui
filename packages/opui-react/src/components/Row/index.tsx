@@ -55,7 +55,7 @@ const Row = ({
     ...usePadding(props),
     justifyContent: justify || '',
     flexDirection: vertical ? 'column' : 'row',
-    height: fullHeight ? '100%' : h,
+    height: h || (fullHeight ? '100%' : ''),
     gap: gap,
     alignItems: align || '',
     ...(vertical ? {} : { flexWrap: wrapped ? 'wrap' : 'nowrap' }),

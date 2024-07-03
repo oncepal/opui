@@ -5,7 +5,7 @@ import { ComponentBaseProps } from '../props';
 import { useCSS, useTheme, useThemedCSS } from '../../styles/css';
 import { Theme } from '../../styles/themes';
 
-import { bottomNavigationContext } from '.';
+import { bottomNavigationContext } from './BottomNavigation';
 import { motion } from 'framer-motion';
 
 type BottomNavigationItemProps = ComponentBaseProps & {

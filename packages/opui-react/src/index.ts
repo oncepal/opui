@@ -14,9 +14,7 @@ import Menu from './components/Menu';
 import BottomSheet from './components/BottomSheet';
 // import CheckBox from './components/CheckBox';
 // import Radio from './components/Radio';
-// import SortButton from './components/SortButton';
 // import TimePicker from './components/TimePicker';
-// import Timeline from './components/Timeline';
 import Table from './components/Table';
 // import DatePicker from './components/DatePicker';
 import Overlay from './components/Overlay';
@@ -27,7 +25,7 @@ import Button from './components/Button';
 import NoticeBar from './components/NoticeBar';
 import Dialog from './components/Dialog';
 import Fab from './components/Fab';
-import Tag from './components/Tag';
+import Chip from './components/Chip';
 import Skeleton from './components/Skeleton';
 import Card from './components/Card';
 import Container from './components/Container';
@@ -54,13 +52,13 @@ import Switch from './components/Switch';
 import Tabs from './components/Tabs';
 import Toast from './components/Toast';
 import Sidebar from './components/Sidebar';
-import { Avatar, AvatarGroup } from './components/Avatar';
+import CheckBox from './components/CheckBox'
+import  Avatar  from './components/Avatar';
 export { useMobileStyles, useMediaQuery } from './styles/css';
 export type { Theme } from './styles/themes';
 export {
-  // Timeline,
+  CheckBox,
   Avatar,
-  AvatarGroup,
   Sidebar,
   Tabs,
   Toast,
@@ -75,7 +73,6 @@ export {
   Link,
   Drawer,
   Icon,
-  // SortButton,
   Input,
   Collapse,
   Segment,
@@ -86,7 +83,7 @@ export {
   Dropdown,
   Image,
   Grid,
-  Tag,
+  Chip,
   InfiniteScroll,
   // CountDown,
   Container,

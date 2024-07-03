@@ -5,7 +5,7 @@ import { ComponentBaseProps, Themed } from '../props';
 
 import { useThemedCSS, useCSS, useTheme } from '../../styles/css';
 
-import { debounce } from '@oncepal/utils';
+import { useDebounceFn } from '@oncepal/utils';
 import { useState } from 'react';
 
 type FabProps = ComponentBaseProps &
@@ -68,7 +68,7 @@ const Fab = ({
   };
 
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    debounce(
+    useDebounceFn(
       () =>
         setComputedPosition({
           left: Math.min(maxLeft, Math.max(0, parseFloat(e.touches[0].pageX.toFixed(2)))),

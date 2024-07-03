@@ -9,6 +9,7 @@ import { css } from '@emotion/react';
 
 import { forwardRef, ComponentPropsWithoutRef, CSSProperties } from 'react';
 import { motion } from 'framer-motion';
+import AvatarGroup from './AvatarGroup';
 
 type AvatarProps = ComponentBaseProps & {
   src?: string;
@@ -79,4 +80,6 @@ const Avatar = ({
     </motion.div>
   );
 };
+
+Avatar.Group = AvatarGroup
 export default Avatar;

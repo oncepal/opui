@@ -6,7 +6,7 @@ import NavBarContent from './NavBarContent';
 import { ReactNode, useEffect, useState } from 'react';
 import { ComponentBaseProps } from '../props';
 import { useCSS, useThemedCSS, useTheme, useMobileStyles } from '../../styles/css';
-import { throttle } from '@oncepal/utils';
+import { useThrottleFn } from '@oncepal/utils';
 type NavBarProps = ComponentBaseProps & {
   backgroundColor?: string;
   gap?: string;
@@ -75,7 +75,7 @@ const NavBar = ({
     gap,
   });
 
-  const handleScroll = throttle(() => {
+  const handleScroll = useThrottleFn(() => {
     if (window.scrollY != sy) {
       if (window.scrollY > sy) {
         setTranslateY(100);

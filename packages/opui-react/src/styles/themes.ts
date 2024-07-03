@@ -13,55 +13,56 @@ type Theme = {
   shadows: typeof tokens.shadows;
   dropShadows: typeof tokens.dropShadows;
   app: {
-    maxWidth: string,
-    minWidtgh: string,
-    toast:{
-      zIndex:string
-     
-    },
-    dialog:{
-      zIndex:string
-      radius:string,
-    },
-    sheet:{
-      zIndex:string
-      radius:string,
-    },
-    drawer:{
-      zIndex:string
-     
-    },
-    navBar:{
-      zIndex:string
-      height:string,
-      padding:string
-    },
-    bottomNavigation:{
-      zIndex:string
-      height:string,
-      padding:string
-    }
-  }
+    maxWidth: string;
+    minWidtgh: string;
+    toast: {
+      zIndex: string;
+    };
+    dialog: {
+      zIndex: string;
+      radius: string;
+    };
+    sheet: {
+      zIndex: string;
+      radius: string;
+    };
+    drawer: {
+      zIndex: string;
+    };
+    navBar: {
+      zIndex: string;
+      height: string;
+      padding: string;
+    };
+    bottomNavigation: {
+      zIndex: string;
+      height: string;
+      padding: string;
+    };
+  };
   media: typeof tokens.media;
   opacity: typeof tokens.opacity;
   colors: Partial<
-  typeof tokens.colors & {
+    typeof tokens.colors & {
       lightBackground: string;
-      lightGreyText:string
+      lightGreyText: string;
       darkBackground: string;
-      lightLayout:string
-      darkLayout:string
-      darkScrim:string;
-      lightScrim:string;
-      title: string;
+      lightLayout: string;
+      darkLayout: string;
+      darkScrim: string;
+      lightScrim: string;
+      lightTitle: string;
+      lightDesc: string;
+      darkTitle: string;
+      darkDesc: string;
       error: string;
       success: string;
       warning: string;
-      desc: string;
+ 
       primary: string;
       secondary: string;
       accent: string;
-      background:string
+      background: string;
       primaryDeep: string;
     }
   >;
@@ -69,56 +70,61 @@ type Theme = {
 
 const defaultTheme: Theme = {
   darkMode: false,
-  app:  {
+  app: {
     maxWidth: '1600px',
     minWidtgh: '50vw',
-    toast:{
-      zIndex:tokens.zIndices[4],
-     
+    toast: {
+      zIndex: tokens.zIndices[4],
     },
-    dialog:{
-      zIndex:tokens.zIndices[3],
-      radius:tokens.radius.base,
+    dialog: {
+      zIndex: tokens.zIndices[3],
+      radius: tokens.radius.base,
     },
-    drawer:{
-      zIndex:tokens.zIndices[2],
-     
+    drawer: {
+      zIndex: tokens.zIndices[2],
     },
-    sheet:{
-      zIndex:tokens.zIndices[2],
-      radius:tokens.radius.base,
+    sheet: {
+      zIndex: tokens.zIndices[2],
+      radius: tokens.radius.base,
     },
-    navBar:{
-      zIndex:tokens.zIndices[1],
-      height:'4em',
-      padding:'1em 1.5em'
+    navBar: {
+      zIndex: tokens.zIndices[1],
+      height: '4em',
+      padding: '1em 1.5em',
     },
-    bottomNavigation:{
-      zIndex:tokens.zIndices[1],
-      height:'4em',
-      padding:'1em 1.5em'
-    }
+    bottomNavigation: {
+      zIndex: tokens.zIndices[1],
+      height: '4em',
+      padding: '1em 1.5em',
+    },
   },
-  colors: {...{  darkScrim:'rgba(0,0,0,.6)',darkBackground:'#18191c',darkLayout:'#1e2023',},...{
-    lightLayout:'',
-  
-   
-    lightBackground: tokens.colors.whiteDeep,
-    lightGreyText:tokens.colors.grey,
-   
-    background:tokens.colors.greyLight,
-    title: tokens.colors.blackBlue,
-    desc: tokens.colors.greyLight,
-    error: tokens.colors.red,
-    success: tokens.colors.green,
-    
-    lightScrim:'rgba(0,0,0,.25)',
-    warning: tokens.colors.yellow,
-    primary: tokens.colors.purple,
-    accent: tokens.colors.purpleLight,
-    primaryDeep: tokens.colors.purpleDeep,
-    ...tokens.colors,
-  }},
+  colors: {
+    ...{ 
+      darkTitle: tokens.colors.white,
+      darkDesc: tokens.colors.white,
+      
+      darkScrim: 'rgba(0,0,0,.6)', darkBackground: '#18191c', darkLayout: '#1e2023' },
+    ...{
+      lightLayout: '',
+      lightBackground: tokens.colors.whiteDeep,
+      lightGreyText: tokens.colors.grey,
+      lightScrim: 'rgba(0,0,0,.25)',
+      
+
+      lightTitle: tokens.colors.black,
+      lightDesc: tokens.colors.greyLight,
+
+      error: tokens.colors.red,
+      success: tokens.colors.green,
+      warning: tokens.colors.yellow,
+
+      primary: tokens.colors.purple,
+      accent: tokens.colors.purpleLight,
+      primaryDeep: tokens.colors.purpleDeep,
+
+      ...tokens.colors,
+    },
+  },
   media: tokens.media,
   opacity: tokens.opacity,
   border: tokens.borderWeights,

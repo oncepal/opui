@@ -8,12 +8,13 @@ import { motion } from 'framer-motion';
 type IconProps = Omit<ComponentBaseProps, 'className'> &
   Margin &
   Padding & {
+    solid?:boolean
     width?: string;
     height?: string;
     size?: Themed<string>;
     white?:boolean
     color?: Themed<string>;
-    type?: 'loading' | 'plus' | 'male' | 'female' | 'back' | 'close' | 'home' | 'search' | 'user' | 'face' | 'message';
+    type: 'loading' | 'plus' | 'male' | 'female' | 'back' | 'close'|'close-circle' | 'home' | 'search' | 'user' | 'face' | 'message';
     src?: string;
     onClick?: () => any;
   };
@@ -22,6 +23,7 @@ const Icon = ({
   height,
   color,
   white,
+  solid,
   size,
   css,
   src,
@@ -41,7 +43,7 @@ IconProps) => {
         : (theme.darkMode
         ? theme.colors.white
         : theme.colors.black)),
-    ...(type == 'close' && { transform: 'rotate(45deg)' }),
+    ...(['close','close-circle'].includes(type) && { transform: 'rotate(45deg)' }),
     ...usePadding(props),
     ...useMargin(props),
     ...useThemedCSS(theme, css),
@@ -52,6 +54,8 @@ IconProps) => {
   };
 
   const getIconType = () => {
+    let prefix = 'bx bx'
+ 
     switch (type) {
       case 'back':
         return 'bx bx-chevron-left';
@@ -65,6 +69,8 @@ IconProps) => {
         return 'bx bx-face';
       case 'close':
         return 'bx bx-plus';
+        case 'close-circle':
+        return 'bx bx-plus-circle';
       case 'plus':
         return 'bx bx-plus';
       case 'female':

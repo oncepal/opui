@@ -6,10 +6,12 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 package-lock.json
+build
 packages/opui-doc/package-lock.json
 packages/opui-doc/build
 packages/opui-react/package-lock.json
 packages/opui-react/build
+packages/oncepal-utils/build
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 

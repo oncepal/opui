@@ -2,7 +2,7 @@ import { ThemeProvider, Global, CSSObject } from '@emotion/react';
 import { useMemo, useLayoutEffect, useState } from 'react';
 import { globalStyles } from '../../styles/global';
 import { defaultTheme, Theme } from '../../styles/themes';
-import { useCSSLink, deepMerge } from '@oncepal/utils';
+import { useCSSLink, useMerge } from '@oncepal/utils';
 
 type OPUIProviderProps = {
   useIcon?: boolean;
@@ -28,7 +28,7 @@ export default function OPUIProvider({ cssReset = true, children, customTheme, u
     }, [cssLink]);
   }
   return (
-    <ThemeProvider theme={customTheme ? deepMerge(defaultTheme, customTheme || {}) : defaultTheme}>
+    <ThemeProvider theme={customTheme ? useMerge(defaultTheme, customTheme || {}) : defaultTheme}>
       {cssReset && <Global styles={globalStyles as CSSObject} />}
       {children}
     </ThemeProvider>

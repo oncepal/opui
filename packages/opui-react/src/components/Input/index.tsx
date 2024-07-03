@@ -5,6 +5,7 @@ import { useState, ReactNode, CSSProperties, useMemo, useEffect } from 'react';
 import { useThemedCSS, useThemedProps, useCSS, useTheme } from '../../styles/css';
 import tokens from '../../styles/tokens';
 import { ComponentBaseProps, Themed, ThemedCSS } from '../props';
+import Icon from '../Icon';
 
 type InputProps = ComponentBaseProps & {
   readOnly?: boolean;
@@ -101,9 +102,9 @@ const Input = ({
     display: 'inline-flex',
     width: '100%',
     alignItems: 'center',
-    backgroundColor: contain ? (theme.darkMode ? theme.colors.darkBackground : theme.colors.background) : 'transparent',
+    backgroundColor: contain ? (theme.darkMode ? theme.colors.darkBackground : theme.colors.lightBackground) : 'transparent',
     border: outlined ? `1px solid ${theme.colors.black}` : '',
-    borderRadius: useThemedProps(theme, radius) || (rounded ? theme.radius.rounded : theme.radius.base),
+    borderRadius: useThemedProps(theme, radius) || (rounded ? theme.radius.rounded : ''),
     color: theme.darkMode ? theme.colors.white : theme.colors.black,
     ...useThemedCSS(theme, contentStyle),
   });
@@ -111,8 +112,8 @@ const Input = ({
     ...useThemedCSS(theme, labelStyle),
   });
   const prefixStyles = useCSS({
-    padding,
-    paddingRight: 0,
+    
+    flex:'none',
     ...useThemedCSS(theme, prefixStyle),
   });
   const placeholderStyles = useCSS({
@@ -130,7 +131,7 @@ const Input = ({
   });
   const suffixStyles = useCSS({
     padding,
-    paddingLeft: 0,
+    flex:'none',
     ...useThemedCSS(theme, suffixStyle),
   });
   const messageStyles = useCSS({
@@ -180,7 +181,7 @@ const Input = ({
         {prefix && <div css={prefixStyles}>{prefix}</div>}
         <div css={inputStyles}>
           <input
-            style={{ width: '100%', color: 'inherit' }}
+            style={{  flex:1,width: '100%', color: 'inherit' }}
             onBlur={() => {
               innerValue.length == 0 && setFocus(false);
             }}
@@ -200,7 +201,7 @@ const Input = ({
             onClick={() => {
               showClose && handleInputChange({ target: { value: '' } } as React.ChangeEvent<HTMLInputElement>);
             }}>
-            {showClose ? 'x' : suffix}
+            {showClose ? <Icon type='close-circle'/> : suffix}
           </div>
         )}
       </div>

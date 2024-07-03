@@ -10,7 +10,7 @@ import PalNeed from "../pages/PalNeed";
 
   const router = createBrowserRouter([
     {
-      path: "/login/:nextPath",
+      path: "/login/:nextPath?",
       element: <Login/>,
     },
     {

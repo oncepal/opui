@@ -15,19 +15,21 @@ const ListItem = ({ content, css, children, ...props }: ListItemProps) => {
 
   const listContext = useContext(ListContext);
   const styles = useCSS({
-    // ':hover': {
-    //   background: theme.colors.grey,
-    // },
     ...useThemedCSS(theme, css),
   });
   return (
-    <motion.li initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1 }}
-    viewport={{ once: true }} css={styles} {...props}>
+    <motion.li
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      whileTap={{
+        background: theme.colors.grey,
+      }}
+      viewport={{ once: true }}
+      css={styles}
+      {...props}>
       {children}
     </motion.li>
   );
 };
-
 
 export default ListItem;

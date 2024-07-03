@@ -3,7 +3,7 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { ComponentBaseProps } from '../props';
 import { useCSS, useThemedCSS, useTheme, useMobileStyles } from '../../styles/css';
-import { throttle } from '@oncepal/utils';
+import { useThrottleFn } from '@oncepal/utils';
 type PickerItemProps = ComponentBaseProps & {
   content?: ReactNode;
 };
