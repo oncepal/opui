@@ -2,7 +2,7 @@
 
 import { Theme } from '../../styles/themes';
 import { ComponentBaseProps } from '../props';
-import { useThemedCSS, useCSS, useTheme } from '../../styles/css';
+import { useThemedCSS, useCSS, useTheme } from '../../styles/hooks';
 import { useState } from 'react';
 
 type DatePickerProps = ComponentBaseProps &

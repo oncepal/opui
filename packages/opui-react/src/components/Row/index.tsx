@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
-import { useMargin, usePadding, useCSS, useTheme, useThemedCSS, useMobileStyles } from '../../styles/css';
+import { useMargin, usePadding, useCSS, useTheme, useThemedCSS, useMobileStyles } from '../../styles/hooks';
 import { Theme } from '../../styles/themes';
 import { ComponentBaseProps, Margin, Padding } from '../props';
 

@@ -2,7 +2,7 @@
 
 import { ComponentBaseProps, Margin, Themed } from '../props';
 import { forwardRef, useMemo, ComponentPropsWithoutRef, MouseEvent } from 'react';
-import { useThemedCSS, useCSS, useTheme, useMargin, useThemedProps } from '../../styles/css';
+import { useThemedCSS, useCSS, useTheme, useMargin, useThemedProps } from '../../styles/hooks';
 
 type ButtonEvent = {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => any;

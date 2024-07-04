@@ -1,8 +1,8 @@
 # OP UI 贡献指南
 
-hi！很高兴你有兴趣为 OP UI 做贡献👏🏻👏🏻
+hi！很幸运你有兴趣为 OP UI 做贡献👏🏻👏🏻
 
-OP UI 遵守 Android 和 IOS 设计规范，巧妙的进行令人惊叹的样式设计，合理的组件分类，提供丰富的常用功能，以及顶级的开发者体验。所以一些哲学和项目结构所也许和你熟悉的不一样，在提交您的贡献之前，请务必花点时间阅读以下指南:
+OP UI 遵守 官方的Web、Android 和 IOS 设计规范，致力于创造令人惊叹的组件样式设计，提供最好用的组件API，以及丰富的常用组件功能，当然，还有顶级的开发者体验。所以一些哲学和项目结构所也许和你熟悉的不一样，在提交您的贡献之前，请务必花点时间阅读以下指南:
 
 - [开发设置](#开发设置)
 - [项目结构](#项目结构)
@@ -15,12 +15,14 @@ OP UI 遵守 Android 和 IOS 设计规范，巧妙的进行令人惊叹的样式
 ## 开发设置
 
 首先运行环境需要 [Node.js](https://nodejs.org) **version 16+**.
-编辑器我们一般使用 vscode , 不过这个不做限制，确保环境一切就绪并克隆 repo 后，运行以下命令:
+编辑器我们一般使用 vscode , 不过这个不做限制，确保环境一切就绪后，
+拉取项目，并切换到 ui 分支后，以这个分支为主创建你自己用来提 pr 的分支，
+运行以下命令:
 
 ```bash
 $ cd opui # 进入根目录
 $ npm i # 安装根目录依赖
-$ npm run dev # 成功运行项目并见监听端口：5137
+$ npm run dev:ui # 成功运行项目
 ```
 
 如果成功，打开的是我们的文档网站，项目会自动监听组件或文档的更改。
@@ -29,18 +31,21 @@ $ npm run dev # 成功运行项目并见监听端口：5137
 
 项目采用[monorepo](https://en.wikipedia.org/wiki/Monorepo) 的结构。包括一个组件库和文档项目分别包括在 packages 目录下，现在让我们为你一一解释应该关注的主要目录和作用，当然，没提及到的文件就是你目前还不需要修改的文件，如果有需要，欢迎联系我们，ok 先来看看组件库也就是`packages/opui-react`有些什么需要关注的：
 
-- `test`: 主要用于存放用组件测试的文件夹，因为组件正在迭代，所目前留了几个案例文件，等第一批组件全部迭代新版本完成后再补测试代码，基于 `@testing-library/react`。
+- `test`: 主要用于存放用组件测试的文件夹，因为组件正在按照 readme 里面的未来规划迭代，所以目前留了几个案例文件，等第一批组件全部迭代新版本完成后再补测试代码，基于 `@testing-library/react` 和 `jest`。
 
-- `src/components`: 主要用于存放组件，目前均以一个组件一个 index.ts 的方式存放单个组件的所有相关代码，如果有必要，将会分离对应逻辑的代码，但目前还没必要。每个组件通用的一些类型在同级目录下的`prop.ts`文件里，如果你不知道标准化的组件结构是怎么样的，请查看 Button 和 Tabs 的代码结构，前者提供了基本的组件实现模板，后者提供了有复杂子组件时可以参考的父子组件通信和 api 设计。
+- `src/components`: 主要用于存放组件，目前均以一个组件一个文件夹的方式存放单个组件的所有相关代码，如果有必要，每个组件通用的一些props类型定义在同级目录下的`prop.ts`文件里，编写组件的时候，组合相应会用到的props定义就可以了。
 
-- `src/styles`: 所有 css utils 和样式系统的实现，包括组件常用的 css, 全局的 css reset 和主题系统。
+
+- `src/styles`: 所有 预设css tokens、工具方法 和主题系统的实现都在这里面，基于`emotion` 的样式方案，其中global.ts包含全局样式重置，hooks是一些组件实现需要用到的函数，keyframes用来预设一些动画，但目前改为了framer-motion来做这个事情，tokens就是常用的一些css值，themes里面定义了整个组件的主题系统。
 
 
 ## 开发指南
 
-任何组件的开发都需要从真正的开发者角度去考虑，首先想好如果你是install了这个lib的开发者，xx组件你希望这个组件的使用代码怎么写起来最顺手，需要怎么样的层次结构，从这个角度出发，写下你希望你开发时候写下的代码，去倒推源码实现和props设计。
+任何组件的开发都需要从真正的开发者角度去考虑，首先想好如果你是install了这个lib的开发者，某个你正在编写的组件如果是你，你希望这个组件的使用代码怎么写起来最顺手，需要怎么样的层次结构？
 
-参考`Button`组件，去到`opui-react`目录下的`src/components`里面找到`Button`文件夹查看源码可以发现一个组件的代码有以下几个关键因素：
+这个很重要，从这个角度出发，写下你希望你开发时候写下的代码，去倒推源码实现和props设计。
+
+参考`BottomSheet`组件，去到`opui-react`目录下的`src/components`里面找到`BottomSheet`文件夹查看源码可以发现一个组件的代码有以下几个关键因素：
 
 - 文件头声明：`/** @jsxImportSource @emotion/react */` 这一段是使用emotion必须要的一个声明。
 
@@ -52,7 +57,7 @@ $ npm run dev # 成功运行项目并见监听端口：5137
 
 - CSS样式：`src/styles`下的函数帮助组件主题获得动态样式监听，例如 `useCSS`、`useTheme`，以及最终用于提供外部最终复写能力的`...useThemedCSS(theme, css)`，这将允许使用者传入一个`css`属性覆盖我们所有计算好的属性最终控制组件样式
 
-所以在做新组件时，复制整个Button文件夹保持大框架不动的情况下缝缝补补！并别忘了在根目录下的index.ts里引入并导出不然没办法使用测试。
+所以在做新组件时，复制整个BottomSheet文件夹保持大框架不动的情况下缝缝补补！并别忘了在根目录下的index.ts里引入并导出不然没办法使用测试。
 
 在对组件的设计有建议和或者是组件的问题做反馈时，请花一点时间先参考 👇🏻 的两个文档中对应的组件定义，了解组件的背景，应用场景和大致功能:
 
@@ -83,10 +88,13 @@ $ npm run dev # 成功运行项目并见监听端口：5137
 - [TypeScript](https://www.typescriptlang.org/)
 - [React TypeScript](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/basic_type_example/) React 类型指南
 - [Emotion](https://emotion.sh/docs/introduction) css 库
+- [Framer-motion](https://www.framer.com/motion/) 动画库
 - [Rollup](https://rollupjs.org) 打包工具
 - [Jest](https://jestjs.io/) 组件测试
 
-修改一个组件的同时还得更新使用文档，这部分尝试过dumi、docusaurus、storybook、vitepress之后还是觉得自己起一个网站来写比较好。尝试在`opui-doc`里面引入你新增的组件做实际使用测试吧
+修改一个组件的同时还得更新使用文档，这部分尝试过dumi、docusaurus、storybook、vitepress之后还是觉得自己起一个网站来写比较好，如果你有什么提议或者想法欢迎交流。
+
+现在，尝试在`opui-doc`里面引入你新增的组件做实际使用测试吧
 
 ## 测试
 
@@ -100,9 +108,10 @@ $ npm run dev # 成功运行项目并见监听端口：5137
 
 ### `npm run dev`
 
-`dev`脚本执行根目录的`build:dev`创建运行时监听项目。
+`dev`脚本执行根目录的`build:dev`创建运行时监听项目，一般用ui是为了不多启动一个hooks项目。
 
 ```bash
+npm run dev:ui
 npm run dev
 ```
 

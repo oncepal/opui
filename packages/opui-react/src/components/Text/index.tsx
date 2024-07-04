@@ -2,7 +2,7 @@
 
 import { jsx } from '@emotion/react';
 import { useMemo, createElement } from 'react';
-import { usePadding, useMargin, useCSS, useTheme, useThemedCSS, useThemedProps } from '../../styles/css';
+import { usePadding, useMargin, useCSS, useTheme, useThemedCSS, useThemedProps } from '../../styles/hooks';
 
 import tokens from '../../styles/tokens';
 import { ComponentBaseProps, Margin, Padding, Themed } from '../props';

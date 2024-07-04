@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import { Semantic, ComponentBaseProps, Margin, Position, Padding, Themed } from '../props';
-import { useCSS, useTheme, usePadding, usePosition, useMargin, useThemedCSS, useThemedProps } from '../../styles/css';
+import { useCSS, useTheme, usePadding, usePosition, useMargin, useThemedCSS, useThemedProps } from '../../styles/hooks';
 import { forwardRef, MouseEvent, ComponentPropsWithoutRef } from 'react';
 import { jsx } from '@emotion/react';
 

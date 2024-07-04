@@ -4,7 +4,7 @@ import { Theme } from '../../styles/themes';
 import { createRoot } from 'react-dom/client';
 import { ReactNode } from 'react';
 import { ComponentBaseProps } from '../props';
-import { useCSS, useTheme, useThemedCSS } from '../../styles/css';
+import { useCSS, useTheme, useThemedCSS } from '../../styles/hooks';
 
 type ToastProps = ComponentBaseProps &
   Partial<{

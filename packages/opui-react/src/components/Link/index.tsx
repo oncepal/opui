@@ -4,7 +4,7 @@ import { Theme } from '../../styles/themes';
 import tokens from '../../styles/tokens';
 import { useMemo } from 'react';
 import { ComponentBaseProps, Themed } from '../props';
-import { useThemedCSS, useTheme, useCSS, useThemedProps } from '../../styles/css';
+import { useThemedCSS, useTheme, useCSS, useThemedProps } from '../../styles/hooks';
 
 type LinkProps = ComponentBaseProps & {
   indicatorColor?: Themed<string>;

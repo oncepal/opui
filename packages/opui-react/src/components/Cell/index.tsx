@@ -3,7 +3,7 @@
 import { Theme } from '../../styles/themes';
 import { ReactNode } from 'react';
 import { ComponentBaseProps } from '../props';
-import { useThemedCSS, useTheme, useCSS } from '../../styles/css';
+import { useThemedCSS, useTheme, useCSS } from '../../styles/hooks';
 type CellProps = ComponentBaseProps & {
   title?: ReactNode;
   subTitle?: ReactNode;

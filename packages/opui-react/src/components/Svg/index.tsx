@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import { ComponentBaseProps, Margin, Padding, Themed } from '../props';
-import { useThemedCSS, useCSS, useTheme, useMargin, usePadding, useThemedProps } from '../../styles/css';
+import { useThemedCSS, useCSS, useTheme, useMargin, usePadding, useThemedProps } from '../../styles/hooks';
 import { ComponentPropsWithoutRef } from 'react';
 
 type SvgProps = ComponentBaseProps &

@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import { ComponentBaseProps } from '../props';
-import { useThemedCSS, useCSS, useTheme } from '../../styles/css';
+import { useThemedCSS, useCSS, useTheme } from '../../styles/hooks';
 import { Children, cloneElement, DetailedReactHTMLElement, ComponentPropsWithoutRef, forwardRef } from 'react';
 type BreadcrumbsItemProps = ComponentBaseProps & Partial<{}>;
 type BreadcrumbsProps = ComponentBaseProps &

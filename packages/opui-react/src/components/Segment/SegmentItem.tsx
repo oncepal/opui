@@ -3,7 +3,7 @@
 import { Theme } from '../../styles/themes';
 import { ComponentBaseProps } from '../props';
 
-import { useThemedCSS, useTheme, useCSS } from '../../styles/css';
+import { useThemedCSS, useTheme, useCSS } from '../../styles/hooks';
 
 type SegmentItemProps = ComponentBaseProps &
   Partial<{

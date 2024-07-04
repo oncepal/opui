@@ -4,7 +4,7 @@ import { Theme } from '../../styles/themes';
 import { ComponentBaseProps } from '../props';
 import { memo, ReactNode } from 'react';
 import tokens from '../../styles/tokens';
-import { useCSS, useThemedCSS, useTheme } from '../../styles/css';
+import { useCSS, useThemedCSS, useTheme } from '../../styles/hooks';
 
 type SwitchProps = ComponentBaseProps & {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => any;

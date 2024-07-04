@@ -3,7 +3,7 @@
 import { Theme } from '../../styles/themes';
 import { ComponentBaseProps } from '../props';
 
-import { useThemedCSS, useCSS, useTheme } from '../../styles/css';
+import { useThemedCSS, useCSS, useTheme } from '../../styles/hooks';
 import { createContext, useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { BottomSheetProps, transition } from './BottomSheet';

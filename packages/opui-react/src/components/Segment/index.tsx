@@ -2,7 +2,7 @@
 import { Theme } from '../../styles/themes';
 import { ComponentBaseProps } from '../props';
 import { Children, cloneElement, useEffect, useState } from 'react';
-import { useThemedCSS, useTheme, useCSS } from '../../styles/css';
+import { useThemedCSS, useTheme, useCSS } from '../../styles/hooks';
 import SegmentItem from './SegmentItem';
 
 type SegmentProps = ComponentBaseProps &

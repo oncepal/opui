@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import React, { Children, DetailedReactHTMLElement, cloneElement, useState } from 'react';
-import { useCSS, useTheme, useThemedCSS } from '../../styles/css';
+import { useCSS, useTheme, useThemedCSS } from '../../styles/hooks';
 import { Theme } from '../../styles/themes';
 import { ComponentBaseProps } from '../props';
 import { InfiniteScrollContent } from './InfiniteScrollContent';

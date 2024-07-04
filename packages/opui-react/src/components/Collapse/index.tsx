@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import { Children, cloneElement, ComponentPropsWithoutRef, DetailedReactHTMLElement, ReactNode } from 'react';
-import { useCSS, useTheme, useThemedCSS } from '../../styles/css';
+import { useCSS, useTheme, useThemedCSS } from '../../styles/hooks';
 import Icon from '../Icon';
 import { ComponentBaseProps } from '../props';
 

@@ -6,7 +6,7 @@ import * as React from 'react';
 import Row from '../Row';
 import Col from '../Col';
 import { ComponentBaseProps } from '../props';
-import { useCSS, useThemedCSS, useTheme } from '../../styles/css';
+import { useCSS, useThemedCSS, useTheme } from '../../styles/hooks';
 
 type NoticeBarProps = ComponentBaseProps &
   Partial<{

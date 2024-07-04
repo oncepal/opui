@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import { ComponentPropsWithoutRef } from "react";
-import { useThemedCSS, useCSS, useTheme } from '../../styles/css';
+import { useThemedCSS, useCSS, useTheme } from '../../styles/hooks';
 import { ComponentBaseProps } from "../props";
 export type InfiniteScrollLoadingProps = ComponentBaseProps & Partial<{}>;
 export const InfiniteScrollLoading = ({ children, css, ...props }: ComponentPropsWithoutRef<'div'> & InfiniteScrollLoadingProps) => {

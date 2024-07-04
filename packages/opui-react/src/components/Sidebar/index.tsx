@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import { Children, cloneElement, ComponentPropsWithoutRef, createContext, ReactNode, useContext, useRef } from 'react';
-import { useMargin, usePadding, useCSS, useTheme, useThemedCSS, useThemedProps, usePosition } from '../../styles/css';
+import { useMargin, usePadding, useCSS, useTheme, useThemedCSS, useThemedProps, usePosition } from '../../styles/hooks';
 import { ComponentBaseProps, Margin, Padding, Position, Themed } from '../props';
 
 type SidebarProps = ComponentBaseProps &

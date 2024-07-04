@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import React, { useMemo } from 'react';
-import { useCSS, useTheme, useThemedCSS,useTransition } from '../../styles/css';
+import { useCSS, useTheme, useThemedCSS,useTransition } from '../../styles/hooks';
 import { Theme } from '../../styles/themes';
 import { ComponentBaseProps } from '../props';
 

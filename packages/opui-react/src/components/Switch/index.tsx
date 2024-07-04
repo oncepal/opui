@@ -4,7 +4,7 @@ import { Theme } from '../../styles/themes';
 import { ComponentBaseProps, Themed } from '../props';
 import { CSSProperties, memo, ReactNode, useCallback, useMemo } from 'react';
 import tokens from '../../styles/tokens';
-import { useCenter, useThemedCSS, useTheme, useCSS, useThemedProps } from '../../styles/css';
+import { useCenter, useThemedCSS, useTheme, useCSS, useThemedProps } from '../../styles/hooks';
 import { rotate } from '../../styles/keyframes';
 
 type SwitchProps = ComponentBaseProps & {

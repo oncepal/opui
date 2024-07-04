@@ -4,12 +4,12 @@ export default function App() {
   const [theme, setTheme] = useState({ darkMode: true });
   return (
     
-    <OPUIProvider theme={theme}>
+    <OPUIProvider customTheme={theme}>
       <Container main fullScreen background={'#fafafa'}>
         <NavBar fixed isBordered>
           <NavBar.Brand />
           <NavBar.Content><Text blod size={'2em'}>OP UI</Text></NavBar.Content>
-          <NavBar.Extra />
+          <NavBar.Actions />
         </NavBar>
         <Container center section fullScreen px='1.5em'>
         

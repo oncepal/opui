@@ -11,7 +11,6 @@ import {
   Toast,
   Dialog,
   Avatar,
-  AvatarGroup,
   BottomSheet,
   Icon,
   InfiniteScroll,
@@ -145,7 +144,7 @@ const Home = () => {
       </BottomNavigation>
 
       <Dialog open={false}></Dialog>
-       <BottomSheet open={loginSheetOpened} onClose={handleCloseLoginSheet}>
+       <BottomSheet isOpened={loginSheetOpened} onClose={handleCloseLoginSheet}>
                 {''+loginSheetOpened}
       </BottomSheet>
     </Container>

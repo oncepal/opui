@@ -54,7 +54,7 @@ import Toast from './components/Toast';
 import Sidebar from './components/Sidebar';
 import CheckBox from './components/CheckBox'
 import  Avatar  from './components/Avatar';
-export { useMobileStyles, useMediaQuery } from './styles/css';
+export { useMobileStyles, useMediaQuery } from './styles/hooks';
 export type { Theme } from './styles/themes';
 export {
   CheckBox,

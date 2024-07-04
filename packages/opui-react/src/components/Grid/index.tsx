@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import { ComponentBaseProps, Margin, Padding, Themed } from '../props';
-import { useThemedCSS, useCSS, useTheme, useMargin, usePadding } from '../../styles/css';
+import { useThemedCSS, useCSS, useTheme, useMargin, usePadding } from '../../styles/hooks';
 import { forwardRef, ComponentPropsWithoutRef, Children, cloneElement, DetailedReactHTMLElement, CSSProperties } from 'react';
 type GridProps = ComponentBaseProps &
   Padding &
