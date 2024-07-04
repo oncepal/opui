@@ -2,7 +2,7 @@
 
 import { createContext, Children, CSSProperties, useMemo, useContext } from 'react';
 import { ComponentBaseProps } from '../props';
-import { useCSS, useTheme, useThemedCSS } from '../../styles/css';
+import { useCSS, useTheme, useThemedCSS } from '../../styles/hooks';
 import BottomNavigationItem from './BottomNavigationItem';
 
 type BottomNavigationProps = ComponentBaseProps & {

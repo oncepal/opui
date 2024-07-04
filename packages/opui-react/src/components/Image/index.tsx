@@ -4,7 +4,7 @@ import { useState, ReactNode, useLayoutEffect, useRef, ReactEventHandler, Synthe
 import { Theme } from '../../styles/themes';
 import { ComponentBaseProps, Themed } from '../props';
 
-import { useThemedCSS, useCSS, useTheme } from '../../styles/css';
+import { useThemedCSS, useCSS, useTheme } from '../../styles/hooks';
 
 type ImageProps = ComponentBaseProps & {
   mask?: ReactNode;

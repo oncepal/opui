@@ -2,7 +2,7 @@
 
 import { Theme } from '../../styles/themes';
 import { useState, ReactNode, CSSProperties, useMemo, useEffect } from 'react';
-import { useThemedCSS, useThemedProps, useCSS, useTheme } from '../../styles/css';
+import { useThemedCSS, useThemedProps, useCSS, useTheme } from '../../styles/hooks';
 import tokens from '../../styles/tokens';
 import { ComponentBaseProps, Themed, ThemedCSS } from '../props';
 import Icon from '../Icon';

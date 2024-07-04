@@ -3,7 +3,7 @@
 import { Theme } from '../../styles/themes';
 import { ComponentBaseProps, Themed } from '../props';
 
-import { useThemedCSS, useCSS, useTheme, useThemedProps } from '../../styles/css';
+import { useThemedCSS, useCSS, useTheme, useThemedProps } from '../../styles/hooks';
 import tokens from '../../styles/tokens';
 import { css } from '@emotion/react';
 

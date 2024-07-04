@@ -5,7 +5,7 @@ import NavBarBrand from './NavBarBrand';
 import NavBarContent from './NavBarContent';
 import { ReactNode, useEffect, useState } from 'react';
 import { ComponentBaseProps } from '../props';
-import { useCSS, useThemedCSS, useTheme, useMobileStyles } from '../../styles/css';
+import { useCSS, useThemedCSS, useTheme, useMobileStyles } from '../../styles/hooks';
 import { useThrottleFn } from '@oncepal/hooks';
 type NavBarProps = ComponentBaseProps & {
   backgroundColor?: string;

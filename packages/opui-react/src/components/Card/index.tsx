@@ -2,7 +2,7 @@
 
 import { ComponentBaseProps, Themed } from '../props';
 import tokens from '../../styles/tokens';
-import { useThemedCSS, useCSS, useTheme, useThemedProps, useCloudyBackground } from '../../styles/css';
+import { useThemedCSS, useCSS, useTheme, useThemedProps, useCloudyBackground } from '../../styles/hooks';
 import { Children, DetailedReactHTMLElement, cloneElement, ComponentPropsWithoutRef } from 'react';
 type CardProps = ComponentBaseProps & {
   color?: Themed<string>;

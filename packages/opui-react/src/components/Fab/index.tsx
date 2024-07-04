@@ -3,7 +3,7 @@
 import { Theme } from '../../styles/themes';
 import { ComponentBaseProps, Themed } from '../props';
 
-import { useThemedCSS, useCSS, useTheme } from '../../styles/css';
+import { useThemedCSS, useCSS, useTheme } from '../../styles/hooks';
 
 import { useDebounceFn } from '@oncepal/hooks';
 import { useState } from 'react';

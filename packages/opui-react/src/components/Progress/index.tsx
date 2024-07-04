@@ -2,7 +2,7 @@
 
 import { keyframes } from '@emotion/react';
 import React from 'react';
-import { useCSS, useTheme, useThemedCSS } from '../../styles/css';
+import { useCSS, useTheme, useThemedCSS } from '../../styles/hooks';
 import { Theme } from '../../styles/themes';
 import { ComponentBaseProps } from '../props';
 

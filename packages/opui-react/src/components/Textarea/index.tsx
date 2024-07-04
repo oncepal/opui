@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { ComponentBaseProps } from '../props';
-import { useCSS, useTheme, useThemedCSS } from '../../styles/css';
+import { useCSS, useTheme, useThemedCSS } from '../../styles/hooks';
 import { Theme } from '../../styles/themes';
 type TextareaProps = ComponentBaseProps & {
   showCount?: boolean | ((length: number, maxLength?: number) => React.ReactNode);

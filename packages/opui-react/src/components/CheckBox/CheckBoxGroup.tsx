@@ -2,7 +2,7 @@
 
 import { useState, createContext } from 'react';
 import { Theme } from '../../styles/themes';
-import { useThemedCSS, useTheme, useCSS } from '../../styles/css';
+import { useThemedCSS, useTheme, useCSS } from '../../styles/hooks';
 import { ComponentBaseProps } from '../props';
 type CheckboxValue = string | number;
 

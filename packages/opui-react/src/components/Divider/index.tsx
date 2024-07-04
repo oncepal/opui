@@ -2,7 +2,7 @@
 
 import { ReactNode } from 'react';
 import { ComponentBaseProps, Flex, Margin, Padding, Themed } from '../props';
-import { usePadding, useMargin, useFlex, useCSS, useTheme, useThemedCSS, useThemedProps } from '../../styles/css';
+import { usePadding, useMargin, useFlex, useCSS, useTheme, useThemedCSS, useThemedProps } from '../../styles/hooks';
 
 type DividerProps = ComponentBaseProps &
   Margin &

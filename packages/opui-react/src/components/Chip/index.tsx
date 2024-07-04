@@ -2,7 +2,7 @@
 
 import { ComponentBaseProps, Themed } from '../props';
 import { ComponentPropsWithoutRef, MouseEvent } from 'react';
-import { useCSS, useTheme, useThemedCSS, useThemedProps } from '../../styles/css';
+import { useCSS, useTheme, useThemedCSS, useThemedProps } from '../../styles/hooks';
 
 export type ChipProps = ComponentBaseProps & {
   outlined?: boolean;
