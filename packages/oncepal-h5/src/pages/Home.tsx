@@ -17,7 +17,6 @@ import {
 } from '@opui/react';
 import { SetStateAction, useEffect, useRef, useState } from 'react';
 import type { Theme } from '@opui/react';
-import { linkToRoute } from '@oncepal/hooks';
 
 import { Link, Outlet, NavLink,useNavigate } from 'react-router-dom';
 import { useGet } from '../server/htttp';

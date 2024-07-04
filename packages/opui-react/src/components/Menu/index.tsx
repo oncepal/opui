@@ -3,7 +3,6 @@
 import { ComponentPropsWithoutRef, createContext, ReactNode, useContext, useEffect, useRef, useState } from 'react';
 import { ComponentBaseProps } from '../props';
 import { useCSS, useThemedCSS, useTheme } from '../../styles/hooks';
-import { useThrottleFn } from '@oncepal/hooks';
 type MenuItemProps = ComponentBaseProps & {
   content?: ReactNode;
 };
