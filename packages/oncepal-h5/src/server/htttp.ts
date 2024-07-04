@@ -1,6 +1,6 @@
 const proxyPrefix = process.env.NODE_ENV == 'production' ? '' : '/api';
 
-import { useLocalStorage, useQuery } from '@oncepal/utils';
+import { useLocalStorage, useQuery } from '@oncepal/hooks';
 
 export type Params = { [key: string]: any };
 export type Res<T> = Promise<{

@@ -2,7 +2,7 @@ import { ThemeProvider, Global, CSSObject } from '@emotion/react';
 import { useMemo, useLayoutEffect, useState } from 'react';
 import { globalStyles } from '../../styles/global';
 import { defaultTheme, Theme } from '../../styles/themes';
-import { useCSSLink, useMerge } from '@oncepal/utils';
+import { useCSSLink, useMerge } from '@oncepal/hooks';
 
 type OPUIProviderProps = {
   useIcon?: boolean;

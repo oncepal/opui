@@ -1,5 +1,5 @@
 {
-  "name": "@oncepal/utils",
+  "name": "@oncepal/hooks",
   "version": "0.0.0",
   "main": "build/index.umd.js",
   "type": "module",
