@@ -27,10 +27,10 @@ const BottomNavigation = ({ onItemChange, activeItem, css, children, ...props }:
     bottom:0,
     left:0,
     right:0,
-    zIndex:theme.app.bottomNavigation.zIndex,
+    zIndex:theme.bottomNavigation.zIndex,
     textAlign: 'center',
-    background:theme.colors.white,
-    minHeight:theme.app.bottomNavigation.height,
+    background:theme.isDarkMode?theme.colors.darkBackground:theme.colors.lightBackground,
+    minHeight:theme.bottomNavigation.height,
     ...useThemedCSS(theme, css),
   });
   const context = useMemo(() => {

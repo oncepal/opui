@@ -10,9 +10,8 @@ import Breadcrumbs from './components/Breadcrumbs';
 import Text from './components/Text';
 import Slider from './components/Slider';
 import Cell from './components/Cell';
-import Menu from './components/Menu';
+// import Menu from './components/Menu';
 import BottomSheet from './components/BottomSheet';
-// import CheckBox from './components/CheckBox';
 // import Radio from './components/Radio';
 // import TimePicker from './components/TimePicker';
 import Table from './components/Table';
@@ -33,7 +32,7 @@ import InfiniteScroll from './components/InfiniteScroll';
 import Image from './components/Image';
 import Swiper from './components/Carousel';
 import Grid from './components/Grid';
-import Progress from './components/Progress';
+// import Progress from './components/Progress';
 import Segment from './components/Segment';
 import Loading from './components/Loading';
 import List from './components/List';
@@ -42,10 +41,12 @@ import Drawer from './components/Drawer';
 import Input from './components/Input';
 import Picker from './components/Picker';
 import PullRefresh from './components/PullRefresh';
-import Collapse from './components/Collapse';
+
+// import Collapse from './components/Collapse';
 import BottomNavigation from './components/BottomNavigation';
 
-import ToolTip from './components/ToolTip';
+// import Steps from './components/Steps';
+// import ToolTip from './components/ToolTip';
 import Switch from './components/Switch';
 import Tabs from './components/Tabs';
 import Toast from './components/Toast';
@@ -62,7 +63,6 @@ export {
   Table,
   Picker,
   BottomNavigation,
-  ToolTip,
   List,
   BottomSheet,
   NavBar,
@@ -72,21 +72,17 @@ export {
   Drawer,
   Icon,
   Input,
-  Collapse,
   Segment,
   Loading,
   PullRefresh,
-  Progress,
+  // Progress,
   Slider,
 
   Image,
   Grid,
   Chip,
   InfiniteScroll,
-  // CountDown,
   Container,
-  // Radio,
-  // CheckBox,
   Card,
   Swiper,
   Skeleton,
@@ -107,7 +103,5 @@ export {
   Upload,
   Textarea,
   Divider,
-  Menu,
-  // Steps,
   Switch,
 };

@@ -19,7 +19,7 @@ const BottomSheetDragHandler = ({ ...props }: BottomSheetDragHandlerProps) => {
     top:'1em',
     width:'5em',
     height:'1em',
-    background: theme.colors.grey,
+    background: theme.colors.lightGreyText,
   });
 
 

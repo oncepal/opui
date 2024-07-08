@@ -68,14 +68,14 @@ const Switch = memo(
 
     const getTrackColorOff = useCallback(() => {
       return theme
-        ? useThemedProps<string>(theme, trackColorOff) || theme.colors.greyLight
+        ? useThemedProps<string>(theme, trackColorOff) || tokens.colors.greyLight
         : useThemedProps<string>(theme, trackColorOff) || tokens.colors.greyLight;
     }, [trackColorOff]);
 
     const loadingStyles = useMemo(
       () => ({
         content: '""',
-        borderRadius: radius || (theme ? theme.radius.rounded : '999px'),
+        borderRadius: radius || (theme ? tokens.radius.rounded : '999px'),
         borderTop: '3px solid transparent',
         borderRight: '3px solid transparent',
         animation: `${rotate()} .6s ease .25s infinite`,
@@ -103,7 +103,7 @@ const Switch = memo(
       height: trackHeight,
       opacity: disabled ? 0.1 : 1,
       background: getTrackColorOff(),
-      borderRadius: radius || theme.radius.rounded,
+      borderRadius: radius || tokens.radius.rounded,
       position: 'relative',
       transition: 'all .25s ease',
 
@@ -147,9 +147,9 @@ const Switch = memo(
 
       '& > .switch-text': {
         position: 'relative',
-        lineHeight:theme.lineHeights.xs,
+        lineHeight:tokens.lineHeights.xs,
         padding: '5px 5px 5px 25px',
-        color: on ? theme.colors.white : theme.colors.black,
+        color: on ? theme.colors.textInDarkBackground : theme.colors.textInLightBackground,
         ...useCenter(),
         visibility: loading ? 'hidden' : 'visible',
       },
@@ -172,11 +172,11 @@ const Switch = memo(
       '& > .switch-thumb': {
         width: thumbWidth,
         height: thumbHeight,
-        borderRadius: radius || theme.radius.rounded,
+        borderRadius: radius || tokens.radius.rounded,
         transition: 'all .25s ease',
         position: 'absolute',
         left: on ? `calc(calc(100% - ${thumbStartPosition}) - ${thumbWidth})` : thumbStartPosition,
-        background: theme.colors.white,
+        background: theme.colors.textInLightBackground,
         ...useCenter(),
         ...useThemedProps(theme, thumbStyles),
       },
@@ -189,7 +189,7 @@ const Switch = memo(
         transform: 'scale(1)',
         left: on ? '0%' : '-100%',
         transition: `all .25s ease`,
-        borderRadius: radius || theme.radius.rounded,
+        borderRadius: radius || tokens.radius.rounded,
         paddingBottom: '100%',
         visibility: loading ? 'hidden' : 'visible',
         ...useThemedProps(theme, trackStyles),

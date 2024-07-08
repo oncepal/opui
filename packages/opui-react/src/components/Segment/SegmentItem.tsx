@@ -4,7 +4,7 @@ import { Theme } from '../../styles/themes';
 import { ComponentBaseProps } from '../props';
 
 import { useThemedCSS, useTheme, useCSS } from '../../styles/hooks';
-
+import * as tokens from '../../styles/tokens'
 type SegmentItemProps = ComponentBaseProps &
   Partial<{
     itemkey: React.Key | null | undefined;
@@ -24,9 +24,9 @@ const SegmentItem = ({
     padding: '0 .4em',
     flex: 1,
     textAlign: 'center',
-    color: itemkey == currentKey ? theme.colors.primary : theme.colors.black,
+    color: itemkey == currentKey ? theme.colors.primary : tokens.colors.black,
     transition: '.3s all',
-    fontWeight: itemkey == currentKey ? theme.fontWeights.bold : theme.fontWeights.normal,
+    fontWeight: itemkey == currentKey ? tokens.fontWeights.bold : tokens.fontWeights.normal,
     ...useThemedCSS(theme, css),
   });
 

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useCSS, useTheme, useThemedCSS } from '../../styles/hooks';
-
+import * as tokens from '../../styles/tokens'
 import { ComponentBaseProps } from '../props';
 type OverlayProps = ComponentBaseProps & {
   color?: string;
@@ -30,7 +30,7 @@ const Overlay = ({
     left: 0,
     bottom: 0,
     right: 0,
-    background: color || theme?.colors?.greyLight || '#56538D',
+    background: color || tokens?.colors?.greyLight ,
     opacity,
     backdropFilter: blur ? 'blur(4px)' : '',
     transform: visible ? 'scale(1)' : '',

@@ -36,7 +36,7 @@ const Table = ({ columns, headers, data, css, children, ...props }: TableProps) 
             background: i == 0 ? '#e4e8ed' : '',
             borderRight: '1px solid #bbc4cd',
             borderBottom: i != headers.length - 1 ? '1px solid #bbc4cd' : '',
-            fontWeight: [0, 1, 4, 9, 10].includes(i) ? theme.fontWeights.bold : theme.fontWeights.normal,
+            fontWeight: [0, 1, 4, 9, 10].includes(i) ? tokens.fontWeights.bold : tokens.fontWeights.normal,
           }}>
           {head}
         </div>

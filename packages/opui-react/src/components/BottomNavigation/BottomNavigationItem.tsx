@@ -10,16 +10,16 @@ import { motion } from 'framer-motion';
 
 type BottomNavigationItemProps = ComponentBaseProps & {
     label:string
-    disabled?: boolean;
+   
     activeColor?:(theme: Theme) => string;
     unActiveColor?:(theme: Theme) => string;
-    disabledColor?:(theme: Theme) => string;
+   
     onClick?: (label: string) => void;
     css?: (theme: Theme, isCurrentItem: boolean) => CSSProperties;
   };
   
 
-const BottomNavigationItem = ({ activeColor,unActiveColor,disabledColor,label, disabled, onClick, css, children, ...props }: BottomNavigationItemProps) => {
+const BottomNavigationItem = ({ activeColor,unActiveColor,label, onClick, css, children, ...props }: BottomNavigationItemProps) => {
     const theme = useTheme();
     const context = useContext(bottomNavigationContext);
   
@@ -30,11 +30,10 @@ const BottomNavigationItem = ({ activeColor,unActiveColor,disabledColor,label, d
       flexDirection:'column',
       justifyContent:'center',
       alignItems:'center',
-      color: !disabled
-        ? context.activeItem == label
-          ? (activeColor?activeColor(theme): theme.colors.primary) 
-          : (unActiveColor?unActiveColor(theme):theme.colors.lightGreyText)
-        : (disabledColor?disabledColor(theme):theme.colors.greyLight) ,
+      color:  context.activeItem == label
+          ? (activeColor?activeColor(theme): theme.colors.textInLightBackground) 
+          : (unActiveColor?unActiveColor(theme):theme.colors.textInLightBackground),
+      ...(context.activeItem != label && {opacity:theme.bottomNavigation.unactiveItemOpacity}),
       ...useThemedCSS(theme, css),
     });
   

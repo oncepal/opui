@@ -20,11 +20,19 @@ type Theme = {
   };
   bottomNavigation: {
     zIndex: string;
+    unactiveItemOpacity:number
     height: string;
     padding: string;
   };
+  tabs:{
+    itemPadding:string
+    unactiveItemOpacity:number
+  };
   drawer: {
     zIndex: string;
+  };
+  text:{
+    lineHeight:number
   };
   navBar: {
     zIndex: string;
@@ -35,6 +43,7 @@ type Theme = {
     maxWidth: string;
     minWidtgh: string;
   };
+  medium:typeof tokens.medium;
   colors: Partial<{
     darkTitle: string;
     darkDesc: string;
@@ -42,7 +51,7 @@ type Theme = {
     darkBackground: string;
     darkLayout: string;
     darkGreyText: string;
-    darkText: string;
+   
 
     lightTitle: string;
     lightDesc: string;
@@ -50,7 +59,7 @@ type Theme = {
     lightBackground: string;
     lightLayout: string;
     lightGreyText: string;
-    lightText: string;
+
 
     textInDarkBackground: string;
     textInLightBackground: string;
@@ -67,9 +76,13 @@ type Theme = {
 };
 
 const defaultTheme: Theme = {
+  medium:tokens.medium,
   isDarkMode: false,
   container: {},
   button: {},
+  text:{
+    lineHeight:tokens.lineHeights.xs
+  },
   avatar: {
     defaultBackground:tokens.colors.grey
   },
@@ -96,6 +109,11 @@ const defaultTheme: Theme = {
     zIndex: tokens.zIndices[1],
     height: '4em',
     padding: '1em 1.5em',
+    unactiveItemOpacity: tokens.opacities.half
+  },
+  tabs:{
+    itemPadding:`${tokens.spacings.sm} ${tokens.spacings.md}`,
+    unactiveItemOpacity: tokens.opacities.half
   },
   app: {
     maxWidth: '1600px',
@@ -109,19 +127,20 @@ const defaultTheme: Theme = {
       darkBackground: '#18191c',
       darkLayout: '#1e2023',
       darkGreyText: tokens.colors.greyLight,
-      darkText: tokens.colors.white,
+
     },
     ...{
-      lightLayout: '',
-      lightBackground: tokens.colors.whiteDeep,
+      lightLayout: tokens.colors.whiteDeep,
+      lightBackground: tokens.colors.white,
       lightGreyText: tokens.colors.grey,
-      lightText: tokens.colors.grey,
+    
       lightScrim: 'rgba(0,0,0,.25)',
       lightTitle: tokens.colors.black,
       lightDesc: tokens.colors.greyLight,
 
       textInDarkBackground: tokens.colors.white,
       textInLightBackground: tokens.colors.black,
+
       danger: tokens.colors.red,
       success: tokens.colors.green,
       warning: tokens.colors.yellow,

@@ -23,7 +23,6 @@ type TabsIndicatorProps = ComponentBaseProps & {};
 
 type TabItemProps = ComponentBaseProps & {
   label: string;
-  disabled?: boolean;
   onClick?: (label: string) => void;
   css?: (theme: Theme, isCurrentTab: boolean) => CSSProperties;
 };
@@ -85,18 +84,20 @@ const Tabs = ({ onTabsChange, activeTab, css, children, ...props }: TabsProps) =
   );
 };
 
-const TabItem = ({ label, disabled, onClick, css, children, ...props }: TabItemProps) => {
+const TabItem = ({ label, onClick, css, children, ...props }: TabItemProps) => {
   const theme = useTheme();
   const context = useContext(tabsContext);
   const tabsIndicatorStyles = useCSS({
     flex: 1,
     textAlign: 'center',
-    padding: '.8em 1em',
-    color: disabled
-      ? context.activeTab == label
-        ? theme.colors.primary || tokens.colors.purple
-        : theme.colors.black || tokens.colors.black
-      : theme.colors.grey || tokens.colors.grey,
+    padding: theme.tabs.itemPadding ,
+    color:
+      context.activeTab == label
+        ? theme.colors.primary
+        : theme.isDarkMode
+        ? theme.colors.textInDarkBackground
+        : theme.colors.textInLightBackground,
+    ...(context.activeTab != label && { opacity: theme.tabs.unactiveItemOpacity }),
     ...useThemedCSS(theme, css),
   });
 

@@ -3,7 +3,7 @@
 import { ComponentBaseProps, Themed } from '../props';
 import { ComponentPropsWithoutRef, MouseEvent } from 'react';
 import { useCSS, useTheme, useThemedCSS, useThemedProps } from '../../styles/hooks';
-
+import * as tokens from '../../styles/tokens'
 export type ChipProps = ComponentBaseProps & {
   outlined?: boolean;
   color?: Themed<string>;
@@ -43,11 +43,11 @@ const Chip = ({
     justifyContent: 'center',
     width: 'fit-content',
     padding: '0.2rem 0.6rem',
-    borderRadius: useThemedProps(theme, radius) || (rounded ? theme.radius.rounded : theme.radius.base),
+    borderRadius: useThemedProps(theme, radius) || (rounded ? tokens.radius.rounded : tokens.radius.base),
     ...(!outlined
       ? {
           background: getComputedColor(),
-          color: theme.colors.white,
+          color: theme.colors.textInDarkBackground,
         }
       : {
           border: '1px solid ' + getComputedColor(),

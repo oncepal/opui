@@ -52,7 +52,7 @@ IconProps) => {
     fontSize: useThemedProps(theme, size),
     color:
       useThemedProps<string>(theme, color) ||
-      (white ? theme.colors.white : theme.isDarkMode ? theme.colors.white : theme.colors.black),
+      (white ? theme.colors.textInDarkBackground : theme.isDarkMode ? theme.colors.textInDarkBackground : theme.colors.textInLightBackground),
     ...(['close', 'close-circle'].includes(type) && { transform: 'rotate(45deg)' }),
     ...usePadding(props),
     ...useMargin(props),

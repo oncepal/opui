@@ -4,7 +4,7 @@ import { ComponentBaseProps } from '../props';
 import { Children, cloneElement, useEffect, useState } from 'react';
 import { useThemedCSS, useTheme, useCSS } from '../../styles/hooks';
 import SegmentItem from './SegmentItem';
-
+import * as tokens from '../../styles/tokens'
 type SegmentProps = ComponentBaseProps &
   Partial<{
     vertical: boolean;
@@ -26,7 +26,7 @@ const Segment = ({ css, children, ...props }: SegmentProps) => {
     alignItems: 'center',
     position: 'relative',
     borderRadius: '4px',
-    background: theme.colors.greyLight,
+    background: tokens.colors.greyLight,
     '& > div': {
       display: 'flex',
       alignItems: 'center',
@@ -37,13 +37,13 @@ const Segment = ({ css, children, ...props }: SegmentProps) => {
       left: 0,
     },
     '& > div:first-of-type': {
-      boxShadow: `0px 0px 4px 0px ${theme.colors.grey}`,
+      boxShadow: `0px 0px 4px 0px ${tokens.colors.grey}`,
       borderRadius: '4px',
       width: `calc(${100 / (children as any).length}% - ${offsetX}px)`,
       top: '4px',
       bottom: '4px',
       transform: `translateX(calc(${current == 0 ? offsetX : 100 * current}% + ${offsetX * current}px))`,
-      background: theme.colors.white,
+      background: tokens.colors.white,
       transition: '.3s all',
     },
     ...useThemedCSS(theme, css),

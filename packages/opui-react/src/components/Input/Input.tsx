@@ -2,7 +2,7 @@
 
 import { Theme } from '../../styles/themes';
 import { useState, ReactNode, CSSProperties, useMemo, useEffect } from 'react';
-import { useThemedCSS, useThemedProps, useCSS, useTheme } from '../../styles/hooks';
+import { useThemedCSS, useThemedProps, useCSS, useTheme, useThemeTextColor } from '../../styles/hooks';
 import * as tokens from '../../styles/tokens';
 import { ComponentBaseProps, Themed, ThemedCSS } from '../props';
 import Icon from '../Icon';
@@ -108,9 +108,9 @@ const Input = ({
         ? theme.colors.darkBackground
         : theme.colors.lightBackground
       : 'transparent',
-    border: outlined ? `1px solid ${theme.colors.black}` : '',
-    borderRadius: useThemedProps(theme, radius) || (rounded ? theme.radius.rounded : ''),
-    color: theme.isDarkMode ? theme.colors.white : theme.colors.black,
+    border: outlined ? `1px solid ${useThemeTextColor(theme)}` : '',
+    borderRadius: useThemedProps(theme, radius) || (rounded ? tokens.radius.rounded : ''),
+    color: useThemeTextColor(theme),
     ...useThemedCSS(theme, contentStyle),
   });
   const labelStyles = useCSS({

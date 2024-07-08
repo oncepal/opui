@@ -45,15 +45,15 @@ export const BottomSheet = ({
 
   const styles = useCSS({
     touchAction: 'none',
-    background: theme.colors.white,
+    background: theme.isDarkMode?theme.colors.darkBackground:theme.colors.lightBackground,
     position: 'fixed',
-    zIndex: theme.app.sheet.zIndex,
+    zIndex: theme.bottomSheet.zIndex,
     height,
     bottom: 0,
     left: 0,
     right: 0,
-    borderTopLeftRadius: theme.app.sheet.radius,
-    borderTopRightRadius: theme.app.sheet.radius,
+    borderTopLeftRadius: theme.bottomSheet.radius,
+    borderTopRightRadius: theme.bottomSheet.radius,
     padding: '1em',
     ...useThemedCSS(theme, css),
   });

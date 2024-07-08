@@ -61,8 +61,8 @@ const Text = ({
   const theme = useTheme();
   const styles = useCSS({
     fontSize: useThemedProps<string>(theme, size),
-    lineHeight: theme.lineHeights.xs,
-    fontWeight: blod ? theme.fontWeights.bold : thin ? theme.fontWeights.thin : theme.fontWeights.normal,
+    lineHeight: theme.text.lineHeight,
+    fontWeight: blod ? tokens.fontWeights.bold : thin ? tokens.fontWeights.thin : tokens.fontWeights.normal,
     textAlign: left ? 'left' : center ? 'center' : right ? 'right' : 'left',
     textOverflow: maxLength ? 'ellipsis' : undefined,
     whiteSpace: nowrap ? 'nowrap' : undefined,
@@ -71,12 +71,12 @@ const Text = ({
       ? 'transparent'
       : useThemedProps<string>(theme, color) ||
         (white
-          ? theme.colors.white
+          ? theme.colors.textInDarkBackground
           : grey
-          ? theme.colors.grey
+          ? theme.colors.lightGreyText
           : theme.isDarkMode
-          ? theme.colors.white
-          : theme.colors.black),
+          ? theme.colors.textInDarkBackground
+          : theme.colors.textInLightBackground),
 
     ...(gradient && {
       backgroundImage: gradient,

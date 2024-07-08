@@ -3,7 +3,7 @@
 import { ComponentBaseProps, Margin, Themed } from '../props';
 import { forwardRef, useMemo, ComponentPropsWithoutRef, MouseEvent } from 'react';
 import { useThemedCSS, useCSS, useTheme, useMargin, useThemedProps } from '../../styles/hooks';
-
+import * as tokens from '../../styles/tokens'
 type ButtonEvent = {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => any;
 };
@@ -60,27 +60,27 @@ const Button = ({
   const styles = useCSS({
     textAlign: 'center',
     display: block ? 'flex' : 'inline-flex',
-    gap: theme.spacings[3],
+    gap: tokens.spacings[3],
     minWidth: block ? '100%' : '',
-    lineHeight: theme.lineHeights.base,
-    fontWeight: theme.fontWeights.medium,
+    lineHeight: tokens.lineHeights.base,
+    fontWeight: tokens.fontWeights.medium,
     alignItems: 'center',
     justifyContent:'center',
-    width: icon ? theme.spacings.xl : '',
-    height: icon ? theme.spacings.xl : '',
-    padding: text || icon ? padding || '' : padding || `${theme.spacings.xs} ${theme.spacings.sm}`,
+    width: icon ? tokens.spacings.xl : '',
+    height: icon ? tokens.spacings.xl : '',
+    padding: text || icon ? padding || '' : padding || `${tokens.spacings.xs} ${tokens.spacings.sm}`,
     border: outlined ? `1px solid ${useThemedProps(theme, color) || theme.colors.primary}` : 'none',
-    borderRadius: useThemedProps(theme, radius) || (rounded ? theme.radius.rounded : theme.radius.base),
+    borderRadius: useThemedProps(theme, radius) || (rounded ? tokens.radius.rounded : tokens.radius.base),
     color:
       text || icon || outlined
         ? useThemedProps(theme, color) || theme.colors.primary
         : gradient
         ? theme.isDarkMode
-          ? theme.colors.white
-          : theme.colors.black
+          ? theme.colors.textInDarkBackground
+          : theme.colors.textInLightBackground
         : theme.isDarkMode
-        ? theme.colors.white
-        : theme.colors.white,
+        ? theme.colors.textInDarkBackground
+        : theme.colors.textInDarkBackground,
     background:
       text || icon || outlined ? 'transparent' : gradient || useThemedProps(theme, color) || theme.colors.primary,
     cursor: disabled ? 'not-allowed' : 'pointer',

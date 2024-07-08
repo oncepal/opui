@@ -116,7 +116,8 @@ export const colors = {
   greyDeep: '#222',
   greyBlue: '#e9ebf7',
   greyLight: '#eaecf5',
-  whiteDeep: 'rgb(250, 250, 250)',
+  whiteDeep: '#f4f7f8',
+  
   white: '#fff',
   blackBlue: '#38446d',
   transparent: 'rgba(255, 255, 255, 0.05)',

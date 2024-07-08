@@ -16,7 +16,7 @@ const BottomSheetScrim = ({ closeOnClickScrim, blur, onClose, ...props }: Bottom
   const styles = useCSS({
     touchAction: 'none',
     position: 'fixed',
-    zIndex: theme.app.sheet.zIndex,
+    zIndex: theme.bottomSheet.zIndex,
     inset: 0,
     backdropFilter: blur ? 'blur(4px)' : '',
     background: theme.isDarkMode?theme.colors.darkScrim:theme.colors.lightScrim,
