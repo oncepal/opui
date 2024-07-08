@@ -12,7 +12,7 @@ export default function App() {
     colors: {
       primary: '#C80036',
     },
-    darkMode: false,
+    isDarkMode: false,
   });
  
 

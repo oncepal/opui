@@ -63,7 +63,7 @@ const Collapse = ({
     display: 'flex',
     alignItems: 'center',
     cursor: 'pointer',
-    padding: `${theme.spacing[3]} ${theme.spacing.md}`,
+    padding: `${theme.spacings[3]} ${theme.spacings.md}`,
     ...useThemedCSS(theme, css)
   });
   const collapseContentStyles = useCSS({

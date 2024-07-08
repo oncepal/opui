@@ -4,7 +4,7 @@ import { jsx } from '@emotion/react';
 import { useMemo, createElement } from 'react';
 import { usePadding, useMargin, useCSS, useTheme, useThemedCSS, useThemedProps } from '../../styles/hooks';
 
-import tokens from '../../styles/tokens';
+import * as tokens from '../../styles/tokens';
 import { ComponentBaseProps, Margin, Padding, Themed } from '../props';
 type TextProps = ComponentBaseProps &
   Partial<{
@@ -74,7 +74,7 @@ const Text = ({
           ? theme.colors.white
           : grey
           ? theme.colors.grey
-          : theme.darkMode
+          : theme.isDarkMode
           ? theme.colors.white
           : theme.colors.black),
 

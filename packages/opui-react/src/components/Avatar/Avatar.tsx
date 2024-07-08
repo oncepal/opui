@@ -4,7 +4,7 @@ import { Theme } from '../../styles/themes';
 import { ComponentBaseProps, Themed } from '../props';
 
 import { useThemedCSS, useCSS, useTheme, useThemedProps } from '../../styles/hooks';
-import tokens from '../../styles/tokens';
+import * as tokens from '../../styles/tokens';
 import { css } from '@emotion/react';
 
 import { forwardRef, ComponentPropsWithoutRef, CSSProperties } from 'react';
@@ -57,7 +57,7 @@ const Avatar = ({
     display: 'inline-flex',
     alignItems:'center',
     justifyContent:'center',
-    ...(bordered && { border: '2px solid ' + (useThemedProps(theme, color)|| theme.colors.white),padding:!dense?'2px':"" }),
+    ...(bordered && { border: '2px solid ' + (useThemedProps(theme, color)|| theme.avatar.defaultBackground),padding:!dense?'2px':"" }),
     ...useThemedCSS(theme, css),
   });
 
@@ -68,8 +68,8 @@ const Avatar = ({
     borderRadius:useThemedProps(theme, radius),
     height: useThemedProps(theme, size),
     width: useThemedProps(theme, size),
-    color:theme.colors.white,
-    background: useThemedProps(theme, color) || theme.colors.grey,
+    color:theme.colors.textInDarkBackground,
+    background: useThemedProps(theme, color) || theme.avatar.defaultBackground,
   })
 
   return (

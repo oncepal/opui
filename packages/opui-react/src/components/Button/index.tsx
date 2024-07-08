@@ -60,25 +60,25 @@ const Button = ({
   const styles = useCSS({
     textAlign: 'center',
     display: block ? 'flex' : 'inline-flex',
-    gap: theme.spacing[3],
+    gap: theme.spacings[3],
     minWidth: block ? '100%' : '',
     lineHeight: theme.lineHeights.base,
     fontWeight: theme.fontWeights.medium,
     alignItems: 'center',
     justifyContent:'center',
-    width: icon ? theme.spacing.xl : '',
-    height: icon ? theme.spacing.xl : '',
-    padding: text || icon ? padding || '' : padding || `${theme.spacing.xs} ${theme.spacing.sm}`,
+    width: icon ? theme.spacings.xl : '',
+    height: icon ? theme.spacings.xl : '',
+    padding: text || icon ? padding || '' : padding || `${theme.spacings.xs} ${theme.spacings.sm}`,
     border: outlined ? `1px solid ${useThemedProps(theme, color) || theme.colors.primary}` : 'none',
     borderRadius: useThemedProps(theme, radius) || (rounded ? theme.radius.rounded : theme.radius.base),
     color:
       text || icon || outlined
         ? useThemedProps(theme, color) || theme.colors.primary
         : gradient
-        ? theme.darkMode
+        ? theme.isDarkMode
           ? theme.colors.white
           : theme.colors.black
-        : theme.darkMode
+        : theme.isDarkMode
         ? theme.colors.white
         : theme.colors.white,
     background:

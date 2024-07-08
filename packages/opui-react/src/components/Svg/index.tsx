@@ -25,8 +25,8 @@ const Svg = ({
   const theme = useTheme();
   const styles = useCSS({
     display: 'inline-block',
-    width: width || height || theme.spacing[10],
-    height: height || width || theme.spacing[10],
+    width: width || height || theme.spacings[10],
+    height: height || width || theme.spacings[10],
     backgroundColor: useThemedProps(theme, color) || theme.colors.grey,
     mask: `url(${src}) no-repeat`,
     maskSize: '100% 100%',

@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { ComponentBaseProps } from '../props';
 import { useCSS, useTheme, useThemedCSS, useThemedProps } from '../../styles/hooks';
 import { Theme } from '../../styles/themes';
-import tokens from '../../styles/tokens';
+import * as tokens from '../../styles/tokens';
 
 type TooltipProps = ComponentBaseProps & {
   backgroundColor?: ((theme: Theme) => string) | string;

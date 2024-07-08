@@ -8,13 +8,26 @@ import { motion } from 'framer-motion';
 type IconProps = Omit<ComponentBaseProps, 'className'> &
   Margin &
   Padding & {
-    solid?:boolean
+    solid?: boolean;
     width?: string;
     height?: string;
     size?: Themed<string>;
-    white?:boolean
+    white?: boolean;
     color?: Themed<string>;
-    type: 'loading' | 'plus' | 'male' | 'female' | 'back' | 'close'|'close-circle' | 'home' | 'search' | 'user' | 'face' | 'message';
+    type:
+      | 'safe'
+      | 'loading'
+      | 'plus'
+      | 'male'
+      | 'female'
+      | 'back'
+      | 'close'
+      | 'close-circle'
+      | 'home'
+      | 'search'
+      | 'user'
+      | 'face'
+      | 'message';
     src?: string;
     onClick?: () => any;
   };
@@ -37,13 +50,10 @@ IconProps) => {
     width,
     height,
     fontSize: useThemedProps(theme, size),
-    color: useThemedProps<string>(theme, color) ||
-      (white
-        ? theme.colors.white
-        : (theme.darkMode
-        ? theme.colors.white
-        : theme.colors.black)),
-    ...(['close','close-circle'].includes(type) && { transform: 'rotate(45deg)' }),
+    color:
+      useThemedProps<string>(theme, color) ||
+      (white ? theme.colors.white : theme.isDarkMode ? theme.colors.white : theme.colors.black),
+    ...(['close', 'close-circle'].includes(type) && { transform: 'rotate(45deg)' }),
     ...usePadding(props),
     ...useMargin(props),
     ...useThemedCSS(theme, css),
@@ -54,9 +64,11 @@ IconProps) => {
   };
 
   const getIconType = () => {
-    let prefix = 'bx bx'
- 
+    let prefix = 'bx bx';
+
     switch (type) {
+      case 'safe':
+        return 'bx bx-check-shield';
       case 'back':
         return 'bx bx-chevron-left';
       case 'home':
@@ -69,7 +81,7 @@ IconProps) => {
         return 'bx bx-face';
       case 'close':
         return 'bx bx-plus';
-        case 'close-circle':
+      case 'close-circle':
         return 'bx bx-plus-circle';
       case 'plus':
         return 'bx bx-plus';

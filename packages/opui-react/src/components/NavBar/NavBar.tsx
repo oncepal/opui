@@ -49,7 +49,7 @@ const NavBar = ({
     maxHeight: theme.app.navBar.height,
     minHeight: theme.app.navBar.height,
     alignItems: 'center',
-    backgroundColor: backgroundColor || (theme.darkMode ? theme.colors.darkBackground : theme.colors.white),
+    backgroundColor: backgroundColor || (theme.isDarkMode ? theme.colors.darkBackground : theme.colors.white),
     display: 'flex',
     justifyContent: 'center',
     position: sticky ? 'sticky' : fixed ? 'fixed' : 'static',
@@ -61,7 +61,7 @@ const NavBar = ({
     ...(hideOnScroll && { transform: `translateY(-${translateY}%)` }),
     gap,
     ...(isBordered && {
-      borderBottom: '2px ' + (theme.darkMode ? theme.colors.white : theme.colors.greyLight) + ' solid',
+      borderBottom: '2px ' + (theme.isDarkMode ? theme.colors.white : theme.colors.greyLight) + ' solid',
     }),
     ...useThemedCSS(theme, css),
   });

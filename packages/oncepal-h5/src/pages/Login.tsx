@@ -53,6 +53,7 @@ export default function Login() {
 
         <Container>
           <Input
+          label="电话号码："
             contentStyle={theme => ({
               borderBottom: '1px solid ' + theme.colors.lightScrim,
             })}
@@ -68,6 +69,7 @@ export default function Login() {
         </Container>
         <Container mt='1em'>
           <Input
+          
             contentStyle={theme => ({
               borderBottom: '1px solid ' + theme.colors.lightScrim,
             })}

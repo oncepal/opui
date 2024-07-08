@@ -4,7 +4,7 @@ import { Theme } from '../../styles/themes';
 import { ComponentBaseProps, Themed } from '../props';
 
 import { useThemedCSS, useCSS, useTheme, useThemedProps } from '../../styles/hooks';
-import tokens from '../../styles/tokens';
+import * as tokens from '../../styles/tokens';
 import { css } from '@emotion/react';
 
 import { forwardRef, ComponentPropsWithoutRef } from 'react';

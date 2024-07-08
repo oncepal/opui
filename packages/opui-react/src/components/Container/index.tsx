@@ -66,8 +66,8 @@ const Container = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & C
       height: height ? height : fullHeight ? '100%' : 'auto' || 'auto',
       minHeight: fullScreen ? '100vh' : '',
       background:
-        gradient || useThemedProps(theme, background) || (theme.darkMode ? theme.colors.black : theme.colors.white),
-      color: theme.darkMode ? theme.colors.white : theme.colors.black,
+        gradient || useThemedProps(theme, background) || (theme.isDarkMode ? theme.colors.black : theme.colors.white),
+      color: theme.isDarkMode ? theme.colors.white : theme.colors.black,
       ...(center && {display:'flex',justifyContent:'center',alignItems:'center'}),
       ...useMargin(props),
       ...usePadding(props),

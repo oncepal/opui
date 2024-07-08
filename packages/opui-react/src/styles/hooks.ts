@@ -10,12 +10,12 @@ export function useCenter(): CSSObject {
 }
 export function useMobileStyles(theme: Theme, css: CSSObject) {
   return {
-    [`@media (max-width: ${theme.media.mobile})`]: css,
+    [`@medium (max-width: ${theme.medium.mobile})`]: css,
   };
 }
-export function useMediaQuery(breakPoint: Pick<Theme, 'media'>, css: CSSObject) {
+export function useMediaQuery(breakPoint: Pick<Theme, 'medium'>, css: CSSObject) {
   return {
-    [`@media (max-width: ${breakPoint})`]: css,
+    [`@medium (max-width: ${breakPoint})`]: css,
   };
 }
 
@@ -47,7 +47,7 @@ export function useCloudyBackground(theme: Theme) {
   return {
     backdropFilter: 'saturate(180%) blur(10px)',
     background: theme.colors.transparent,
-    boxShadow: theme.darkMode ? theme.shadows.md : theme.shadows.lg,
+    boxShadow: theme.isDarkMode ? theme.shadows.md : theme.shadows.lg,
   };
 }
 

@@ -3,7 +3,7 @@
 import { Theme } from '../../styles/themes';
 import { ComponentBaseProps } from '../props';
 import { memo, ReactNode } from 'react';
-import tokens from '../../styles/tokens';
+import * as tokens from '../../styles/tokens';
 import { useCSS, useThemedCSS, useTheme } from '../../styles/hooks';
 
 type SwitchProps = ComponentBaseProps & {

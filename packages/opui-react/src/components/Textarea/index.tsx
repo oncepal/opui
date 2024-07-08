@@ -25,8 +25,8 @@ const Textarea = ({
   const styles = useCSS({
     width: '100%',
     padding: '12px',
-    backgroundColor: !theme.darkMode ? theme.colors.greyLight : theme.colors.white,
-    color: !theme.darkMode ? theme.colors.black : theme.colors.white,
+    backgroundColor: !theme.isDarkMode ? theme.colors.greyLight : theme.colors.white,
+    color: !theme.isDarkMode ? theme.colors.black : theme.colors.white,
     ...useThemedCSS(theme, css),
   });
 
