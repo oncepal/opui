@@ -1,12 +1,11 @@
 /** @jsxImportSource @emotion/react */
 
 import { Theme } from '../../styles/themes';
-import { useState, ReactNode, CSSProperties, useMemo, useEffect } from 'react';
+import { useState, ReactNode, CSSProperties, useMemo, useEffect, useRef } from 'react';
 import { useThemedCSS, useThemedProps, useCSS, useTheme, useThemeTextColor } from '../../styles/hooks';
 import * as tokens from '../../styles/tokens';
 import { ComponentBaseProps, Themed, ThemedCSS } from '../props';
 import Icon from '../Icon';
-import InputPlaceholder from './InputPlaceholder';
 
 type InputProps = ComponentBaseProps & {
   readOnly?: boolean;
@@ -16,14 +15,13 @@ type InputProps = ComponentBaseProps & {
   gap?: string;
   label?: ReactNode;
   message?: ReactNode;
-  closable?: boolean;
   loading?: boolean;
   maxLength?: number;
-  verify?: (value: string, e: React.ChangeEvent<HTMLInputElement>) => boolean;
-  format?: (value: string, e: React.ChangeEvent<HTMLInputElement>) => string;
-  onChange: (value: string, e: React.ChangeEvent<HTMLInputElement>) => any;
-  prefix?: ReactNode;
-  suffix?: ReactNode;
+  verify?: (value: string, e?: React.ChangeEvent<HTMLInputElement>) => boolean;
+  format?: (value: string, e?: React.ChangeEvent<HTMLInputElement>) => string;
+  onChange: (value: string, e?: React.ChangeEvent<HTMLInputElement>) => any;
+  prepend?: ReactNode;
+  append?: ReactNode;
   value: any;
   outlined?: boolean;
   contain?: boolean;
@@ -32,14 +30,11 @@ type InputProps = ComponentBaseProps & {
   rounded?: boolean;
   radius?: string;
   placeholder?: ReactNode;
-  placeholderStyle?: ThemedCSS;
   containerStyle?: ThemedCSS;
   contentStyle?: ThemedCSS;
-  messageStyle?: ThemedCSS;
-  labelStyle?: ThemedCSS;
   inputStyle?: ThemedCSS;
-  prefixStyle?: ThemedCSS;
-  suffixStyle?: ThemedCSS;
+  prependStyle?: ThemedCSS;
+  appendStyle?: ThemedCSS;
 };
 
 /**
@@ -48,11 +43,11 @@ type InputProps = ComponentBaseProps & {
  */
 const Input = ({
   type,
-  prefix,
-  suffix,
+  prepend,
+  clearable,
+  append,
   label,
   message,
-  closable,
   rounded,
   loading,
   radius,
@@ -68,19 +63,16 @@ const Input = ({
   readOnly,
   onChange,
   inputStyle,
-  messageStyle,
   containerStyle,
-  placeholderStyle,
   contentStyle,
-  labelStyle,
-  prefixStyle,
-  suffixStyle,
+  prependStyle,
+  appendStyle,
 }: InputProps) => {
   const theme = useTheme();
-  const [showClose, setShowClose] = useState(closable);
+
   const [showMessage, setShowMessage] = useState(false);
   const [focus, setFocus] = useState(false);
-  const [innerValue, setInnerValue] = useState('');
+  const inputRef = useRef(null);
   const padding = '.5rem 1rem .5rem 1rem';
   const inputStyles = useCSS({
     padding,
@@ -113,22 +105,33 @@ const Input = ({
     color: useThemeTextColor(theme),
     ...useThemedCSS(theme, contentStyle),
   });
-  const labelStyles = useCSS({
-    ...useThemedCSS(theme, labelStyle),
-  });
-  const prefixStyles = useCSS({
+  const labelStyles = useCSS({});
+  const prependStyles = useCSS({
     flex: 'none',
-    ...useThemedCSS(theme, prefixStyle),
+    ...useThemedCSS(theme, prependStyle),
   });
 
-  const suffixStyles = useCSS({
+  const appendStyles = useCSS({
     padding,
     flex: 'none',
-    ...useThemedCSS(theme, suffixStyle),
+    ...useThemedCSS(theme, appendStyle),
   });
   const messageStyles = useCSS({
     color: showMessage ? theme.colors.danger : '',
-    ...useThemedCSS(theme, messageStyle),
+  });
+  const clearButtonStyles = useCSS({
+    padding,
+  });
+
+  const placeholderStyles = useCSS({
+    position: 'absolute',
+    left: 0,
+    padding,
+    transition: 'all .25s ease-out',
+    textAlign: 'left',
+    userSelect: 'none',
+    cursor: 'text',
+    pointerEvents: 'none',
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -154,48 +157,42 @@ const Input = ({
         : format?.(value, e) || value;
 
     if (maxLength) r = r.slice(0, maxLength);
-    setInnerValue(r);
+
     onChange?.(r, e);
   };
-
-  useEffect(() => {
-    if (innerValue == '' && !!showClose) {
-      setShowClose(false);
-    } else if (closable) {
-      setShowClose(true);
-    }
-  }, [innerValue]);
 
   return (
     <div css={containerStyles}>
       {label && <div css={labelStyles}>{label}</div>}
       <div css={contentStyles}>
-        {prefix && <div css={prefixStyles}>{prefix}</div>}
+        {prepend && <div css={prependStyles}>{prepend}</div>}
         <div css={inputStyles}>
           <input
+            ref={inputRef}
             style={{ flex: 1, width: '100%', color: 'inherit' }}
             onBlur={() => {
-              innerValue.length == 0 && setFocus(false);
+              setFocus(false);
             }}
             onFocus={() => setFocus(true)}
-            value={value || innerValue}
+            value={value}
             type={type}
             onChange={handleInputChange}
             disabled={disabled}
             readOnly={readOnly}
           />
-          {placeholder && !value && <InputPlaceholder>{placeholder}</InputPlaceholder>}
+          {placeholder && !value && <div css={placeholderStyles}>{placeholder}</div>}
+          {clearable && value && (
+            <div
+              css={clearButtonStyles}
+              onClick={() => {
+                onChange?.('');
+              }}>
+              <Icon type='close-circle' />
+            </div>
+          )}
         </div>
 
-        {(suffix || showClose) && (
-          <div
-            css={suffixStyles}
-            onClick={() => {
-              showClose && handleInputChange({ target: { value: '' } } as React.ChangeEvent<HTMLInputElement>);
-            }}>
-            {showClose ? <Icon type='close-circle' /> : suffix}
-          </div>
-        )}
+        {append && <div css={appendStyles}>{append}</div>}
       </div>
       {showMessage && <div css={messageStyles}>{message}</div>}
     </div>

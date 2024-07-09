@@ -73,20 +73,11 @@ export default function PalNeeds() {
                     </Col>
                   </Row>
                   <Row align='center' pb='.5em'>
-                    <Col>
+                    <Col flex={1}>
                       {palNeed.palNumber}个{palNeed.palAge[0]}-{palNeed.palAge[1]}岁的
                       {palNeed.palSex == 0 ? '女' : palNeed.palSex == 1 ? '男' : '不限'}
                       {palNeed.paymentMethod ? 'AA制' : '无需出钱'}
-                    </Col>
-                  </Row>
-                  <Row align='center'>
-                    <Col flex={1}>
-                      <Avatar.Group max={5} total={palNeed.palNumber}>
-                        {palNeed.pals?.map(pal => (
-                          <Avatar name={pal.name[0]} />
-                        ))}
-                      </Avatar.Group>
-                    </Col>
+                    </Col>{' '}
                     <Col flex={1} rightText pr='1em'>
                       <Button text> 搭一个</Button>
                     </Col>

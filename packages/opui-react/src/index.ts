@@ -10,6 +10,7 @@ import Breadcrumbs from './components/Breadcrumbs';
 import Text from './components/Text';
 import Slider from './components/Slider';
 import Cell from './components/Cell';
+import Loading from './components/Loading'
 // import Menu from './components/Menu';
 import BottomSheet from './components/BottomSheet';
 // import Radio from './components/Radio';
@@ -34,7 +35,7 @@ import Swiper from './components/Carousel';
 import Grid from './components/Grid';
 // import Progress from './components/Progress';
 import Segment from './components/Segment';
-import Loading from './components/Loading';
+
 import List from './components/List';
 import Link from './components/Link';
 import Drawer from './components/Drawer';
@@ -75,9 +76,7 @@ export {
   Segment,
   Loading,
   PullRefresh,
-  // Progress,
   Slider,
-
   Image,
   Grid,
   Chip,
@@ -92,8 +91,6 @@ export {
   Button,
   Popover,
   Overlay,
-  // DatePicker,
-  // TimePicker,
   Badge,
   OPUIProvider,
   Breadcrumbs,

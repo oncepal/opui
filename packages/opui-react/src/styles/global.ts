@@ -29,6 +29,7 @@ export const globalStyles = {
     listStyle: 'none',
   },
   'li':{
+    listStyle: 'none',
     cursor:'pointer'
   },
   hr: {

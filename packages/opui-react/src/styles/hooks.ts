@@ -4,8 +4,8 @@ import { css, CSSObject, useTheme as useEmotionTheme } from '@emotion/react';
 import * as tokens from './tokens'
 export const useTheme = () => useEmotionTheme() as Theme;
 export const useCSS = css;
-export function useThemeTextColor(theme: Theme) {
-  return theme.isDarkMode ? theme.colors.textInDarkBackground : theme.colors.textInLightBackground
+export function useThemeTextColor(theme: Theme,color?:Themed<string>) {
+  return useThemedProps(theme,color) || (theme.isDarkMode ? theme.colors.textInDarkBackground : theme.colors.textInLightBackground)
 }
 export function useThemeBackgourndColor(theme: Theme) {
   return theme.isDarkMode ? theme.colors.darkBackground : theme.colors.lightBackground

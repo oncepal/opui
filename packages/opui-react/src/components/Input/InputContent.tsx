@@ -4,7 +4,7 @@ import { useThemedCSS, useThemedProps, useCSS, useTheme, useThemeTextColor } fro
 
 import { ComponentBaseProps, Themed } from '../props';
 
-type InputAppendProps = ComponentBaseProps & {
+type InputContentProps = ComponentBaseProps & {
   color?: Themed<string>;
 };
 
@@ -12,19 +12,17 @@ type InputAppendProps = ComponentBaseProps & {
  * inputs fields are used to get the user input in a text field.
  * @param ...
  */
-const InputAppend = ({ color, css, children }: InputAppendProps) => {
+const InputContent = ({ color, css, children }: InputContentProps) => {
   const theme = useTheme();
 
   const padding = '.5rem 1rem .5rem 1rem';
 
   const style = useCSS({
-    padding,
-    flex:'none',
-
+    flex:1,
     ...useThemedCSS(theme, css),
   });
 
   return <div css={style}>{children}</div>;
 };
 
-export default InputAppend;
+export default InputContent;

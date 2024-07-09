@@ -50,7 +50,7 @@ const Dialog = ({
   const theme = useTheme();
 
   const styles = useCSS({
-    zIndex: theme.app.dialog.zIndex,
+    zIndex: theme.dialog.zIndex,
   });
 
   return (

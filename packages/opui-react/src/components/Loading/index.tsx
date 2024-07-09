@@ -1,2 +1,2 @@
-import RingLoading from './RingLoading'
-export  default RingLoading
+import Loading from './Loading'
+export  default Loading

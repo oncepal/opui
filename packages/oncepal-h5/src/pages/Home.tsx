@@ -18,7 +18,7 @@ import {
 import { SetStateAction, useEffect, useRef, useState } from 'react';
 import type { Theme } from '@opui/react';
 
-import { Link, Outlet, NavLink,useNavigate } from 'react-router-dom';
+import { Link, Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { useGet } from '../server/htttp';
 import { PalNeed, generatePalNeed } from '../server/pal';
 import { motion } from 'framer-motion';
@@ -33,7 +33,7 @@ const Home = () => {
     { label: '消息', url: '/' },
     { label: '我的', url: '/mine' },
   ]);
-  const [loginSheetOpened,setLoginSheetOpened] = useState(false)
+  const [loginSheetOpened, setLoginSheetOpened] = useState(false);
   const [getPalNeedListQuery, setGetPalNeedListQuery] = useState({ page: 1, pageSize: 20 });
   const [activeItem, setActiveItem] = useState('首页');
   const [palNeedList, setPalNeedList] = useState<PalNeed[]>([generatePalNeed()]);
@@ -52,15 +52,13 @@ const Home = () => {
       });
   };
   const handleClickNewPalNeedButton = () => {
-    if(true)
-    setLoginSheetOpened(v=>!v)
-    else
-    navigate('/newPalNeed');
+    if (true) setLoginSheetOpened(v => !v);
+    else navigate('/newPalNeed');
   };
 
-  const handleCloseLoginSheet=()=>{
-    setLoginSheetOpened(false)
-  }
+  const handleCloseLoginSheet = () => {
+    setLoginSheetOpened(false);
+  };
   const renderActivePage = () => {
     switch (activeItem) {
       case '首页':
@@ -85,20 +83,17 @@ const Home = () => {
 
   return (
     <Container main fullScreen>
-      <NavBar fixed isBordered>
-    <NavBar.Brand />
-    <NavBar.Content>
-      <Text blod>{appTitle}</Text>
-    </NavBar.Content>
-    <NavBar.Actions />
-  </NavBar>
+      <NavBar isBordered>
+        <NavBar.Brand />
+        <NavBar.Content>
+          <Text blod>{appTitle}</Text>
+        </NavBar.Content>
+        <NavBar.Actions />
+      </NavBar>
       <Container
         section
-        fullScreen
         css={theme => ({
-          background: theme.colors.lightBackground,
-          paddingTop: theme.app.navBar.height,
-          paddingBottom: theme.app.bottomNavigation.height,
+          height:`calc(100vh - ${theme.navBar.height} - ${theme.bottomNavigation.height})`
         })}>
         {renderActivePage()}
       </Container>
@@ -113,28 +108,26 @@ const Home = () => {
             <BottomNavigation.Item label={l.label}>
               <Container center>
                 <Container
-                 center
+                  center
                   css={theme => ({
                     height: '3.2em',
                     width: '3.2em',
                     borderRadius: '999px',
                     background: theme.colors.primary,
                   })}
-                  onClick={handleClickNewPalNeedButton}
-                  >
+                  onClick={handleClickNewPalNeedButton}>
                   <Grid col={2} colGap='.1rem' rowGap='.1rem'>
-                    
-                    {
-                      [
-                        '找', '个', '搭', '子',
-                      ].map(t=> <Grid.Item><Text blod p white size='.9rem'>{t}</Text></Grid.Item>)
-                    }
-              
-                    </Grid>
-                    
-                 
-                    {/* <Icon size='2em' src='bx bx-plus' color='white' />
-                */}
+                    {['找', '个', '搭', '子'].map(t => (
+                      <Grid.Item>
+                        <Text blod p white size='.9rem'>
+                          {t}
+                        </Text>
+                      </Grid.Item>
+                    ))}
+                  </Grid>
+
+                  {/* <Icon size='2em' src='bx bx-plus' color='white' />
+                   */}
                 </Container>
               </Container>
             </BottomNavigation.Item>
@@ -143,8 +136,8 @@ const Home = () => {
       </BottomNavigation>
 
       <Dialog open={false}></Dialog>
-       <BottomSheet isOpened={loginSheetOpened} onClose={handleCloseLoginSheet}>
-                {''+loginSheetOpened}
+      <BottomSheet isOpened={loginSheetOpened} onClose={handleCloseLoginSheet}>
+        {'' + loginSheetOpened}
       </BottomSheet>
     </Container>
   );

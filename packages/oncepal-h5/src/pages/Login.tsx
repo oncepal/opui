@@ -11,6 +11,7 @@ import {
   List,
   Icon,
   Input,
+  colors,
 } from '@opui/react';
 import { ChangeEvent, SetStateAction, useState } from 'react';
 import type { Theme } from '@opui/react';
@@ -33,14 +34,14 @@ export default function Login() {
     setValidCode(v);
   };
 
-  const handleLogin = async ()=>{
-    const result = await login({})
-  }
+  const handleLogin = async () => {
+    const result = await login({});
+  };
   return (
-    <Container main pa='2em' fullScreen>
+    <Container main py='2em' px='1.5em' fullScreen>
       <Icon size={'2rem'} type='close' onClick={handleClickClose} />
-      <Container px='.4em'>
-        <Row vertical py='1em'>
+      <Container pa='.5em'>
+        <Row vertical py='2em'>
           <Col leftText>
             <Text blod size={'1.6rem'}>
               短信验证码登录
@@ -51,14 +52,11 @@ export default function Login() {
           </Col>
         </Row>
 
-        <Container>
+        <Container py='1em'>
           <Input
-          label="电话号码："
-            contentStyle={theme => ({
-              borderBottom: '1px solid ' + theme.colors.lightScrim,
-            })}
-            closable
-            prefix={
+            label='电话号码：'
+            clearable
+            prepend={
               <Container width='3em'>
                 <Text blod>+86</Text>
               </Container>
@@ -69,35 +67,60 @@ export default function Login() {
         </Container>
         <Container mt='1em'>
           <Input
-          
             contentStyle={theme => ({
               borderBottom: '1px solid ' + theme.colors.lightScrim,
             })}
-            prefix={
+            prepend={
               <Container width='3em'>
                 <Text blod>验证码</Text>
               </Container>
             }
-            suffix={<Button text>发送验证码</Button>}
+            append={<Button text>发送验证码</Button>}
             onChange={handleValidCodeInputChange}
             value={validCode}
           />
         </Container>
-        <Row mt='5em' vertical gap='1em' align='center'>
+        <Row mt='5em' vertical gap='.6em' align='center'>
           <Col w='100%'>
             <Button block disabled={!phoneNumber || !validCode}>
               立即登录
             </Button>
           </Col>
           <Col w='100%'>
-            <Button block color={theme => theme.colors.greyLight!}>
+            <Button block color={colors.greyLight!}>
               其他方式
             </Button>
           </Col>
-          <Col>
-            <CheckBox>
+        </Row>
+
+        <Container center footer fixed bottom='5vh' left='0' right='0'>
+          <Row vertical gap='.5em'>
+            <Row justify='center' align='center'>
+              <Col>
+                <Icon type='safe' />
+              </Col>
+              <Col>
+                <Text>承诺数据不外泄，无垃圾信息</Text>
+              </Col>
+            </Row>
+            <Row justify='center' align='center'>
+              <Col>
+                {' '}
+                <Text size={'.9rem'} color={theme => theme.colors.lightGreyText!}>
+                  继续即表示你同意
+                  <Text color={theme => theme.colors.primary!} px='.2em'>
+                    ONCEPAL 用户协议
+                  </Text>
+                  和
+                  <Text px='.2em' color={theme => theme.colors.primary!}>
+                    隐私政策
+                  </Text>
+                </Text>
+              </Col>
+
+              {/* <CheckBox>
               <Text size={'.9rem'} color={theme => theme.colors.lightGreyText!}>
-                我已阅读并同意
+                继续即表示你同意
                 <Text color={theme => theme.colors.primary!} px='.2em'>
                   ONCEPAL 用户协议
                 </Text>
@@ -106,9 +129,10 @@ export default function Login() {
                   隐私政策
                 </Text>
               </Text>
-            </CheckBox>
-          </Col>
-        </Row>
+            </CheckBox> */}
+            </Row>
+          </Row>
+        </Container>
       </Container>
     </Container>
   );

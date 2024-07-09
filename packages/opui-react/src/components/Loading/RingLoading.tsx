@@ -4,22 +4,20 @@ import { keyframes } from '@emotion/react';
 import { Theme } from '../../styles/themes';
 
 import { ComponentBaseProps } from '../props';
-import { useCSS, useThemedCSS, useTheme } from '../../styles/hooks';
+import { useCSS, useThemedCSS, useThemedProps,useTheme, useThemeTextColor } from '../../styles/hooks';
 
 type LoadingProps = ComponentBaseProps & {
   duration?: string;
-  width?: string;
-  backgroudColor?: ((theme: Theme) => string) | string;
+  size?: string;
   color?: ((theme: Theme) => string) | string;
   borderWidth?: string;
 };
 
-const Loading = ({
+const RingLoading = ({
   duration = '1.2s',
-  width = '4em',
-  borderWidth = '2px',
-  color = '#1c4c5b',
-  backgroudColor = '#f3f3f3',
+  size = '2em',
+  borderWidth = '3px',
+  color,
   css,
   ...props
 }: Omit<React.ComponentPropsWithoutRef<'div'>, 'color'> &LoadingProps ) => {
@@ -29,34 +27,37 @@ const Loading = ({
       transform: 'rotate(0deg)',
     },
     '100%': {
-      transform: 'rotate(360deg)',
+      transform: 'rotate(1turn)',
     },
   });
 
+  const useBorder = (type:string)=>({
+    border: `${borderWidth} ${type} ${ useThemedProps(theme,color) ||useThemeTextColor(theme)}`,
+      borderColor: `${useThemedProps(theme,color) ||useThemeTextColor(theme)} transparent transparent transparent`,
+  })
+
   const styles = useCSS({
-    // color,
-    display: 'inline-block',
+    display: 'inline-flex',
+    justifyContent:'center',
+    alignItems:'center',
     position: 'relative',
-    width: '80px',
-    height: '80px',
+    width: size,
+    height: size,
     '& div': {
       position: 'absolute',
-      width: '64px',
-      height: '64px',
-      margin: '8px',
-      border: `8px solid ${color}`,
+      height: '100%',
+      width:'100%',
       borderRadius: '50%',
-      animation: `${kfSpin} 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite`,
-      borderColor: `${color} transparent transparent transparent`,
+      animation: `${kfSpin} .8s cubic-bezier(0.5, 0, 0.5, 1) infinite`,
+      
     },
     '& div:nth-child(1)': {
-      animationDelay: '-0.45s',
+      ...useBorder('solid'),
     },
     '& div:nth-child(2)': {
-      animationDelay: '-0.35s',
-    },
-    '& div:nth-child(3)': {
-      animationDelay: '-0.15s',
+      ...useBorder('dashed'),
+      opacity:.2,
+      animationDelay: '0.15s',
     },
     ...useThemedCSS(theme, css),
   });
@@ -65,10 +66,9 @@ const Loading = ({
     <div css={styles} {...props}>
       <div></div>
       <div></div>
-      <div></div>
-      <div></div>
+   
     </div>
   );
 };
 
-export default Loading;
+export default RingLoading;
