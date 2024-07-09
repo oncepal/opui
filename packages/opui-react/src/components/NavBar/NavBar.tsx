@@ -45,15 +45,15 @@ const NavBar = ({
 
   const theme = useTheme();
   const navStyles = useCSS({
-    padding: theme.app.navBar.padding,
-    maxHeight: theme.app.navBar.height,
-    minHeight: theme.app.navBar.height,
+    padding: theme.navBar.padding,
+    maxHeight: theme.navBar.height,
+    minHeight: theme.navBar.height,
     alignItems: 'center',
-    backgroundColor: backgroundColor || (theme.darkMode ? theme.colors.darkBackground : theme.colors.white),
+    backgroundColor: backgroundColor || (theme.isDarkMode ? theme.colors.darkBackground : theme.colors.lightBackground),
     display: 'flex',
     justifyContent: 'center',
     position: sticky ? 'sticky' : fixed ? 'fixed' : 'static',
-    zIndex:theme.app.navBar.zIndex,
+    zIndex:theme.navBar.zIndex,
     top: 0,
     left: 0,
     right: 0,
@@ -61,7 +61,7 @@ const NavBar = ({
     ...(hideOnScroll && { transform: `translateY(-${translateY}%)` }),
     gap,
     ...(isBordered && {
-      borderBottom: '2px ' + (theme.darkMode ? theme.colors.white : theme.colors.greyLight) + ' solid',
+      borderBottom: '2px ' + (theme.isDarkMode ? theme.colors.textInDarkBackground : theme.colors.textInLightBackground) + ' solid',
     }),
     ...useThemedCSS(theme, css),
   });

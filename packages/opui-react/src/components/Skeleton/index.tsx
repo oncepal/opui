@@ -5,7 +5,7 @@ import { ComponentBaseProps } from '../props';
 
 import { useThemedCSS, useTheme, useCSS } from '../../styles/hooks';
 import { keyframes } from '@emotion/react';
-
+import * as tokens from '../../styles/tokens'
 type SkeletonProps = ComponentBaseProps & {
   duration?: number;
   delay?: number;
@@ -40,7 +40,7 @@ const Skeleton = ({
     height: height,
     borderRadius: circle ? '50%' : '4px',
     background: `linear-gradient(90deg,rgba(255, 255, 255, 0) 40%,rgba(255, 255, 255, .5) 50%,rgba(255, 255, 255, 0) 60%) ${
-      theme.colors.greyLight || '#F3F4F6'
+      tokens.colors.greyLight || '#F3F4F6'
     }`,
     backgroundSize: '200% 100%',
     backgroundPositionX: '180%',

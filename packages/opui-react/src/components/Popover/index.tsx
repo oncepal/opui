@@ -4,7 +4,7 @@ import React, { useMemo } from 'react';
 import { useCSS, useTheme, useThemedCSS,useTransition } from '../../styles/hooks';
 import { Theme } from '../../styles/themes';
 import { ComponentBaseProps } from '../props';
-
+import * as tokens from '../../styles/tokens'
 type PopoverProps = ComponentBaseProps & {
   hover?: boolean;
 };
@@ -142,12 +142,12 @@ const PopoverContent = ({
     position: 'absolute',
     ...cp,
     // display: show ? 'block' : 'none',
-    borderRadius: theme.radius.xs,
-    padding:`${theme.spacing.xs} ${theme.spacing.md}`,
-    lineHeight:theme.lineHeights.base,
+    borderRadius: tokens.radius.xs,
+    padding:`${tokens.spacings.xs} ${tokens.spacings.md}`,
+    lineHeight:tokens.lineHeights.base,
     width:'max-content',
-    background:theme.darkMode?theme.colors.darkBackground:theme.colors.black,
-    color:theme.colors.white,
+    background:theme.isDarkMode?theme.colors.darkBackground:theme.colors.lightBackground,
+    color:theme.isDarkMode?theme.colors.textInDarkBackground:theme.colors.textInLightBackground,
     visibility: show ? 'visible' : 'hidden',
     ...useTransition(),
 

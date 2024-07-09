@@ -68,31 +68,35 @@ const InfiniteScroll = ({
     if (scrollTop > 0) e.stopPropagation();
   };
   return (
-    <motion.div initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1 }} css={styles} onTouchMove={e => handleTouchMove(e)} onScroll={handleScroll} {...props}>
-      {
-        Children.map(children, (child: any, i) => {
-          const element = child as DetailedReactHTMLElement<any, HTMLDivElement>;
-          if (['InfiniteScrollLoading', 'InfiniteScrollContent', 'InfiniteScrollEnding'].includes(child.type.name)) {
-            return (
-              <>
-                {cloneElement(element, {
-                  ...{ ...element.props },
-                })}
-              </>
-            );
-          }
-          if (bottomed && ['InfiniteScrollEnding'].includes(child.type.name)) {
-            return (
-              <>
-                {cloneElement(element, {
-                  ...{ ...element.props },
-                })}
-              </>
-            );
-          }
-          return undefined;
-        })}
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      css={styles}
+      onTouchMove={e => handleTouchMove(e)}
+      onScroll={handleScroll}
+      {...props}>
+      {Children.map(children, (child: any, i) => {
+        const element = child as DetailedReactHTMLElement<any, HTMLDivElement>;
+        if (['InfiniteScrollLoading', 'InfiniteScrollContent', 'InfiniteScrollEnding'].includes(child.type.name)) {
+          return (
+            <>
+              {cloneElement(element, {
+                ...{ ...element.props },
+              })}
+            </>
+          );
+        }
+        if (bottomed && ['InfiniteScrollEnding'].includes(child.type.name)) {
+          return (
+            <>
+              {cloneElement(element, {
+                ...{ ...element.props },
+              })}
+            </>
+          );
+        }
+        return undefined;
+      })}
     </motion.div>
   );
 };

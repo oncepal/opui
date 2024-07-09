@@ -16,10 +16,10 @@ const DialogScrim = ({ closeOnClickScrim, blur, onClose, ...props }: DialogScrim
   const styles = useCSS({
     touchAction: 'none',
     position: 'fixed',
-    zIndex: theme.app.sheet.zIndex,
+    zIndex: theme.dialog.zIndex,
     inset: 0,
     backdropFilter: blur ? 'blur(4px)' : '',
-    background: theme.darkMode?theme.colors.darkScrim:theme.colors.lightScrim,
+    background: theme.isDarkMode?theme.colors.darkScrim:theme.colors.lightScrim,
   });
 
   const handleClickScrim = (e: any) => {

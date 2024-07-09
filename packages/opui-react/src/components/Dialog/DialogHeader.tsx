@@ -6,33 +6,19 @@ import { ComponentBaseProps } from '../props';
 import { useThemedCSS, useCSS, useTheme } from '../../styles/hooks';
 
 type DialogHeaderProps = ComponentBaseProps & {
- 
+  notCenter?: boolean;
 };
 
-const DialogHeader = ({
-    children,
-  css,
-  ...props
-}: DialogHeaderProps) => {
+const DialogHeader = ({ children, notCenter, css, ...props }: DialogHeaderProps) => {
   const theme = useTheme();
 
   const styles = useCSS({
-    position: 'absolute',
-    top: '0',
-    left: '0',
-    height: '100%',
-    borderRadius: 'inherit',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
-    background: 'rgba(255,255,255,.8)',
+    justifyContent: !notCenter ? 'center' : 'flex-start',
   });
 
-  return (
-    <header css={styles}>
-      {children}
-    </header>
-  );
+  return <header css={styles}>{children}</header>;
 };
 
 export default DialogHeader;

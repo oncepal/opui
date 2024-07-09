@@ -4,10 +4,11 @@ import { jsx } from '@emotion/react';
 import { useMemo, createElement } from 'react';
 import { usePadding, useMargin, useCSS, useTheme, useThemedCSS, useThemedProps } from '../../styles/hooks';
 
-import tokens from '../../styles/tokens';
+import * as tokens from '../../styles/tokens';
 import { ComponentBaseProps, Margin, Padding, Themed } from '../props';
 type TextProps = ComponentBaseProps &
   Partial<{
+    opacity:Themed<number>
     h1: boolean;
     h2: boolean;
     h3: boolean;
@@ -41,6 +42,7 @@ type TextProps = ComponentBaseProps &
  * @param ...
  */
 const Text = ({
+  opacity,
   thin = false,
   white = false,
   maxLength,
@@ -60,9 +62,10 @@ const Text = ({
 }: TextProps) => {
   const theme = useTheme();
   const styles = useCSS({
+    opacity:useThemedProps(theme,opacity),
     fontSize: useThemedProps<string>(theme, size),
-    lineHeight: theme.lineHeights.xs,
-    fontWeight: blod ? theme.fontWeights.bold : thin ? theme.fontWeights.thin : theme.fontWeights.normal,
+    lineHeight: theme.text.lineHeight,
+    fontWeight: blod ? tokens.fontWeights.bold : thin ? tokens.fontWeights.thin : tokens.fontWeights.normal,
     textAlign: left ? 'left' : center ? 'center' : right ? 'right' : 'left',
     textOverflow: maxLength ? 'ellipsis' : undefined,
     whiteSpace: nowrap ? 'nowrap' : undefined,
@@ -71,12 +74,12 @@ const Text = ({
       ? 'transparent'
       : useThemedProps<string>(theme, color) ||
         (white
-          ? theme.colors.white
+          ? theme.colors.textInDarkBackground
           : grey
-          ? theme.colors.grey
-          : theme.darkMode
-          ? theme.colors.white
-          : theme.colors.black),
+          ? theme.colors.lightGreyText
+          : theme.isDarkMode
+          ? theme.colors.textInDarkBackground
+          : theme.colors.textInLightBackground),
 
     ...(gradient && {
       backgroundImage: gradient,

@@ -1,11 +1,10 @@
 import { ThemeProvider, Global, CSSObject } from '@emotion/react';
-import { useMemo, useLayoutEffect, useState } from 'react';
+import { useMemo, useLayoutEffect, useState, useInsertionEffect } from 'react';
 import { globalStyles } from '../../styles/global';
 import { defaultTheme, Theme } from '../../styles/themes';
 import { useCSSLink, useMerge } from '@oncepal/hooks';
 
 type OPUIProviderProps = {
-  useIcon?: boolean;
   children?: React.ReactNode;
   customTheme?: Partial<Theme>;
   cssReset?: boolean;
@@ -20,13 +19,12 @@ type OPUIProviderProps = {
  * @param cssReset 是否需要提供默认全局基础css
  * @param theme 自定义主题
  */
-export default function OPUIProvider({ cssReset = true, children, customTheme, useIcon = true }: OPUIProviderProps) {
-  if (useIcon) {
-    const [cssLink, setCssLink] = useState('https://unpkg.com/boxicons@latest/css/boxicons.min.css');
-    useLayoutEffect(() => {
-      useCSSLink(cssLink);
-    }, [cssLink]);
-  }
+export default function OPUIProvider({ cssReset = true, children, customTheme }: OPUIProviderProps) {
+
+    useInsertionEffect(() => {
+      useCSSLink('https://unpkg.com/boxicons@latest/css/boxicons.min.css');
+    }, []);
+  
   return (
     <ThemeProvider theme={customTheme ? useMerge(defaultTheme, customTheme || {}) : defaultTheme}>
       {cssReset && <Global styles={globalStyles as CSSObject} />}

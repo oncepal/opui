@@ -1,21 +1,29 @@
 import { Theme } from './themes';
 import { Flex, Margin, Padding, Position, Themed, Colors } from '../components/props';
 import { css, CSSObject, useTheme as useEmotionTheme } from '@emotion/react';
-
+import * as tokens from './tokens'
 export const useTheme = () => useEmotionTheme() as Theme;
 export const useCSS = css;
-
+export function useThemeTextColor(theme: Theme,color?:Themed<string>) {
+  return useThemedProps(theme,color) || (theme.isDarkMode ? theme.colors.textInDarkBackground : theme.colors.textInLightBackground)
+}
+export function useThemeBackgourndColor(theme: Theme) {
+  return theme.isDarkMode ? theme.colors.darkBackground : theme.colors.lightBackground
+}
+export function useThemeLayoutColor(theme: Theme) {
+  return theme.isDarkMode ? theme.colors.darkLayout : theme.colors.lightLayout
+}
 export function useCenter(): CSSObject {
   return { display: 'flex', alignItems: 'center', justifyContent: 'center' };
 }
 export function useMobileStyles(theme: Theme, css: CSSObject) {
   return {
-    [`@media (max-width: ${theme.media.mobile})`]: css,
+    [`@medium (max-width: ${theme.medium.mobile})`]: css,
   };
 }
-export function useMediaQuery(breakPoint: Pick<Theme, 'media'>, css: CSSObject) {
+export function useMediaQuery(breakPoint: Pick<Theme, 'medium'>, css: CSSObject) {
   return {
-    [`@media (max-width: ${breakPoint})`]: css,
+    [`@medium (max-width: ${breakPoint})`]: css,
   };
 }
 
@@ -34,6 +42,7 @@ export function useThemedCSS(theme: Theme, target?: Themed<CSSObject>) {
   return target && (typeof target == 'function' ? target(theme) : target);
 }
 
+
 export function useTransition(target?:string){
   return { transition: 'all .25s'}
 }
@@ -46,8 +55,8 @@ export function useFlex(props: Flex): CSSObject {
 export function useCloudyBackground(theme: Theme) {
   return {
     backdropFilter: 'saturate(180%) blur(10px)',
-    background: theme.colors.transparent,
-    boxShadow: theme.darkMode ? theme.shadows.md : theme.shadows.lg,
+    background: tokens.colors.transparent,
+    boxShadow: theme.isDarkMode ? tokens.shadows.md : tokens.shadows.lg,
   };
 }
 

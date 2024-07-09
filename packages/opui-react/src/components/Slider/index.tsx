@@ -2,7 +2,7 @@
 
 import { Theme } from '../../styles/themes';
 import { ComponentBaseProps } from '../props';
-
+import * as tokens from '../../styles/tokens'
 import { useThemedCSS, useTheme, useCSS } from '../../styles/hooks';
 
 type SliderProps = ComponentBaseProps & {
@@ -46,8 +46,8 @@ const Slider = ({
   position:relative;
     width: ${thumbSize}px;
     border-radius: 50%;
-    box-shadow: 0px 0px 2px 0px ${theme.colors.black};
-    background: ${thumbColor || theme.colors.white};
+    box-shadow: 0px 0px 2px 0px ${theme.colors.textInLightBackground};
+    background: ${thumbColor || theme.colors.lightBackground};
     height: ${thumbSize}px;
     margin-top: -${(thumbSize - trackSize) / 2}px;
     &::after:
@@ -55,7 +55,7 @@ const Slider = ({
 
   const trackDefaultStyles = `
     height: ${trackSize}px;
-    background: linear-gradient(to right, ${theme.colors.primary}, ${theme.colors.primary}), ${theme.colors.greyLight};
+    background: linear-gradient(to right, ${theme.colors.primary}, ${theme.colors.primary}), ${tokens.colors.greyLight};
     background-size: ${((Number(value) - min) / (max - min)) * 100}%, 100%;
     background-repeat: no-repeat;
     

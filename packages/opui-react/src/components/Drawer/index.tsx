@@ -62,7 +62,7 @@ const Drawer = ({
   // The CSS properties of drawer content container,
   const contentStyles = useCSS({
     touchAction: 'none',
-    background: theme.colors.white || 'white',
+    background: theme.colors.lightLayout || 'white',
     position: 'fixed',
     // zIndex: theme.zIndex.drawer,
     transition: 'all .25s cubic-bezier(0.4, 0, 0.2, 1) 0ms',

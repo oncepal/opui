@@ -4,7 +4,7 @@ import { Theme } from '../../styles/themes';
 import { ComponentBaseProps, Themed } from '../props';
 
 import { useThemedCSS, useCSS, useTheme, useThemedProps } from '../../styles/hooks';
-import tokens from '../../styles/tokens';
+import * as tokens from '../../styles/tokens';
 import { css } from '@emotion/react';
 
 import { forwardRef, ComponentPropsWithoutRef } from 'react';
@@ -120,15 +120,15 @@ const Badge = forwardRef<HTMLDivElement, Omit<ComponentPropsWithoutRef<'div'>, '
         borderRadius: tokens.radius.rounded,
         visibility: show ? 'visible' : 'hidden',
         background: useThemedProps(theme, color),
-        color: theme.colors.white,
-        lineHeight: `${size || theme.lineHeights.xs}px`,
+        color: theme.colors.textInDarkBackground,
+        lineHeight: `${size || tokens.lineHeights.xs}px`,
         minWidth: `${size}px`,
         fontSize: '12px',
         height: `${size}px`,
         textAlign: 'center',
         position: 'absolute',
         ...getInset(),
-        boxShadow: `0 0 0 1px ${theme.colors.white}`,
+        boxShadow: `0 0 0 1px ${theme.colors.textInDarkBackground}`,
         transition: 'visibility all .25s',
         ...useThemedCSS(theme, css),
       },

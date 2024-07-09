@@ -3,7 +3,7 @@
 import { ReactNode } from 'react';
 import { ComponentBaseProps, Flex, Margin, Padding, Themed } from '../props';
 import { usePadding, useMargin, useFlex, useCSS, useTheme, useThemedCSS, useThemedProps } from '../../styles/hooks';
-
+import * as tokens from '../../styles/tokens';
 type DividerProps = ComponentBaseProps &
   Margin &
   Padding &
@@ -43,7 +43,7 @@ const Divider = ({
         display: 'inline-flex',
         justifyContent: 'center',
         borderLeft: `${useThemedProps(theme, size)} ${dashed ? 'dashed' : 'solid'} ${
-          useThemedProps(theme, color) || (theme.darkMode ? theme.colors.greyDeep : theme.colors.greyLight)
+          useThemedProps(theme, color) || (theme.isDarkMode ? tokens.colors.greyDeep : tokens.colors.greyLight)
         }
         `,
         height: useThemedProps(theme, size),
@@ -53,7 +53,7 @@ const Divider = ({
         display: 'flex',
         justifyContent: 'center',
         borderTop: `${useThemedProps(theme, size)} ${dashed ? 'dashed' : 'solid'} ${
-          useThemedProps(theme, color) || (theme.darkMode ? theme.colors.greyDeep : theme.colors.greyLight)
+          useThemedProps(theme, color) || (theme.isDarkMode ? tokens.colors.greyDeep : tokens.colors.greyLight)
         }`,
       };
 
@@ -67,7 +67,7 @@ const Divider = ({
   const childrenStyles = useCSS({
     height: 'fit-content',
     padding: vertical ? '.5em 0' : '0 .5em',
-    background: theme.darkMode ? theme.colors.black : theme.colors.white,
+    background: theme.isDarkMode ? tokens.colors.black : tokens.colors.white,
     textAlign: 'center',
     transform: vertical ? 'translate3d(-50%,50%,0)' : 'translateY(-50%)',
   });

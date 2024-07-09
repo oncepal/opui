@@ -7,7 +7,7 @@ import Row from '../Row';
 import Col from '../Col';
 import { ComponentBaseProps } from '../props';
 import { useCSS, useThemedCSS, useTheme } from '../../styles/hooks';
-
+import * as tokens from '../../styles/tokens'
 type NoticeBarProps = ComponentBaseProps &
   Partial<{
     action: React.ReactNode;
@@ -50,7 +50,7 @@ const NoticeBar = ({
     display: 'flex',
     cursor: 'pointer',
     alignItems: 'center',
-    background: !theme.darkMode ? theme.colors.white : theme.colors.darkBackground,
+    background: !theme.isDarkMode ? theme.colors.textInLightBackground : theme.colors.textInDarkBackground,
     padding: '.5em',
     ...useThemedCSS(theme, css),
   });

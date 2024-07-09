@@ -1,10 +1,10 @@
 /** @jsxImportSource @emotion/react */
 
 import { Theme } from '../../styles/themes';
-import tokens from '../../styles/tokens';
+import * as tokens from '../../styles/tokens';
 import { useMemo } from 'react';
 import { ComponentBaseProps, Themed } from '../props';
-import { useThemedCSS, useTheme, useCSS, useThemedProps } from '../../styles/hooks';
+import { useThemedCSS, useTheme, useCSS, useThemedProps, useThemeTextColor } from '../../styles/hooks';
 
 type LinkProps = ComponentBaseProps & {
   indicatorColor?: Themed<string>;
@@ -64,7 +64,7 @@ const Link = ({
         borderBottom: `${indicatorSize} solid 
   ${
     useThemedProps(theme, indicatorColor) ||
-    (primary ? theme.colors.primary : theme.darkMode ? theme.colors.white : tokens.colors.black)
+    (primary ? theme.colors.primary : useThemeTextColor(theme) )
   }`,
       }
     : indicatorAction == 'hover'
@@ -73,7 +73,7 @@ const Link = ({
           borderBottom: `${indicatorSize} solid 
   ${
     useThemedProps(theme, indicatorColor) ||
-    (primary ? theme.colors.primary : theme.darkMode ? theme.colors.white : tokens.colors.black)
+    (primary ? theme.colors.primary :useThemeTextColor(theme))
   }`,
         },
       }
@@ -83,7 +83,7 @@ const Link = ({
     cursor: !disabled ? 'pointer' : 'initial',
     color:
       useThemedProps(theme, textColor) ||
-      (primary ? theme.colors.primary : theme.darkMode ? theme.colors.white : tokens.colors.black),
+      (primary ? theme.colors.primary : useThemeTextColor(theme)),
     ...indicatorStyles,
     opacity: disabled ? 0.25 : 1,
     ...useThemedCSS(theme, css),
