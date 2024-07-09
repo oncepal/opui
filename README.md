@@ -1,8 +1,7 @@
 
 <!-- markdownlint-disable-next-line -->
 <p align="center">
-  <font size=64 align='center'>🌌</font>
-  <!-- <img width='13%' src="./images/logo.png" alt="OP UI"> -->
+  <img width='13%' src="./images/logo.png" alt="OP UI">
   <h1 align="center">OP UI</h1>
 </p>
 </br>
