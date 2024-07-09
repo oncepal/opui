@@ -18,26 +18,27 @@
 [![Renovate status](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://github.com/mui-org/material-ui/issues/27062)
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/mui-org/material-ui.svg)](https://isitmaintained.com/project/mui-org/material-ui 'Average time to resolve an issue')
 
-[English](./README-en.md) | [简体中文](./README.md)
+<!-- [English](./README-en.md) | [简体中文](./README.md) -->
 
 
 </div>
 
 ## ✨ 特点
 
-- 🌈 高端优雅的UI/UX设计，让你的应用别具一格。
-- 📦 高质量、高性能、移动端，反复对比借鉴流行组件库的优劣。
-- ⚙️ 全部使用 TypeScript 编写，具有可预测的静态类型。
-- 📖 “运行时”文档，注释在每个组件上，使用中即可查看。
-- 🎨 完全定义主题，每个组件细节都有 100% 即时定制可能。
+- 🌈 拥有令人耳目一新的设计和最新的组件设计趋势，极具视觉冲击力，始终引领潮流
+- 📦 样式和组件都是从零开始设计的，我们不尊崇于任何设计思路，这一点非常重要，因此您的项目将是独一无二的，与其他项目截然不同。
+- 📖 专注于快速、轻松地创建项目，提供漂亮的视觉效果，但同时不忘开发人员的个性化和独立性。
+- 🎨 使用流行的运行时css方案，可以更好地进行定制和更改，例如更改为深色主题或更改整个应用程序的主色调，或者仅仅是更改某个组件的某个小细节，只需几行 javascript 代码即可完成。
+- 🛠️ 开源社区，完善的构建资料，可创建、改进和修正任何组件或功能。
+- 🍩 以及，常规的优秀组件库该有的特点。
 
 ## 🚀 即将到来
 
-- 组件整体使用 Children 插槽优先而非 Render Props 的 API 设计
-- 每个组件的 headless 逻辑, styles 系统, 常用的 hooks 都将分开提包
-- framer-motion 动画库的整合以完成细枝末节的视觉升级
-- 增添移动端 h5 的常用组件
-- 高质量完整的官方文档
+- 结构清晰：划分清晰的组件结构和API设计
+- 模块划分：每个组件的逻辑, styles, 常用的hooks都将剥开解耦。
+- 视觉升级：framer-motion 动画库的整合以完成细枝末节的视觉升级
+- 组件增强：常用的业务pro组件封装
+- 高级文档：高质量、完整的文档说明，优质的即时体验。
 
 ## 🖥 环境支持
 
@@ -51,7 +52,7 @@
 
 <img src="https://raw.githubusercontent.com/lusaxweb/vuesax/master/public/github-vuesax-star.gif" alt="star" />
 
-## 📦 快速开始
+## 📦 快速开始（暂未发布npm）
 
 1. 安装：在 React 项目目录中，通过运行以下任一命令来安装 OPUI：
 
