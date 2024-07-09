@@ -18,11 +18,9 @@ export type Colors =  Partial<{
     blue: boolean
     red: boolean
     green: boolean
-    greyBlue: boolean
     greyLight: boolean
     whiteGrey:boolean
     white: boolean
-    blackBlue: boolean
     transparent:boolean
 }>
 export type Padding = Partial<{

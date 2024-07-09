@@ -8,13 +8,13 @@ import * as tokens from '../../styles/tokens';
 import DialogLoading from './DialogLoading';
 import { Children, DetailedReactHTMLElement, cloneElement } from 'react';
 import DialogScrim from './DialogScrim';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import DialogCloser from './DialogCloser';
 import DialogHeader from './DialogHeader';
 import DialogContent from './DialogContent';
 import DialogFooter from './DialogFooter';
 export type DialogProps = ComponentBaseProps & {
-  open: boolean;
+  isOpened: boolean;
   notScrim?: boolean;
   loading?: boolean;
   notCloser?: boolean;
@@ -35,13 +35,14 @@ export const transition = { type: 'tween', duration: 0.2 };
  * ```
  */
 const Dialog = ({
-  open = false,
+  isOpened = false,
   closeOnClickScrim = false,
   loading,
   notCloser,
   notCenter,
   notScrim,
   onClose,
+  blur,
   animationType = 'slide',
   children,
   css,
@@ -50,16 +51,24 @@ const Dialog = ({
   const theme = useTheme();
 
   const styles = useCSS({
+    touchAction: 'none',
+    position: 'fixed',
     zIndex: theme.dialog.zIndex,
+    inset: 0,
+    backdropFilter: blur ? 'blur(4px)' : '',
+    background: theme.isDarkMode?theme.colors.darkScrim:theme.colors.lightScrim,
+    display:'flex',
+    justifyContent:'center',
+    alignItems:'center'
   });
 
   return (
     <AnimatePresence>
-      {open && (
+      {isOpened && (
         <>
           {!notScrim && <DialogScrim closeOnClickScrim={closeOnClickScrim} />}
 
-          <aside css={styles}>
+          <motion.aside css={styles}>
             {Children.map(children, (child: any, i) => {
               const element = child as DetailedReactHTMLElement<any, HTMLDivElement>;
               if (['DialogContent', 'DialogHeader', 'DialogFooter'].includes(child.type.name)) {
@@ -75,7 +84,7 @@ const Dialog = ({
             })}
             {!notCloser && <DialogCloser />}
             {loading && <DialogLoading />}
-          </aside>
+          </motion.aside>
         </>
       )}
     </AnimatePresence>

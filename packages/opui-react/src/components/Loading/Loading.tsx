@@ -4,7 +4,7 @@ import { keyframes } from '@emotion/react';
 import { Theme } from '../../styles/themes';
 
 import { ComponentBaseProps } from '../props';
-import { useCSS, useThemedCSS, useThemedProps,useTheme, useThemeTextColor } from '../../styles/hooks';
+import { useCSS, useThemedCSS, useThemedProps, useTheme, useThemeTextColor } from '../../styles/hooks';
 import RingLoading from './RingLoading';
 
 type LoadingProps = ComponentBaseProps & {
@@ -12,18 +12,26 @@ type LoadingProps = ComponentBaseProps & {
   size?: string;
   color?: ((theme: Theme) => string) | string;
   borderWidth?: string;
-  type?:string
+  type?: string;
 };
 
 const Loading = ({
-    type,size,color,borderWidth,
-    duration,
+  type,
+  size,
+  color,
+  borderWidth,
+  duration,
   ...props
-}: Omit<React.ComponentPropsWithoutRef<'div'>, 'color'> & LoadingProps ) => {
-
-  return (
-    <RingLoading {...{size,color,borderWidth,
-        duration,}}/>
+}: LoadingProps) => {
+  const theme = useTheme()
+  const styles = useCSS({
+    height:'100%'
+  })
+    return (
+    <div css={styles}>
+        
+      <RingLoading {...{ size, color, borderWidth, duration }} />
+    </div>
   );
 };
 

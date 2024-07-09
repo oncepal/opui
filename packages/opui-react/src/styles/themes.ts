@@ -24,6 +24,15 @@ type Theme = {
     height: string;
     padding: string;
   };
+  input:{
+    padding:string,
+    placeholderOpacity:number
+    lightBackground:string,
+    lightFocusBackground:string
+    darkBackground:string
+    darkFocusBackground:string
+
+  },
   tabs:{
     itemPadding:string
     unactiveItemOpacity:number
@@ -71,7 +80,7 @@ type Theme = {
     primary: string;
     secondary: string;
     accent: string;
-    primaryDeep: string;
+
   }>;
 };
 
@@ -79,7 +88,8 @@ const defaultTheme: Theme = {
   medium:tokens.medium,
   isDarkMode: false,
   container: {},
-  button: {},
+  button: {
+  },
   text:{
     lineHeight:tokens.lineHeights.xs
   },
@@ -115,6 +125,14 @@ const defaultTheme: Theme = {
     itemPadding:`${tokens.spacings.sm} ${tokens.spacings.md}`,
     unactiveItemOpacity: tokens.opacities.half
   },
+  input:{
+    padding:'',
+    placeholderOpacity:.4,
+    lightBackground:tokens.colors.whiteDeep,
+    lightFocusBackground:tokens.colors.whiteDeep2,
+    darkBackground:tokens.colors.greyDeep,
+    darkFocusBackground:tokens.colors.greyDeep2,
+  },
   app: {
     maxWidth: '1600px',
     minWidtgh: '50vw',
@@ -123,18 +141,18 @@ const defaultTheme: Theme = {
     ...{
       darkTitle: tokens.colors.white,
       darkDesc: tokens.colors.white,
-      darkScrim: 'rgba(0,0,0,.6)',
-      darkBackground: '#18191c',
-      darkLayout: '#1e2023',
-      darkGreyText: tokens.colors.greyLight,
+      darkScrim: tokens.colors.transparentDeep2,
+      darkBackground: tokens.colors.black,
+      darkLayout:tokens.colors.blackLight,
+      darkGreyText: tokens.colors.whiteDeep,
 
     },
     ...{
-      lightLayout: tokens.colors.whiteDeep,
-      lightBackground: tokens.colors.white,
-      lightGreyText: tokens.colors.grey,
+      lightLayout: tokens.colors.white,
+      lightBackground: tokens.colors.whiteDeep,
+      lightGreyText: tokens.colors.whiteDeep,
     
-      lightScrim: 'rgba(0,0,0,.25)',
+      lightScrim: tokens.colors.transparentDeep,
       lightTitle: tokens.colors.black,
       lightDesc: tokens.colors.greyLight,
 
@@ -145,9 +163,8 @@ const defaultTheme: Theme = {
       success: tokens.colors.green,
       warning: tokens.colors.yellow,
 
-      primary: tokens.colors.purple,
-      accent: tokens.colors.purpleLight,
-      primaryDeep: tokens.colors.purpleDeep,
+      primary: tokens.colors.blue,
+      accent: tokens.colors.blueLight,
     },
   },
 };

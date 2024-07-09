@@ -79,7 +79,7 @@ const Input = ({
     display: 'flex',
     alignItems: 'center',
     width: '100%',
-    // color: theme.isDarkMode ? theme.colors.white : theme.colors.black,
+    color: useThemeTextColor(theme),
     ...useThemedCSS(theme, inputStyle),
   });
 

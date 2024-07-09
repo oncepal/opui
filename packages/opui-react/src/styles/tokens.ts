@@ -105,21 +105,24 @@ export const opacities = {
 };
 export const colors = {
   purple: '#693ff7',
-  purpleDeep: '#311b92',
-  black: '#2c3e50',
-  grey: '#666666',
+  blackDeep:'#141417',
+  black: '#18191c',
+  blackLight:'#1e2023',
+  blueDeep:'#2c3e50',
   blue: '#0038c9',
-  purpleLight: '#ede7f6',
+  blueLight: '#1A5CFF',
   yellow: '#ffba00',
   red: '#F31260',
   green: '#46c93a',
-  greyDeep: '#222',
-  greyBlue: '#e9ebf7',
-  greyLight: '#eaecf5',
+  greyDeep2: '#0f1013', 
+  greyDeep: '#141417', 
+  grey: '#666666',
+  greyLight: '#eef2f5',
+  whiteDeep2:'#f0f3f4',
   whiteDeep: '#f4f7f8',
-  
   white: '#fff',
-  blackBlue: '#38446d',
+  transparentDeep2:'rgba(0,0,0,.6)',
+  transparentDeep:'rgba(0,0,0,.25)',
   transparent: 'rgba(255, 255, 255, 0.05)',
 };
 export const fontWeights = {
