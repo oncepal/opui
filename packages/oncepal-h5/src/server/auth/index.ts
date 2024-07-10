@@ -28,8 +28,12 @@ export type LoginResponse = {
 };
 
 
+export const getValidCode = async (phoneNumber: string)=>{
+  const result = await usePost<LoginResponse>('/auth/',{phoneNumber})
+  return result
+}
 
 export const login = async (params: Params)=>{
-    const result = await usePost<LoginResponse>('/auth/login',{})
+    const result = await usePost<LoginResponse>('/auth/login',params)
     return result
   }

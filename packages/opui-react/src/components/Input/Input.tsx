@@ -53,7 +53,7 @@ const Input = ({
   radius,
   value,
   placeholder,
-  contain,
+  contain = true,
   maxLength,
   outlined = false,
   zeroStart = false,
@@ -73,9 +73,9 @@ const Input = ({
   const [showMessage, setShowMessage] = useState(false);
   const [focus, setFocus] = useState(false);
   const inputRef = useRef(null);
-  const padding = '.5rem 1rem .5rem 1rem';
+
   const inputStyles = useCSS({
-    padding,
+    padding: theme.input.padding,
     display: 'flex',
     alignItems: 'center',
     width: '100%',
@@ -100,19 +100,22 @@ const Input = ({
         ? theme.colors.darkBackground
         : theme.colors.lightBackground
       : 'transparent',
-    border: outlined ? `1px solid ${useThemeTextColor(theme)}` : '',
-    borderRadius: useThemedProps(theme, radius) || (rounded ? tokens.radius.rounded : ''),
+    ...(outlined && { border: `1px solid ${useThemeTextColor(theme)}` }),
+    borderRadius: useThemedProps(theme, radius) || (rounded ? tokens.radius.rounded : tokens.radius.md),
     color: useThemeTextColor(theme),
     ...useThemedCSS(theme, contentStyle),
   });
-  const labelStyles = useCSS({});
+  const labelStyles = useCSS({
+    padding: theme.input.padding,
+  });
   const prependStyles = useCSS({
+    padding: theme.input.padding,
     flex: 'none',
     ...useThemedCSS(theme, prependStyle),
   });
 
   const appendStyles = useCSS({
-    padding,
+    padding: theme.input.padding,
     flex: 'none',
     ...useThemedCSS(theme, appendStyle),
   });
@@ -120,13 +123,13 @@ const Input = ({
     color: showMessage ? theme.colors.danger : '',
   });
   const clearButtonStyles = useCSS({
-    padding,
+    padding: theme.input.padding,
   });
 
   const placeholderStyles = useCSS({
     position: 'absolute',
     left: 0,
-    padding,
+    padding: theme.input.padding,
     transition: 'all .25s ease-out',
     textAlign: 'left',
     userSelect: 'none',
