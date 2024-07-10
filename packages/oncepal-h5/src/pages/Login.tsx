@@ -82,12 +82,12 @@ export default function Login() {
         </Container>
         <Row mt='5em' vertical gap='.6em' align='center'>
           <Col w='100%'>
-            <Button block disabled={!phoneNumber || !validCode}>
+            <Button fullWidth disabled={!phoneNumber || !validCode}>
               立即登录
             </Button>
           </Col>
           <Col w='100%'>
-            <Button block color={colors.greyLight!}>
+            <Button fullWidth color={colors.greyLight!}>
               其他方式
             </Button>
           </Col>

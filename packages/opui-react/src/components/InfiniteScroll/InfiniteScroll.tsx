@@ -25,9 +25,16 @@ type InfiniteScrollProps = ComponentBaseProps & {
  * @example
  * 
  * ```js
- *  <InfiniteScroll onRefresh={()=>{}}>
- * 
-      <-- 你的自定义内容 -->
+ *  <InfiniteScroll onScrollToBottom={handleLoadMore}>
+ *    <InfiniteScroll.Content>
+        <-- 你的自定义内容 -->
+       </InfiniteScroll.Content>
+       <InfiniteScroll.Ending>
+         <Container>ending...</Container>
+       </InfiniteScroll.Ending>
+       <InfiniteScroll.Loading>
+         <Container>loading...</Container>
+       </InfiniteScroll.Loading>
     </InfiniteScroll>
  * ```
  */
