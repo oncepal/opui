@@ -141,7 +141,6 @@ const PopoverContent = ({
   const styles = useCSS({
     position: 'absolute',
     ...cp,
-    // display: show ? 'block' : 'none',
     borderRadius: tokens.radius.xs,
     padding:`${tokens.spacings.xs} ${tokens.spacings.md}`,
     lineHeight:tokens.lineHeights.base,

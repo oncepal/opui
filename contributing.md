@@ -46,7 +46,7 @@ $ npm run dev:ui # 成功运行项目
 
 这个很重要，从这个角度出发，写下你希望你开发时候写下的代码，去倒推源码实现和props设计。
 
-参考`BottomSheet`组件，去到`opui-react`目录下的`src/components`里面找到`BottomSheet`文件夹查看源码可以发现一个组件的代码有以下几个关键因素：
+参考`Button`组件，去到`opui-react`目录下的`src/components`里面找到`Button`文件夹查看源码可以发现一个组件的代码有以下几个关键因素：
 
 - 文件头声明：`/** @jsxImportSource @emotion/react */` 这一段是使用emotion必须要的一个声明。
 

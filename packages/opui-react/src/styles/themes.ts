@@ -3,7 +3,9 @@ import * as tokens from './tokens';
 type Theme = {
   isDarkMode: boolean;
   container: {};
-  button: {};
+  button: {
+    padding:string
+  };
   avatar: {
     defaultBackground:string
   };
@@ -89,6 +91,7 @@ const defaultTheme: Theme = {
   isDarkMode: false,
   container: {},
   button: {
+    padding:`${tokens.spacings.xs} ${tokens.spacings.md}`
   },
   text:{
     lineHeight:tokens.lineHeights.xs
@@ -112,13 +115,13 @@ const defaultTheme: Theme = {
   },
   navBar: {
     zIndex: tokens.zIndices[1],
-    height: '4em',
-    padding: '1em 1.5em',
+    height: tokens.spacings[18],
+    padding: `${tokens.spacings.md} ${tokens.spacings[10]}`
   },
   bottomNavigation: {
     zIndex: tokens.zIndices[1],
-    height: '4em',
-    padding: '1em 1.5em',
+    height: tokens.spacings[18],
+    padding: `${tokens.spacings.md} ${tokens.spacings[10]}`,
     unactiveItemOpacity: tokens.opacities.half
   },
   tabs:{
@@ -126,15 +129,15 @@ const defaultTheme: Theme = {
     unactiveItemOpacity: tokens.opacities.half
   },
   input:{
-    padding:'',
-    placeholderOpacity:.4,
+    padding:`${tokens.spacings.xs} ${tokens.spacings.sm}`,
+    placeholderOpacity:tokens.opacities.half,
     lightBackground:tokens.colors.whiteDeep,
     lightFocusBackground:tokens.colors.whiteDeep2,
     darkBackground:tokens.colors.greyDeep,
     darkFocusBackground:tokens.colors.greyDeep2,
   },
   app: {
-    maxWidth: '1600px',
+    maxWidth: tokens.medium.mobile,
     minWidtgh: '50vw',
   },
   colors: {

@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 
 import { ComponentBaseProps, Margin, Themed } from '../props';
-import { forwardRef, useMemo, ComponentPropsWithoutRef, MouseEvent } from 'react';
-import { useThemedCSS, useCSS, useTheme, useMargin, useThemedProps } from '../../styles/hooks';
+import { ComponentPropsWithoutRef, MouseEvent } from 'react';
+import { useThemedCSS, useCSS, useTheme, useMargin, useThemedProps, useFlexCenter } from '../../styles/hooks';
 import * as tokens from '../../styles/tokens'
 type ButtonEvent = {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => any;
@@ -12,7 +12,7 @@ type ButtonProps = ComponentBaseProps &
   Margin &
   ButtonEvent & {
     padding?: string;
-    block?: boolean;
+    fullWidth?: boolean;
     disabled?: boolean;
     text?: boolean;
     outlined?: boolean;
@@ -25,22 +25,22 @@ type ButtonProps = ComponentBaseProps &
 
 /**
  * 
-按钮允许用户执行操作并通过单击进行选择。
+ * 按钮允许用户执行操作并通过单击进行选择。
  * ```js
  * <Button>submit</Button>
  * ```
- * @param block 占满宽度
+ * @param fullWidth 占满宽度
  * @param disabled 不可点击
- * @param text text 类型按钮
+ * @param text text类型按钮
  * @param outlined outlined 类型按钮
  * @param rounded rounded 类型按钮
- * @param radius 按钮的 border radius
- * @param icon icon 类型按钮
- * @param color 背景色
- * @param padding button 内边距尺寸
+ * @param radius border radius
+ * @param icon icon类型按钮
+ * @param color 自适应表现色
+ * @param padding 内边距
  */
 const Button = ({
-  block = false,
+  fullWidth = false,
   disabled = false,
   text = false,
   outlined = false,
@@ -58,17 +58,17 @@ const Button = ({
   const theme = useTheme();
 
   const styles = useCSS({
+    ...useFlexCenter(),
     textAlign: 'center',
-    display: block ? 'flex' : 'inline-flex',
-    gap: tokens.spacings[3],
-    minWidth: block ? '100%' : '',
+    display: fullWidth ? 'flex' : 'inline-flex',
+    gap: tokens.spacings.xs,
+    minWidth: fullWidth ? '100%' : '',
     lineHeight: tokens.lineHeights.base,
     fontWeight: tokens.fontWeights.medium,
-    alignItems: 'center',
-    justifyContent:'center',
+    
     width: icon ? tokens.spacings.xl : '',
     height: icon ? tokens.spacings.xl : '',
-    padding: text || icon ? padding || '' : padding || `${tokens.spacings.xs} ${tokens.spacings.sm}`,
+    padding: text || icon ? padding || '' : padding || theme.button.padding,
     border: outlined ? `1px solid ${useThemedProps(theme, color) || theme.colors.primary}` : 'none',
     borderRadius: useThemedProps(theme, radius) || (rounded ? tokens.radius.rounded : tokens.radius.md),
     color:
