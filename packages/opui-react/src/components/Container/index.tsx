@@ -11,6 +11,7 @@ type ContainerProps = ComponentBaseProps &
   Padding &
   Semantic & {
     gradient?: string;
+    layout?:boolean
     inline?: boolean;
     width?: string;
     height?: string;
@@ -29,6 +30,7 @@ type ContainerProps = ComponentBaseProps &
         <Button>ok</Button>
     </Container>
  * ```
+ * @param layout 作为layout，默认作为背景
  * @param background 背景
  * @param fullHeight 是否100%高度
  * @param fullScreen 是否全屏高度
@@ -48,6 +50,7 @@ const Container = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & C
       gradient,
       background,
       fullHeight = false,
+      layout=true,
       fullScreen = false,
       center,
       css,
@@ -66,7 +69,7 @@ const Container = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'> & C
       height: height ? height : fullHeight ? '100%' : 'auto' || 'auto',
       minHeight: fullScreen ? '100vh' : '',
       background:
-        gradient || useThemedProps(theme, background) || (theme.isDarkMode ? theme.colors.darkBackground : theme.colors.lightBackground),
+        gradient || useThemedProps(theme, background) || (theme.isDarkMode ? (layout?theme.colors.darkLayout:theme.colors.darkBackground) : (layout?theme.colors.lightLayout:theme.colors.lightBackground)),
       color: theme.isDarkMode ? theme.colors.textInDarkBackground : theme.colors.textInLightBackground,
       ...(center && {display:'flex',justifyContent:'center',alignItems:'center'}),
       ...useMargin(props),

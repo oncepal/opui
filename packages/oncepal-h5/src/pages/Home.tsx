@@ -135,7 +135,7 @@ const Home = () => {
         )}
       </BottomNavigation>
 
-      <Dialog open={false}></Dialog>
+      <Dialog isOpened={false}></Dialog>
       <BottomSheet isOpened={loginSheetOpened} onClose={handleCloseLoginSheet}>
         {'' + loginSheetOpened}
       </BottomSheet>

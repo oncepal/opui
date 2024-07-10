@@ -43,12 +43,12 @@ export default function Login() {
       <Container pa='.5em'>
         <Row vertical py='2em'>
           <Col leftText>
-            <Text blod size={'1.6rem'}>
+            <Text blod size={'1.5rem'}>
               短信验证码登录
             </Text>
           </Col>
           <Col leftText py='.5em'>
-            <Text color={theme => theme.colors.lightGreyText!}>未注册手机验证后自动登录</Text>
+            <Text>未注册手机验证后自动登录</Text>
           </Col>
         </Row>
 
@@ -86,11 +86,7 @@ export default function Login() {
               立即登录
             </Button>
           </Col>
-          <Col w='100%'>
-            <Button fullWidth color={colors.greyLight!}>
-              其他方式
-            </Button>
-          </Col>
+         
         </Row>
 
         <Container center footer fixed bottom='5vh' left='0' right='0'>
@@ -106,7 +102,7 @@ export default function Login() {
             <Row justify='center' align='center'>
               <Col>
                 {' '}
-                <Text size={'.9rem'} color={theme => theme.colors.lightGreyText!}>
+                <Text size={'.9rem'} >
                   继续即表示你同意
                   <Text color={theme => theme.colors.primary!} px='.2em'>
                     ONCEPAL 用户协议
