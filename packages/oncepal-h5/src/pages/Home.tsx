@@ -108,8 +108,10 @@ const Home = () => {
             <BottomNavigation.Item label={l.label}>
               <Container center>
                 <Container
+                
                   center
                   css={theme => ({
+                    maxWidth:600,
                     height: '3.2em',
                     width: '3.2em',
                     borderRadius: '999px',
